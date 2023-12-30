@@ -1,0 +1,8 @@
+.ds-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100vh;
+  /* justify-content: center; */
+  /* height: 100vh; */
+}
