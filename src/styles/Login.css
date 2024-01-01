@@ -9,19 +9,22 @@
     background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
 }
 
+
 input,
 .form-control {
     text-align: center;
 }
 
-@media (min-width: 1024) {
-    .bg-dark {
-        height: 40vh !important
-    }
+.glow-on-hover{
+    height: min-content;
+    font-size: 1.2rem;
+}
 
-    .form-outline {
-        color: #6a11cb;
-        background-color: #6a11cb;
+@media (max-width: 1024px) {
+    .vh-90 {
+        height: 130vh;
     }
-
+    .card {
+        height: 100%;
+    }
 }

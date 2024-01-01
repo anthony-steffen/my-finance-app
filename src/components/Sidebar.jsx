@@ -1,27 +1,32 @@
-
 import {
   CDBSidebar,
   CDBSidebarContent,
   CDBSidebarHeader,
   CDBSidebarMenu,
   CDBSidebarMenuItem,
-  CDBSidebarFooter,
+  CDBSidebarFooter, 
 } from 'cdbreact';
 
+// import { useContext } from "react"
+// import AuthContext from "../contexts/AuthContext"
+
+import '../styles/sidebar.css'
+
 const SideBar = () => {
+
+  // const { email } = useContext(AuthContext);
+
   return (
       <CDBSidebar>
-        <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>Contrast</CDBSidebarHeader>
+        <CDBSidebarHeader 
+        prefix={<i className="fa fa-bars" />}
+        >
+          Contrast
+        </CDBSidebarHeader>
         <CDBSidebarContent>
           <CDBSidebarMenu>
             <CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="sticky-note">Components</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="credit-card" iconType="solid">Metrics</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="user" iconType="solid">Customers</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="chart-line" iconType="solid">Reports</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="chart-pie" iconType="solid">Reports</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="chart-bar" iconType="solid">Reports</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon= "sign-out-alt" iconType="solid">Sign Out</CDBSidebarMenuItem>
+            
           </CDBSidebarMenu>
         </CDBSidebarContent>
 
