@@ -25,7 +25,7 @@ img {
 }
 
 .card.bg-dark.text-white,
-.card-body.p-4.text-center {
+.card-body.p-2.text-center {
     border-radius: 20px;
     background-color: #272727;
 }

@@ -8,42 +8,72 @@ const { Provider } = AuthContext;
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState("");
     const [isLogged, setIsLogged] = useState(false);
+    const [registeredUsers, setRegisteredUsers] = useState([]);
 
     useEffect(() => {
-        const user = localStorage.getItem('user');
-        const isLogged = localStorage.getItem('isLogged');
+      // Buscar os usuários registrados no localStorage  
+      const storedUsers = localStorage.getItem('registeredUsers');
 
-        if (user && isLogged) {
-            setUser(JSON.parse(user));
-            setIsLogged(JSON.parse(isLogged));
+      // Se existir usuários registrados, atualizar o estado da variável registeredUsers
+      if (storedUsers) {
+        setRegisteredUsers(JSON.parse(storedUsers));
+      }
+
+        //Busar os dados do usuário no localStorage e o estado da variável isLogged
+        const storedUser = localStorage.getItem('user');
+        const storedIsLogged = localStorage.getItem('isLogged');
+
+    // Se existir dados do usuário no localStorage, atualizar o estado das variáveis user e isLogged
+    if (storedUser && storedIsLogged) {
+        setUser(JSON.parse(storedUser));
+        setIsLogged(JSON.parse(storedIsLogged));
         }
     }, []);
-    
-    const login = useCallback((user) => {
-        setUser(user);
-        setIsLogged(true);
-        if (user) {
-            localStorage.setItem('user', JSON.stringify(user.email));
+
+    const register = useCallback((data) => {
+        // Adicionar o novo usuário ao array de usuários registrados
+        setRegisteredUsers((prevUsers) => [...prevUsers, data]);
+
+        // Atualizar o localStorage com os dados dos usuários registrados
+        localStorage.setItem('registeredUsers', JSON.stringify([...registeredUsers, data]));
+    }, [registeredUsers]);
+
+    const login = useCallback((data) => {
+        const foundUser = registeredUsers.find(
+            (user) => user.email === data.email && user.password === data.password
+        );
+
+        if (foundUser) {
+            setUser(foundUser);
+            setIsLogged(true);
+
+            localStorage.setItem('user', JSON.stringify(foundUser));
             localStorage.setItem('isLogged', JSON.stringify(true));
+        } else {
+            alert('Invalid credentials');
         }
-    }, []);
+    }, [registeredUsers]);
 
     const logout = useCallback(() => {
-        setUser(null);
+        setUser("");
         setIsLogged(false);
+
         localStorage.removeItem('user');
-    }
-    , []);
+        localStorage.removeItem('isLogged');
+    }, []);
 
     const store = useMemo(() => {
         return {
             user,
             isLogged,
+            registeredUsers,
+            register,
             login,
-            logout
+            logout,
+
         }
     }
-    , [user, isLogged, login, logout]);
+    , [user, isLogged,registeredUsers, register, login, logout,]);
 
     return (
 
