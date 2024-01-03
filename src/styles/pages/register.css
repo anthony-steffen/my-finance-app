@@ -3,10 +3,14 @@ label {
   color: white;
 }
 
+span {
+  color: white;
+  font-size: 1.1rem;
+}
 
 .form-container{
     height: 100%;
-    background-color: #332D2D;
+    background-color: #272727;
     font-family: 'Titillium Web', sans-serif;
     font-size: 0;
     padding: 1.5rem;

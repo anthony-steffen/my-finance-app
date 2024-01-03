@@ -1,11 +1,18 @@
 import "../styles/pages/register.css";
 
 function Register() {
+
+  const flexBoxColumn = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  }
   return (
-    <div className="vh-90 gradient-custom">
+    <div className="vh-100 gradient-custom">
       <div className="container">
-        <div className="row d-flex justify-content-center pt-5">
-            <div className="col-12 col-md-12 col-lg-7 col-x1-">
+        <div className="row d-flex justify-content-center pt-4">
+            <div className="col-12 col-md-12 col-lg-9 col-xl-8">
               <div className="form-container">
                 <h3 className="title">Register</h3>
 
@@ -13,25 +20,25 @@ function Register() {
                   <div className="form-group">
                     <input
                       type="text"
-                      className="form-control mt-0"
+                      className="form-control mb-1"
                       placeholder="User Name"
                     />
                   </div>
                   <div className="form-group">
                     <input
                       type="email"
-                      className="form-control mt-2"
+                      className="form-control mt-2 mb-1"
                       placeholder="Email"
                     />
                   </div>
-                  <div className="form-group mt-2">
+                  <div className="form-group mt-2 mb-1">
                     <input
                       type="password"
                       className="form-control"
                       placeholder="Password"
                     />
                   </div>
-                  <div className="form-group mt-2">
+                  <div className="form-group mt-2 ">
                     <input
                       type="password"
                       className="form-control"
@@ -54,14 +61,18 @@ function Register() {
                       <option value="new york">New York</option>
                     </select>
                   </div>
-                  <div className="check-terms">
+                  <div className="check-terms mb-2">
                     <input type="checkbox" className="checkbox" />
                     <span className="check-label">I agree to the terms</span>
                   </div>
-                  <span className="signin-link">
+                  <div className="mt-3" style={ flexBoxColumn  }>
+                  <button className="glow-on-hover mb-2" style={{height:"50px", flexBoxColumn} }>
+                    <span>Create Account</span>
+                  </button>
+                  <span className="signin-link mb-2 text-center">
                     Already have an account? Click here to <a href="">Login</a>
                   </span>
-                  <button className="btn signup glow-on-hover">Create Account</button>
+                  </div>
                 </form>
               </div>
             </div>
