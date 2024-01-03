@@ -15,9 +15,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
     <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="my-finance-app" element={<App />} />
+          <Route path="my-finance-app/register" element={<Register />} />
+          <Route path="my-finance-app/home" element={<Home />} />
         </Routes>
     </BrowserRouter>
   </AuthProvider>

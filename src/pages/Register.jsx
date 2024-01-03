@@ -1,4 +1,4 @@
-import "../styles/pages/register.css";
+import "../styles/pages/Register.css";
 
 function Register() {
 

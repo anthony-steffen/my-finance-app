@@ -6,7 +6,7 @@ import AuthContext from '../contexts/AuthContext';
 import logo from '../assets/logo.png';
 
 
-import '../styles/login.css';
+import '../styles/pages/Login.css';
 
 function Login() {
   const { login } = useContext(AuthContext);

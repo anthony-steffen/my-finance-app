@@ -10,7 +10,7 @@ import {
 // import { useContext } from "react"
 // import AuthContext from "../contexts/AuthContext"
 
-import '../styles/sidebar.css'
+import '../styles/components/Sidebar.css'
 
 const SideBar = () => {
 

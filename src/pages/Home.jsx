@@ -1,7 +1,7 @@
 import SideBar from "../components/Sidebar";
 import MainContent from "../components/MainContent";
 
-import '../styles/home.css'
+import '../styles/pages/Home.css'
 
 function Dashboard() {
 
