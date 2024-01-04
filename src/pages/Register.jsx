@@ -1,19 +1,19 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import AuthContext from "../contexts/AuthContext";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import MaskedInput from 'react-input-mask';
 
-
+import  { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import "../styles/pages/Register.css";
 
 function Register() {
   const { register: contextRegister, registeredUsers } = useContext(AuthContext);
-  const [accountCreated, setAccountCreated] = useState(false);
+
 
   const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
@@ -22,22 +22,35 @@ function Register() {
 
   } = useForm();
 
-  console.log(registeredUsers, contextRegister)
+  // const notify = () => toast.success("Sucesso!");
 
   const onCreateAccount = async (data) => {
     // Verifica se o usuário já está cadastrado
     const isUserExist = registeredUsers.some(
-      (user) => user.email === data.email || user.username === data.username || user.phone === data.phone
+      (user) => user.email === data.email && user.username === data.username && user.phone === data.phone
     );
+    const isEmailExist = registeredUsers.some((user) => user.email === data.email);
+    const isUsernameExist = registeredUsers.some((user) => user.username === data.username);
+    const isPhoneExist = registeredUsers.some((user) => user.phone === data.phone);
 
     // Se o usuário já estiver cadastrado, exibe um alerta e retorna
     if (isUserExist) {
-      alert('User with these credentials already exists.');
+      toast('User already exists');
       return;
     }
-
-    console.log(registeredUsers)
-
+    if (isEmailExist) {
+      toast('Email already exists');
+      return;
+    }
+    if (isUsernameExist) {
+      toast('Username already exists');
+      return;
+    }
+    if (isPhoneExist) {
+      toast('Phone already exists');
+      return;
+    }
+    
     // Registra o novo usuário se ele não estiver cadastrado
     const newUser = {
       username: data.username,
@@ -46,20 +59,22 @@ function Register() {
       phone: data.phone,
     };
     contextRegister(newUser);
-    setAccountCreated(true);
+    toast.success('Account created successfully, back to login page');
   };
 
 
     
-
+// Estilização do botão
   const flexBoxColumn = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
   }
+
   return (
     <div className="vh-100 gradient-custom">
+    <ToastContainer />  
       <div className="container">
         <div className="row d-flex justify-content-center pt-4">
             <div className="col-12 col-md-12 col-lg-9 col-xl-8">
@@ -157,16 +172,16 @@ function Register() {
                     type="submit"
                     className="glow-on-hover mb-2"
                     style={{ height: '50px', width: "200px" }}
+                    // onClick={notify}
                   >
                     <span>Create Account</span>
                   </button>
-                  {accountCreated && (
-                  <div className="alert alert-success" role="button">
-                    Account created successfully!
-                  </div>
-                )}
+                      {/* {accountCreated && (
+                        toast.success('Account created successfully')
+                      )} */}
+    
                   <span className="signin-link mb-2 text-center">
-                    Already have an account? Click here to <a href="">Login</a>
+                    Already have an account? Click here to <a href={'/my-finance-app'}>Login</a>
                   </span>
                 </div>
               </form>
