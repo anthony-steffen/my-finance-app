@@ -1,0 +1,33 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.2rem;
+    padding: 0 2rem;
+    border-top: 2px solid rgb(12, 12, 12);
+    border-bottom: 2px solid rgb(12, 12, 12);
+    width: 100%;
+    height: 10vh;
+    background: #1a1a1a
+}
+.balance {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: white;
+}
+
+#carouselExampleControls{
+    padding:5%;
+}

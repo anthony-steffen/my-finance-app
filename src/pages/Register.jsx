@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import AuthContext from "../contexts/AuthContext";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import MaskedInput from 'react-input-mask';
 
 import  { ToastContainer, toast } from 'react-toastify';
@@ -13,7 +13,7 @@ function Register() {
   const { register: contextRegister, registeredUsers } = useContext(AuthContext);
 
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {
     register,
     handleSubmit,

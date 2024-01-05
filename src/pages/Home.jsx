@@ -1,4 +1,4 @@
-import SideBar from "../components/Sidebar";
+import Header from "../components/Header";
 import MainContent from "../components/MainContent";
 
 import '../styles/pages/Home.css'
@@ -6,8 +6,8 @@ import '../styles/pages/Home.css'
 function Dashboard() {
 
   return (
-    <div className="ds-container">
-      <SideBar />
+    <div className="home-container">
+      <Header />
       <MainContent />
     </div>
 
