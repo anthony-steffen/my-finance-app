@@ -1,16 +1,14 @@
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.png';
 
-import '../styles/components/Header.css'
+import '../styles/components/Header.css';
 
-const Header = () => {
-
-
+function Header() {
   return (
     <div className="header">
-      <div className='header-logo'>
-        <img 
-        src={logo} 
-        alt="Logo"
+      <div className="header-logo">
+        <img
+          src={ logo }
+          alt="Logo"
         />
       </div>
 
@@ -19,8 +17,8 @@ const Header = () => {
         <span>R$ 0,00</span>
       </div>
     </div>
-    
-  )
+
+  );
 }
 
 export default Header;
