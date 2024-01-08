@@ -1,4 +1,4 @@
-import Slider from 'react-slick/lib/slider';
+// import { Carousel } from 'react-bootstrap';
 
 import { IoIosRestaurant, IoIosCar, IoIosMan } from 'react-icons/io';
 import { GiHouse, GiShoppingBag, GiCoins } from 'react-icons/gi';
@@ -6,101 +6,117 @@ import { FcVoicePresentation } from 'react-icons/fc';
 import { BsCashCoin } from 'react-icons/bs';
 import { CiCoinInsert } from 'react-icons/ci';
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import '../styles/components/SwiperCards.css';
 
 function SwiperCards() {
-  const settings = {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
+  const firstCard = [
+    {
+      id: 'Restaurante',
+      name: 'Restaurante',
+      value: `R$ ${0}`,
+      icon: <IoIosRestaurant />,
     },
-  };
-
-  const FirstCard = [
-    { id: 'Restaurante', name: 'Restaurante', icon: <IoIosRestaurant /> },
-    { id: 'Habitação', name: 'Habitação', icon: <GiHouse /> },
-    { id: 'Compras', name: 'Compras', icon: <GiShoppingBag /> },
+    { id: 'Habitação', name: 'Habitação', value: `R$ ${0}`, icon: <GiHouse /> },
+    { id: 'Compras', name: 'Compras', value: `R$ ${0}`, icon: <GiShoppingBag /> },
   ];
-  const SecondCard = [
-    { id: 'Transporte', name: 'Transporte', icon: <IoIosCar /> },
-    { id: 'Lazer', name: 'Lazer', icon: <IoIosMan /> },
-    { id: 'comunicação', name: 'Comunicação', icon: <FcVoicePresentation /> },
+  const secondCard = [
+    { id: 'Transporte', name: 'Transporte', value: `R$ ${0}`, icon: <IoIosCar /> },
+    { id: 'Lazer', name: 'Lazer', value: `R$ ${0}`, icon: <IoIosMan /> },
+    {
+      id: 'comunicação',
+      name: 'Comunicação',
+      value: `R$ ${0}`,
+      icon: <FcVoicePresentation />,
+    },
   ];
-  const ThirdCard = [
-    { id: 'Despensas Financeiras', name: 'Despensas Financeiras', icon: <BsCashCoin /> },
-    { id: 'Investmentos', name: 'Investmentos', icon: <CiCoinInsert /> },
-    { id: 'Renda', name: 'Renda', icon: <GiCoins /> },
+  const thirdCard = [
+    {
+      id: 'Despensas Financeiras',
+      name: 'Despensas Financeiras',
+      value: `R$ ${30000}`,
+      icon: <BsCashCoin />,
+    },
+    {
+      id: 'Investmentos',
+      name: 'Investmentos',
+      value: `R$ ${0}`,
+      icon: <CiCoinInsert /> },
+    { id: 'Renda', name: 'Renda', value: `R$ ${0}`, icon: <GiCoins /> },
     // {id:"Outros", name: "Others",icon: <BsQuestion />}
   ];
 
   return (
-    <div className="container">
-      {/* <div>SwiperCards</div> */}
-      <h4 className="text-center  mt-3"> Gastos por categoria</h4>
-      <Slider { ...settings }>
-        <div className="card-content d-flex p-0">
-          {FirstCard.map((icon) => (
-            <div className="card-item" key={ icon.id }>
-              <div className="card-title">
-                {icon.name}
-              </div>
-              <div className="card-icon">
-                {icon.icon}
-              </div>
-              <div className="card-value">
-                <span>
-                  R$
-                  0
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="card-content d-flex p-0">
-          {SecondCard.map((icon) => (
-            <div className="card-item" key={ icon.id }>
-              <div className="card-title">
-                {icon.name}
-              </div>
-              <div className="card-icon">
-                {icon.icon}
-              </div>
-              <div className="card-value">
-                <span>
-                  R$
-                  0
-                </span>
+    <div
+      id="carouselExampleFade"
+      className="carousel slide carousel-fade"
+      data-bs-touch
+    >
+      <h5
+        className="title text-dark text-center mb-4 mt-4"
+      >
+        Gastos por Categorias
+      </h5>
+      <div className="carousel-inner">
+        <div className="carousel-item active">
+          {firstCard.map((card) => (
+            <div className="card" key={ card.name }>
+              <div className="card-body">
+                <div className="card-title  mb-0">{card.name}</div>
+                <div className="card-icon">{card.icon}</div>
+                <div className="card-value">
+                  <span className="text-dark">{card.value}</span>
+                </div>
               </div>
             </div>
           ))}
         </div>
-
-        <div className="card-content d-flex p-0">
-          {ThirdCard.map((icon) => (
-            <div className="card-item" key={ icon.id }>
-              <div className="card-title">
-                {icon.name}
-              </div>
-              <div className="card-icon">
-                {icon.icon}
-              </div>
-              <div className="card-value">
-                <span>
-                  R$
-                  0
-                </span>
+        <div className="carousel-item">
+          {secondCard.map((card) => (
+            <div className="card" key={ card.name }>
+              <div className="card-body">
+                <div className="card-title mb-0">{card.name}</div>
+                <div className="card-icon">{card.icon}</div>
+                <div className="card-value">
+                  <span className="text-dark">{card.value}</span>
+                </div>
               </div>
             </div>
           ))}
         </div>
-
-      </Slider>
+        <div className="carousel-item">
+          {thirdCard.map((card) => (
+            <div className="card" key={ card.name }>
+              <div className="card-body">
+                <div className="card-title mb-0">{card.name}</div>
+                <div className="card-icon">{card.icon}</div>
+                <div className="card-value">
+                  <span className="text-dark">{card.value}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <button
+        className="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleFade"
+        data-bs-slide="prev"
+      >
+        <span className="carousel-control-prev-icon" aria-hidden="true" />
+        <span className="visually-hidden text-dark">Previous</span>
+      </button>
+      <button
+        className="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleFade"
+        data-bs-slide="next"
+      >
+        <span className="carousel-control-next-icon" aria-hidden="true" />
+        <span className="visually-hidden text-dark">Next</span>
+      </button>
     </div>
+
   );
 }
 

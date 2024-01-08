@@ -75,7 +75,7 @@ function Register() {
     <div className="vh-100 gradient-custom">
       <ToastContainer />
       <div className="container">
-        <div className="row d-flex justify-content-center pt-4">
+        <div className="row d-flex justify-content-center pt-2">
           <div className="col-12 col-md-12 col-lg-9 col-xl-8">
             <div className="form-container">
               <h3 className="title">Register</h3>
@@ -84,11 +84,11 @@ function Register() {
                 className="form-horizontal"
                 onSubmit={ handleSubmit(onCreateAccount) }
               >
-                <div className="form-group mb-4">
+                <div className="form-group mb-3">
                   <label>Username</label>
                   <input
                     type="text"
-                    className={ `form-control ${errors.username ? 'is-invalid' : ''}` }
+                    className={ `form-control mb-2 ${errors.username ? 'is-invalid' : ''}` }
                     { ...register('username', {
                       required: 'Username is required',
                     }) }
@@ -98,11 +98,11 @@ function Register() {
                   )}
                 </div>
 
-                <div className="form-group mb-4">
+                <div className="form-group mb-3">
                   <label>Email</label>
                   <input
                     type="email"
-                    className={ `form-control ${errors.email ? 'is-invalid' : ''}` }
+                    className={ `form-control mb-2 ${errors.email ? 'is-invalid' : ''}` }
                     { ...register('email', {
                       required: 'Email is required',
                       pattern: {
@@ -115,11 +115,11 @@ function Register() {
                   && <div className="invalid-feedback">{errors.email.message}</div>}
                 </div>
 
-                <div className="form-group mb-4">
+                <div className="form-group mb-3">
                   <label>Password</label>
                   <input
                     type="password"
-                    className={ `form-control ${errors.password ? 'is-invalid' : ''}` }
+                    className={ `form-control mb-2 ${errors.password ? 'is-invalid' : ''}` }
                     { ...register('password', {
                       required: 'Password is required',
                       minLength: {
@@ -133,12 +133,12 @@ function Register() {
                   )}
                 </div>
 
-                <div className="form-group mb-4">
+                <div className="form-group mb-3">
                   <label>Confirm Password</label>
                   <input
                     type="password"
                     className={
-                      `form-control ${errors.confirmPassword ? 'is-invalid' : ''}`
+                      `form-control mb-2 ${errors.confirmPassword ? 'is-invalid' : ''}`
                     }
                     { ...register('confirmPassword', {
                       required: 'Confirm Password is required',
@@ -160,7 +160,7 @@ function Register() {
                     mask="+55(99)99999-9999"
                     maskChar="_" // Caractere de preenchimento, opcional
                     alwaysShowMask // Mostrar a máscara mesmo que o campo esteja vazio, opcional
-                    className={ `form-control ${errors.phone ? 'is-invalid' : ''}` }
+                    className={ `form-control mb-2 ${errors.phone ? 'is-invalid' : ''}` }
                     { ...register('phone', {
                       required: 'Phone Number is required',
                       pattern: {
@@ -174,17 +174,14 @@ function Register() {
                   )}
                 </div>
 
-                <div className="button mt-5" style={ flexBoxColumn }>
+                <div className="button mt-4" style={ flexBoxColumn }>
                   <button
                     type="submit"
-                    className="glow-on-hover mb-2"
+                    className="glow-on-hover mb-3"
                     style={ { height: '50px', width: '200px' } }
                   >
                     <span>Create Account</span>
                   </button>
-                  {/* {accountCreated && (
-                        toast.success('Account created successfully')
-                      )} */}
 
                   <span className="signin-link mb-2 text-center">
                     Already have an account? Click here to
