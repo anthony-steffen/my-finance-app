@@ -11,7 +11,7 @@ function ButtonAdd() {
         <button
           type="button"
           className="btn-inc"
-        //   onClick={ () => console.log('Receita') }
+          onClick={ () => console.log('Receita') }
         >
           {' '}
           <IoIosAdd />
@@ -22,7 +22,7 @@ function ButtonAdd() {
         <button
           type="button"
           className="btn-exp"
-        //   onClick={ () => console.log('Despesa') }
+          onClick={ () => console.log('Despesa') }
         >
           {' '}
           <IoIosAdd />

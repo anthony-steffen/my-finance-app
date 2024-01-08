@@ -16,7 +16,8 @@
 .carousel-item {
   display: flex !important;
   flex-direction: row !important;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  gap: 0.8rem;
 }
 
 
@@ -27,7 +28,7 @@
 
 .card{
     border-radius: 10px !important;
-}
+  }
 .card-body{
     display: flex;
     /* border: solid 1px #010101; */

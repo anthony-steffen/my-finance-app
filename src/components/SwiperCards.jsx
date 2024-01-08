@@ -1,6 +1,12 @@
 // import { Carousel } from 'react-bootstrap';
 
-import { IoIosRestaurant, IoIosCar, IoIosMan } from 'react-icons/io';
+import {
+  IoIosRestaurant,
+  IoIosCar,
+  IoIosMan,
+  IoIosArrowBack,
+  IoIosArrowForward,
+} from 'react-icons/io';
 import { GiHouse, GiShoppingBag, GiCoins } from 'react-icons/gi';
 import { FcVoicePresentation } from 'react-icons/fc';
 import { BsCashCoin } from 'react-icons/bs';
@@ -103,7 +109,9 @@ function SwiperCards() {
         data-bs-target="#carouselExampleFade"
         data-bs-slide="prev"
       >
-        <span className="carousel-control-prev-icon" aria-hidden="true" />
+        <span className="control-prev-icon text-primary fs-1">
+          <IoIosArrowBack />
+        </span>
         <span className="visually-hidden text-dark">Previous</span>
       </button>
       <button
@@ -112,7 +120,9 @@ function SwiperCards() {
         data-bs-target="#carouselExampleFade"
         data-bs-slide="next"
       >
-        <span className="carousel-control-next-icon" aria-hidden="true" />
+        <span className="control-next-icon text-primary fs-1 ">
+          <IoIosArrowForward />
+        </span>
         <span className="visually-hidden text-dark">Next</span>
       </button>
     </div>
