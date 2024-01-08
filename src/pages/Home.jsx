@@ -1,7 +1,10 @@
 import SwiperCards from '../components/SwiperCards';
 
-import '../styles/pages/Home.css';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
+import ButtonAdd from '../components/ButtonAdd';
+
+import '../styles/pages/Home.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function Home() {
@@ -9,6 +12,8 @@ function Home() {
     <div className="home-container">
       <Header />
       <SwiperCards />
+      <ButtonAdd />
+      <Footer />
     </div>
 
   );
