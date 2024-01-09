@@ -9,6 +9,8 @@ import '../styles/pages/Login.css';
 
 function Login() {
   const { login } = useContext(AuthContext);
+  const { isLogged } = useContext(AuthContext);
+  console.log(isLogged);
   const navigate = useNavigate();
 
   const {
@@ -20,7 +22,9 @@ function Login() {
   const onSubmit = (data) => {
     login(data);
     localStorage.setItem('email', data.email);
-    navigate('/home');
+    if (isLogged) {
+      navigate('/my-finance-app/home');
+    }
   };
 
   return (
@@ -99,6 +103,7 @@ function Login() {
                       <button
                         className="glow-on-hover text-white-50"
                         type="submit"
+                        onClick={ onSubmit }
                       >
                         <span>Login</span>
                       </button>

@@ -1,6 +1,7 @@
 import { useMemo, useCallback, useState, useEffect } from 'react';
 
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import AuthContext from './AuthContext';
 
 const { Provider } = AuthContext;
@@ -39,6 +40,11 @@ function AuthProvider({ children }) {
   }, [registeredUsers]);
 
   const login = useCallback((data) => {
+    // Tratamento de erros de campos com valores vazios com useForm
+    if (!data.email || !data.password) {
+      return;
+    }
+
     const foundUser = registeredUsers.find(
       (users) => users.email === data.email && users.password === data.password,
     );
@@ -50,7 +56,8 @@ function AuthProvider({ children }) {
       localStorage.setItem('user', JSON.stringify(foundUser));
       localStorage.setItem('isLogged', JSON.stringify(true));
     } else {
-      alert('Invalid credentials');
+      setIsLogged(false);
+      toast.error('Invalid credentials');
     }
   }, [registeredUsers]);
 
