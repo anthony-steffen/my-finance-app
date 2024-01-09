@@ -68,6 +68,16 @@
   border-radius: 10px;
 }
 
+label {
+  color: white;
+}
+
+span{
+  color: white;
+  font-size: 1.2rem;
+
+}
+
 @keyframes glowing {
   0% {
     background-position: 0 0;

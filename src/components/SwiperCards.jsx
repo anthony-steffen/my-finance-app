@@ -65,11 +65,11 @@ function SwiperCards() {
       <div className="carousel-inner">
         <div className="carousel-item active">
           {firstCard.map((card) => (
-            <div className="card" key={ card.name }>
-              <div className="card-body">
-                <div className="card-title  mb-0">{card.name}</div>
-                <div className="card-icon">{card.icon}</div>
-                <div className="card-value">
+            <div className="categori-card" key={ card.name }>
+              <div className="categori-card-body">
+                <div className="categori-card-title  mb-0">{card.name}</div>
+                <div className="categori-card-icon">{card.icon}</div>
+                <div className="categori-card-value">
                   <span className="text-dark">{card.value}</span>
                 </div>
               </div>
@@ -78,11 +78,11 @@ function SwiperCards() {
         </div>
         <div className="carousel-item">
           {secondCard.map((card) => (
-            <div className="card" key={ card.name }>
-              <div className="card-body">
-                <div className="card-title mb-0">{card.name}</div>
-                <div className="card-icon">{card.icon}</div>
-                <div className="card-value">
+            <div className="categori-card" key={ card.name }>
+              <div className="categori-card-body">
+                <div className="categori-card-title  mb-0">{card.name}</div>
+                <div className="categori-card-icon">{card.icon}</div>
+                <div className="categori-card-value">
                   <span className="text-dark">{card.value}</span>
                 </div>
               </div>
@@ -91,11 +91,11 @@ function SwiperCards() {
         </div>
         <div className="carousel-item">
           {thirdCard.map((card) => (
-            <div className="card" key={ card.name }>
-              <div className="card-body">
-                <div className="card-title mb-0">{card.name}</div>
-                <div className="card-icon">{card.icon}</div>
-                <div className="card-value">
+            <div className="categori-card" key={ card.name }>
+              <div className="categori-card-body">
+                <div className="categori-card-title  mb-0">{card.name}</div>
+                <div className="categori-card-icon">{card.icon}</div>
+                <div className="categori-card-value">
                   <span className="text-dark">{card.value}</span>
                 </div>
               </div>

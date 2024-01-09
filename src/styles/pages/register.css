@@ -1,22 +1,10 @@
-
-label {
-  color: white;
-}
-
-span {
-  color: white;
-  font-size: 1.2rem;
-
-}
-
 .form-container{
     height: 100%;
-    background-color: #272727;
+    background-color: #212529;
     font-family: 'Titillium Web', sans-serif;
     font-size: 0;
     padding: 1.5rem;
     border-radius: 20px;
-    /* box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.3); */
 }
 .form-container .title{
     color: rgb(254, 254, 254);
@@ -42,7 +30,7 @@ span {
     text-align: center;
     text-transform: uppercase;
 }
-.form-container .form-horizontal{ font-size: 0; }
+.form-container .form-horizontal{ font-size: 0.9rem; }
 .form-container .form-horizontal .form-group{
     color: #333;
     /* height: 40px; */
@@ -50,27 +38,12 @@ span {
     padding: 0 8px;
     display: inline-block;
 }
-.form-container .form-horizontal .form-group:nth-child(4){ margin-bottom: 30px; }
+.form-container .form-horizontal .form-group:nth-child(4)
 .form-container .form-horizontal .form-group label{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 600;
 }
-.form-container .form-horizontal .form-control{
-    color: #888;
-    background: #fff;
-    font-weight: 400;
-    letter-spacing: 1px;
-    height: 40px;
-    padding: 6px 12px;
-    border-radius: 10px;
-    border: 2px solid #e7e7e7;
-    box-shadow: none;
-}
-.form-container .form-horizontal .form-control:focus{ box-shadow: 0 0 5px #dcdcdc; }
-.form-container .form-horizontal .check-terms{
-    padding: 0 8px;
-    margin: 0 0 2rem;
-}
+
 .form-container .form-horizontal .check-terms .check-label{
     color: rgb(227, 227, 227);
     font-size: 14px;

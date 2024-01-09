@@ -23,11 +23,21 @@ img {
     text-shadow: 2px 2px 2px #000000;
     padding-top: 1rem;
 }
-
-.card.bg-dark.text-white,
-.card-body.p-2.text-center {
-    border-radius: 20px;
+.login-form-horizontal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.login-card-body {
+    border-radius: 15px;
     background-color: #1a1a1a;
+}
+
+
+.login-invalid-feedback{
+    text-align: left;
 }
 
 @media (min-width: 1024px) and (orientation: landscape){

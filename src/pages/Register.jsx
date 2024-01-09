@@ -77,32 +77,32 @@ function Register() {
       <div className="container">
         <div className="row d-flex justify-content-center pt-2">
           <div className="col-12 col-md-12 col-lg-9 col-xl-8">
-            <div className="form-container">
+            <div className="form-container mt-2">
               <h3 className="title">Register</h3>
 
               <form
                 className="form-horizontal"
                 onSubmit={ handleSubmit(onCreateAccount) }
               >
-                <div className="form-group mb-3">
-                  <label>Username</label>
+                <div className="form-group">
                   <input
                     type="text"
-                    className={ `form-control mb-2 ${errors.username ? 'is-invalid' : ''}` }
+                    className={ `form-control mb-3 ${errors.username ? 'is-invalid' : ''}` }
+                    placeholder="Username"
                     { ...register('username', {
                       required: 'Username is required',
                     }) }
                   />
                   {errors.username && (
-                    <div className="invalid-feedback">{errors.username.message}</div>
+                    <div className="register-invalid-feedback text-danger">{errors.username.message}</div>
                   )}
                 </div>
 
-                <div className="form-group mb-3">
-                  <label>Email</label>
+                <div className="form-group">
                   <input
                     type="email"
-                    className={ `form-control mb-2 ${errors.email ? 'is-invalid' : ''}` }
+                    className={ `form-control mb-3 ${errors.email ? 'is-invalid' : ''}` }
+                    placeholder="Email"
                     { ...register('email', {
                       required: 'Email is required',
                       pattern: {
@@ -112,14 +112,14 @@ function Register() {
                     }) }
                   />
                   {errors.email
-                  && <div className="invalid-feedback">{errors.email.message}</div>}
+                  && <div className="register-invalid-feedback text-danger">{errors.email.message}</div>}
                 </div>
 
-                <div className="form-group mb-3">
-                  <label>Password</label>
+                <div className="form-group">
                   <input
                     type="password"
-                    className={ `form-control mb-2 ${errors.password ? 'is-invalid' : ''}` }
+                    className={ `form-control mb-3 ${errors.password ? 'is-invalid' : ''}` }
+                    placeholder="Password"
                     { ...register('password', {
                       required: 'Password is required',
                       minLength: {
@@ -129,17 +129,17 @@ function Register() {
                     }) }
                   />
                   {errors.password && (
-                    <div className="invalid-feedback">{errors.password.message}</div>
+                    <div className="register-invalid-feedback text-danger">{errors.password.message}</div>
                   )}
                 </div>
 
-                <div className="form-group mb-3">
-                  <label>Confirm Password</label>
+                <div className="form-group">
                   <input
                     type="password"
                     className={
-                      `form-control mb-2 ${errors.confirmPassword ? 'is-invalid' : ''}`
+                      `form-control mb-3 ${errors.confirmPassword ? 'is-invalid' : ''}`
                     }
+                    placeholder="Confirm Password"
                     { ...register('confirmPassword', {
                       required: 'Confirm Password is required',
                       validate: (value) => value === getValues('password')
@@ -147,20 +147,20 @@ function Register() {
                     }) }
                   />
                   {errors.confirmPassword && (
-                    <div className="invalid-feedback">
+                    <div className="register-invalid-feedback text-danger">
                       {errors.confirmPassword.message}
                     </div>
                   )}
                 </div>
 
                 <div className="form-group">
-                  <label>Phone No.</label>
                   <MaskedInput
                     type="text"
                     mask="+55(99)99999-9999"
                     maskChar="_" // Caractere de preenchimento, opcional
                     alwaysShowMask // Mostrar a máscara mesmo que o campo esteja vazio, opcional
-                    className={ `form-control mb-2 ${errors.phone ? 'is-invalid' : ''}` }
+                    className={ `form-control mb-3 ${errors.phone ? 'is-invalid' : ''}` }
+                    placeholder="Phone Number"
                     { ...register('phone', {
                       required: 'Phone Number is required',
                       pattern: {
@@ -170,7 +170,7 @@ function Register() {
                     }) }
                   />
                   {errors.phone && (
-                    <div className="invalid-feedback">{errors.phone.message}</div>
+                    <div className="register-invalid-feedback text-danger">{errors.phone.message}</div>
                   )}
                 </div>
 

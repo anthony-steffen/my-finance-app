@@ -25,11 +25,11 @@ function Login() {
 
   return (
     <section className="vh-100 gradient-custom-2">
-      <div className="container py-3 h-100">
-        <div className="row d-flex justify-content-center h-100">
+      <div className="container py-3">
+        <div className="row d-flex justify-content-center">
           <div className="col-12 col-md-8 col-lg-6 col-xl-5">
             <div className="card bg-dark text-white" style={ { borderRadius: '1rem' } }>
-              <div className="card-body p-2 text-center">
+              <div className="login-card-body p-2 text-center">
                 <div
                   className="mb-md-0 d-flex mt-md-0 pb-0"
                   style={ { flexDirection: 'column', alignItems: 'center' } }
@@ -44,12 +44,12 @@ function Login() {
                   </p>
                   <img src={ logo } alt="logo" className="mb-2 mt-2" />
 
-                  <form className="form-horizontal" onSubmit={ handleSubmit(onSubmit) }>
-                    <div className="form-group mt-1 mb-0">
+                  <form className="login-form-horizontal" onSubmit={ handleSubmit(onSubmit) }>
+                    <div className="form-group">
                       <input
                         type="email"
                         className={
-                          `form-control mb-2 ${errors.email ? 'is-invalid' : ''}`
+                          `form-control mb-0 ${errors.email ? 'is-invalid' : ''}`
                         }
                         placeholder="Username or Email"
                         { ...register('email', {
@@ -61,14 +61,14 @@ function Login() {
                         }) }
                       />
                       {errors.email
-                      && <div className="invalid-feedback">{errors.email.message}</div>}
+                      && <div className="login-invalid-feedback text-danger">{errors.email.message}</div>}
                     </div>
 
-                    <div className="form-group mb-4">
+                    <div className="form-group">
                       <input
                         type="password"
                         className={
-                          `form-control mt-4 mb-2 ${errors.password ? 'is-invalid' : ''}`
+                          `form-control mt-2 mb-0 ${errors.password ? 'is-invalid' : ''}`
                         }
                         placeholder="Password"
                         { ...register('password', {
@@ -80,7 +80,7 @@ function Login() {
                         }) }
                       />
                       {errors.password && (
-                        <div className="invalid-feedback">{errors.password.message}</div>
+                        <div className="login-invalid-feedback text-danger">{errors.password.message}</div>
                       )}
                     </div>
 
@@ -102,16 +102,16 @@ function Login() {
                       >
                         <span>Login</span>
                       </button>
+                      <button
+                        className="glow-on-hover text-white-50 m-1 mb-2"
+                        type="submit"
+                        onClick={ () => navigate('/my-finance-app/register') }
+                      >
+                        <span>Criar Conta</span>
+                      </button>
                     </div>
                   </form>
                   {/* <p className='text-white-50'>Dont have an account? </p> */}
-                  <button
-                    className="glow-on-hover text-white-50 m-1 mb-2"
-                    type="submit"
-                    onClick={ () => navigate('/my-finance-app/register') }
-                  >
-                    <span>Criar Conta</span>
-                  </button>
 
                   <div className="d-flex justify-content-center text-center mt-0 pt-1">
                     <a href="#!" className="text-white">
