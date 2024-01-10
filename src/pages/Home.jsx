@@ -8,6 +8,7 @@ import '../styles/pages/Home.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import ExpenseList from '../components/ExpenseList';
 import BillsToPay from '../components/BillsToPay';
+import { Table } from '../components/Table';
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
       <SwiperCards />
       <ExpenseList />
       <BillsToPay />
+      <Table />
       <ButtonAdd />
       <Footer />
     </div>
