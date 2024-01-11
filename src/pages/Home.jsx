@@ -8,18 +8,20 @@ import '../styles/pages/Home.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import ExpenseList from '../components/ExpenseList';
 import BillsToPay from '../components/BillsToPay';
-import { Table } from '../components/Table';
+
+import HomeProvider from '../contexts/HomeProvider';
 
 function Home() {
   return (
     <div className="home-container">
-      <Header />
-      <SwiperCards />
-      <ExpenseList />
-      <BillsToPay />
-      <Table />
-      <ButtonAdd />
-      <Footer />
+      <HomeProvider>
+        <Header />
+        <SwiperCards />
+        <ExpenseList />
+        <BillsToPay />
+        <ButtonAdd />
+        <Footer />
+      </HomeProvider>
     </div>
 
   );

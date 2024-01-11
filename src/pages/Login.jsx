@@ -8,9 +8,8 @@ import logo from '../assets/logo.png';
 import '../styles/pages/Login.css';
 
 function Login() {
-  const { login } = useContext(AuthContext);
-  const { isLogged } = useContext(AuthContext);
-  console.log(isLogged);
+  const { login, isLogged } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const {
