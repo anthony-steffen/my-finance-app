@@ -7,12 +7,22 @@ const { Provider } = HomeContext;
 
 function HomeProvider({ children }) {
   const [typeRegister, setTypeRegister] = useState('');
+  const [formData, setFormData] = useState({
+    description: '',
+    value: '',
+    paymentMethod: '',
+    category: '',
+  });
   const store = useMemo(() => ({
     typeRegister,
     setTypeRegister,
+    formData,
+    setFormData,
   }), [
     typeRegister,
     setTypeRegister,
+    formData,
+    setFormData,
   ]);
 
   return (

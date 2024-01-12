@@ -1,22 +1,10 @@
 import { IoIosAdd } from 'react-icons/io';
-import { useContext } from 'react';
-import HomeContext from '../contexts/HomeContext';
 
 import '../styles/components/ButtonAdd.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import FormRegister from './FormRegister';
 
 function ButtonAdd() {
-  const { setTypeRegister } = useContext(HomeContext);
-
-  const handleTypeIncome = () => {
-    setTypeRegister('income');
-  };
-
-  const handleTypeExpense = () => {
-    setTypeRegister('expense');
-  };
-
   return (
     <section className="container fixed-bottom mb-8 me-2">
       <div className="btn-register-container">
@@ -44,30 +32,11 @@ function ButtonAdd() {
           offcanvas-header
           bg-primary
           text-white
-          col-12 col-md-12 col-sm-12 col-xl-12
+          d-flex flex-row-reverse
           "
           style={ { height: '10vh' } }
         >
-          <div
-            style={ { width: '100%', display: 'flex', justifyContent: 'center' } }
-          >
-            <button
-              className="btn btn-success btn-sm btn-income"
-              style={ { width: '130px' } }
-              type="button"
-              onClick={ handleTypeIncome }
-            >
-              Receita
-            </button>
-            <button
-              className="btn btn-danger btn-sm ms-1 btn-expense"
-              style={ { width: '130px' } }
-              type="button"
-              onClick={ handleTypeExpense }
-            >
-              Despesa
-            </button>
-          </div>
+
           <button
             type="button"
             className="btn-close"

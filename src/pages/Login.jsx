@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from '../contexts/AuthContext';
 
@@ -106,13 +106,14 @@ function Login() {
                       >
                         <span>Login</span>
                       </button>
-                      <button
-                        className="glow-on-hover text-white-50 m-1 mb-2"
-                        type="submit"
-                        onClick={ () => navigate('/my-finance-app/register') }
-                      >
-                        <span>Criar Conta</span>
-                      </button>
+                      <Link to="/my-finance-app/register">
+                        <button
+                          className="glow-on-hover text-white-50 m-1 mb-2"
+                          type="submit"
+                        >
+                          <span>Criar Conta</span>
+                        </button>
+                      </Link>
                     </div>
                   </form>
                   {/* <p className='text-white-50'>Dont have an account? </p> */}
