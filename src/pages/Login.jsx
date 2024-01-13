@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import AuthContext from '../contexts/AuthContext';
 
 import logo from '../assets/logo.png';
@@ -16,14 +16,12 @@ function Login() {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
 
   const onSubmit = (data) => {
     login(data);
-    localStorage.setItem('email', data.email);
-    if (isLogged) {
-      navigate('/my-finance-app/home');
-    }
+    navigate('/my-finance-app/home');
   };
 
   return (
@@ -51,10 +49,12 @@ function Login() {
                     <div className="form-group">
                       <input
                         type="email"
+                        name="email"
                         className={
                           `form-control mb-0 ${errors.email ? 'is-invalid' : ''}`
                         }
                         placeholder="Username or Email"
+                        onChange={ (event) => setValue('email', event.target.value) }
                         { ...register('email', {
                           required: 'Email is required',
                           pattern: {
@@ -63,17 +63,18 @@ function Login() {
                           },
                         }) }
                       />
-                      {errors.email
-                      && <div className="login-invalid-feedback text-danger">{errors.email.message}</div>}
+
                     </div>
 
                     <div className="form-group">
                       <input
                         type="password"
+                        name="password"
                         className={
                           `form-control mt-2 mb-0 ${errors.password ? 'is-invalid' : ''}`
                         }
                         placeholder="Password"
+                        onChange={ (event) => setValue('password', event.target.value) }
                         { ...register('password', {
                           required: 'Password is required',
                           minLength: {

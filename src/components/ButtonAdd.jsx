@@ -2,7 +2,7 @@ import { IoIosAdd } from 'react-icons/io';
 
 import '../styles/components/ButtonAdd.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import FormRegister from './FormRegister';
+import TransactionRegister from './TransactionRegister';
 
 function ButtonAdd() {
   return (
@@ -56,7 +56,7 @@ function ButtonAdd() {
         align-items-center
         "
         >
-          <FormRegister />
+          <TransactionRegister />
         </div>
       </div>
     </section>

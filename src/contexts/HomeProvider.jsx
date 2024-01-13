@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import PropTypes from 'prop-types';
 import HomeContext from './HomeContext';
@@ -7,22 +7,33 @@ const { Provider } = HomeContext;
 
 function HomeProvider({ children }) {
   const [typeRegister, setTypeRegister] = useState('');
-  const [formData, setFormData] = useState({
-    description: '',
-    value: '',
-    paymentMethod: '',
-    category: '',
-  });
+  const [transaction, setTransaction] = useState([]);
+
+  useCallback(
+    (newTransaction) => {
+      setTransaction((prevState) => [
+        ...prevState,
+        { id: prevState.length + 1, ...newTransaction },
+        localStorage.setItem('transactions', JSON.stringify(
+          [...transaction, newTransaction],
+        )),
+      ]);
+    },
+    [transaction],
+  );
+
   const store = useMemo(() => ({
     typeRegister,
     setTypeRegister,
-    formData,
-    setFormData,
+    transaction,
+    setTransaction,
+
   }), [
     typeRegister,
     setTypeRegister,
-    formData,
-    setFormData,
+    transaction,
+    setTransaction,
+
   ]);
 
   return (

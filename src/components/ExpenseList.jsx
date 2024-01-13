@@ -9,7 +9,6 @@ function ExpenseList() {
       <ul className="list-group list-group-light">
         <li className="list-group-item d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center">
-            {/* AQUI VAI FICAR OS ÍCONES */}
             <img
               src="https://mdbootstrap.com/img/new/avatars/8.jpg"
               alt=""

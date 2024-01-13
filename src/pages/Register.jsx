@@ -1,6 +1,6 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import MaskedInput from 'react-input-mask';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,21 +10,30 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../styles/pages/Register.css';
 
 function Register() {
-  const { register: contextRegister, registeredUsers } = useContext(AuthContext);
+  const { registeredUsers, setRegisteredUsers } = useContext(AuthContext);
 
-  // const navigate = useNavigate();
+  // Novo navegador para rotas
+  const navigate = useNavigate();
+
+  // Estado local para o texto do botão
+  const [ButtonText, setButtonText] = useState('Salvar');
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     getValues,
+    reset,
 
   } = useForm();
 
-  // const notify = () => toast.success("Sucesso!");
+  useEffect(() => (registeredUsers.length === 0
+    ? setButtonText('Salvar') : setButtonText('Novo Registro')), [registeredUsers]);
 
-  const onCreateAccount = async (data) => {
-    // Verifica se o usuário já está cadastrado
+  console.log(isValid);
+  console.log(registeredUsers);
+
+  const onRegister = (data) => {
     const isUserExist = registeredUsers.some(
       (user) => user.email === data.email
       && user.username === data.username && user.phone === data.phone,
@@ -35,8 +44,11 @@ function Register() {
     const isPhoneExist = registeredUsers.some((user) => user.phone === data.phone);
 
     // Se o usuário já estiver cadastrado, exibe um alerta e retorna
+    if (!isValid) {
+      return;
+    }
     if (isUserExist) {
-      toast('User already exists');
+      toast('username already exists');
       return;
     }
     if (isEmailExist) {
@@ -53,14 +65,18 @@ function Register() {
     }
 
     // Registra o novo usuário se ele não estiver cadastrado
-    const newUser = {
-      username: data.username,
-      email: data.email,
-      password: data.password,
-      phone: data.phone,
-    };
-    contextRegister(newUser);
-    toast.success('Account created successfully, back to login page');
+    const newUser = [...registeredUsers, data];
+    setRegisteredUsers(newUser);
+
+    localStorage.setItem('registeredUsers', JSON.stringify(
+      [...registeredUsers, newUser],
+    ));
+    reset();
+    const timeOut = 4000;
+    toast.success('Sucesso! Redirecionado você para a página Login', { autoClose: 3000 });
+    setTimeout(() => {
+      navigate('/my-finance-app');
+    }, timeOut);
   };
 
   // Estilização do botão
@@ -82,7 +98,7 @@ function Register() {
 
               <form
                 className="form-horizontal"
-                onSubmit={ handleSubmit(onCreateAccount) }
+                onSubmit={ handleSubmit(onRegister) }
               >
                 <div className="form-group">
                   <input
@@ -180,7 +196,7 @@ function Register() {
                     className="glow-on-hover mb-3"
                     style={ { height: '50px', width: '200px' } }
                   >
-                    <span>Create Account</span>
+                    <span>{ ButtonText }</span>
                   </button>
 
                   <span className="signin-link mb-2 text-center">

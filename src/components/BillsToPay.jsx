@@ -12,7 +12,7 @@ function BillsToPay() {
             {/* AQUI VAI FICAR OS ÍCONES */}
             <img
               src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-              alt=""
+              alt="alt"
               style={ { width: '45px', height: '45px' } }
               className="rounded-circle"
             />
