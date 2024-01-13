@@ -9,7 +9,24 @@
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(90deg, #141e30 0%, #243b55 100%);
   }
+.login-container{
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.login-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem;
+    background-color: #1a1a1a;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 img {
     border: solid 2px #ddd;
     border-radius: 50%;
@@ -20,8 +37,6 @@ img {
 .tittle {
     font-size: 1.2rem;
     font-weight: bold;
-    text-shadow: 2px 2px 2px #000000;
-    padding-top: 1rem;
 }
 .login-form-horizontal {
     display: flex;
@@ -30,16 +45,48 @@ img {
     justify-content: center;
     gap: 0.5rem;
 }
-.login-card-body {
-    border-radius: 15px;
-    background-color: #1a1a1a;
-}
-
 
 .login-invalid-feedback{
     text-align: left;
 }
 
+.facebook{
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: #0077B5;
+        background: #fff;
+        border-radius: 50%;
+        /* border: solid 1px #81bdf9; */
+}
+.linkeding{
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #1877F2;
+}
+
+.instagram{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width : 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%),
+        radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
+        radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
+        radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%),
+        radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
+        radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%),
+        radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
+        linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+}
 @media (min-width: 1024px) and (orientation: landscape){
     img {
         width: 25%;

@@ -10,6 +10,8 @@ function AuthProvider({ children }) {
   // Ao inicializar, busca os dados do usuário no localStorage
   const initialRegisteredUsers = JSON.parse(localStorage
     .getItem('registeredUsers')) || [];
+
+  // Estados do contexto.
   const [registeredUsers, setRegisteredUsers] = useState(initialRegisteredUsers);
 
   // Atualiza o localStorage sempre que registeredUsers mudar
