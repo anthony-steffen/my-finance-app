@@ -30,14 +30,14 @@ function Login() {
       // Usuário encontrado, redireciona para a rota desejada
       navigate('/my-finance-app/home');
     } else {
-      toast.error('Usuário não encontrado. Crie uma conta!');
+      toast.error('Usuário não encontrado');
     }
   };
 
   return (
     <section className="login-container vh-100 gradient-custom">
-      <div className=" login-card col-11 col-md-8 col-lg-6 col-xl-4 mt-3 py-3">
-        <h1 className="tittle text-white">Vamos poupar Juntos?</h1>
+      <div className=" login-card col-11 col-md-8 col-lg-5 col-xl-3 mt-3 py-3">
+        <h4 className="tittle text-white">Vamos poupar Juntos?</h4>
         <p
           className="text-white-50 mb-0"
           style={ { fontSize: 'clamp(0.5em, 0.6em + 1vw, 1em)', textAlign: 'center' } }
@@ -56,6 +56,7 @@ function Login() {
             <input
               type="email"
               name="email"
+              autoComplete="email"
               className={
                 `form-control mb-0 ${errors.email ? 'is-invalid' : ''}`
               }
@@ -138,13 +139,13 @@ function Login() {
         </form>
 
         <div className="d-flex justify-content-center text-center pt-1 gap-3">
-          <a href="#!" className="text-white" aria-label="Facebook">
+          <a href="http://facebook.com" className="text-white" aria-label="Facebook">
             <BsFacebook className="facebook fs-4" />
           </a>
-          <a href="#!" className="linkeding text-white" aria-label="Linkedin">
+          <a href="http://linkeding.com" className="linkeding text-white" aria-label="Linkedin">
             <BsLinkedin className="fs-4" />
           </a>
-          <a href="#!" className="instagram text-white" aria-label="Instagram">
+          <a href="http://instagram.com" className="instagram text-white" aria-label="Instagram">
             <BsInstagram className="fs-4" />
           </a>
         </div>

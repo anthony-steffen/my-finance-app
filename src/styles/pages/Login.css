@@ -34,10 +34,10 @@ img {
     width: 50%;
 }
 
-.tittle {
+/* .tittle {
     font-size: 1.2rem;
     font-weight: bold;
-}
+} */
 .login-form-horizontal {
     display: flex;
     flex-direction: column;
@@ -59,7 +59,7 @@ img {
         color: #0077B5;
         background: #fff;
         border-radius: 50%;
-        /* border: solid 1px #81bdf9; */
+        border: solid 1px #067bf1;
 }
 .linkeding{
     display: flex;
