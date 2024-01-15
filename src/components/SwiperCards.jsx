@@ -1,5 +1,3 @@
-// import { Carousel } from 'react-bootstrap';
-
 import {
   IoIosRestaurant,
   IoIosCar,
@@ -54,22 +52,22 @@ function SwiperCards() {
   return (
     <div
       id="carouselExampleFade"
-      className="carousel slide carousel-fade"
+      className="carousel slide carousel-fade bg-dark py-3"
       data-bs-touch
     >
       <h5
-        className="title text-dark text-center mb-4 mt-4"
+        className="carousel-title text-white text-center"
       >
-        Gastos por Categorias
+        Gastos por Categoria
       </h5>
       <div className="carousel-inner">
         <div className="carousel-item active">
           {firstCard.map((card) => (
-            <div className="categori-card" key={ card.name }>
-              <div className="categori-card-body">
-                <div className="categori-card-title  mb-0">{card.name}</div>
-                <div className="categori-card-icon">{card.icon}</div>
-                <div className="categori-card-value">
+            <div className="category-card" key={ card.name }>
+              <div className="category-card-body">
+                <div className="category-card-title  mb-0">{card.name}</div>
+                <div className="category-card-icon">{card.icon}</div>
+                <div className="category-card-value">
                   <span className="text-dark">{card.value}</span>
                 </div>
               </div>
@@ -78,11 +76,11 @@ function SwiperCards() {
         </div>
         <div className="carousel-item">
           {secondCard.map((card) => (
-            <div className="categori-card" key={ card.name }>
-              <div className="categori-card-body">
-                <div className="categori-card-title  mb-0">{card.name}</div>
-                <div className="categori-card-icon">{card.icon}</div>
-                <div className="categori-card-value">
+            <div className="category-card" key={ card.name }>
+              <div className="category-card-body">
+                <div className="category-card-title  mb-0">{card.name}</div>
+                <div className="category-card-icon">{card.icon}</div>
+                <div className="category-card-value">
                   <span className="text-dark">{card.value}</span>
                 </div>
               </div>
@@ -91,11 +89,11 @@ function SwiperCards() {
         </div>
         <div className="carousel-item">
           {thirdCard.map((card) => (
-            <div className="categori-card" key={ card.name }>
-              <div className="categori-card-body">
-                <div className="categori-card-title  mb-0">{card.name}</div>
-                <div className="categori-card-icon">{card.icon}</div>
-                <div className="categori-card-value">
+            <div className="category-card" key={ card.name }>
+              <div className="category-card-body">
+                <div className="category-card-title  mb-0">{card.name}</div>
+                <div className="category-card-icon">{card.icon}</div>
+                <div className="category-card-value">
                   <span className="text-dark">{card.value}</span>
                 </div>
               </div>
