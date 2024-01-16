@@ -1,9 +1,15 @@
 import { useForm } from 'react-hook-form';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
+import { set } from 'date-fns';
 import HomeContext from '../contexts/HomeContext';
 
 function TransactionRegister() {
-  const { addTransaction, categories } = useContext(HomeContext);
+  // Estados do contexto
+  const { transaction, setTransaction, categories } = useContext(HomeContext);
+
+  // Estados locais
+  const [ButtonText, setButtonText] = useState('Salvar');
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const {
     register,
@@ -12,20 +18,20 @@ function TransactionRegister() {
     reset,
   } = useForm();
 
-  const [ButtonText, setButtonText] = useState('Salvar');
-  const [selectedCategory, setSelectedCategory] = useState('');
-
   const onSubmit = (data) => {
-    addTransaction(data);
+    setTransaction((prevState) => [
+      ...prevState,
+      { id: prevState.length + 1, ...data },
+    ]);
     reset();
-    setButtonText('Nova Transação');
+    setButtonText('Novo Registro');
     setSelectedCategory('');
   };
 
   return (
     <form
       className="form-register col-md-7 col-lg-7 col-xl-4"
-      onSubmit={ errors ? handleSubmit(onSubmit) : null }
+      onSubmit={ handleSubmit(onSubmit) }
     >
       <input
         type="text"
@@ -179,7 +185,7 @@ function TransactionRegister() {
         })
         }
       />
-      <button type="click" className="btn btn-primary mt-3">
+      <button type="submit" className="btn btn-primary mt-3">
         {ButtonText}
       </button>
 

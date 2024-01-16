@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import categoriesJson from '../helper/categories.json';
 
@@ -7,22 +7,27 @@ import HomeContext from './HomeContext';
 const { Provider } = HomeContext;
 
 function HomeProvider({ children }) {
-  const [typeRegister, setTypeRegister] = useState('');
-  const [transaction, setTransaction] = useState([]);
-  const [categories, setCategories] = useState(categoriesJson);
+  // Ao inicializar, busca os dados da transação no localStorage
+  // Caso não exista, retorna um array vazio para o estado inicial - transaction
+  const initialTransaction = JSON.parse(localStorage.getItem('transactions')) || [];
 
-  useCallback(
-    (newTransaction) => {
-      setTransaction((prevState) => [
-        ...prevState,
-        { id: prevState.length + 1, ...newTransaction },
-        localStorage.setItem('transactions', JSON.stringify(
-          [...transaction, newTransaction],
-        )),
-      ]);
-    },
-    [transaction],
-  );
+  const [transaction, setTransaction] = useState(initialTransaction);
+  const [categories, setCategories] = useState(categoriesJson);
+  const [typeRegister, setTypeRegister] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('transactions', JSON.stringify(transaction));
+  }, [transaction]);
+
+  // const addTransaction = useCallback(
+  //   (newTransaction) => {
+  //     setTransaction((prevState) => [
+  //       ...prevState,
+  //       { id: prevState.length + 1, ...newTransaction },
+  //     ]);
+  //   },
+  //   [],
+  // );
 
   const store = useMemo(() => ({
     typeRegister,
@@ -31,6 +36,7 @@ function HomeProvider({ children }) {
     setTransaction,
     categories,
     setCategories,
+    // addTransaction,
 
   }), [
     typeRegister,
@@ -39,6 +45,7 @@ function HomeProvider({ children }) {
     setTransaction,
     categories,
     setCategories,
+    // addTransaction,
   ]);
 
   return (
