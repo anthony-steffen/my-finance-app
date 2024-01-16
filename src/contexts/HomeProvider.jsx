@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
-
 import PropTypes from 'prop-types';
+import categoriesJson from '../helper/categories.json';
+
 import HomeContext from './HomeContext';
 
 const { Provider } = HomeContext;
@@ -8,6 +9,7 @@ const { Provider } = HomeContext;
 function HomeProvider({ children }) {
   const [typeRegister, setTypeRegister] = useState('');
   const [transaction, setTransaction] = useState([]);
+  const [categories, setCategories] = useState(categoriesJson);
 
   useCallback(
     (newTransaction) => {
@@ -27,13 +29,16 @@ function HomeProvider({ children }) {
     setTypeRegister,
     transaction,
     setTransaction,
+    categories,
+    setCategories,
 
   }), [
     typeRegister,
     setTypeRegister,
     transaction,
     setTransaction,
-
+    categories,
+    setCategories,
   ]);
 
   return (

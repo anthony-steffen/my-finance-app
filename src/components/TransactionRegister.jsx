@@ -1,10 +1,9 @@
 import { useForm } from 'react-hook-form';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import HomeContext from '../contexts/HomeContext';
-// import { Link } from 'react-router-dom';
 
 function TransactionRegister() {
-  const { addTransaction } = useContext(HomeContext);
+  const { addTransaction, categories } = useContext(HomeContext);
 
   const {
     register,
@@ -14,16 +13,13 @@ function TransactionRegister() {
   } = useForm();
 
   const [ButtonText, setButtonText] = useState('Salvar');
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    console.log(name, value);
-  };
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const onSubmit = (data) => {
     addTransaction(data);
     reset();
     setButtonText('Nova Transação');
+    setSelectedCategory('');
   };
 
   return (
@@ -101,20 +97,34 @@ function TransactionRegister() {
 
       <select
         className="form-select mb-3"
-        aria-label="Default select example"
-        onChange={ handleChange }
-        style={ { width: '350px', height: '40px' } }
+        aria-label="categoria"
         { ...register('category', {
           required: 'Categoria é obrigatória',
         })
         }
+        onChange={ (e) => setSelectedCategory(e.target.value) }
       >
-        <option defaultValue>Selecione uma categoria</option>
-        <option>Alimentação</option>
-        <option>Educação</option>
-        <option>Lazer</option>
-        <option>Saúde</option>
-        <option>Transporte</option>
+        <option defaultValue>Selecione uma Categoria</option>
+        {categories.map((category) => (
+          <option key={ category.id }>{category.name}</option>
+        ))}
+      </select>
+
+      <select
+        className="form-select mb-3"
+        aria-label="Sub-categoria"
+        style={ { width: '350px', height: '40px' } }
+        { ...register('sub-category', {
+          required: 'Sub-categoria é obrigatória',
+        })
+        }
+      >
+        <option defaultValue>Sub-categoria</option>
+        {categories
+          .find((category) => category.name === selectedCategory)
+          ?.subCategories.map((subCategory) => (
+            <option key={ subCategory }>{subCategory}</option>
+          ))}
       </select>
 
       <input
