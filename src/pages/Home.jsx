@@ -2,7 +2,7 @@ import SwiperCards from '../components/SwiperCards';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import ButtonAdd from '../components/ButtonAdd';
+import OffCanvas from '../components/OffCanvas';
 // import CarouselBillsToPay from '../components/CarouselBillsToPay';
 
 import '../styles/pages/Home.css';
@@ -21,7 +21,7 @@ function Home() {
         {/* <CarouselBillsToPay /> */}
         <BillsToPay />
         <Income />
-        <ButtonAdd />
+        <OffCanvas />
         <Footer />
       </HomeProvider>
     </div>

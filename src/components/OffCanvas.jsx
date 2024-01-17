@@ -1,14 +1,14 @@
 import { IoIosAdd, IoMdClose } from 'react-icons/io';
 
-import '../styles/components/ButtonAdd.css';
+import '../styles/components/OffCanvas.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import TransactionRegister from './TransactionRegister';
 
-function ButtonAdd() {
+function OffCanvas() {
   return (
-    <section className="container fixed-bottom mb-8 me-2">
+    <section className="container fixed-bottom mb-9 me-2">
       <div className="btn-register-container">
-        <span className="text-black">Receita</span>
+        <span className="text-black" />
         <button
           type="button"
           className="btn-inc"
@@ -84,4 +84,4 @@ function ButtonAdd() {
   );
 }
 
-export default ButtonAdd;
+export default OffCanvas;
