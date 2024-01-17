@@ -5,8 +5,14 @@ import HomeContext from '../contexts/HomeContext';
 
 function TransactionRegister() {
   // Estados do contexto
-  const { typeRegister, setTransaction, categories } = useContext(HomeContext);
+  const {
+    typeRegister,
+    setTypeRegister,
+    categories,
+    handleTransaction,
+  } = useContext(HomeContext);
   console.log(typeRegister);
+
   // Estados locais
   const [ButtonText, setButtonText] = useState('Salvar');
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -21,15 +27,13 @@ function TransactionRegister() {
   const onSubmit = (data) => {
     if (!typeRegister) {
       toast.error('Selecione um tipo de registro', { autoClose: 2000 });
-    } else {
-      setTransaction((prevState) => [
-        ...prevState,
-        { id: prevState.length + 1, ...data },
-      ]);
-      reset();
-      setButtonText('Novo Registro');
-      setSelectedCategory('');
+      return;
     }
+    handleTransaction(data);
+    reset();
+    setButtonText('Novo Registro');
+    setSelectedCategory('');
+    setTypeRegister('');
   };
 
   return (
