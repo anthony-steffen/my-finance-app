@@ -1,4 +1,4 @@
-import { IoIosAdd } from 'react-icons/io';
+import { IoIosAdd, IoMdClose } from 'react-icons/io';
 
 import '../styles/components/ButtonAdd.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -37,12 +37,32 @@ function ButtonAdd() {
           style={ { height: '10vh' } }
         >
 
-          <button
+          <IoMdClose
             type="button"
-            className="btn-close"
+            // className="btn-close"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
+            className="bg-primary text-dark"
+            style={ { borderRadius: '50%', width: '40px', height: '40px' } }
           />
+          <div
+            className="d-flex flex-row w-100 justify-content-center
+          align-items-center gap-5"
+          >
+            <button
+              type="button"
+              className="btn btn-success border border-1 border-dark"
+            >
+              Receita
+            </button>
+
+            <button
+              type="button"
+              className="btn btn-danger border border-1 border-dark"
+            >
+              Despesa
+            </button>
+          </div>
         </div>
 
         <div
