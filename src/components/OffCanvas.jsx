@@ -1,10 +1,15 @@
 import { IoIosAdd, IoMdClose } from 'react-icons/io';
 
+import { useContext } from 'react';
+import HomeContext from '../contexts/HomeContext';
+
+import TransactionRegister from './TransactionRegister';
 import '../styles/components/OffCanvas.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import TransactionRegister from './TransactionRegister';
 
 function OffCanvas() {
+  const { setTypeRegister } = useContext(HomeContext);
+
   return (
     <section className="container fixed-bottom mb-9 me-2">
       <div className="btn-register-container">
@@ -52,6 +57,7 @@ function OffCanvas() {
             <button
               type="button"
               className="btn btn-success border border-1 border-dark"
+              onClick={ () => setTypeRegister('income') }
             >
               Receita
             </button>
@@ -59,6 +65,7 @@ function OffCanvas() {
             <button
               type="button"
               className="btn btn-danger border border-1 border-dark"
+              onClick={ () => setTypeRegister('expense') }
             >
               Despesa
             </button>

@@ -16,8 +16,8 @@ function HomeProvider({ children }) {
   const [categories, setCategories] = useState(categoriesJson);
   const [typeRegister, setTypeRegister] = useState('');
   const [categoryIcons, setCategoryIcons] = useState(Icons);
-
-  console.log(categoryIcons);
+  const [income, setIncome] = useState(0);
+  const [expense, setExpense] = useState(0);
 
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(transaction));
@@ -32,6 +32,10 @@ function HomeProvider({ children }) {
     setCategories,
     categoryIcons,
     setCategoryIcons,
+    income,
+    setIncome,
+    expense,
+    setExpense,
 
   }), [
     typeRegister,
@@ -42,6 +46,10 @@ function HomeProvider({ children }) {
     setCategories,
     categoryIcons,
     setCategoryIcons,
+    income,
+    setIncome,
+    expense,
+    setExpense,
 
   ]);
 

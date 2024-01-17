@@ -1,11 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { useContext, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import HomeContext from '../contexts/HomeContext';
 
 function TransactionRegister() {
   // Estados do contexto
-  const { setTransaction, categories } = useContext(HomeContext);
-
+  const { typeRegister, setTransaction, categories } = useContext(HomeContext);
+  console.log(typeRegister);
   // Estados locais
   const [ButtonText, setButtonText] = useState('Salvar');
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -18,177 +19,184 @@ function TransactionRegister() {
   } = useForm();
 
   const onSubmit = (data) => {
-    setTransaction((prevState) => [
-      ...prevState,
-      { id: prevState.length + 1, ...data },
-    ]);
-    reset();
-    setButtonText('Novo Registro');
-    setSelectedCategory('');
+    if (!typeRegister) {
+      toast.error('Selecione um tipo de registro', { autoClose: 2000 });
+    } else {
+      setTransaction((prevState) => [
+        ...prevState,
+        { id: prevState.length + 1, ...data },
+      ]);
+      reset();
+      setButtonText('Novo Registro');
+      setSelectedCategory('');
+    }
   };
 
   return (
-    <form
-      className="form-register col-md-7 col-lg-7 col-xl-4"
-      onSubmit={ handleSubmit(onSubmit) }
-    >
-      <input
-        type="text"
-        id="description"
-        className="form-control"
-        placeholder="Descrição"
-        aria-describedby="passwordHelpBlock"
-        { ...register('description', {
-          required: 'Descrição é obrigatória',
-          minLength: {
-            value: 3,
-            message: 'Mínimo de 3 caracteres',
-          },
-          maxLength: {
-            value: 30,
-            message: 'Máximo de 30 caracteres',
-          },
-          pattern: {
-            value: /^[a-zA-Z\s]+$/,
-            message: 'Apenas letras',
-          },
-        })
-        }
-      />
-      <div id="passwordHelpBlock" className="form-text mb-3 mt-0">
-        Ex: Salário, Aluguel, Mercado.
-        {errors.description
+    <>
+      <ToastContainer />
+      <form
+        className="form-register col-md-7 col-lg-7 col-xl-4"
+        onSubmit={ handleSubmit(onSubmit) }
+      >
+        <input
+          type="text"
+          id="description"
+          className="form-control"
+          placeholder="Descrição"
+          aria-describedby="passwordHelpBlock"
+          { ...register('description', {
+            required: 'Descrição é obrigatória',
+            minLength: {
+              value: 3,
+              message: 'Mínimo de 3 caracteres',
+            },
+            maxLength: {
+              value: 30,
+              message: 'Máximo de 30 caracteres',
+            },
+            pattern: {
+              value: /^[a-zA-Z\s]+$/,
+              message: 'Apenas letras',
+            },
+          })
+          }
+        />
+        <div id="passwordHelpBlock" className="form-text mb-3 mt-0">
+          Ex: Salário, Aluguel, Mercado.
+          {errors.description
         && <p className="text-danger">{errors.description.message}</p>}
-      </div>
+        </div>
 
-      <input
-        type="number"
-        id="value"
-        className="form-control"
-        placeholder="Valor"
-        aria-describedby="valueHelpBlock"
-        style={ { width: '150px', height: '35px' } }
-        { ...register('value', {
-          required: 'Valor é obrigatório',
-          pattern: {
-            value: /^[0-9]+$/,
-            message: 'Insira apenas números',
-          },
-        })
-        }
-      />
-      <div id="valueHelpBlock" className="form-text mb-3 mt-0">
-        Ex: Números positivos.
-        {errors.value
+        <input
+          type="number"
+          id="value"
+          className="form-control"
+          placeholder="Valor"
+          aria-describedby="valueHelpBlock"
+          style={ { width: '150px', height: '35px' } }
+          { ...register('value', {
+            required: 'Valor é obrigatório',
+            pattern: {
+              value: /^[0-9]+$/,
+              message: 'Insira apenas números',
+            },
+          })
+          }
+        />
+        <div id="valueHelpBlock" className="form-text mb-3 mt-0">
+          Ex: Números positivos.
+          {errors.value
           && <span className="text-danger">{errors.value.message}</span>}
-      </div>
+        </div>
 
-      <select
-        className="form-select mb-3"
-        aria-label="Default select example"
-        style={ { width: '350px', height: '40px' } }
-        { ...register('paymentMethod', {
-          required: 'Método de pagamento é obrigatório',
-        })
-        }
-      >
+        <select
+          className="form-select mb-3"
+          aria-label="Default select example"
+          style={ { width: '350px', height: '40px' } }
+          { ...register('paymentMethod', {
+            required: 'Método de pagamento é obrigatório',
+          })
+          }
+        >
 
-        <option defaultValue>Selecione um método de pagamento</option>
-        <option>Dinheiro</option>
-        <option>Cartão de crédito</option>
-        <option>Cartão de débito</option>
-        <option>Pix</option>
-      </select>
+          <option defaultValue>Selecione um método de pagamento</option>
+          <option>Dinheiro</option>
+          <option>Cartão de crédito</option>
+          <option>Cartão de débito</option>
+          <option>Pix</option>
+        </select>
 
-      <select
-        className="form-select mb-3"
-        aria-label="categoria"
-        { ...register('category', {
-          required: 'Categoria é obrigatória',
-        })
-        }
-        onChange={ (e) => setSelectedCategory(e.target.value) }
-      >
-        <option defaultValue>Selecione uma Categoria</option>
-        {categories.map((category) => (
-          <option key={ category.id }>{category.name}</option>
-        ))}
-      </select>
-
-      <select
-        className="form-select mb-3"
-        aria-label="Sub-categoria"
-        style={ { width: '350px', height: '40px' } }
-        { ...register('sub-category', {
-          required: 'Sub-categoria é obrigatória',
-        })
-        }
-      >
-        <option defaultValue>Sub-categoria</option>
-        {categories
-          .find((category) => category.name === selectedCategory)
-          ?.subCategories.map((subCategory) => (
-            <option key={ subCategory }>{subCategory}</option>
+        <select
+          className="form-select mb-3"
+          aria-label="categoria"
+          { ...register('category', {
+            required: 'Categoria é obrigatória',
+          })
+          }
+          onChange={ (e) => setSelectedCategory(e.target.value) }
+        >
+          <option defaultValue>Selecione uma Categoria</option>
+          {categories.map((category) => (
+            <option key={ category.id }>{category.name}</option>
           ))}
-      </select>
+        </select>
 
-      <input
-        type="text"
-        id="payer"
-        className="form-control payer"
-        placeholder="Pagador"
-        aria-describedby="payerHelpBlock"
-        { ...register('payer', {
-          required: 'Pagador é obrigatório',
-          pattern: {
-            value: /^[a-zA-Z\s]+$/,
-            message: 'Insira apenas letras',
-          },
-        })
-        }
-      />
-      <div id="payerHelpBlock" className="form-text mt-0 mb-3">
-        Ex: Seu nome, nome da empresa.
-        {errors.payer
+        <select
+          className="form-select mb-3"
+          aria-label="Sub-categoria"
+          style={ { width: '350px', height: '40px' } }
+          { ...register('sub-category', {
+            required: 'Sub-categoria é obrigatória',
+          })
+          }
+        >
+          <option defaultValue>Sub-categoria</option>
+          {categories
+            .find((category) => category.name === selectedCategory)
+            ?.subCategories.map((subCategory) => (
+              <option key={ subCategory }>{subCategory}</option>
+            ))}
+        </select>
+
+        <input
+          type="text"
+          id="payer"
+          className="form-control payer"
+          placeholder="Pagador"
+          aria-describedby="payerHelpBlock"
+          { ...register('payer', {
+            required: 'Pagador é obrigatório',
+            pattern: {
+              value: /^[a-zA-Z\s]+$/,
+              message: 'Insira apenas letras',
+            },
+          })
+          }
+        />
+        <div id="payerHelpBlock" className="form-text mt-0 mb-3">
+          Ex: Seu nome, nome da empresa.
+          {errors.payer
           && <span className="text-danger">{errors.payer.message}</span>}
-      </div>
+        </div>
 
-      <input
-        type="text"
-        id="receiver"
-        className="form-control"
-        placeholder="Beneficiário"
-        aria-describedby="receiverHelpBlock"
-        { ...register('receiver', {
-          required: 'Beneficiário é obrigatório',
-          pattern: {
-            value: /^[a-zA-Z\s]+$/,
-            message: 'Insira apenas letras',
-          },
-        })
-        }
-      />
-      <div id="receiverHelpBlock" className="form-text mt-0 mb-3">
-        {errors.receiver
+        <input
+          type="text"
+          id="receiver"
+          className="form-control"
+          placeholder="Beneficiário"
+          aria-describedby="receiverHelpBlock"
+          { ...register('receiver', {
+            required: 'Beneficiário é obrigatório',
+            pattern: {
+              value: /^[a-zA-Z\s]+$/,
+              message: 'Insira apenas letras',
+            },
+          })
+          }
+        />
+        <div id="receiverHelpBlock" className="form-text mt-0 mb-3">
+          {errors.receiver
           && <span className="text-danger">{errors.receiver.message}</span>}
-        Ex: Seu nome, nome da empresa.
-      </div>
+          Ex: Seu nome, nome da empresa.
+        </div>
 
-      <label htmlFor="date" className="form-label mb-0 text-white">Data</label>
-      <input
-        type="date"
-        id="date"
-        className="form-control date"
-        { ...register('date', {
-          required: 'Data é obrigatória',
-        })
-        }
-      />
-      <button type="submit" className="btn btn-primary mt-3">
-        {ButtonText}
-      </button>
+        <label htmlFor="date" className="form-label mb-0 text-white">Data</label>
+        <input
+          type="date"
+          id="date"
+          className="form-control date"
+          { ...register('date', {
+            required: 'Data é obrigatória',
+          })
+          }
+        />
+        <button type="submit" className="btn btn-primary mt-3">
+          {ButtonText}
+        </button>
 
-    </form>
+      </form>
+    </>
   );
 }
 
