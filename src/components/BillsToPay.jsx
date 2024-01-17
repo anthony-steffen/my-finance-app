@@ -2,7 +2,12 @@
 
 import '../styles/components/Lists.css';
 
+import { useContext } from 'react';
+import HomeContext from '../contexts/HomeContext';
+
 function BillsToPay() {
+  const { expenses } = useContext(HomeContext);
+  console.log(expenses);
   return (
     <div className="row pb-4 w-100">
       <h5 className="title text-center mt-3 mb-2">Contas a pagar</h5>

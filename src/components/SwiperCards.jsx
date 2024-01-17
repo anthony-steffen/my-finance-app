@@ -9,7 +9,7 @@ import { useContext } from 'react';
 import HomeContext from '../contexts/HomeContext';
 
 function SwiperCards() {
-  const { expense, categoryIcons } = useContext(HomeContext);
+  const { expenses, categoryIcons } = useContext(HomeContext);
 
   // Função para dividir o array de transações em array de 3 elementos
   const splitArray = (array, size) => {
@@ -22,7 +22,7 @@ function SwiperCards() {
 
   // Divide as transações em grupos de três
   const set = 3;
-  const expenseGroup = splitArray(expense, set);
+  const expensesGroup = splitArray(expenses, set);
 
   return (
     <div
@@ -36,7 +36,7 @@ function SwiperCards() {
         Gastos por Categoria
       </h5>
       <div className="carousel-inner">
-        {expenseGroup.map((group, index) => (
+        {expensesGroup.map((group, index) => (
           <div
             key={ index }
             className={ `carousel-item ${index === 0 ? 'active' : ''}` }

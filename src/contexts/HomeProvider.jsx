@@ -18,8 +18,8 @@ function HomeProvider({ children }) {
   const [categories, setCategories] = useState(categoriesJson);
   const [typeRegister, setTypeRegister] = useState('');
   const [categoryIcons, setCategoryIcons] = useState(Icons);
-  const [income, setIncome] = useState(initialIncomeTransaction);
-  const [expense, setExpense] = useState(initialExpenseTransaction);
+  const [incomes, setIncomes] = useState(initialIncomeTransaction);
+  const [expenses, setExpenses] = useState(initialExpenseTransaction);
 
   // useEffect(() => {
   //   localStorage.setItem('transactions', JSON.stringify(transaction));
@@ -37,19 +37,19 @@ function HomeProvider({ children }) {
     (data) => {
       if (typeRegister === 'income') {
         const newIncome = [
-          ...income, { id: income.length + 1, type: typeRegister, ...data },
+          ...incomes, { id: income.length + 1, type: typeRegister, ...data },
         ];
-        setIncome(newIncome);
+        setIncomes(newIncome);
         localStorage.setItem('Receita', JSON.stringify(newIncome));
       } else if (typeRegister === 'expense') {
         const newExpense = [
-          ...expense, { id: expense.length + 1, type: typeRegister, ...data },
+          ...expenses, { id: expenses.length + 1, type: typeRegister, ...data },
         ];
-        setExpense(newExpense);
+        setExpenses(newExpense);
         localStorage.setItem('Despesa', JSON.stringify(newExpense));
       }
     },
-    [typeRegister, income, expense],
+    [typeRegister, incomes, expenses],
   );
 
   const store = useMemo(() => ({
@@ -59,10 +59,10 @@ function HomeProvider({ children }) {
     setCategories,
     categoryIcons,
     setCategoryIcons,
-    income,
-    setIncome,
-    expense,
-    setExpense,
+    incomes,
+    setIncomes,
+    expenses,
+    setExpenses,
     handleTransaction,
 
   }), [
@@ -72,10 +72,10 @@ function HomeProvider({ children }) {
     setCategories,
     categoryIcons,
     setCategoryIcons,
-    income,
-    setIncome,
-    expense,
-    setExpense,
+    incomes,
+    setIncomes,
+    expenses,
+    setExpenses,
     handleTransaction,
   ]);
 
