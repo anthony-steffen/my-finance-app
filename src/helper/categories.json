@@ -47,32 +47,31 @@
     "name": "Investimentos",
     "description": "Despesas com investimentos, como ações, fundos de investimento, poupança, previdência privada, imóveis, criptomoedas.",
     "subCategories": ["Ações", "Fundos de investimento", "Poupança", "Previdência privada", "Imóveis", "Criptomoedas" ]
-  },
-    
+  }, 
   {
     "id": 9,
-    "name": "Despesas pessoais",
-    "description": "Despesas pessoais, como roupas, sapatos, acessórios, cosméticos, cabeleireiro, manicure, barbeiro",
+    "name": "renda",
+    "description": "Renda, como salário, Investimentos, aluguéis, pensões, mesadas, doações, heranças.",
+    "subCategories": ["Salário", "Investimentos", "Aluguéis", "Pensões", "Mesadas", "Doações", "Heranças" ]
+  },
+  {
+    "id": 10,
+    "name": "Despesas",
+    "description": "Despesas, como roupas, sapatos, acessórios, cosméticos, cabeleireiro, manicure, barbeiro",
     "subCategories": ["Roupas", "Sapatos", "Acessórios", "Cosméticos", "Cabeleireiro" ]
 
   },
   {
-    "id": 10,
+    "id": 11,
     "name": "Impostos",
     "description": "Despesas com impostos, como imposto de renda, IPTU, IPVA, ITCMD, ITBI, ISS, taxas de cartório, taxas de licenciamento.",
     "subCategories": ["Imposto de renda", "IPTU", "IPVA", "ITCMD", "ITBI", "ISS", "Taxas de cartório", "Taxas de licenciamento" ]
   },
   {
-    "id": 11,
+    "id": 12,
     "name": "Dívidas",
     "description": "Despesas com dívidas, como empréstimos, financiamentos, cartão de crédito, cheque especial.",
     "subCategories": ["Empréstimos", "Financiamentos", "Cartão de crédito", "Cheque especial"  ]
-  },
-  {
-    "id": 12,
-    "name": "renda",
-    "description": "Renda, como salário, Investimentos, aluguéis, pensões, mesadas, doações, heranças.",
-    "subCategories": ["Salário", "Investimentos", "Aluguéis", "Pensões", "Mesadas", "Doações", "Heranças" ]
   }
 ]
 

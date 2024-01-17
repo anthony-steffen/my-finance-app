@@ -1,53 +1,16 @@
 import {
-  IoIosRestaurant,
-  IoIosCar,
-  IoIosMan,
   IoIosArrowBack,
   IoIosArrowForward,
 } from 'react-icons/io';
-import { GiHouse, GiShoppingBag, GiCoins } from 'react-icons/gi';
-import { FcVoicePresentation } from 'react-icons/fc';
-import { BsCashCoin } from 'react-icons/bs';
-import { CiCoinInsert } from 'react-icons/ci';
 
 import '../styles/components/SwiperCards.css';
 
+import { useContext } from 'react';
+import HomeContext from '../contexts/HomeContext';
+
 function SwiperCards() {
-  const firstCard = [
-    {
-      id: 'Restaurante',
-      name: 'Restaurante',
-      value: `R$ ${0}`,
-      icon: <IoIosRestaurant />,
-    },
-    { id: 'Habitação', name: 'Habitação', value: `R$ ${0}`, icon: <GiHouse /> },
-    { id: 'Compras', name: 'Compras', value: `R$ ${0}`, icon: <GiShoppingBag /> },
-  ];
-  const secondCard = [
-    { id: 'Transporte', name: 'Transporte', value: `R$ ${0}`, icon: <IoIosCar /> },
-    { id: 'Lazer', name: 'Lazer', value: `R$ ${0}`, icon: <IoIosMan /> },
-    {
-      id: 'comunicação',
-      name: 'Comunicação',
-      value: `R$ ${0}`,
-      icon: <FcVoicePresentation />,
-    },
-  ];
-  const thirdCard = [
-    {
-      id: 'Despensas Financeiras',
-      name: 'Despensas Financeiras',
-      value: `R$ ${30000}`,
-      icon: <BsCashCoin />,
-    },
-    {
-      id: 'Investmentos',
-      name: 'Investmentos',
-      value: `R$ ${0}`,
-      icon: <CiCoinInsert /> },
-    { id: 'Renda', name: 'Renda', value: `R$ ${0}`, icon: <GiCoins /> },
-    // {id:"Outros", name: "Others",icon: <BsQuestion />}
-  ];
+  const { transaction, categoryIcons } = useContext(HomeContext);
+  console.log(transaction);
 
   return (
     <div
@@ -62,44 +25,24 @@ function SwiperCards() {
       </h5>
       <div className="carousel-inner">
         <div className="carousel-item active">
-          {firstCard.map((card) => (
-            <div className="category-card" key={ card.name }>
+          {transaction.map((element) => (
+            <div className="category-card" key={ element.id }>
               <div className="category-card-body">
-                <div className="category-card-title  mb-0">{card.name}</div>
-                <div className="category-card-icon">{card.icon}</div>
+                <div className="category-card-title  mb-0">{element.category}</div>
+                <div className="category-card-icon">
+                  {categoryIcons[element.category]}
+                </div>
                 <div className="category-card-value">
-                  <span className="text-dark">{card.value}</span>
+                  <span className="text-dark">
+                    R$
+                    {element.value}
+                  </span>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div className="carousel-item">
-          {secondCard.map((card) => (
-            <div className="category-card" key={ card.name }>
-              <div className="category-card-body">
-                <div className="category-card-title  mb-0">{card.name}</div>
-                <div className="category-card-icon">{card.icon}</div>
-                <div className="category-card-value">
-                  <span className="text-dark">{card.value}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="carousel-item">
-          {thirdCard.map((card) => (
-            <div className="category-card" key={ card.name }>
-              <div className="category-card-body">
-                <div className="category-card-title  mb-0">{card.name}</div>
-                <div className="category-card-icon">{card.icon}</div>
-                <div className="category-card-value">
-                  <span className="text-dark">{card.value}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+
       </div>
       <button
         className="carousel-control-prev"

@@ -1,11 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { useContext, useState } from 'react';
-import { set } from 'date-fns';
 import HomeContext from '../contexts/HomeContext';
 
 function TransactionRegister() {
   // Estados do contexto
-  const { transaction, setTransaction, categories } = useContext(HomeContext);
+  const { setTransaction, categories } = useContext(HomeContext);
 
   // Estados locais
   const [ButtonText, setButtonText] = useState('Salvar');

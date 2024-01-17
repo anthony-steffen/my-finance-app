@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import categoriesJson from '../helper/categories.json';
 
+import categoriesJson from '../helper/categories.json';
+import Icons from '../helper/Icons';
 import HomeContext from './HomeContext';
 
 const { Provider } = HomeContext;
@@ -14,20 +15,13 @@ function HomeProvider({ children }) {
   const [transaction, setTransaction] = useState(initialTransaction);
   const [categories, setCategories] = useState(categoriesJson);
   const [typeRegister, setTypeRegister] = useState('');
+  const [categoryIcons, setCategoryIcons] = useState(Icons);
+
+  console.log(categoryIcons);
 
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(transaction));
   }, [transaction]);
-
-  // const addTransaction = useCallback(
-  //   (newTransaction) => {
-  //     setTransaction((prevState) => [
-  //       ...prevState,
-  //       { id: prevState.length + 1, ...newTransaction },
-  //     ]);
-  //   },
-  //   [],
-  // );
 
   const store = useMemo(() => ({
     typeRegister,
@@ -36,7 +30,8 @@ function HomeProvider({ children }) {
     setTransaction,
     categories,
     setCategories,
-    // addTransaction,
+    categoryIcons,
+    setCategoryIcons,
 
   }), [
     typeRegister,
@@ -45,7 +40,9 @@ function HomeProvider({ children }) {
     setTransaction,
     categories,
     setCategories,
-    // addTransaction,
+    categoryIcons,
+    setCategoryIcons,
+
   ]);
 
   return (
