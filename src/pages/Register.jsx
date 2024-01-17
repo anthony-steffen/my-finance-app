@@ -57,7 +57,7 @@ function Register() {
       reset();
       const timeOut = 4000;
       showToast('Sucesso! Redirecionando você para a página Login');
-      setTimeout(() => navigate('/my-finance-app'), timeOut);
+      setTimeout(() => navigate('/'), timeOut);
     }
   };
 
@@ -190,7 +190,7 @@ function Register() {
           <p className="signin-link mb-2 text-center text-white">
             Already have an account? Click here to
             {' '}
-            <a href="/my-finance-app">Login</a>
+            <a href="/">Login</a>
           </p>
         </form>
       </div>

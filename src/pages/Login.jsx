@@ -28,7 +28,7 @@ function Login() {
 
     if (user) {
       // Usuário encontrado, redireciona para a rota desejada
-      navigate('/my-finance-app/home');
+      navigate('/home');
     } else {
       toast.error('Usuário não encontrado');
     }
@@ -130,7 +130,7 @@ function Login() {
             <button
               className="glow-on-hover text-white m-1 mb-2"
               type="submit"
-              onClick={ () => navigate('/my-finance-app/register') }
+              onClick={ () => navigate('/register') }
             >
               Criar Conta
             </button>
