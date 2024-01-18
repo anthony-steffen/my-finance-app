@@ -21,23 +21,11 @@ function HomeProvider({ children }) {
   const [incomes, setIncomes] = useState(initialIncomeTransaction);
   const [expenses, setExpenses] = useState(initialExpenseTransaction);
 
-  // useEffect(() => {
-  //   localStorage.setItem('transactions', JSON.stringify(transaction));
-  // }, [transaction]);
-
-  // const newUser = [...registeredUsers, data];
-  //     setRegisteredUsers(newUser);
-  //     localStorage.setItem('registeredUsers', JSON.stringify(newUser));
-  //     reset();
-  //     const timeOut = 4000;
-  //     showToast('Sucesso! Redirecionando você para a página Login');
-  //     setTimeout(() => navigate('/my-finance-app'), timeOut);
-
   const handleTransaction = useCallback(
     (data) => {
       if (typeRegister === 'income') {
         const newIncome = [
-          ...incomes, { id: income.length + 1, type: typeRegister, ...data },
+          ...incomes, { id: incomes.length + 1, type: typeRegister, ...data },
         ];
         setIncomes(newIncome);
         localStorage.setItem('Receita', JSON.stringify(newIncome));

@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useContext, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import { format, addDays } from 'date-fns';
+
 import HomeContext from '../contexts/HomeContext';
 
 function TransactionRegister() {
@@ -29,6 +31,9 @@ function TransactionRegister() {
       toast.error('Selecione um tipo de registro', { autoClose: 2000 });
       return;
     }
+    // Formata a data para o formato 'PT-BR' e adiciona 1 dia
+    data.date = format(addDays(new Date(data.date), 1), 'dd/MM/yyyy');
+
     handleTransaction(data);
     reset();
     setButtonText('Novo Registro');
@@ -185,7 +190,7 @@ function TransactionRegister() {
           Ex: Seu nome, nome da empresa.
         </div>
 
-        <label htmlFor="date" className="form-label mb-0 text-white">Data</label>
+        <label htmlFor="date" className="form-label mb-0 text-dark ms-2">Data</label>
         <input
           type="date"
           id="date"
