@@ -190,7 +190,7 @@ function Register() {
           <p className="signin-link mb-2 text-center text-white">
             Already have an account? Click here to
             {' '}
-            <a href="/">Login</a>
+            <a href="/my-finance-app/#/">Login</a>
           </p>
         </form>
       </div>
