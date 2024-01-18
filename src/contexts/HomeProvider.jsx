@@ -10,9 +10,10 @@ const { Provider } = HomeContext;
 function HomeProvider({ children }) {
   // Ao inicializar, busca os dados da transação no localStorage
   // Caso não exista, retorna um array vazio para o estado inicial - transaction
+
   // const initialTransaction = JSON.parse(localStorage.getItem('transactions')) || [];
-  const initialIncomeTransaction = JSON.parse(localStorage.getItem('Receita')) || [];
-  const initialExpenseTransaction = JSON.parse(localStorage.getItem('Despesa')) || [];
+  const initialIncomeTransaction = JSON.parse(localStorage.getItem('receita')) || [];
+  const initialExpenseTransaction = JSON.parse(localStorage.getItem('despesa')) || [];
 
   // const [transaction, setTransaction] = useState(initialTransaction);
   const [categories, setCategories] = useState(categoriesJson);
@@ -28,13 +29,13 @@ function HomeProvider({ children }) {
           ...incomes, { id: incomes.length + 1, type: typeRegister, ...data },
         ];
         setIncomes(newIncome);
-        localStorage.setItem('Receita', JSON.stringify(newIncome));
+        localStorage.setItem('receita', JSON.stringify(newIncome));
       } else if (typeRegister === 'expense') {
         const newExpense = [
           ...expenses, { id: expenses.length + 1, type: typeRegister, ...data },
         ];
         setExpenses(newExpense);
-        localStorage.setItem('Despesa', JSON.stringify(newExpense));
+        localStorage.setItem('despesa', JSON.stringify(newExpense));
       }
     },
     [typeRegister, incomes, expenses],
