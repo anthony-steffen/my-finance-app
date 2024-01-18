@@ -12,15 +12,17 @@ function HomeProvider({ children }) {
   // Caso não exista, retorna um array vazio para o estado inicial - transaction
 
   // const initialTransaction = JSON.parse(localStorage.getItem('transactions')) || [];
-  const initialIncomeTransaction = JSON.parse(localStorage.getItem('receita')) || [];
-  const initialExpenseTransaction = JSON.parse(localStorage.getItem('despesa')) || [];
+  const storedIncomes = JSON.parse(localStorage.getItem('receitas')) || [];
+  const storedExpenses = JSON.parse(localStorage.getItem('despesas')) || [];
+  const storedPaiedExpenses = JSON.parse(localStorage.getItem('despesasPagas')) || [];
 
   // const [transaction, setTransaction] = useState(initialTransaction);
   const [categories, setCategories] = useState(categoriesJson);
   const [typeRegister, setTypeRegister] = useState('');
   const [categoryIcons, setCategoryIcons] = useState(Icons);
-  const [incomes, setIncomes] = useState(initialIncomeTransaction);
-  const [expenses, setExpenses] = useState(initialExpenseTransaction);
+  const [incomes, setIncomes] = useState(storedIncomes);
+  const [expenses, setExpenses] = useState(storedExpenses);
+  const [paiedExpenses, setPaiedExpenses] = useState(storedPaiedExpenses);
 
   const handleTransaction = useCallback(
     (data) => {
@@ -29,16 +31,37 @@ function HomeProvider({ children }) {
           ...incomes, { id: incomes.length + 1, type: typeRegister, ...data },
         ];
         setIncomes(newIncome);
-        localStorage.setItem('receita', JSON.stringify(newIncome));
+        localStorage.setItem('receitas', JSON.stringify(newIncome));
       } else if (typeRegister === 'expense') {
         const newExpense = [
           ...expenses, { id: expenses.length + 1, type: typeRegister, ...data },
         ];
         setExpenses(newExpense);
-        localStorage.setItem('despesa', JSON.stringify(newExpense));
+        localStorage.setItem('despesas', JSON.stringify(newExpense));
       }
     },
     [typeRegister, incomes, expenses],
+  );
+
+  const handlePayExpense = useCallback(
+    (index) => {
+      // Remove a despesa do array de despesas e adiciona no array de despesas pagas
+      // Atribui a data atual à despesa paga
+      const updatedExpenses = [...expenses];
+      const paidExpense = updatedExpenses.splice(index, 1)[0];
+      paidExpense.paidDate = new Date().toLocaleDateString('pt-BR');
+      console.log(paidExpense);
+
+      setExpenses(updatedExpenses);
+      setPaiedExpenses((prevPaidExpenses) => [...prevPaidExpenses, paidExpense]);
+
+      // Atualiza o localStorage
+      localStorage.setItem('despesas', JSON.stringify(updatedExpenses));
+      localStorage.setItem('despesasPagas', JSON.stringify(
+        [...paiedExpenses, paidExpense],
+      ));
+    },
+    [expenses, paiedExpenses],
   );
 
   const store = useMemo(() => ({
@@ -53,7 +76,9 @@ function HomeProvider({ children }) {
     expenses,
     setExpenses,
     handleTransaction,
-
+    paiedExpenses,
+    setPaiedExpenses,
+    handlePayExpense,
   }), [
     typeRegister,
     setTypeRegister,
@@ -66,6 +91,9 @@ function HomeProvider({ children }) {
     expenses,
     setExpenses,
     handleTransaction,
+    paiedExpenses,
+    setPaiedExpenses,
+    handlePayExpense,
   ]);
 
   return (
