@@ -49,7 +49,7 @@ function BillsToPay() {
         <div className="col-xl-4 col-lg-6 mb-1" key={ index }>
           <div className="card">
             <div className="card-body">
-              <div className="d-flex align-items-center">
+              <div className="d-flex  flex-column">
                 <div className="ms-3">
                   <p className="category fw-bold mb-0">{expense.description}</p>
                   <p className="value text-muted mb-0">
@@ -63,19 +63,23 @@ function BillsToPay() {
                     {' '}
                     {expense.date}
                   </p>
-                  <span className={ badgeClasses[index] }>
-                    {' '}
-                    { badgeTexts[index] }
-                  </span>
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-sm ms-2"
-                    data-bs-toggle="modal"
-                    data-bs-target="#billsToPayModal"
-                  >
-                    Pagar
-                  </button>
-
+                  <div className="d-flex justify-content-between align-items-center">
+                    <div className="d-flex align-items-center gap-1">
+                      <p className="mb-1">status:</p>
+                      <span className={ `${badgeClasses[index]}` }>
+                        {' '}
+                        { badgeTexts[index] }
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-sm me-2"
+                      data-bs-toggle="modal"
+                      data-bs-target="#billsToPayModal"
+                    >
+                      Pagar Conta
+                    </button>
+                  </div>
                   <div
                     className="modal fade"
                     id="billsToPayModal"

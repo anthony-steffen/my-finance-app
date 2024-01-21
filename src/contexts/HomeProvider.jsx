@@ -14,7 +14,7 @@ function HomeProvider({ children }) {
   // const initialTransaction = JSON.parse(localStorage.getItem('transactions')) || [];
   const storedIncomes = JSON.parse(localStorage.getItem('receitas')) || [];
   const storedExpenses = JSON.parse(localStorage.getItem('despesas')) || [];
-  const storedPaiedExpenses = JSON.parse(localStorage.getItem('despesasPagas')) || [];
+  const storedpaidExpenses = JSON.parse(localStorage.getItem('despesasPagas')) || [];
 
   // const [transaction, setTransaction] = useState(initialTransaction);
   const [categories, setCategories] = useState(categoriesJson);
@@ -22,7 +22,7 @@ function HomeProvider({ children }) {
   const [categoryIcons, setCategoryIcons] = useState(Icons);
   const [incomes, setIncomes] = useState(storedIncomes);
   const [expenses, setExpenses] = useState(storedExpenses);
-  const [paiedExpenses, setPaiedExpenses] = useState(storedPaiedExpenses);
+  const [paidExpenses, setpaidExpenses] = useState(storedpaidExpenses);
 
   const handleTransaction = useCallback(
     (data) => {
@@ -50,18 +50,17 @@ function HomeProvider({ children }) {
       const updatedExpenses = [...expenses];
       const paidExpense = updatedExpenses.splice(index, 1)[0];
       paidExpense.paidDate = new Date().toLocaleDateString('pt-BR');
-      console.log(paidExpense);
 
       setExpenses(updatedExpenses);
-      setPaiedExpenses((prevPaidExpenses) => [...prevPaidExpenses, paidExpense]);
+      setpaidExpenses((prevPaidExpenses) => [...prevPaidExpenses, paidExpense]);
 
       // Atualiza o localStorage
       localStorage.setItem('despesas', JSON.stringify(updatedExpenses));
       localStorage.setItem('despesasPagas', JSON.stringify(
-        [...paiedExpenses, paidExpense],
+        [...paidExpenses, paidExpense],
       ));
     },
-    [expenses, paiedExpenses],
+    [expenses, paidExpenses],
   );
 
   const store = useMemo(() => ({
@@ -76,8 +75,8 @@ function HomeProvider({ children }) {
     expenses,
     setExpenses,
     handleTransaction,
-    paiedExpenses,
-    setPaiedExpenses,
+    paidExpenses,
+    setpaidExpenses,
     handlePayExpense,
   }), [
     typeRegister,
@@ -91,8 +90,8 @@ function HomeProvider({ children }) {
     expenses,
     setExpenses,
     handleTransaction,
-    paiedExpenses,
-    setPaiedExpenses,
+    paidExpenses,
+    setpaidExpenses,
     handlePayExpense,
   ]);
 

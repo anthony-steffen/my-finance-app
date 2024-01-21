@@ -5,11 +5,12 @@ import {
 
 import '../styles/components/SwiperCards.css';
 
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import HomeContext from '../contexts/HomeContext';
 
 function SwiperCards() {
   const { expenses, categoryIcons } = useContext(HomeContext);
+  const [categoriesData, setCategoriesData] = useState([]);
 
   // Função para dividir o array de transações em array de 3 elementos
   const splitArray = (array, size) => {
@@ -20,9 +21,22 @@ function SwiperCards() {
     return result;
   };
 
+  useEffect(() => {
+    const categoriesExpenses = expenses.reduce((acc, expense) => {
+      const category = acc.find((item) => item.category === expense.category);
+      if (category) {
+        category.value += +expense.value;
+      } else {
+        acc.push({ category: expense.category, value: +expense.value });
+      }
+      return acc;
+    }, []);
+    setCategoriesData(categoriesExpenses);
+  }, [expenses]);
+
   // Divide as transações em grupos de três
   const set = 3;
-  const expensesGroup = splitArray(expenses, set);
+  const expensesGroup = splitArray(categoriesData, set);
 
   return (
     <div
@@ -41,8 +55,8 @@ function SwiperCards() {
             key={ index }
             className={ `carousel-item ${index === 0 ? 'active' : ''}` }
           >
-            {group.map((element) => (
-              <div className="category-card" key={ element.id }>
+            {group.map((element, elementIndex) => (
+              <div className="category-card" key={ elementIndex }>
                 <div className="category-card-body">
                   <div className="category-card-title mb-0">{element.category}</div>
                   <div className="category-card-icon">
@@ -50,9 +64,8 @@ function SwiperCards() {
                   </div>
                   <div className="category-card-value">
                     <span className="text-dark">
-                      R$
-                      {' '}
-                      {element.value}
+                      {element.value.toLocaleString('pt-BR', { style: 'currency',
+                        currency: 'BRL' })}
                     </span>
                   </div>
                 </div>
