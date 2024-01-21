@@ -63,17 +63,6 @@ function HomeProvider({ children }) {
     [expenses, paidExpenses],
   );
 
-  const handleEditExpense = useCallback(
-    (index, expense) => {
-      const updatedExpenses = [...expenses];
-      updatedExpenses[index] = expense;
-
-      setExpenses(updatedExpenses);
-      localStorage.setItem('despesas', JSON.stringify(updatedExpenses));
-    },
-    [expenses],
-  );
-
   const store = useMemo(() => ({
     typeRegister,
     setTypeRegister,
@@ -89,7 +78,6 @@ function HomeProvider({ children }) {
     paidExpenses,
     setpaidExpenses,
     handlePayExpense,
-    handleEditExpense,
   }), [
     typeRegister,
     setTypeRegister,
@@ -105,7 +93,6 @@ function HomeProvider({ children }) {
     paidExpenses,
     setpaidExpenses,
     handlePayExpense,
-    handleEditExpense,
   ]);
 
   return (
