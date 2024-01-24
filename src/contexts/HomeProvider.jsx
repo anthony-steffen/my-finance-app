@@ -22,45 +22,62 @@ function HomeProvider({ children }) {
   const [categoryIcons, setCategoryIcons] = useState(Icons);
   const [incomes, setIncomes] = useState(storedIncomes);
   const [expenses, setExpenses] = useState(storedExpenses);
+  const [incomesIds, setIncomesIds] = useState(0);
+  const [expensesIds, setExpensesIds] = useState(0);
   const [paidExpenses, setpaidExpenses] = useState(storedpaidExpenses);
+  const [SelectExpense, setSelectExpense] = useState('');
+  const [paydDate, setPaydDate] = useState('');
+
+  // const updatedExpenses = expenses.filter((expense) => expenses.indexOf(expense) !== SelectExpense);
+  // const paidExpense = expenses.filter((expense) => expenses.indexOf(expense) === SelectExpense);
+  // paidExpense.payDate = paydDate;
+
+  // console.log(SelectExpense);
+  // console.log(paydDate);
+  // console.log('Novo array sem a despesa selecionada', updatedExpenses);
+  // console.log('Despesa selecionada', paidExpense);
 
   const handleTransaction = useCallback(
     (data) => {
       if (typeRegister === 'income') {
         const newIncome = [
-          ...incomes, { id: incomes.length + 1, type: typeRegister, ...data },
+          ...incomes, { id: incomesIds, type: typeRegister, ...data },
         ];
         setIncomes(newIncome);
+        setIncomesIds(incomesIds + 1);
+
         localStorage.setItem('receitas', JSON.stringify(newIncome));
       } else if (typeRegister === 'expense') {
         const newExpense = [
-          ...expenses, { id: expenses.length + 1, type: typeRegister, ...data },
+          ...expenses, { id: expensesIds, type: typeRegister, ...data },
         ];
         setExpenses(newExpense);
+        setExpensesIds(expensesIds + 1);
         localStorage.setItem('despesas', JSON.stringify(newExpense));
       }
     },
-    [typeRegister, incomes, expenses],
+    [typeRegister, incomes, expenses, incomesIds, expensesIds],
   );
 
   const handlePayExpense = useCallback(
-    (index) => {
-      // Remove a despesa do array de despesas e adiciona no array de despesas pagas
-      // Atribui a data atual à despesa paga
-      const updatedExpenses = [...expenses];
-      const paidExpense = updatedExpenses.splice(index, 1)[0];
-      paidExpense.paidDate = new Date().toLocaleDateString('pt-BR');
+    () => {
+      const updatedExpenses = expenses
+        .filter((expense) => expenses.indexOf(expense) !== SelectExpense);
+
+      const paidExpense = expenses
+        .filter((expense) => expenses.indexOf(expense) === SelectExpense);
+      paidExpense.payDate = paydDate;
 
       setExpenses(updatedExpenses);
-      setpaidExpenses((prevPaidExpenses) => [...prevPaidExpenses, paidExpense]);
+      setpaidExpenses((prev) => [...prev, paidExpense]);
 
       // Atualiza o localStorage
       localStorage.setItem('despesas', JSON.stringify(updatedExpenses));
       localStorage.setItem('despesasPagas', JSON.stringify(
-        [...paidExpenses, paidExpense],
+        [...paidExpenses, ...paidExpense],
       ));
     },
-    [expenses, paidExpenses],
+    [expenses, paidExpenses, SelectExpense, paydDate],
   );
 
   const store = useMemo(() => ({
@@ -78,20 +95,26 @@ function HomeProvider({ children }) {
     paidExpenses,
     setpaidExpenses,
     handlePayExpense,
+    expensesIds,
+    setExpensesIds,
+    incomesIds,
+    setIncomesIds,
+    SelectExpense,
+    setSelectExpense,
+    paydDate,
+    setPaydDate,
   }), [
-    typeRegister,
-    setTypeRegister,
-    categories,
-    setCategories,
-    categoryIcons,
-    setCategoryIcons,
-    incomes,
-    setIncomes,
-    expenses,
-    setExpenses,
+    typeRegister, setTypeRegister,
+    categories, setCategories,
+    categoryIcons, setCategoryIcons,
+    incomes, setIncomes,
+    expenses, setExpenses,
+    paidExpenses, setpaidExpenses,
+    expensesIds, setExpensesIds,
+    incomesIds, setIncomesIds,
+    SelectExpense, setSelectExpense,
+    paydDate, setPaydDate,
     handleTransaction,
-    paidExpenses,
-    setpaidExpenses,
     handlePayExpense,
   ]);
 

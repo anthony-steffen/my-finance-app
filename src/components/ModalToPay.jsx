@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-max-depth */
+
 import { useContext } from 'react';
-import ProtoTypes from 'prop-types';
 import HomeContext from '../contexts/HomeContext';
 
-function ModalToPay({ index }) {
-  const { handlePayExpense } = useContext(HomeContext);
+function ModalToPay() {
+  const { paydDate, setPaydDate, handlePayExpense } = useContext(HomeContext);
 
   return (
     <div
@@ -37,7 +37,8 @@ function ModalToPay({ index }) {
             <input
               type="date"
               className="form-control mb-3 w-50"
-              onChange={ (e) => console.log(e.target.value) }
+              value={ paydDate }
+              onChange={ (e) => setPaydDate(e.target.value) }
             />
           </div>
           <div className="modal-footer d-flex justify-content-center">
@@ -46,7 +47,7 @@ function ModalToPay({ index }) {
               className="btn btn-primary"
               data-bs-dismiss="modal"
               aria-label="Close"
-              onClick={ () => handlePayExpense(index) }
+              onClick={ handlePayExpense }
             >
               Salvar
             </button>
@@ -58,6 +59,3 @@ function ModalToPay({ index }) {
 }
 
 export default ModalToPay;
-ModalToPay.propTypes = {
-  index: ProtoTypes.number.isRequired,
-};

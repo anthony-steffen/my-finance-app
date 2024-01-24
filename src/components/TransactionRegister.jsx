@@ -13,7 +13,6 @@ function TransactionRegister() {
     categories,
     handleTransaction,
   } = useContext(HomeContext);
-  console.log(typeRegister);
 
   // Estados locais
   const [ButtonText, setButtonText] = useState('Salvar');

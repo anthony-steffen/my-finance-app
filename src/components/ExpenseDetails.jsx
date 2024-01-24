@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 function ExpenseDetails({ expense }) {
-  console.log(expense);
   return (
     <div className="d-flex flex-column ms-3">
       <p className="category fw-bold mb-0">{expense.description}</p>
