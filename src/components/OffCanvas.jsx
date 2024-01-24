@@ -11,8 +11,8 @@ function OffCanvas() {
   const { setTypeRegister } = useContext(HomeContext);
 
   return (
-    <section className="container fixed-bottom mb-9 me-2">
-      <div className="btn-register-container">
+    <section className="fixed-bottom mb-9">
+      <div className="btn-register-container d-flex justify-content-end me-2">
         <span className="text-black" />
         <button
           type="button"
