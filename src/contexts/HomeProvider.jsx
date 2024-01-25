@@ -25,17 +25,8 @@ function HomeProvider({ children }) {
   const [incomesIds, setIncomesIds] = useState(0);
   const [expensesIds, setExpensesIds] = useState(0);
   const [paidExpenses, setpaidExpenses] = useState(storedpaidExpenses);
-  const [SelectExpense, setSelectExpense] = useState('');
+  const [selectExpense, setSelectExpense] = useState('');
   const [paydDate, setPaydDate] = useState('');
-
-  // const updatedExpenses = expenses.filter((expense) => expenses.indexOf(expense) !== SelectExpense);
-  // const paidExpense = expenses.filter((expense) => expenses.indexOf(expense) === SelectExpense);
-  // paidExpense.payDate = paydDate;
-
-  // console.log(SelectExpense);
-  // console.log(paydDate);
-  // console.log('Novo array sem a despesa selecionada', updatedExpenses);
-  // console.log('Despesa selecionada', paidExpense);
 
   const handleTransaction = useCallback(
     (data) => {
@@ -62,10 +53,10 @@ function HomeProvider({ children }) {
   const handlePayExpense = useCallback(
     () => {
       const updatedExpenses = expenses
-        .filter((expense) => expenses.indexOf(expense) !== SelectExpense);
+        .filter((expense) => expenses.indexOf(expense) !== selectExpense);
 
       const paidExpense = expenses
-        .filter((expense) => expenses.indexOf(expense) === SelectExpense);
+        .filter((expense) => expenses.indexOf(expense) === selectExpense);
       paidExpense.payDate = paydDate;
 
       setExpenses(updatedExpenses);
@@ -77,7 +68,32 @@ function HomeProvider({ children }) {
         [...paidExpenses, ...paidExpense],
       ));
     },
-    [expenses, paidExpenses, SelectExpense, paydDate],
+    [expenses, paidExpenses, selectExpense, paydDate],
+  );
+
+  const hundleEditExpense = useCallback(
+    (data) => {
+      const updatedExpenses = expenses.map((expense, index) => {
+        if (index === selectExpense) {
+          return {
+            ...expense,
+            description: data.description,
+            value: data.value,
+            paymentMethod: data.paymentMethod,
+            category: data.category,
+            subCategory: data.subCategory,
+            payer: data.payer,
+            receiver: data.receiver,
+            date: data.date,
+          };
+        }
+        return expense;
+      });
+
+      setExpenses(updatedExpenses);
+      localStorage.setItem('despesas', JSON.stringify(updatedExpenses));
+    },
+    [expenses, selectExpense],
   );
 
   const store = useMemo(() => ({
@@ -99,10 +115,12 @@ function HomeProvider({ children }) {
     setExpensesIds,
     incomesIds,
     setIncomesIds,
-    SelectExpense,
+    selectExpense,
     setSelectExpense,
     paydDate,
     setPaydDate,
+    hundleEditExpense,
+
   }), [
     typeRegister, setTypeRegister,
     categories, setCategories,
@@ -112,10 +130,12 @@ function HomeProvider({ children }) {
     paidExpenses, setpaidExpenses,
     expensesIds, setExpensesIds,
     incomesIds, setIncomesIds,
-    SelectExpense, setSelectExpense,
+    selectExpense, setSelectExpense,
     paydDate, setPaydDate,
     handleTransaction,
     handlePayExpense,
+    hundleEditExpense,
+
   ]);
 
   return (

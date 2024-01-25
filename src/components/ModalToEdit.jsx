@@ -1,15 +1,30 @@
 /* eslint-disable react/jsx-max-depth */
 
+import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import HomeContext from '../contexts/HomeContext';
 
 function ModalToEdit() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    getValues,
-    reset,
-  } = useForm();
+  const { selectExpense, hundleEditExpense, expenses } = useContext(HomeContext);
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+  const expenseSelected = expenses[selectExpense];
+  useEffect(() => {
+    if (expenseSelected) {
+      // Se o expenseSelected existir, seta os resgata os valores padrão do form
+      setValue('description', expenseSelected.description);
+      setValue('value', expenseSelected.value);
+      setValue('paymentMethod', expenseSelected.paymentMethod);
+      setValue('category', expenseSelected.category);
+      setValue('subCategory', expenseSelected.subCategory);
+      setValue('payer', expenseSelected.payer);
+      setValue('receiver', expenseSelected.receiver);
+      setValue('date', expenseSelected.date);
+    }
+  }, [expenseSelected, setValue]);
+  const onSubmit = (data) => {
+    hundleEditExpense(data);
+  };
+
   return (
     <div
       className="modal fade"
@@ -38,15 +53,17 @@ function ModalToEdit() {
           </div>
           <div className="modal-body d-flex flex-column align-items-center">
             <form
-              className="form-register col-md-7 col-lg-7 col-xl-4"
-            //   onSubmit={ handleSubmit(onSubmit) }
+              className="form-editToPay col-md-7 col-lg-7 col-xl-4"
+              onSubmit={ handleSubmit(onSubmit) }
             >
+              <label htmlFor="Descrição" className="text-dark ms-1">Descrição</label>
               <input
                 type="text"
                 id="description"
                 className="form-control"
                 placeholder="Descrição"
                 aria-describedby="descriptiondHelpBlock"
+                defaultValue={ expenseSelected ? expenseSelected.description : '' }
                 { ...register('description', {
                   required: 'Descrição é obrigatória',
                   minLength: {
@@ -64,19 +81,21 @@ function ModalToEdit() {
                 })
                 }
               />
-              {/* <div id="descriptiondHelpBlock" className="form-text mb-3 mt-0">
+              <div id="descriptionHelpBlock" className="form-text mb-3 mt-0">
                 Ex: Salário, Aluguel, Mercado.
                 {errors.description
-        && <p className="text-danger">{errors.description.message}</p>}
-              </div> */}
+                  && <p className="text-danger">{errors.description.message}</p>}
+              </div>
 
-              {/* <input
+              <label htmlFor="value" className="text-dark ms-1">Valor</label>
+              <input
                 type="number"
                 id="value"
                 className="form-control"
                 placeholder="Valor"
                 aria-describedby="valueHelpBlock"
                 style={ { width: '150px', height: '35px' } }
+                defaultValue={ expenseSelected ? expenseSelected.value : '' }
                 { ...register('value', {
                   required: 'Valor é obrigatório',
                   pattern: {
@@ -89,53 +108,34 @@ function ModalToEdit() {
               <div id="valueHelpBlock" className="form-text mb-3 mt-0">
                 Ex: Números positivos.
                 {errors.value
-          && <span className="text-danger">{errors.value.message}</span>}
+                  && <span className="text-danger">{errors.value.message}</span>}
               </div>
 
+              <label htmlFor="date" className="text-dark ms-1">Método de pagamento</label>
               <select
-                className="form-select mb-3"
-                aria-label="Default select example"
-                style={ { width: '350px', height: '40px' } }
+                className="form-select"
+                id="paymentMethod"
+                aria-describedby="paymentMethodHelpBlock"
                 { ...register('paymentMethod', {
                   required: 'Método de pagamento é obrigatório',
                 })
                 }
               >
-
-                <option defaultValue>Selecione um método de pagamento</option>
-                <option>Dinheiro</option>
-                <option>Cartão de crédito</option>
-                <option>Cartão de débito</option>
-                <option>Pix</option>
-              </select> */}
-
-              {/* <select
-                className="form-select mb-3"
-                aria-label="categoria"
-                { ...register('category', {
-                  required: 'Categoria é obrigatória',
-                })
-                }
-                onChange={ (e) => setSelectedCategory(e.target.value) }
-              >
-                <option defaultValue>Selecione uma Categoria</option>
-
+                <option defaultValue="">
+                  {
+                    expenseSelected ? expenseSelected.paymentMethod
+                      : 'Método de pagamento'
+                  }
+                </option>
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="Cartão de crédito">Cartão de crédito</option>
+                <option value="Cartão de débito">Cartão de débito</option>
               </select>
-
-              <select
-                className="form-select mb-3"
-                aria-label="Sub-categoria"
-                style={ { width: '350px', height: '40px' } }
-                { ...register('sub-category', {
-                  required: 'Sub-categoria é obrigatória',
-                })
-                }
-              >
-                <option defaultValue>Sub-categoria</option>
-
-              </select> */}
-
-              {/* <input
+              <div id="paymentMethodHelpBlock" className="form-text mb-3 mt-0">
+                Ex: Dinheiro, Cartão de crédito, pix...
+              </div>
+              <label htmlFor="date" className="text-dark ms-1">De</label>
+              <input
                 type="text"
                 id="payer"
                 className="form-control payer"
@@ -150,20 +150,20 @@ function ModalToEdit() {
                 })
                 }
               />
-              <div id="payerHelpBlock" className="form-text mt-0 mb-3">
-                Ex: Seu nome, nome da empresa.
+              <div id="payerHelpBlock" className="form-text mb-3 mt-0">
+                Ex: Quem paga!
                 {errors.payer
-          && <span className="text-danger">{errors.payer.message}</span>}
+                  && <span className="text-danger">{errors.payer.message}</span>}
               </div>
-
+              <label htmlFor="date" className="text-dark ms-1">Para</label>
               <input
                 type="text"
-                // id="receiver"
-                className="form-control"
-                placeholder="Beneficiário"
+                id="receiver"
+                className="form-control receiver"
+                placeholder="Recebedor"
                 aria-describedby="receiverHelpBlock"
                 { ...register('receiver', {
-                  required: 'Beneficiário é obrigatório',
+                  required: 'Recebedor é obrigatório',
                   pattern: {
                     value: /^[a-zA-Z\s]+$/,
                     message: 'Insira apenas letras',
@@ -171,13 +171,61 @@ function ModalToEdit() {
                 })
                 }
               />
-              <div id="receiverHelpBlock" className="form-text mt-0 mb-3">
+              <div id="receiverHelpBlock" className="form-text mb-3 mt-0">
+                Ex: Quem recebe!
                 {errors.receiver
-          && <span className="text-danger">{errors.receiver.message}</span>}
-                Ex: Seu nome, nome da empresa.
+                  && <span className="text-danger">{errors.receiver.message}</span>}
               </div>
 
-              <label htmlFor="date" className="form-label mb-0 text-dark ms-2">Data</label>
+              <label htmlFor="category" className="text-dark ms-1">Categoria</label>
+              <select
+                className="form-select"
+                id="category"
+                aria-describedby="categoryHelpBlock"
+                { ...register('category', {
+                  required: 'Categoria é obrigatória',
+                })
+                }
+              >
+                <option defaultValue="">
+                  {
+                    expenseSelected ? expenseSelected.category
+                      : 'Categoria'
+                  }
+                </option>
+                <option value="Alimentação">Alimentação</option>
+                <option value="Educação">Educação</option>
+                <option value="Lazer">Lazer</option>
+                <option value="Saúde">Saúde</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Trabalho">Trabalho</option>
+              </select>
+
+              <label htmlFor="subCategory" className="text-dark ms-1">Subcategoria</label>
+              <select
+                className="form-select"
+                id="subCategory"
+                aria-describedby="subCategoryHelpBlock"
+                { ...register('subCategory', {
+                  required: 'Subcategoria é obrigatória',
+                })
+                }
+              >
+                <option defaultValue="">
+                  {
+                    expenseSelected ? expenseSelected.subCategory
+                      : 'Subcategoria'
+                  }
+                </option>
+                <option value="Alimentação">Alimentação</option>
+                <option value="Educação">Educação</option>
+                <option value="Lazer">Lazer</option>
+                <option value="Saúde">Saúde</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Trabalho">Trabalho</option>
+              </select>
+
+              <label htmlFor="date" className="text-dark ms-1">Data</label>
               <input
                 type="date"
                 id="date"
@@ -186,24 +234,28 @@ function ModalToEdit() {
                   required: 'Data é obrigatória',
                 })
                 }
-              /> */}
+              />
+              <div id="dateHelpBlock" className="form-text mb-3 mt-0">
+                Ex: Data do pagamento.
+                {errors.date
+                  && <span className="text-danger">{errors.date.message}</span>}
+              </div>
+
+              <div className="modal-footer d-flex justify-content-center">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  Salvar
+                </button>
+              </div>
             </form>
-          </div>
-          <div className="modal-footer d-flex justify-content-center">
-            <button
-              type="button"
-              className="btn btn-primary"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            //   onClick={ handleChangeEdit }
-            >
-              Salvar
-            </button>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
 export default ModalToEdit;

@@ -52,7 +52,7 @@ function TransactionRegister() {
           id="description"
           className="form-control"
           placeholder="Descrição"
-          aria-describedby="passwordHelpBlock"
+          aria-describedby="descriptiondHelpBlock"
           { ...register('description', {
             required: 'Descrição é obrigatória',
             minLength: {
@@ -70,7 +70,7 @@ function TransactionRegister() {
           })
           }
         />
-        <div id="passwordHelpBlock" className="form-text mb-3 mt-0">
+        <div id="descriptionHelpBlock" className="form-text mb-3 mt-0">
           Ex: Salário, Aluguel, Mercado.
           {errors.description
         && <p className="text-danger">{errors.description.message}</p>}
@@ -134,8 +134,8 @@ function TransactionRegister() {
           className="form-select mb-3"
           aria-label="Sub-categoria"
           style={ { width: '350px', height: '40px' } }
-          { ...register('sub-category', {
-            required: 'Sub-categoria é obrigatória',
+          { ...register('subCategory', {
+            required: 'sub-categoria é obrigatória',
           })
           }
         >

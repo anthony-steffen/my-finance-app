@@ -10,8 +10,6 @@ import ModalToEdit from './ModalToEdit';
 
 function ExpenseCard({ expense, index }) {
   const { setSelectExpense } = useContext(HomeContext);
-
-  // console.log(ExpenseSelected);
   return (
     <div className="col-xl-4 col-lg-6 mb-1">
       <div className="card" id={ index }>
