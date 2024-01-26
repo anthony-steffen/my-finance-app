@@ -12,6 +12,8 @@ function ModalToEdit() {
 
   console.log(typeof (expenseSelected ? expenseSelected.value : ''));
   useEffect(() => {
+    // Formata a data para o formato 'PT-BR' e adiciona 1 dia
+
     if (expenseSelected) {
       // Se o expenseSelected existir, seta os resgata os valores padrão do form
       setValue('description', expenseSelected.description);
@@ -19,14 +21,19 @@ function ModalToEdit() {
       setValue('paymentMethod', expenseSelected.paymentMethod);
       setValue('category', expenseSelected.category);
       setValue('subCategory', expenseSelected.subCategory);
-      setValue('payer', expenseSelected.payer);
-      setValue('receiver', expenseSelected.receiver);
-      setValue('date', expenseSelected.date);
+      setValue('payer', expenseSelected.payer); // yyyy-MM-dd, dd/MM/yyyy
+
+      const formatDate = format(
+        parse(expenseSelected.date, 'dd/MM/yyyy', new Date()),
+        'yyyy-MM-dd',
+      );
+      setValue('date', formatDate);
     }
   }, [expenseSelected, setValue]);
   const onSubmit = (data) => {
-    // Formata a data para o formato 'PT-BR' e adiciona 1 dia
+    // Formata a data para novamente para ser salva no padrão'PT-BR'
     data.date = format(parse(data.date, 'yyyy-MM-dd', new Date()), 'dd/MM/yyyy');
+
     data.value = +data.value;
     hundleEditExpense(data);
   };
