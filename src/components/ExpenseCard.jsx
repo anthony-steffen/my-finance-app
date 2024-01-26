@@ -53,7 +53,7 @@ export default ExpenseCard;
 ExpenseCard.propTypes = {
   expense: PropTypes.shape({
     description: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
     date: PropTypes.string.isRequired,
   }).isRequired,
   index: PropTypes.number.isRequired,

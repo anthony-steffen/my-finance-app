@@ -2,12 +2,15 @@
 
 import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { format, parse } from 'date-fns';
 import HomeContext from '../contexts/HomeContext';
 
 function ModalToEdit() {
   const { selectExpense, hundleEditExpense, expenses } = useContext(HomeContext);
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const expenseSelected = expenses[selectExpense];
+
+  console.log(typeof (expenseSelected ? expenseSelected.value : ''));
   useEffect(() => {
     if (expenseSelected) {
       // Se o expenseSelected existir, seta os resgata os valores padrão do form
@@ -22,6 +25,9 @@ function ModalToEdit() {
     }
   }, [expenseSelected, setValue]);
   const onSubmit = (data) => {
+    // Formata a data para o formato 'PT-BR' e adiciona 1 dia
+    data.date = format(parse(data.date, 'yyyy-MM-dd', new Date()), 'dd/MM/yyyy');
+    data.value = +data.value;
     hundleEditExpense(data);
   };
 
@@ -63,7 +69,6 @@ function ModalToEdit() {
                 className="form-control"
                 placeholder="Descrição"
                 aria-describedby="descriptiondHelpBlock"
-                defaultValue={ expenseSelected ? expenseSelected.description : '' }
                 { ...register('description', {
                   required: 'Descrição é obrigatória',
                   minLength: {
@@ -95,7 +100,6 @@ function ModalToEdit() {
                 placeholder="Valor"
                 aria-describedby="valueHelpBlock"
                 style={ { width: '150px', height: '35px' } }
-                defaultValue={ expenseSelected ? expenseSelected.value : '' }
                 { ...register('value', {
                   required: 'Valor é obrigatório',
                   pattern: {

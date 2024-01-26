@@ -1,14 +1,16 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import propTypes from 'prop-types';
+// import { format, parse } from 'date-fns';
 
 function ExpenseEditForm({ expenseSelected, onSubmit }) {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+  // console.log(expenseSelected.description);
 
   useEffect(() => {
     if (expenseSelected) {
       setValue('description', expenseSelected.description);
-      setValue('value', +expenseSelected.value);
+      setValue('value', expenseSelected.value);
       setValue('paymentMethod', expenseSelected.paymentMethod);
       setValue('category', expenseSelected.category);
       setValue('subCategory', expenseSelected.subCategory);
@@ -61,7 +63,7 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
         placeholder="Valor"
         aria-describedby="valueHelpBlock"
         style={ { width: '150px', height: '35px' } }
-        defaultValue={ expenseSelected ? +expenseSelected.value : '' }
+        defaultValue={ expenseSelected ? expenseSelected.value : '' }
         { ...register('value', {
           required: 'Valor é obrigatório',
           pattern: {

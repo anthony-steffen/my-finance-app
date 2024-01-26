@@ -32,6 +32,7 @@ function TransactionRegister() {
     }
     // Formata a data para o formato 'PT-BR' e adiciona 1 dia
     data.date = format(addDays(new Date(data.date), 1), 'dd/MM/yyyy');
+    data.value = Number(data.value);
 
     handleTransaction(data);
     reset();
