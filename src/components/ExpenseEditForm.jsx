@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import propTypes from 'prop-types';
-// import { format, parse } from 'date-fns';
+import { format, parse } from 'date-fns';
 
 function ExpenseEditForm({ expenseSelected, onSubmit }) {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
-  // console.log(expenseSelected.description);
 
   useEffect(() => {
     if (expenseSelected) {
@@ -16,7 +15,11 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
       setValue('subCategory', expenseSelected.subCategory);
       setValue('payer', expenseSelected.payer);
       setValue('receiver', expenseSelected.receiver);
-      setValue('date', expenseSelected.date);
+      const formatDate = format(
+        parse(expenseSelected.date, 'dd/MM/yyyy', new Date()),
+        'yyyy-MM-dd',
+      );// Formata a data para o formato do input date
+      setValue('date', formatDate);
     }
   }, [expenseSelected, setValue]);
   return (
@@ -31,7 +34,6 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
         className="form-control"
         placeholder="Descrição"
         aria-describedby="descriptiondHelpBlock"
-        defaultValue={ expenseSelected ? expenseSelected.description : '' }
         { ...register('description', {
           required: 'Descrição é obrigatória',
           minLength: {
@@ -63,7 +65,6 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
         placeholder="Valor"
         aria-describedby="valueHelpBlock"
         style={ { width: '150px', height: '35px' } }
-        defaultValue={ expenseSelected ? expenseSelected.value : '' }
         { ...register('value', {
           required: 'Valor é obrigatório',
           pattern: {
@@ -228,7 +229,7 @@ export default ExpenseEditForm;
 ExpenseEditForm.propTypes = {
   expenseSelected: propTypes.shape({
     description: propTypes.string,
-    value: propTypes.string,
+    value: propTypes.number,
     paymentMethod: propTypes.string,
     category: propTypes.string,
     subCategory: propTypes.string,
