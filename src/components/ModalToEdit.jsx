@@ -9,7 +9,7 @@ function ModalToEdit() {
   const { selectExpense, hundleEditExpense, expenses } = useContext(HomeContext);
   const [initialStateExpenseToEdit] = useState({
     description: '',
-    value: 0,
+    value: '',
     paymentMethod: '',
     category: '',
     subCategory: '',
@@ -22,8 +22,9 @@ function ModalToEdit() {
   const onSubmit = (data) => {
     // Formata a data para novamente para ser salva no padrão'PT-BR'
     data.date = format(parse(data.date, 'yyyy-MM-dd', new Date()), 'dd/MM/yyyy');
-
-    data.value = +data.value;
+    const formatValue = parseFloat(data.value).toFixed(2);
+    data.value = formatValue;
+    // data.value = +data.value;
     hundleEditExpense(data);
   };
 
@@ -36,14 +37,14 @@ function ModalToEdit() {
       aria-hidden="true"
     >
       <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header">
+        <div className="modal-content border border-2 border-dark">
+          <div className="modal-header py-2">
             <div className="ms-auto">
               <h1
                 className="modal-title fs-5"
                 id="editExpenseModalLabel"
               >
-                Pagar Conta
+                Editar Conta
               </h1>
             </div>
             <button
@@ -53,11 +54,12 @@ function ModalToEdit() {
               aria-label="Close"
             />
           </div>
-          <div className="modal-body d-flex flex-column align-items-center" />
-          <ExpenseEditForm
-            onSubmit={ onSubmit }
-            expenseSelected={ expenseSelected || initialStateExpenseToEdit }
-          />
+          <div className="modal-body d-flex flex-column align-items-center py-1">
+            <ExpenseEditForm
+              onSubmit={ onSubmit }
+              expenseSelected={ expenseSelected || initialStateExpenseToEdit }
+            />
+          </div>
         </div>
       </div>
     </div>

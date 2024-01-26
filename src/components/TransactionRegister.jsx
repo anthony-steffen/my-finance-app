@@ -32,7 +32,8 @@ function TransactionRegister() {
     }
     // Formata a data para o formato 'PT-BR' e adiciona 1 dia
     data.date = format(addDays(new Date(data.date), 1), 'dd/MM/yyyy');
-    data.value = Number(data.value);
+    const formatValue = parseFloat(data.value).toFixed(2);
+    data.value = formatValue;
 
     handleTransaction(data);
     reset();
@@ -71,45 +72,43 @@ function TransactionRegister() {
           })
           }
         />
-        <div id="descriptionHelpBlock" className="form-text mb-3 mt-0">
+        <div id="descriptionHelpBlock" className="form-text mb-1 mt-0">
           Ex: Salário, Aluguel, Mercado.
           {errors.description
-        && <p className="text-danger">{errors.description.message}</p>}
+        && <p className="text-danger text-danger mb-1">{errors.description.message}</p>}
         </div>
 
         <input
-          type="number"
+          type="text"
           id="value"
           className="form-control"
           placeholder="Valor"
           aria-describedby="valueHelpBlock"
-          style={ { width: '150px', height: '35px' } }
           { ...register('value', {
             required: 'Valor é obrigatório',
             pattern: {
-              value: /^[0-9]+$/,
-              message: 'Insira apenas números',
+              value: /^[1-9]\d*(\.\d{1,2})?$/,
+              message: 'Insira um valor válido (Ex: 1 ou 1.00)',
             },
           })
           }
         />
-        <div id="valueHelpBlock" className="form-text mb-3 mt-0">
+        <div id="valueHelpBlock" className="form-text mb-1 mt-0">
           Ex: Números positivos.
           {errors.value
-          && <span className="text-danger">{errors.value.message}</span>}
+          && <p className="text-danger text-danger mb-1">{errors.value.message}</p>}
         </div>
 
         <select
-          className="form-select mb-3"
+          className="form-select mb-2"
           aria-label="Default select example"
-          style={ { width: '350px', height: '40px' } }
           { ...register('paymentMethod', {
             required: 'Método de pagamento é obrigatório',
           })
           }
         >
 
-          <option defaultValue>Selecione um método de pagamento</option>
+          <option defaultValue>Método de pagamento</option>
           <option>Dinheiro</option>
           <option>Cartão de crédito</option>
           <option>Cartão de débito</option>
@@ -117,7 +116,7 @@ function TransactionRegister() {
         </select>
 
         <select
-          className="form-select mb-3"
+          className="form-select mb-2"
           aria-label="categoria"
           { ...register('category', {
             required: 'Categoria é obrigatória',
@@ -132,9 +131,8 @@ function TransactionRegister() {
         </select>
 
         <select
-          className="form-select mb-3"
+          className="form-select mb-2"
           aria-label="Sub-categoria"
-          style={ { width: '350px', height: '40px' } }
           { ...register('subCategory', {
             required: 'sub-categoria é obrigatória',
           })
@@ -163,10 +161,10 @@ function TransactionRegister() {
           })
           }
         />
-        <div id="payerHelpBlock" className="form-text mt-0 mb-3">
+        <div id="payerHelpBlock" className="form-text mt-0 mb-1">
           Ex: Seu nome, nome da empresa.
           {errors.payer
-          && <span className="text-danger">{errors.payer.message}</span>}
+          && <p className="text-danger text-danger mb-1">{errors.payer.message}</p>}
         </div>
 
         <input
@@ -184,9 +182,9 @@ function TransactionRegister() {
           })
           }
         />
-        <div id="receiverHelpBlock" className="form-text mt-0 mb-3">
+        <div id="receiverHelpBlock" className="form-text mt-0 mb-1">
           {errors.receiver
-          && <span className="text-danger">{errors.receiver.message}</span>}
+          && <p className="text-danger text-danger mb-1">{errors.receiver.message}</p>}
           Ex: Seu nome, nome da empresa.
         </div>
 

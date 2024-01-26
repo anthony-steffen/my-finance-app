@@ -3,8 +3,6 @@ import { useContext } from 'react';
 import HomeContext from '../contexts/HomeContext';
 
 import '../styles/components/Lists.css';
-// import ExpenseBadge from './ExpenseBadge';
-// import ExpenseDetails from './ExpenseDetails';
 import ExpenseCard from './ExpenseCard';
 
 function BillsToPay() {

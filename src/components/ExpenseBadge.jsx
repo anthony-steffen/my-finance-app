@@ -15,7 +15,7 @@ export default ExpenseBadge;
 ExpenseBadge.propTypes = {
   expense: PropTypes.shape({
     description: PropTypes.string.isRequired,
-    value: PropTypes.number.isRequired,
+    value: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
   }).isRequired,
 };

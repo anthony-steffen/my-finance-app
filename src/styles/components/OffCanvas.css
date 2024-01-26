@@ -27,12 +27,6 @@
     align-items: center;
     justify-content: center;
 }
-
-.form-register{
-  margin-right: 1rem;
-  width: 90%;
-}
-
 .btn-register-container {
   display: flex;
   flex-direction: row;

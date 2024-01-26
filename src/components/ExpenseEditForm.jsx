@@ -24,65 +24,67 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
   }, [expenseSelected, setValue]);
   return (
     <form
-      className="form-editToPay col-md-7 col-lg-7 col-xl-4"
+      className="form-editToPay"
       onSubmit={ handleSubmit(onSubmit) }
     >
-      <label htmlFor="Descrição" className="text-dark ms-1">Descrição</label>
-      <input
-        type="text"
-        id="description"
-        className="form-control"
-        placeholder="Descrição"
-        aria-describedby="descriptiondHelpBlock"
-        { ...register('description', {
-          required: 'Descrição é obrigatória',
-          minLength: {
-            value: 3,
-            message: 'Mínimo de 3 caracteres',
-          },
-          maxLength: {
-            value: 30,
-            message: 'Máximo de 30 caracteres',
-          },
-          pattern: {
-            value: /^[a-zA-Z\s]+$/,
-            message: 'Apenas letras',
-          },
-        })
-        }
-      />
-      <div id="descriptionHelpBlock" className="form-text mb-3 mt-0">
-        Ex: Salário, Aluguel, Mercado.
+      <label htmlFor="Descrição" className="text-dark">
+        Descrição
+
+        <input
+          type="text"
+          id="description"
+          className="form-control"
+          placeholder="Descrição"
+          aria-describedby="descriptiondHelpBlock"
+          { ...register('description', {
+            required: 'Descrição é obrigatória',
+            minLength: {
+              value: 3,
+              message: 'Mínimo de 3 caracteres',
+            },
+            maxLength: {
+              value: 30,
+              message: 'Máximo de 30 caracteres',
+            },
+            pattern: {
+              value: /^[a-zA-Z\s]+$/,
+              message: 'Apenas letras',
+            },
+          })
+          }
+        />
+      </label>
+      <div id="descriptionHelpBlock" className="form-text mb-0 mt-0">
         {errors.description
-                  && <p className="text-danger">{errors.description.message}</p>}
+                  && <p className="text-danger mb-2">{errors.description.message}</p>}
       </div>
 
-      <label htmlFor="value" className="text-dark ms-1">Valor</label>
-      <input
-        type="number"
-        id="value"
-        className="form-control"
-        placeholder="Valor"
-        aria-describedby="valueHelpBlock"
-        style={ { width: '150px', height: '35px' } }
-        { ...register('value', {
-          required: 'Valor é obrigatório',
-          pattern: {
-            value: /^[0-9]+$/,
-            message: 'Insira apenas números',
-          },
-        })
-        }
-      />
-      <div id="valueHelpBlock" className="form-text mb-3 mt-0">
-        Ex: Números positivos.
+      <label htmlFor="value" className="text-dark">
+        Valor
+        <input
+          type="text"
+          id="value"
+          className="form-control"
+          placeholder="Valor"
+          aria-describedby="valueHelpBlock"
+          { ...register('value', {
+            required: 'Valor é obrigatório',
+            pattern: {
+              value: /^(?!0\.00$)\d+(\.\d{1,2})?$/,
+              message: 'Apenas números positivos',
+            },
+          })
+          }
+        />
+      </label>
+      <div id="valueHelpBlock" className="form-text mb-0 mt-0">
         {errors.value
-                  && <span className="text-danger">{errors.value.message}</span>}
+                  && <p className="text-danger mb-2">{errors.value.message}</p>}
       </div>
 
-      <label htmlFor="date" className="text-dark ms-1">Método de pagamento</label>
+      <label htmlFor="date" className="text-dark">Método de pagamento</label>
       <select
-        className="form-select"
+        className="form-select form-control mb-2"
         id="paymentMethod"
         aria-describedby="paymentMethodHelpBlock"
         { ...register('paymentMethod', {
@@ -100,55 +102,58 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
         <option value="Cartão de crédito">Cartão de crédito</option>
         <option value="Cartão de débito">Cartão de débito</option>
       </select>
-      <div id="paymentMethodHelpBlock" className="form-text mb-3 mt-0">
-        Ex: Dinheiro, Cartão de crédito, pix...
-      </div>
-      <label htmlFor="date" className="text-dark ms-1">De</label>
-      <input
-        type="text"
-        id="payer"
-        className="form-control payer"
-        placeholder="Pagador"
-        aria-describedby="payerHelpBlock"
-        { ...register('payer', {
-          required: 'Pagador é obrigatório',
-          pattern: {
-            value: /^[a-zA-Z\s]+$/,
-            message: 'Insira apenas letras',
-          },
-        })
-        }
-      />
-      <div id="payerHelpBlock" className="form-text mb-3 mt-0">
-        Ex: Quem paga!
+      <div id="paymentMethodHelpBlock" className="form-text mb-0 mt-0" />
+
+      <label htmlFor="date" className="text-dark">
+        Pagador
+
+        <input
+          type="text"
+          id="payer"
+          className="form-control payer"
+          placeholder="Pagador"
+          aria-describedby="payerHelpBlock"
+          { ...register('payer', {
+            required: 'Pagador é obrigatório',
+            pattern: {
+              value: /^[a-zA-Z\s]+$/,
+              message: 'Insira apenas letras',
+            },
+          })
+          }
+        />
+      </label>
+      <div id="payerHelpBlock" className="form-text mb-0 mt-0">
         {errors.payer
-                  && <span className="text-danger">{errors.payer.message}</span>}
+                  && <p className="text-danger mb-2">{errors.payer.message}</p>}
       </div>
-      <label htmlFor="date" className="text-dark ms-1">Para</label>
-      <input
-        type="text"
-        id="receiver"
-        className="form-control receiver"
-        placeholder="Recebedor"
-        aria-describedby="receiverHelpBlock"
-        { ...register('receiver', {
-          required: 'Recebedor é obrigatório',
-          pattern: {
-            value: /^[a-zA-Z\s]+$/,
-            message: 'Insira apenas letras',
-          },
-        })
-        }
-      />
-      <div id="receiverHelpBlock" className="form-text mb-3 mt-0">
-        Ex: Quem recebe!
+      <label htmlFor="date" className="text-dark">
+        Beneficiário
+
+        <input
+          type="text"
+          id="receiver"
+          className="form-control receiver"
+          placeholder="Recebedor"
+          aria-describedby="receiverHelpBlock"
+          { ...register('receiver', {
+            required: 'Recebedor é obrigatório',
+            pattern: {
+              value: /^[a-zA-Z\s]+$/,
+              message: 'Insira apenas letras',
+            },
+          })
+          }
+        />
+      </label>
+      <div id="receiverHelpBlock" className="form-text mb-0 mt-0">
         {errors.receiver
-                  && <span className="text-danger">{errors.receiver.message}</span>}
+                  && <p className="text-danger mb-2">{errors.receiver.message}</p>}
       </div>
 
-      <label htmlFor="category" className="text-dark ms-1">Categoria</label>
+      <label htmlFor="category" className="text-dark">Categoria</label>
       <select
-        className="form-select"
+        className="form-select form-control mb-2 "
         id="category"
         aria-describedby="categoryHelpBlock"
         { ...register('category', {
@@ -170,9 +175,9 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
         <option value="Trabalho">Trabalho</option>
       </select>
 
-      <label htmlFor="subCategory" className="text-dark ms-1">Subcategoria</label>
+      <label htmlFor="subCategory" className="text-dark">Subcategoria</label>
       <select
-        className="form-select"
+        className="form-select form-control mb-2 "
         id="subCategory"
         aria-describedby="subCategoryHelpBlock"
         { ...register('subCategory', {
@@ -194,7 +199,7 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
         <option value="Trabalho">Trabalho</option>
       </select>
 
-      <label htmlFor="date" className="text-dark ms-1">Data</label>
+      <label htmlFor="date" className="text-dark">Data</label>
       <input
         type="date"
         id="date"
@@ -204,10 +209,9 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
         })
         }
       />
-      <div id="dateHelpBlock" className="form-text mb-3 mt-0">
-        Ex: Data do pagamento.
+      <div id="dateHelpBlock" className="form-text mb-0 mt-0">
         {errors.date
-                  && <span className="text-danger">{errors.date.message}</span>}
+                  && <p className="text-danger mb-2">{errors.date.message}</p>}
       </div>
 
       <div className="modal-footer d-flex justify-content-center">
@@ -229,7 +233,7 @@ export default ExpenseEditForm;
 ExpenseEditForm.propTypes = {
   expenseSelected: propTypes.shape({
     description: propTypes.string,
-    value: propTypes.number,
+    value: propTypes.string,
     paymentMethod: propTypes.string,
     category: propTypes.string,
     subCategory: propTypes.string,

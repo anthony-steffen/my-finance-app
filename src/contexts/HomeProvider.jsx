@@ -27,7 +27,7 @@ function HomeProvider({ children }) {
   const [paidExpenses, setpaidExpenses] = useState(storedpaidExpenses);
   const [selectExpense, setSelectExpense] = useState('');
   const [paydDate, setPaydDate] = useState('');
-  console.log(expenses.map((expense) => expense.value));
+
   const handleTransaction = useCallback(
     (data) => {
       if (typeRegister === 'income') {

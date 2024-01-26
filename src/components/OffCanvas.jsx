@@ -73,15 +73,7 @@ function OffCanvas() {
         </div>
 
         <div
-          className="
-        offcanvas-body
-        py-3
-        bg-secundary
-        d-flex
-        flex-column
-        justify-content-flex-start
-        align-items-center
-        "
+          className=" offcanvas-body bg-secundary p-5"
         >
           <TransactionRegister />
         </div>
