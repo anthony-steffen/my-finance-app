@@ -1,4 +1,4 @@
-import { IoIosAdd } from 'react-icons/io';
+import { IoIosAdd, IoMdClose } from 'react-icons/io';
 
 import TransactionRegister from './TransactionRegister';
 import '../../styles/components/OffCanvas.css';
@@ -33,11 +33,21 @@ function OffCanvas() {
           bg-primary
           text-white
           d-flex
-          justify-content-center
+          justify-content-between
           "
           style={ { height: '10vh' } }
         >
-          <h3> Registro de Transações</h3>
+          <h3 className="d-flex w-100 justify-content-center"> Registro de Transações</h3>
+          <div>
+            <IoMdClose
+              type="button"
+              // className="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+              className="text-danger"
+              style={ { borderRadius: '50%', width: '35px', height: '35px' } }
+            />
+          </div>
         </div>
 
         <div

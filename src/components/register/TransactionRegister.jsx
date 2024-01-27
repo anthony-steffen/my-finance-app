@@ -54,7 +54,7 @@ function TransactionRegister() {
     <>
       <ToastContainer />
       <form
-        className="form-register col-9 col-lg-5 col-xl-4"
+        className="form-register col-9 col-lg-5 col-xl-3"
         onSubmit={ handleSubmit(onSubmit) }
       >
         <InputDescription register={ register } />
@@ -97,7 +97,7 @@ function TransactionRegister() {
         <InputDate register={ register } />
       </form>
       <div
-        className="save-menu w-100 d-flex flex-row justify-content-evenly
+        className="save-menu w-100 d-flex flex-row justify-content-center gap-4
           align-items-center mt-3"
       >
         <div className="form-check">

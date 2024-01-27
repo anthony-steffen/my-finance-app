@@ -31,7 +31,7 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
   }, [expenseSelected, setValue]);
   return (
     <form
-      className="form-register col-9 col-lg-5 col-xl-4"
+      className="form-register col-9 col-lg-5 col-xl-6"
       onSubmit={ handleSubmit(onSubmit) }
     >
       <p className="text-dark mb-1">
