@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { format, addDays } from 'date-fns';
 
-import HomeContext from '../contexts/HomeContext';
+import HomeContext from '../../contexts/HomeContext';
 
 function TransactionRegister() {
   // Estados do contexto

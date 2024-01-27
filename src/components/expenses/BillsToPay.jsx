@@ -1,8 +1,7 @@
-/* eslint-disable react/jsx-max-depth */
 import { useContext } from 'react';
-import HomeContext from '../contexts/HomeContext';
+import HomeContext from '../../contexts/HomeContext';
 
-import '../styles/components/Lists.css';
+import '../../styles/components/Lists.css';
 import ExpenseCard from './ExpenseCard';
 
 function BillsToPay() {

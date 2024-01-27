@@ -2,7 +2,7 @@
 
 import { useContext, useState } from 'react';
 import { format, parse } from 'date-fns';
-import HomeContext from '../contexts/HomeContext';
+import HomeContext from '../../contexts/HomeContext';
 import ExpenseEditForm from './ExpenseEditForm';
 
 function ModalToEdit() {

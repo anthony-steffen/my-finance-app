@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import ModalToPay from './ModalToPay';
 import ExpenseDetails from './ExpenseDetails';
 import ExpenseBadge from './ExpenseBadge';
-import HomeContext from '../contexts/HomeContext';
+import HomeContext from '../../contexts/HomeContext';
 import ModalToEdit from './ModalToEdit';
 
 function ExpenseCard({ expense, index }) {

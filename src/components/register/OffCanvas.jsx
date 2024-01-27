@@ -1,10 +1,10 @@
 import { IoIosAdd, IoMdClose } from 'react-icons/io';
 
 import { useContext } from 'react';
-import HomeContext from '../contexts/HomeContext';
+import HomeContext from '../../contexts/HomeContext';
 
 import TransactionRegister from './TransactionRegister';
-import '../styles/components/OffCanvas.css';
+import '../../styles/components/OffCanvas.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function OffCanvas() {

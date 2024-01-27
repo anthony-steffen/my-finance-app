@@ -3,10 +3,10 @@ import {
   IoIosArrowForward,
 } from 'react-icons/io';
 
-import '../styles/components/SwiperCards.css';
+import '../../styles/components/SwiperCards.css';
 
 import { useContext, useEffect, useState } from 'react';
-import HomeContext from '../contexts/HomeContext';
+import HomeContext from '../../contexts/HomeContext';
 
 function SwiperCards() {
   const { expenses, categoryIcons } = useContext(HomeContext);
