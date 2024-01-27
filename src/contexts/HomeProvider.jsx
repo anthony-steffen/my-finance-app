@@ -14,6 +14,7 @@ function HomeProvider({ children }) {
   const [categories, setCategories] = useState(categoriesJson);
   const [typeRegister, setTypeRegister] = useState('');
   const [categoryIcons, setCategoryIcons] = useState(Icons);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const store = useMemo(() => ({
     typeRegister,
@@ -22,10 +23,13 @@ function HomeProvider({ children }) {
     setCategories,
     categoryIcons,
     setCategoryIcons,
+    selectedCategory,
+    setSelectedCategory,
   }), [
     typeRegister, setTypeRegister,
     categories, setCategories,
     categoryIcons, setCategoryIcons,
+    selectedCategory, setSelectedCategory,
   ]);
 
   return (
