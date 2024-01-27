@@ -2,11 +2,11 @@
 
 import { useContext, useState } from 'react';
 import { format, parse } from 'date-fns';
-import HomeContext from '../../contexts/HomeContext';
+import ExpenseContext from '../../contexts/ExpenseContext';
 import ExpenseEditForm from './ExpenseEditForm';
 
 function ModalToEdit() {
-  const { selectExpense, hundleEditExpense, expenses } = useContext(HomeContext);
+  const { selectExpense, hundleEditExpense, expenses } = useContext(ExpenseContext);
   const [initialStateExpenseToEdit] = useState({
     description: '',
     value: '',

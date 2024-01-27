@@ -1,14 +1,14 @@
 import { IoIosAdd, IoMdClose } from 'react-icons/io';
 
 import { useContext } from 'react';
-import HomeContext from '../../contexts/HomeContext';
+import ExpenseContext from '../../contexts/ExpenseContext';
 
 import TransactionRegister from './TransactionRegister';
 import '../../styles/components/OffCanvas.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function OffCanvas() {
-  const { setTypeRegister } = useContext(HomeContext);
+  const { setTypeRegister } = useContext(ExpenseContext);
 
   return (
     <section className="fixed-bottom mb-9">

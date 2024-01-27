@@ -4,15 +4,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import { format, addDays } from 'date-fns';
 
 import HomeContext from '../../contexts/HomeContext';
+import ExpenseContext from '../../contexts/ExpenseContext';
 
 function TransactionRegister() {
   // Estados do contexto
-  const {
-    typeRegister,
-    setTypeRegister,
-    categories,
-    handleTransaction,
-  } = useContext(HomeContext);
+  const { typeRegister, setTypeRegister, handleTransaction } = useContext(ExpenseContext);
+  const { categories } = useContext(HomeContext);
 
   // Estados locais
   const [ButtonText, setButtonText] = useState('Salvar');

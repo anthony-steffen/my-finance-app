@@ -5,11 +5,11 @@ import { useContext } from 'react';
 import ModalToPay from './ModalToPay';
 import ExpenseDetails from './ExpenseDetails';
 import ExpenseBadge from './ExpenseBadge';
-import HomeContext from '../../contexts/HomeContext';
+import ExpenseContext from '../../contexts/ExpenseContext';
 import ModalToEdit from './ModalToEdit';
 
 function ExpenseCard({ expense, index }) {
-  const { setSelectExpense } = useContext(HomeContext);
+  const { setSelectExpense } = useContext(ExpenseContext);
   return (
     <div className="col-xl-4 col-lg-6 mb-1">
       <div className="card" id={ index }>

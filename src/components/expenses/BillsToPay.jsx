@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import HomeContext from '../../contexts/HomeContext';
+import ExpenseContext from '../../contexts/ExpenseContext';
 
 import '../../styles/components/Lists.css';
 import ExpenseCard from './ExpenseCard';
 
 function BillsToPay() {
-  const { expenses } = useContext(HomeContext);
+  const { expenses } = useContext(ExpenseContext);
 
   return (
     <section className="row pb-4 w-100">

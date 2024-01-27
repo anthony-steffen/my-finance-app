@@ -11,18 +11,20 @@ import BillsToPay from '../components/expenses/BillsToPay';
 import Income from '../components/incomes/Income';
 
 import HomeProvider from '../contexts/HomeProvider';
+import ExpenseProvider from '../contexts/ExpenseProvider';
 
 function Home() {
   return (
     <div className="home-container">
       <HomeProvider>
-        <Header />
-        <SwiperCards />
-        {/* <CarouselBillsToPay /> */}
-        <BillsToPay />
-        <Income />
-        <OffCanvas />
-        <Footer />
+        <ExpenseProvider>
+          <Header />
+          <SwiperCards />
+          <BillsToPay />
+          <Income />
+          <OffCanvas />
+          <Footer />
+        </ExpenseProvider>
       </HomeProvider>
     </div>
 

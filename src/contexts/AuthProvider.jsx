@@ -33,10 +33,7 @@ function AuthProvider({ children }) {
   );
 
   return (
-
-    <Provider value={ store }>
-      {children}
-    </Provider>
+    <Provider value={ store }>{children}</Provider>
   );
 }
 

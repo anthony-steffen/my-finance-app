@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-max-depth */
 
 import { useContext } from 'react';
-import HomeContext from '../../contexts/HomeContext';
+import ExpenseContext from '../../contexts/ExpenseContext';
 
 function ModalToPay() {
-  const { paydDate, setPaydDate, handlePayExpense } = useContext(HomeContext);
+  const { paydDate, setPaydDate, handlePayExpense } = useContext(ExpenseContext);
 
   return (
     <div

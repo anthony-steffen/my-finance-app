@@ -7,9 +7,11 @@ import '../../styles/components/SwiperCards.css';
 
 import { useContext, useEffect, useState } from 'react';
 import HomeContext from '../../contexts/HomeContext';
+import ExpenseContext from '../../contexts/ExpenseContext';
 
 function SwiperCards() {
-  const { expenses, categoryIcons } = useContext(HomeContext);
+  const { expenses } = useContext(ExpenseContext);
+  const { categoryIcons } = useContext(HomeContext);
   const [categoriesData, setCategoriesData] = useState([]);
 
   // Função para dividir o array de transações em array de 3 elementos
