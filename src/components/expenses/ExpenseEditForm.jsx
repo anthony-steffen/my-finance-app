@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import propTypes from 'prop-types';
 import { format, parse } from 'date-fns';
 
-function ExpenseEditForm({ expenseSelected, onSubmit }) {
+function ExpenseEditForm({ expenseSelected, onSubmit, categories }) {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
         <input
           type="text"
           id="description"
-          className="form-control"
+          className="form-control mb-2"
           placeholder="Descrição"
           aria-describedby="descriptiondHelpBlock"
           { ...register('description', {
@@ -64,7 +64,7 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
         <input
           type="text"
           id="value"
-          className="form-control"
+          className="form-control mb-2"
           placeholder="Valor"
           aria-describedby="valueHelpBlock"
           { ...register('value', {
@@ -84,7 +84,7 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
 
       <label htmlFor="date" className="text-dark">Método de pagamento</label>
       <select
-        className="form-select form-control mb-2"
+        className="form-select form-control mb-2 mb-2"
         id="paymentMethod"
         aria-describedby="paymentMethodHelpBlock"
         { ...register('paymentMethod', {
@@ -110,7 +110,7 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
         <input
           type="text"
           id="payer"
-          className="form-control payer"
+          className="form-control mb-2 payer"
           placeholder="Pagador"
           aria-describedby="payerHelpBlock"
           { ...register('payer', {
@@ -133,7 +133,7 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
         <input
           type="text"
           id="receiver"
-          className="form-control receiver"
+          className="form-control mb-2 receiver"
           placeholder="Recebedor"
           aria-describedby="receiverHelpBlock"
           { ...register('receiver', {
@@ -153,7 +153,7 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
 
       <label htmlFor="category" className="text-dark">Categoria</label>
       <select
-        className="form-select form-control mb-2 "
+        className="form-select form-control mb-2 mb-2 "
         id="category"
         aria-describedby="categoryHelpBlock"
         { ...register('category', {
@@ -167,43 +167,16 @@ function ExpenseEditForm({ expenseSelected, onSubmit }) {
               : 'Categoria'
           }
         </option>
-        <option value="Alimentação">Alimentação</option>
-        <option value="Educação">Educação</option>
-        <option value="Lazer">Lazer</option>
-        <option value="Saúde">Saúde</option>
-        <option value="Transporte">Transporte</option>
-        <option value="Trabalho">Trabalho</option>
-      </select>
-
-      <label htmlFor="subCategory" className="text-dark">Subcategoria</label>
-      <select
-        className="form-select form-control mb-2 "
-        id="subCategory"
-        aria-describedby="subCategoryHelpBlock"
-        { ...register('subCategory', {
-          required: 'Subcategoria é obrigatória',
-        })
-        }
-      >
-        <option defaultValue="">
-          {
-            expenseSelected ? expenseSelected.subCategory
-              : 'Subcategoria'
-          }
-        </option>
-        <option value="Alimentação">Alimentação</option>
-        <option value="Educação">Educação</option>
-        <option value="Lazer">Lazer</option>
-        <option value="Saúde">Saúde</option>
-        <option value="Transporte">Transporte</option>
-        <option value="Trabalho">Trabalho</option>
+        {categories.map((cat) => (
+          <option key={ cat.id }>{cat.name}</option>
+        ))}
       </select>
 
       <label htmlFor="date" className="text-dark">Data</label>
       <input
         type="date"
         id="date"
-        className="form-control date"
+        className="form-control mb-2 date"
         { ...register('date', {
           required: 'Data é obrigatória',
         })
@@ -232,6 +205,7 @@ export default ExpenseEditForm;
 
 ExpenseEditForm.propTypes = {
   expenseSelected: propTypes.shape({
+    id: propTypes.number,
     description: propTypes.string,
     value: propTypes.string,
     paymentMethod: propTypes.string,
@@ -242,4 +216,5 @@ ExpenseEditForm.propTypes = {
     date: propTypes.string,
   }).isRequired,
   onSubmit: propTypes.func.isRequired,
+  categories: propTypes.arrayOf(propTypes.shape).isRequired,
 };

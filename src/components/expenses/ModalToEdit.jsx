@@ -4,9 +4,11 @@ import { useContext, useState } from 'react';
 import { format, parse } from 'date-fns';
 import ExpenseContext from '../../contexts/ExpenseContext';
 import ExpenseEditForm from './ExpenseEditForm';
+import HomeContext from '../../contexts/HomeContext';
 
 function ModalToEdit() {
   const { selectExpense, hundleEditExpense, expenses } = useContext(ExpenseContext);
+  const { categories } = useContext(HomeContext);
   const [initialStateExpenseToEdit] = useState({
     description: '',
     value: '',
@@ -58,6 +60,7 @@ function ModalToEdit() {
             <ExpenseEditForm
               onSubmit={ onSubmit }
               expenseSelected={ expenseSelected || initialStateExpenseToEdit }
+              categories={ categories }
             />
           </div>
         </div>
