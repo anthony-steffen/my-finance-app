@@ -9,8 +9,6 @@ import { useContext, useEffect, useState } from 'react';
 import HomeContext from '../../contexts/HomeContext';
 import ExpenseContext from '../../contexts/ExpenseContext';
 
-import Logo from '../../assets/logo.png';
-
 function SwiperCards() {
   const { expenses } = useContext(ExpenseContext);
   const { categoryIcons } = useContext(HomeContext);

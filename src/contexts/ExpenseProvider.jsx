@@ -19,8 +19,8 @@ function ExpenseProvider({ children }) {
   const [selectExpense, setSelectExpense] = useState('');
   const [paydDate, setPaydDate] = useState('');
 
-  console.log(typeRegister);
-  const handleTransaction = useCallback(
+  console.log(selectExpense);
+  const handleAddExpense = useCallback(
     (data) => {
       if (typeRegister === 'expense') {
         const newExpense = [
@@ -89,7 +89,7 @@ function ExpenseProvider({ children }) {
     setSelectExpense,
     paydDate,
     setPaydDate,
-    handleTransaction,
+    handleAddExpense,
     handlePayExpense,
     hundleEditExpense,
   }), [
@@ -97,7 +97,7 @@ function ExpenseProvider({ children }) {
     expenses, setExpenses,
     selectExpense, setSelectExpense,
     paydDate, setPaydDate,
-    handleTransaction,
+    handleAddExpense,
     handlePayExpense,
     hundleEditExpense,
   ]);

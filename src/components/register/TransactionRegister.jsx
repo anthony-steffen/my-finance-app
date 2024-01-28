@@ -18,7 +18,7 @@ import InputDate from './InputDate';
 
 function TransactionRegister() {
   // Estados do contexto
-  const { handleTransaction } = useContext(ExpenseContext);
+  const { handleAddExpense } = useContext(ExpenseContext);
   const { typeRegister, setTypeRegister } = useContext(HomeContext);
   const { categories } = useContext(HomeContext);
 
@@ -38,15 +38,18 @@ function TransactionRegister() {
       toast.error('Selecione um tipo de registro', { autoClose: 2000 });
       return;
     }
-    // Formata a data para o formato 'PT-BR' e adiciona 1 dia
-    data.date = format(addDays(new Date(data.date), 1), 'dd/MM/yyyy');
-    const formatValue = parseFloat(data.value).toFixed(2);
-    data.value = formatValue;
+    if (typeRegister === 'expense') {
+      // Formata a data para o formato 'PT-BR' e adiciona 1 dia
+      data.date = format(addDays(new Date(data.date), 1), 'dd/MM/yyyy');
+      // Formata o valor para duas casas decimais
+      const formatValue = parseFloat(data.value).toFixed(2);
+      data.value = formatValue;
 
-    handleTransaction(data);
-    reset();
-    setButtonText('Novo Registro');
-    setSelectedCategory('');
+      handleAddExpense(data);
+      reset();
+      setButtonText('Novo Registro');
+      setSelectedCategory('');
+    }
   };
 
   return (
