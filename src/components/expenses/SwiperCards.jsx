@@ -12,6 +12,7 @@ import ExpenseContext from '../../contexts/ExpenseContext';
 function SwiperCards() {
   const { expenses } = useContext(ExpenseContext);
   const { categoryIcons } = useContext(HomeContext);
+  const { categories } = useContext(HomeContext);
   const [categoriesData, setCategoriesData] = useState([]);
 
   // Função para dividir o array de transações em array de 3 elementos
@@ -40,6 +41,11 @@ function SwiperCards() {
   const set = 3;
   const expensesGroup = splitArray(categoriesData, set);
 
+  // const findColors = (color) => {
+  //   const category = categories.find((item) => item.name === color);
+  //   console.log(category);
+  //   // 'return category.color;'
+  // };
   // Renderiza um card padrão caso não exista nenhuma despesa
   // if (expenses.length === 0) {
   //   return (
@@ -62,7 +68,7 @@ function SwiperCards() {
   return (
     <div
       id="carouselExampleFade"
-      className="carousel slide carousel-fade py-3"
+      className="carousel slide carousel-fade py-3 w-100"
       // data-bs-ride="carousel"
       // data-bs-interval={ 7000 }
       // data-bs-pause="hover"
@@ -99,13 +105,19 @@ function SwiperCards() {
         {expensesGroup.map((group, index) => (
           <div
             key={ index }
-            className={ `carousel-item ${index === 0 ? 'active' : ''}` }
+            className={ `carousel-item ${index === 0 ? 'active' : ''} gap-1` }
           >
             {group.map((element, elementIndex) => (
               <div className="category-card" key={ elementIndex }>
                 <div className="category-card-body">
                   <div className="category-card-title mb-0">{element.category}</div>
-                  <div className="category-card-icon">
+                  <div
+                    className="category-card-icon"
+                    style={ {
+                      color: categories
+                        .find((item) => item.name === element.category).color,
+                    } }
+                  >
                     {categoryIcons[element.category]}
                   </div>
                   <div className="category-card-value">

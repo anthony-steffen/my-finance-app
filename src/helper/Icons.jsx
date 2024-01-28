@@ -17,7 +17,7 @@ import { FaMinusCircle, FaPlusCircle } from 'react-icons/fa';
 
 const Icons = {
   Moradia: <GiHouse />,
-  Alimentacao: <IoIosRestaurant />,
+  Alimentação: <IoIosRestaurant />,
   Transporte: <IoIosCar />,
   Educação: <IoIosSchool />,
   Esporte: <MdSportsMma />,
