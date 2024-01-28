@@ -16,7 +16,12 @@ function Header() {
           justifyContent: 'space-between',
         } }
       >
-        <img src={ logo } alt="logo" style={ { width: '80px' } } />
+        <img
+          className="img-logo-header"
+          src={ logo }
+          alt="logo"
+          style={ { width: '80px' } }
+        />
         <div className="navbar-title-container text-white">
           <h3 className="navbar-title mb-0">
             Saldo da conta:

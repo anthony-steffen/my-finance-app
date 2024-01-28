@@ -46,7 +46,7 @@ function Login() {
           de suas finanças, garantindo que você nunca mais esqueça as datas
           de vencimento de seus boletos.
         </p>
-        <img src={ logo } alt="logo" className="mb-2 mt-2" />
+        <img src={ logo } alt="logo" className="img-logo mb-2 mt-2" />
 
         <form
           className="login-form-horizontal"

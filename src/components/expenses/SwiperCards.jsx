@@ -3,11 +3,12 @@ import {
   IoIosArrowForward,
 } from 'react-icons/io';
 
-import '../../styles/components/SwiperCards.css';
-
 import { useContext, useEffect, useState } from 'react';
 import HomeContext from '../../contexts/HomeContext';
 import ExpenseContext from '../../contexts/ExpenseContext';
+
+import '../../styles/components/SwiperCards.css';
+import Avatar from '../../assets/wide01.png';
 
 function SwiperCards() {
   const { expenses } = useContext(ExpenseContext);
@@ -41,29 +42,33 @@ function SwiperCards() {
   const set = 3;
   const expensesGroup = splitArray(categoriesData, set);
 
-  // const findColors = (color) => {
-  //   const category = categories.find((item) => item.name === color);
-  //   console.log(category);
-  //   // 'return category.color;'
-  // };
   // Renderiza um card padrão caso não exista nenhuma despesa
-  // if (expenses.length === 0) {
-  //   return (
-  //     <div className="card-group">
-  //       <div className="card">
+  if (expenses.length === 0) {
+    return (
+      <div className="card mb-3">
+        <div
+          className="img-container"
+        >
 
-  //         <div className="card-body">
-  //           <h5 className="card-title">Card title</h5>
-  //           <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-  //         </div>
-  //         <div className="card-footer">
-  //           <small className="text-muted">Last updated 3 mins ago</small>
-  //         </div>
-  //       </div>
+          <img
+            src={ Avatar }
+            className="card-img-top"
+            alt="..."
+            style={ { width: '100%', height: '30vh', objectFit: 'cover' } }
+          />
+        </div>
 
-  //     </div>
-  //   );
-  // }
+        <div className="card-body">
+          <h5 className="card-title text-center">Gastos por categoria</h5>
+          <p className="card-text text-center">
+            Você ainda não possui nenhuma despesa cadastrada.
+            <br />
+            Cadastre suas despesas e acompanhe aqui seus gastos por categoria.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div

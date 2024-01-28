@@ -27,7 +27,7 @@
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-img {
+.img-logo {
     border: solid 2px #ddd;
     border-radius: 50%;
     display:flex;
