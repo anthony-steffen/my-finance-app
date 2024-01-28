@@ -47,7 +47,6 @@ function TransactionRegister() {
     reset();
     setButtonText('Novo Registro');
     setSelectedCategory('');
-    setTypeRegister('');
   };
 
   return (

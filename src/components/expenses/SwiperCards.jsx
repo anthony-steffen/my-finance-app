@@ -9,6 +9,8 @@ import { useContext, useEffect, useState } from 'react';
 import HomeContext from '../../contexts/HomeContext';
 import ExpenseContext from '../../contexts/ExpenseContext';
 
+import Logo from '../../assets/logo.png';
+
 function SwiperCards() {
   const { expenses } = useContext(ExpenseContext);
   const { categoryIcons } = useContext(HomeContext);
@@ -40,17 +42,61 @@ function SwiperCards() {
   const set = 3;
   const expensesGroup = splitArray(categoriesData, set);
 
+  // Renderiza um card padrão caso não exista nenhuma despesa
+  // if (expenses.length === 0) {
+  //   return (
+  //     <div className="card-group">
+  //       <div className="card">
+
+  //         <div className="card-body">
+  //           <h5 className="card-title">Card title</h5>
+  //           <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+  //         </div>
+  //         <div className="card-footer">
+  //           <small className="text-muted">Last updated 3 mins ago</small>
+  //         </div>
+  //       </div>
+
+  //     </div>
+  //   );
+  // }
+
   return (
     <div
       id="carouselExampleFade"
-      className="carousel slide carousel-fade bg-dark py-3"
-      data-bs-touch
+      className="carousel slide carousel-fade py-3"
+      // data-bs-ride="carousel"
+      // data-bs-interval={ 7000 }
+      // data-bs-pause="hover"
     >
-      <h5
-        className="carousel-title text-white text-center"
-      >
+      <h5 className="carousel-title text-dark text-center mb-3">
         Gastos por Categoria
       </h5>
+      <div className="carousel-indicators mb-0">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide-to="0"
+          className="active bg-dark"
+          aria-current="true"
+          aria-label="Slide 1"
+        />
+        <button
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+          className="bg-dark"
+        />
+        <button
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+          className="bg-dark"
+        />
+      </div>
+
       <div className="carousel-inner">
         {expensesGroup.map((group, index) => (
           <div
