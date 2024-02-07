@@ -1,0 +1,20 @@
+/* styles/themes.css */
+
+:root {
+    --light-background: #E2E2E2;
+    --light-text: #363537;
+
+    --dark-background: #363537;
+    --dark-text: #FAFAFA;
+}
+
+/* styles.css */
+.light-theme {
+  background-color: white;
+  color: black;
+}
+
+.dark-theme {
+  background-color: black;
+  color: white;
+}

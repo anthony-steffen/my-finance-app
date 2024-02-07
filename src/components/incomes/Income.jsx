@@ -2,7 +2,7 @@
 
 function Income() {
   return (
-    <div className="row pb-4 w-100">
+    <div className="row pb-4 ps-2 pe-2">
       <h5 className="title text-center mt-3 mb-2">Receitas</h5>
       <div className="col-xl-4 col-lg-6 mb-1">
         <div className="card">

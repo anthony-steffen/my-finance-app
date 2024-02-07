@@ -19,7 +19,6 @@ function ExpenseProvider({ children }) {
   const [selectExpense, setSelectExpense] = useState('');
   const [paydDate, setPaydDate] = useState('');
 
-  console.log(selectExpense);
   const handleAddExpense = useCallback(
     (data) => {
       if (typeRegister === 'expense') {

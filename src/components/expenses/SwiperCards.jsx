@@ -73,12 +73,12 @@ function SwiperCards() {
   return (
     <div
       id="carouselExampleFade"
-      className="carousel slide carousel-fade py-3 w-100"
+      className="carousel slide carousel-fade py-3 w-100 bg-dark"
       // data-bs-ride="carousel"
       // data-bs-interval={ 7000 }
       // data-bs-pause="hover"
     >
-      <h5 className="carousel-title text-dark text-center mb-3">
+      <h5 className="carousel-title text-white text-center mb-3">
         Gastos por Categoria
       </h5>
       <div className="carousel-indicators mb-0">
@@ -86,7 +86,7 @@ function SwiperCards() {
           type="button"
           data-bs-target="#carouselExampleFade"
           data-bs-slide-to="0"
-          className="active bg-dark"
+          className="active bg-white"
           aria-current="true"
           aria-label="Slide 1"
         />
@@ -95,14 +95,14 @@ function SwiperCards() {
           data-bs-target="#carouselExampleFade"
           data-bs-slide-to="1"
           aria-label="Slide 2"
-          className="bg-dark"
+          className="bg-white"
         />
         <button
           type="button"
           data-bs-target="#carouselExampleFade"
           data-bs-slide-to="2"
           aria-label="Slide 3"
-          className="bg-dark"
+          className="bg-white"
         />
       </div>
 
@@ -113,7 +113,7 @@ function SwiperCards() {
             className={ `carousel-item ${index === 0 ? 'active' : ''} gap-1` }
           >
             {group.map((element, elementIndex) => (
-              <div className="category-card" key={ elementIndex }>
+              <div className="category-card border border-1" key={ elementIndex }>
                 <div className="category-card-body">
                   <div className="category-card-title mb-0">{element.category}</div>
                   <div

@@ -1,13 +1,14 @@
 /* eslint-disable react/jsx-max-depth */
-
 import { IoMdMenu } from 'react-icons/io';
+import ToggleTheme from './ToggleTheme';
 import logo from '../assets/logo.png';
 
 import '../styles/components/Header.css';
+import '../styles/components/ToggleTheme.css';
 
 function Header() {
   return (
-    <nav className="navbar bg-primary sticky-top w-100">
+    <header className="navbar bg-primary sticky-top w-100">
       <div
         className="container-fluid"
         style={ {
@@ -16,6 +17,7 @@ function Header() {
           justifyContent: 'space-between',
         } }
       >
+        <ToggleTheme />
         <img
           className="img-logo-header"
           src={ logo }
@@ -94,7 +96,7 @@ function Header() {
           </div>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }
 

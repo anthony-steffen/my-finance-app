@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import categoriesJson from '../helper/categories.json';
 import Icons from '../helper/Icons';
@@ -15,6 +15,15 @@ function HomeProvider({ children }) {
   const [typeRegister, setTypeRegister] = useState('');
   const [categoryIcons, setCategoryIcons] = useState(Icons);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [theme, setTheme] = useState('light');
+
+  console.log(theme);
+  const toogleTheme = useCallback(
+    () => {
+      setTheme(theme === 'light' ? 'dark' : 'light');
+    },
+    [theme],
+  );
 
   const store = useMemo(() => ({
     typeRegister,
@@ -25,11 +34,16 @@ function HomeProvider({ children }) {
     setCategoryIcons,
     selectedCategory,
     setSelectedCategory,
+    theme,
+    setTheme,
+    toogleTheme,
   }), [
     typeRegister, setTypeRegister,
     categories, setCategories,
     categoryIcons, setCategoryIcons,
     selectedCategory, setSelectedCategory,
+    theme, setTheme,
+    toogleTheme,
   ]);
 
   return (
