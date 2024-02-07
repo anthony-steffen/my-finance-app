@@ -42,7 +42,7 @@ function SwiperCards() {
   const set = 3;
   const expensesGroup = splitArray(categoriesData, set);
 
-  // Renderiza um card padrão caso não exista nenhuma despesa
+  // Renderiza um card por padrão caso não exista nenhuma despesa
   if (expenses.length === 0) {
     return (
       <div className="card mb-3">
