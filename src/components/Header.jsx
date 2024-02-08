@@ -1,14 +1,22 @@
 /* eslint-disable react/jsx-max-depth */
 import { IoMdMenu } from 'react-icons/io';
+import { useContext } from 'react';
 import ToggleTheme from './ToggleTheme';
 import logo from '../assets/logo.png';
+
+import HomeContext from '../contexts/HomeContext';
 
 import '../styles/components/Header.css';
 import '../styles/components/ToggleTheme.css';
 
 function Header() {
+  const { theme } = useContext(HomeContext);
   return (
-    <header className="navbar bg-primary sticky-top w-100">
+    <header
+      className={ `
+    navbar sticky-top bg-${theme === 'light' ? 'primary' : 'dark'}
+    ` }
+    >
       <div
         className="container-fluid"
         style={ {

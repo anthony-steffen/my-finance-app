@@ -73,15 +73,15 @@ function SwiperCards() {
   return (
     <div
       id="carouselExampleFade"
-      className={
-        `carousel slide carousel-fade py-2 bg-${theme} rounded-2 shadow mb-3 me-1 ms-1`
-      }
+      className={ `
+        carousel slide carousel-fade py-2 bg-${theme} rounded-3 shadow mb-3 mt-2 me-1 ms-1
+        ` }
       data-bs-ride="carousel"
       data-bs-interval={ 7000 }
       data-bs-pause="hover"
     >
       <h5
-        className={ theme === 'light' ? 'text-dark' : 'text-white' }
+        className={ theme === 'light' ? 'text-dark' : 'text-light' }
         style={ { textAlign: 'center' } }
       >
         Gastos por Categoria

@@ -3,7 +3,6 @@
 }
 
 .navbar {
-    border-radius: 5px;
     height: 15vh;
     /* border-top: 2px solid #fefefe;
     border-bottom: 2px solid #fefefe; */
@@ -25,12 +24,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* margin-top: 0.5rem; */
 }
 
 .img-logo-header {
     border: solid 1px #252525;
     border-radius: 50%;
-    display:flex;
     width: 50%;
 }
