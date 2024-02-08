@@ -10,7 +10,7 @@ import HomeContext from '../contexts/HomeContext';
 import '../styles/components/ToggleTheme.css';
 
 function Content() {
-  const { theme, toggleTheme } = useContext(HomeContext);
+  const { theme } = useContext(HomeContext);
   console.log(theme);
   return (
     <div className={ `${theme}-theme` }>

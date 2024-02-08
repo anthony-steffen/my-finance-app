@@ -13,7 +13,7 @@ function ExpenseCard({ expense, index }) {
   return (
     <div className="col-xl-4 col-lg-6 mb-1">
       <div className="card" id={ index }>
-        <div className="card-body">
+        <div className="card-body bg-secundary">
           <ExpenseDetails expense={ expense } />
           <div className="d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center gap-1">

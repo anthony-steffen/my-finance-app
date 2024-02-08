@@ -12,8 +12,8 @@ import Avatar from '../../assets/wide01.png';
 
 function SwiperCards() {
   const { expenses } = useContext(ExpenseContext);
-  const { categoryIcons } = useContext(HomeContext);
-  const { categories } = useContext(HomeContext);
+  const { categoryIcons, categories, theme } = useContext(HomeContext);
+
   const [categoriesData, setCategoriesData] = useState([]);
 
   // Função para dividir o array de transações em array de 3 elementos
@@ -73,12 +73,17 @@ function SwiperCards() {
   return (
     <div
       id="carouselExampleFade"
-      className="carousel slide carousel-fade py-3 w-100 bg-dark"
-      // data-bs-ride="carousel"
-      // data-bs-interval={ 7000 }
-      // data-bs-pause="hover"
+      className={
+        `carousel slide carousel-fade py-2 bg-${theme} rounded-2 shadow mb-3 me-1 ms-1`
+      }
+      data-bs-ride="carousel"
+      data-bs-interval={ 7000 }
+      data-bs-pause="hover"
     >
-      <h5 className="carousel-title text-white text-center mb-3">
+      <h5
+        className={ theme === 'light' ? 'text-dark' : 'text-white' }
+        style={ { textAlign: 'center' } }
+      >
         Gastos por Categoria
       </h5>
       <div className="carousel-indicators mb-0">
@@ -86,7 +91,7 @@ function SwiperCards() {
           type="button"
           data-bs-target="#carouselExampleFade"
           data-bs-slide-to="0"
-          className="active bg-white"
+          className={ `active ${theme === 'light' ? 'bg-dark' : 'bg-white'}` }
           aria-current="true"
           aria-label="Slide 1"
         />
@@ -95,14 +100,14 @@ function SwiperCards() {
           data-bs-target="#carouselExampleFade"
           data-bs-slide-to="1"
           aria-label="Slide 2"
-          className="bg-white"
+          className={ theme === 'light' ? 'bg-dark' : 'bg-white' }
         />
         <button
           type="button"
           data-bs-target="#carouselExampleFade"
           data-bs-slide-to="2"
           aria-label="Slide 3"
-          className="bg-white"
+          className={ theme === 'light' ? 'bg-dark' : 'bg-white' }
         />
       </div>
 
@@ -110,12 +115,22 @@ function SwiperCards() {
         {expensesGroup.map((group, index) => (
           <div
             key={ index }
-            className={ `carousel-item ${index === 0 ? 'active' : ''} gap-1` }
+            className={ `carousel-item ${index === 0 ? 'active' : ''} gap-1 mb-2` }
           >
             {group.map((element, elementIndex) => (
-              <div className="category-card border border-1" key={ elementIndex }>
-                <div className="category-card-body">
-                  <div className="category-card-title mb-0">{element.category}</div>
+              <div className="category-card" key={ elementIndex }>
+                <div
+                  className={ `category-card-body 
+                ${theme === 'light' ? 'bg-dark' : 'bg-secundary'}
+                ` }
+                >
+                  <div
+                    className={ `
+                  category-card-title ${theme === 'light' ? 'text-white' : 'text-dark'}
+                  ` }
+                  >
+                    {element.category}
+                  </div>
                   <div
                     className="category-card-icon"
                     style={ {
@@ -126,7 +141,7 @@ function SwiperCards() {
                     {categoryIcons[element.category]}
                   </div>
                   <div className="category-card-value">
-                    <span className="text-dark">
+                    <span className={ theme === 'light' ? 'text-white' : 'text-dark' }>
                       {element.value.toLocaleString('pt-BR', { style: 'currency',
                         currency: 'BRL' })}
                     </span>
