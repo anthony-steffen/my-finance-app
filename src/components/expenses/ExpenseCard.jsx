@@ -10,20 +10,32 @@ import ModalToEdit from './ModalToEdit';
 
 function ExpenseCard({ expense, index }) {
   const { setSelectExpense } = useContext(ExpenseContext);
+
   return (
-    <div className="col-xl-4 col-lg-6 mb-1">
-      <div className="card" id={ index }>
-        <div className="card-body bg-secundary">
+    <div className="col-xl-4 col-lg-6 p-1">
+      <div
+        className="card shadow-sm rounded-3 border border-dark border-1"
+        // style={ {
+        //   background: 'linear-gradient(180deg, rgba(173,0,0,1) 10%, rgba(98,0,0,1) 100%)',
+        // } }
+      >
+        <div className="card-body">
           <ExpenseDetails expense={ expense } />
           <div className="d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center gap-1">
-              <p className="mb-1 ms-3">Status:</p>
+              <p
+                className="mb-1 ms-3 me-1 text-dark"
+              >
+                {' '}
+                Status
+                :
+              </p>
               <ExpenseBadge expense={ expense } />
             </div>
             <div className="me-4">
               <button
                 type="button"
-                className="btn btn-primary btn-sm me-2"
+                className="btn glow-on-hover text-white btn-sm me-1"
                 data-bs-toggle="modal"
                 data-bs-target="#editExpenseModal"
                 onClick={ () => setSelectExpense(index) }
@@ -32,7 +44,7 @@ function ExpenseCard({ expense, index }) {
               </button>
               <button
                 type="button"
-                className="btn btn-primary btn-sm"
+                className="btn glow-on-hover text-white btn-sm me-1"
                 data-bs-toggle="modal"
                 data-bs-target="#billsToPayModal"
                 onClick={ () => setSelectExpense(index) }

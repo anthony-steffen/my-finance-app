@@ -15,8 +15,8 @@
   background: linear-gradient(90deg, #141e30 0%, #243b55 100%);
 } 
 .glow-on-hover {
-  width: 200px;
-  height: 40px;
+  /* width: 200px;
+  height: 40px; */
   border: 2px solid #303030;
   outline: none;
   color: #fff;
@@ -67,7 +67,7 @@
   background: #111;
   left: 0;
   top: 0;
-  border-radius: 10px;
+  border-radius:5px;
 }
 
 label {
@@ -93,3 +93,4 @@ span{
     background-position: 0 0;
   }
 }
+

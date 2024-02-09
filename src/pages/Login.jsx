@@ -118,18 +118,21 @@ function Login() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
+              width: '100%',
             } }
           >
             <button
-              className="glow-on-hover text-white"
+              className="btn glow-on-hover text-white"
               type="submit"
+              style={ { width: '100%', height: '40px' } }
             >
               Login
             </button>
 
             <button
-              className="glow-on-hover text-white m-1 mb-2"
+              className="btn glow-on-hover text-white m-1 mb-2"
               type="submit"
+              style={ { width: '100%', height: '40px' } }
               onClick={ () => navigate('/register') }
             >
               Criar Conta

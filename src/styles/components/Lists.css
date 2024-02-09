@@ -1,50 +1,25 @@
-.list-group {
-    height: 35vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+.title-expense::after {
+    content:"";
+    display:block;
+    width:50%;
+    height:3px;
+    background-color: #f80101;
 }
 
-.list-group-item {
-    height: 26vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0;
-    gap: 1rem;
+.row-expense {
+    border-top: 2px solid #4a4a4a;
+    border-bottom: 2px solid #4a4a4a;
 }
 
-.bills {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    border-left: 1px solid #e4e4e4;
-    width: 100vw;
-    height: 80%;
+.row-income {
+    /* border-top: 2px solid #4a4a4a; */
+    border-bottom: 2px solid #4a4a4a;
 }
 
-.icon {
-    font-size: 1.5rem;
+.title-income::after {
+    content:"";
+    display:block;
+    width:50%;
+    height:3px;
+    background-color: #067e00;
 }
-
-.title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-
-}
-/* .title::after {
-    content: "";
-    display: block;
-    width: 40%;
-    height: 3px;
-    background-color: #DC3545;
-} */
-/* text-center d-flex flex-column align-items-center */
-/* d-flex justify-content-between align-items-center
-      ps-1 pe-1
-      " */

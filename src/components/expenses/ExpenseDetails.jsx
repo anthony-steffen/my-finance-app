@@ -2,14 +2,20 @@ import PropTypes from 'prop-types';
 
 function ExpenseDetails({ expense }) {
   return (
-    <div className="d-flex flex-column ms-3">
-      <p className="category fw-bold mb-0">{expense.description}</p>
-      <p className="value text-muted mb-0">
+    <div className="d-flex flex-column ms-3 gap-2 mb-3">
+      <p
+        className="category fw-bold mb-0 text-dark"
+      >
+        {expense.description}
+        {' '}
+      </p>
+      {/* "category fw-bold mb-0 text">{expense.description} */}
+      <p className="value fw-bold mb-0 text-dark">
         Valor:
         R$
         {expense.value}
       </p>
-      <p className="due text-muted mb-2">
+      <p className="date fw-bold mb-0 text-dark ">
         Vencimento:
         {' '}
         {expense.date}

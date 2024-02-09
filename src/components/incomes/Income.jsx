@@ -1,11 +1,24 @@
 /* eslint-disable react/jsx-max-depth */
+import { useContext } from 'react';
+import HomeContext from '../../contexts/HomeContext';
 
 function Income() {
+  const { theme } = useContext(HomeContext);
   return (
-    <div className="row pb-4 ps-2 pe-2">
-      <h5 className="title text-center mt-3 mb-2">Receitas</h5>
+    <section className="row row-income pb-4 mt-3">
+      <h5
+        className={ `
+        title-income text-${theme === 'light' ? 'dark' : 'white'} 
+        mt-3 mb-2 d-flex align-items-center justify-content-center gap-2
+        ` }
+      >
+
+        Receitas
+      </h5>
       <div className="col-xl-4 col-lg-6 mb-1">
-        <div className="card">
+        <div
+          className="card border border-black border-2"
+        >
           <div className="card-body">
             <div className="d-flex align-items-center">
               <div className="ms-3">
@@ -88,7 +101,7 @@ function Income() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

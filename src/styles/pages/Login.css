@@ -1,3 +1,5 @@
+Login.css
+
 .gradient-custom-2 {
     height: 100vh;
     /* fallback for old browsers */
@@ -34,10 +36,6 @@
     width: 50%;
 }
 
-/* .tittle {
-    font-size: 1.2rem;
-    font-weight: bold;
-} */
 .login-form-horizontal {
     display: flex;
     flex-direction: column;
