@@ -79,6 +79,17 @@ function ExpenseProvider({ children }) {
     [expenses, selectExpense],
   );
 
+  const handleDeleteExpense = useCallback(
+    () => {
+      const updatedExpenses = expenses
+        .filter((expense) => expenses.indexOf(expense) !== selectExpense);
+
+      setExpenses(updatedExpenses);
+      localStorage.setItem('despesas', JSON.stringify(updatedExpenses));
+    },
+    [expenses, selectExpense],
+  );
+
   const store = useMemo(() => ({
     typeRegister,
     setTypeRegister,
@@ -91,6 +102,7 @@ function ExpenseProvider({ children }) {
     handleAddExpense,
     handlePayExpense,
     hundleEditExpense,
+    handleDeleteExpense,
   }), [
     typeRegister, setTypeRegister,
     expenses, setExpenses,
@@ -99,6 +111,7 @@ function ExpenseProvider({ children }) {
     handleAddExpense,
     handlePayExpense,
     hundleEditExpense,
+    handleDeleteExpense,
   ]);
 
   return <Provider value={ store }>{children}</Provider>;

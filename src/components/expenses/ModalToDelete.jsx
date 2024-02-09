@@ -1,19 +1,17 @@
 /* eslint-disable react/jsx-max-depth */
-
 import { useContext } from 'react';
 import ExpenseContext from '../../contexts/ExpenseContext';
 import HomeContext from '../../contexts/HomeContext';
 
-function ModalToPay() {
-  const { paydDate, setPaydDate, handlePayExpense } = useContext(ExpenseContext);
+function ModalToDelete() {
+  const { handleDeleteExpense } = useContext(ExpenseContext);
   const { theme } = useContext(HomeContext);
-
   return (
     <div
       className="modal fade"
-      id="billsToPayModal"
+      id="deleteExpenseModal"
       tabIndex="-1"
-      aria-labelledby="billsToPayModalLabel"
+      aria-labelledby="deleteExpenseModalLabel"
       aria-hidden="true"
     >
       <div className="modal-dialog">
@@ -26,9 +24,9 @@ function ModalToPay() {
             <div className="">
               <h1
                 className="modal-title fs-5"
-                id="billsToPayModalLabel"
+                id="deleteExpenseModalLabel"
               >
-                Pagar Conta
+                Excluir Despesa
               </h1>
             </div>
             <button
@@ -39,23 +37,20 @@ function ModalToPay() {
             />
           </div>
           <div className="modal-body d-flex flex-column align-items-center">
-            <p className="fw-bold"> Quando essa despesa foi paga? </p>
-            <input
-              type="date"
-              className="form-control mb-3 w-50"
-              value={ paydDate }
-              onChange={ (e) => setPaydDate(e.target.value) }
-            />
+            <p className="fw-bold text-muted"> Deseja realmente excluir essa despesa? </p>
           </div>
           <div className="modal-footer d-flex justify-content-center">
             <button
               type="button"
-              className="btn btn-primary"
+              className={
+                `btn text-white ${theme === 'light' ? 'btn-primary' : 'glow-on-hover'}`
+              }
+              //   "btn glow-on-hover text-white"
               data-bs-dismiss="modal"
               aria-label="Close"
-              onClick={ handlePayExpense }
+              onClick={ handleDeleteExpense }
             >
-              Salvar
+              Excluir
             </button>
           </div>
         </div>
@@ -64,4 +59,4 @@ function ModalToPay() {
   );
 }
 
-export default ModalToPay;
+export default ModalToDelete;

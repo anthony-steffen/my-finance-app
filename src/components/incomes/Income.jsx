@@ -19,7 +19,7 @@ function Income() {
       <div className="col-xl-4 col-lg-6 mb-1 p-1">
         <div className="card shadow-sm rounded-3 border border-dark border-1">
           <div className="card-body">
-            <div className="d-flex flex-column ms-3 gap-2 mb-3">
+            <div className="d-flex flex-column ms-1 me-1 gap-2 mb-1">
               <p className="category fw-bold text-muted mb-0">Aluguel</p>
               <p className="value fw-bold text-muted mb-0">Valor R$:1.000</p>
               <p className="due fw-bold text-muted mb-0">Vencimento: 16/06/1983</p>
@@ -28,7 +28,16 @@ function Income() {
               >
                 Recebido
               </span>
-              <div className="me-4">
+              <div className="d-flex justify-content-center align-items-center">
+                <button
+                  type="button"
+                  className="btn glow-on-hover text-white btn-sm me-1"
+                  // data-bs-toggle="modal"
+                  // data-bs-target="#billsToPayModal"
+                  // onClick={ () => setSelectExpense(index) }
+                >
+                  Receber
+                </button>
                 <button
                   type="button"
                   className="btn glow-on-hover text-white btn-sm me-1"
@@ -42,10 +51,10 @@ function Income() {
                   type="button"
                   className="btn glow-on-hover text-white btn-sm me-1"
                   // data-bs-toggle="modal"
-                  // data-bs-target="#billsToPayModal"
+                  // data-bs-target="#deleteExpenseModal"
                   // onClick={ () => setSelectExpense(index) }
                 >
-                  Pagar
+                  Excluir
                 </button>
               </div>
             </div>
@@ -55,7 +64,7 @@ function Income() {
       <div className="col-xl-4 col-lg-6 mb-1 p-1">
         <div className="card shadow-sm rounded-3 border border-dark border-1">
           <div className="card-body">
-            <div className="d-flex flex-column ms-3 gap-2 mb-3">
+            <div className="d-flex flex-column ms-1 me-1 gap-2 mb-3">
               <p className="category fw-bold text-muted mb-0">Aluguel</p>
               <p className="value fw-bold text-muted mb-0">Valor R$:1.000</p>
               <p className="due fw-bold text-muted mb-0">Vencimento: 16/06/1983</p>
@@ -71,7 +80,7 @@ function Income() {
       <div className="col-xl-4 col-lg-6 mb-1 p-1">
         <div className="card shadow-sm rounded-3 border border-dark border-1">
           <div className="card-body">
-            <div className="d-flex flex-column ms-3 gap-2 mb-3">
+            <div className="d-flex flex-column ms-1 mb-3">
               <p className="category fw-bold text-muted mb-0">Aluguel</p>
               <p className="value fw-bold text-muted mb-0">Valor R$:1.000</p>
               <p className="due fw-bold text-muted mb-0">Vencimento: 16/06/1983</p>
@@ -87,7 +96,7 @@ function Income() {
       <div className="col-xl-4 col-lg-6 mb-1 p-1">
         <div className="card shadow-sm rounded-3 border border-dark border-1">
           <div className="card-body">
-            <div className="d-flex flex-column ms-3 gap-2 mb-3">
+            <div className="d-flex flex-column ms-1 mb-3">
               <p className="category fw-bold text-muted mb-0">Aluguel</p>
               <p className="value fw-bold text-muted mb-0">Valor R$:1.000</p>
               <p className="due fw-bold text-muted mb-0">Vencimento: 16/06/1983</p>
@@ -103,7 +112,7 @@ function Income() {
       <div className="col-xl-4 col-lg-6 mb-1 p-1">
         <div className="card shadow-sm rounded-3 border border-dark border-1">
           <div className="card-body">
-            <div className="d-flex flex-column ms-3 gap-2 mb-3">
+            <div className="d-flex flex-column ms-1 mb-3">
               <p className="category fw-bold text-muted mb-0">Aluguel</p>
               <p className="value fw-bold text-muted mb-0">Valor R$:1.000</p>
               <p className="due fw-bold text-muted mb-0">Vencimento: 16/06/1983</p>
@@ -119,7 +128,7 @@ function Income() {
       <div className="col-xl-4 col-lg-6 mb-1 p-1">
         <div className="card shadow-sm rounded-3 border border-dark border-1">
           <div className="card-body">
-            <div className="d-flex flex-column ms-3 gap-2 mb-3">
+            <div className="d-flex flex-column ms-1 mb-3">
               <p className="category fw-bold text-muted mb-0">Aluguel</p>
               <p className="value fw-bold text-muted mb-0">Valor R$:1.000</p>
               <p className="due fw-bold text-muted mb-0">Vencimento: 16/06/1983</p>

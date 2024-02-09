@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-max-depth */
-
 import { useContext, useState } from 'react';
 import { format, parse } from 'date-fns';
 import ExpenseContext from '../../contexts/ExpenseContext';
@@ -8,7 +7,7 @@ import HomeContext from '../../contexts/HomeContext';
 
 function ModalToEdit() {
   const { selectExpense, hundleEditExpense, expenses } = useContext(ExpenseContext);
-  const { categories } = useContext(HomeContext);
+  const { categories, theme } = useContext(HomeContext);
   const [initialStateExpenseToEdit] = useState({
     description: '',
     value: '',
@@ -40,8 +39,12 @@ function ModalToEdit() {
     >
       <div className="modal-dialog">
         <div className="modal-content border border-2 border-dark">
-          <div className="modal-header py-2">
-            <div className="ms-auto">
+          <div
+            className={
+              `modal-header text-white bg-${theme === 'light' ? 'primary' : 'dark'}`
+            }
+          >
+            <div className="">
               <h1
                 className="modal-title fs-5"
                 id="editExpenseModalLabel"
