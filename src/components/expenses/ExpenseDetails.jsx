@@ -4,18 +4,18 @@ function ExpenseDetails({ expense }) {
   return (
     <div className="d-flex flex-column ms-3 gap-2 mb-3">
       <p
-        className="category fw-bold mb-0 text-dark"
+        className="category fw-bold mb-0 text-muted"
       >
         {expense.description}
         {' '}
       </p>
       {/* "category fw-bold mb-0 text">{expense.description} */}
-      <p className="value fw-bold mb-0 text-dark">
+      <p className="value fw-bold mb-0 text-muted">
         Valor:
         R$
         {expense.value}
       </p>
-      <p className="date fw-bold mb-0 text-dark ">
+      <p className="date fw-bold mb-0 text-muted">
         Vencimento:
         {' '}
         {expense.date}

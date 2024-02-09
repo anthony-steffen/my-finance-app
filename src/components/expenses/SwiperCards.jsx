@@ -8,6 +8,7 @@ import HomeContext from '../../contexts/HomeContext';
 import ExpenseContext from '../../contexts/ExpenseContext';
 
 import '../../styles/components/SwiperCards.css';
+import '../../styles/components/Lists.css';
 import Avatar from '../../assets/wide01.png';
 
 function SwiperCards() {
@@ -59,7 +60,7 @@ function SwiperCards() {
         </div>
 
         <div className="card-body">
-          <h5 className="card-title text-center">Gastos por categoria</h5>
+          <h5 className="card-title">Gastos por categoria</h5>
           <p className="card-text text-center">
             Você ainda não possui nenhuma despesa cadastrada.
             <br />
@@ -80,12 +81,16 @@ function SwiperCards() {
       data-bs-interval={ 7000 }
       data-bs-pause="hover"
     >
-      <h5
-        className={ theme === 'light' ? 'text-dark' : 'text-light' }
-        style={ { textAlign: 'center' } }
+      <p
+        className={ `
+        text-${theme === 'light' ? 'dark' : 'white'}
+        d-flex align-items-center justify-content-start gap-2 mb-2 ms-3
+        title-carousel fw-bold
+        ` }
+
       >
         Gastos por Categoria
-      </h5>
+      </p>
       <div className="carousel-indicators mb-0">
         <button
           type="button"

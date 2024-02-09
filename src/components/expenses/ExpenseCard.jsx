@@ -12,48 +12,34 @@ function ExpenseCard({ expense, index }) {
   const { setSelectExpense } = useContext(ExpenseContext);
 
   return (
-    <div className="col-xl-4 col-lg-6 p-1">
-      <div
-        className="card shadow-sm rounded-3 border border-dark border-1"
-        // style={ {
-        //   background: 'linear-gradient(180deg, rgba(173,0,0,1) 10%, rgba(98,0,0,1) 100%)',
-        // } }
-      >
+    <div className="col-xl-4 col-lg-6 mb-1 p-1">
+      <div className="card shadow-sm rounded-3 border border-dark border-1">
         <div className="card-body">
-          <ExpenseDetails expense={ expense } />
-          <div className="d-flex justify-content-between align-items-center">
-            <div className="d-flex align-items-center gap-1">
-              <p
-                className="mb-1 ms-3 me-1 text-dark"
-              >
-                {' '}
-                Status
-                :
-              </p>
-              <ExpenseBadge expense={ expense } />
-            </div>
+          <div className="d-flex flex-column ms-3 gap-2 mb-3">
+            <p className="category fw-bold text-muted mb-0">Aluguel</p>
+            <p className="value fw-bold text-muted mb-0">Valor R$:1.000</p>
+            <p className="due fw-bold text-muted mb-0">Vencimento: 16/06/1983</p>
+            <ExpenseBadge expense={ expense } />
             <div className="me-4">
               <button
                 type="button"
                 className="btn glow-on-hover text-white btn-sm me-1"
-                data-bs-toggle="modal"
-                data-bs-target="#editExpenseModal"
-                onClick={ () => setSelectExpense(index) }
+                // data-bs-toggle="modal"
+                // data-bs-target="#editExpenseModal"
+                // onClick={ () => setSelectExpense(index) }
               >
                 Editar
               </button>
               <button
                 type="button"
                 className="btn glow-on-hover text-white btn-sm me-1"
-                data-bs-toggle="modal"
-                data-bs-target="#billsToPayModal"
-                onClick={ () => setSelectExpense(index) }
+                // data-bs-toggle="modal"
+                // data-bs-target="#billsToPayModal"
+                // onClick={ () => setSelectExpense(index) }
               >
                 Pagar
               </button>
             </div>
-            <ModalToPay index={ index } />
-            <ModalToEdit />
           </div>
         </div>
       </div>

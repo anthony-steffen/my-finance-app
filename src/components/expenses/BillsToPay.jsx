@@ -10,12 +10,13 @@ function BillsToPay() {
   const { theme } = useContext(HomeContext);
 
   return (
-    <section className="row row-expense pb-4 pt-3">
+    <section className="row row-expense pb-5 pt-5 ">
       <h5
         className={ `
         title-expense text-${theme === 'light' ? 'dark' : 'white'} 
-        mt-3 mb-2 d-flex align-items-center justify-content-center gap-2
+        d-flex align-items-center justify-content-start ms-3 gap-2
         ` }
+        style={ { width: '90%', margin: 'auto' } }
       >
 
         Contas a pagar

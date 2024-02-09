@@ -6,6 +6,22 @@
     background-color: #f80101;
 }
 
+.title-carousel::after {
+    content:"";
+    display:block;
+    width:50%;
+    height:3px;
+    background-color: #f80101;
+}
+
+.title-income::after {
+    content:"";
+    display:block;
+    width:55%;
+    height:3px;
+    background-color: #067e00;
+}
+
 .row-expense {
     border-top: 2px solid #4a4a4a;
     border-bottom: 2px solid #4a4a4a;
@@ -14,12 +30,4 @@
 .row-income {
     /* border-top: 2px solid #4a4a4a; */
     border-bottom: 2px solid #4a4a4a;
-}
-
-.title-income::after {
-    content:"";
-    display:block;
-    width:50%;
-    height:3px;
-    background-color: #067e00;
 }
