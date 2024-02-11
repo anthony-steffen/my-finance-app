@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-max-depth */
 import { useContext, useState } from 'react';
 import { format, parse } from 'date-fns';
+import { AiOutlineClose } from 'react-icons/ai';
 import ExpenseContext from '../../contexts/ExpenseContext';
 import ExpenseEditForm from './ExpenseEditForm';
 import HomeContext from '../../contexts/HomeContext';
@@ -54,9 +55,9 @@ function ModalToEdit() {
                 Editar Conta
               </h1>
             </div>
-            <button
+            <AiOutlineClose
               type="button"
-              className="btn-close"
+              style={ { fontSize: '1.5rem', color: 'red' } }
               data-bs-dismiss="modal"
               aria-label="Close"
             />

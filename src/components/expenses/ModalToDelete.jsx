@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-max-depth */
 import { useContext } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 import ExpenseContext from '../../contexts/ExpenseContext';
 import HomeContext from '../../contexts/HomeContext';
 
@@ -31,9 +32,9 @@ function ModalToDelete() {
                 Excluir Despesa
               </h1>
             </div>
-            <button
+            <AiOutlineClose
               type="button"
-              className="btn-close"
+              style={ { fontSize: '1.5rem', color: 'red' } }
               data-bs-dismiss="modal"
               aria-label="Close"
             />
