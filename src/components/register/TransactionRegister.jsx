@@ -7,6 +7,7 @@ import { format, addDays } from 'date-fns';
 import { IoMdClose } from 'react-icons/io';
 import HomeContext from '../../contexts/HomeContext';
 import ExpenseContext from '../../contexts/ExpenseContext';
+import IncomeContext from '../../contexts/IncomeContext';
 import InputDescription from './InputDescription';
 import InputValue from './InputValue';
 import InputPayment from './InputPayment';
@@ -19,8 +20,8 @@ import InputDate from './InputDate';
 function TransactionRegister() {
   // Estados do contexto
   const { handleAddExpense } = useContext(ExpenseContext);
-  const { typeRegister, setTypeRegister } = useContext(HomeContext);
-  const { categories } = useContext(HomeContext);
+  const { addIncome } = useContext(IncomeContext);
+  const { categories, typeRegister, setTypeRegister } = useContext(HomeContext);
 
   // Estados locais
   const [ButtonText, setButtonText] = useState('Salvar');
@@ -46,6 +47,18 @@ function TransactionRegister() {
       data.value = formatValue;
 
       handleAddExpense(data);
+      reset();
+      setButtonText('Novo Registro');
+      setSelectedCategory('');
+    }
+    if (typeRegister === 'income') {
+      // Formata a data para o formato 'PT-BR' e adiciona 1 dia
+      data.date = format(addDays(new Date(data.date), 1), 'dd/MM/yyyy');
+      // Formata o valor para duas casas decimais
+      const formatValue = parseFloat(data.value).toFixed(2);
+      data.value = formatValue;
+
+      addIncome(data);
       reset();
       setButtonText('Novo Registro');
       setSelectedCategory('');
