@@ -5,12 +5,14 @@ import ToggleButtonTheme from './ToggleButtonTheme';
 import logo from '../assets/logo.png';
 
 import HomeContext from '../contexts/HomeContext';
+import IncomeContext from '../contexts/IncomeContext';
 
 import '../styles/components/Header.css';
 import '../styles/components/ToggleTheme.css';
 
 function Header() {
   const { theme } = useContext(HomeContext);
+  const { totalIncomes } = useContext(IncomeContext);
   return (
     <header
       className={ `
@@ -36,7 +38,9 @@ function Header() {
           <h3 className="navbar-title mb-0">
             Saldo da conta:
           </h3>
-          <span className="navbar-value">R$ 0,00</span>
+          <span className="navbar-value">
+            {`R$ ${totalIncomes - 0}`}
+          </span>
         </div>
         <button
           className="toggle-button"

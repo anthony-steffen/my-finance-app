@@ -12,6 +12,11 @@ function IncomeProvider({ children }) {
   const [receivedIncomes, setReceivedIncomes] = useState(storedReceivedIncomes);
   const [selectIncome, setSelectIncome] = useState('');
   const [receivedDate, setReceivedDate] = useState('');
+  const [totalIncomes] = useState(
+    storedIncomes.reduce((acc, income) => acc + Number(income.value), 0),
+  );
+
+  console.log(totalIncomes);
 
   const addIncome = useCallback(
     (data) => {
@@ -72,6 +77,7 @@ function IncomeProvider({ children }) {
   const store = useMemo(() => ({
     incomes,
     receivedIncomes,
+    totalIncomes,
     addIncome,
     receiveIncome,
     editIncome,
@@ -81,6 +87,7 @@ function IncomeProvider({ children }) {
   }), [
     incomes,
     receivedIncomes,
+    totalIncomes,
     addIncome,
     receiveIncome,
     editIncome,

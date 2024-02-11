@@ -6,7 +6,7 @@ import HomeContext from '../../contexts/HomeContext';
 
 function ModalToDelete() {
   const { handleDeleteExpense } = useContext(ExpenseContext);
-  const { theme } = useContext(HomeContext);
+  const { theme, typeRegister } = useContext(HomeContext);
   return (
     <div
       className="modal fade"
