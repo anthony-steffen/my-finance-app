@@ -15,6 +15,9 @@ function ExpenseProvider({ children }) {
 
   const [expenses, setExpenses] = useState(storedExpenses);
   const [expensesIds, setExpensesIds] = useState(0);
+  const [totalExpenses] = useState(
+    storedExpenses.reduce((acc, expense) => acc + Number(expense.value), 0),
+  );
   const [paidExpenses, setpaidExpenses] = useState(storedpaidExpenses);
   const [selectExpense, setSelectExpense] = useState('');
   const [paydDate, setPaydDate] = useState('');
@@ -94,6 +97,7 @@ function ExpenseProvider({ children }) {
     typeRegister,
     setTypeRegister,
     expenses,
+    totalExpenses,
     setExpenses,
     selectExpense,
     setSelectExpense,
@@ -106,6 +110,7 @@ function ExpenseProvider({ children }) {
   }), [
     typeRegister, setTypeRegister,
     expenses, setExpenses,
+    totalExpenses,
     selectExpense, setSelectExpense,
     paydDate, setPaydDate,
     handleAddExpense,

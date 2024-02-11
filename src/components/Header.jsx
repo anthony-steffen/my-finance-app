@@ -6,6 +6,7 @@ import logo from '../assets/logo.png';
 
 import HomeContext from '../contexts/HomeContext';
 import IncomeContext from '../contexts/IncomeContext';
+import ExpenseContext from '../contexts/ExpenseContext';
 
 import '../styles/components/Header.css';
 import '../styles/components/ToggleTheme.css';
@@ -13,6 +14,7 @@ import '../styles/components/ToggleTheme.css';
 function Header() {
   const { theme } = useContext(HomeContext);
   const { totalIncomes } = useContext(IncomeContext);
+  const { totalExpenses } = useContext(ExpenseContext);
   return (
     <header
       className={ `
@@ -39,7 +41,7 @@ function Header() {
             Saldo da conta:
           </h3>
           <span className="navbar-value">
-            {`R$ ${totalIncomes - 0}`}
+            {`R$ ${totalIncomes - totalExpenses}`}
           </span>
         </div>
         <button
