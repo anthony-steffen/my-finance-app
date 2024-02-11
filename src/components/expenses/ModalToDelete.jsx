@@ -10,11 +10,13 @@ function ModalToDelete() {
     <div
       className="modal fade"
       id="deleteExpenseModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
       tabIndex="-1"
       aria-labelledby="deleteExpenseModalLabel"
       aria-hidden="true"
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog position-relative start-50 translate-middle-x">
         <div className="modal-content">
           <div
             className={

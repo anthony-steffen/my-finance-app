@@ -13,8 +13,10 @@ function ExpenseCard({ expense, index }) {
   const { setSelectExpense } = useContext(ExpenseContext);
 
   return (
-    <div className="col-xl-4 col-lg-6 mb-1 p-1">
-      <div className="card shadow-sm rounded-3 border border-dark border-1">
+    <div className="col-xl-4 col-lg-6 mb-1 p-2">
+      <div
+        className="card shadow-sm rounded-2 border border-2 border-black"
+      >
         <div className="card-body">
           <div className="d-flex flex-column gap-2">
             <p className="category fw-bold text-muted">
@@ -56,8 +58,7 @@ function ExpenseCard({ expense, index }) {
                 Excluir
               </button>
             </div>
-
-            <ModalToPay index={ index } />
+            <ModalToPay />
             <ModalToEdit />
             <ModalToDelete />
           </div>

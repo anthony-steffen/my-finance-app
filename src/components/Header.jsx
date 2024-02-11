@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-max-depth */
 import { IoMdMenu } from 'react-icons/io';
 import { useContext } from 'react';
-import ToggleTheme from './ToggleTheme';
+import ToggleButtonTheme from './ToggleButtonTheme';
 import logo from '../assets/logo.png';
 
 import HomeContext from '../contexts/HomeContext';
@@ -25,7 +25,7 @@ function Header() {
           justifyContent: 'space-between',
         } }
       >
-        <ToggleTheme />
+        <ToggleButtonTheme />
         <img
           className="img-logo-header"
           src={ logo }

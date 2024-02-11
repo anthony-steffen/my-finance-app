@@ -12,11 +12,13 @@ function ModalToPay() {
     <div
       className="modal fade"
       id="billsToPayModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
       tabIndex="-1"
       aria-labelledby="billsToPayModalLabel"
       aria-hidden="true"
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog position-relative start-50 translate-middle-x">
         <div className="modal-content">
           <div
             className={
@@ -24,10 +26,7 @@ function ModalToPay() {
             }
           >
             <div className="">
-              <h1
-                className="modal-title fs-5"
-                id="billsToPayModalLabel"
-              >
+              <h1 className="modal-title fs-5" id="billsToPayModalLabel">
                 Pagar Conta
               </h1>
             </div>

@@ -18,7 +18,7 @@ function HomeProvider({ children }) {
   const [theme, setTheme] = useState('light');
 
   console.log(theme);
-  const toogleTheme = useCallback(
+  const toggleTheme = useCallback(
     () => {
       setTheme(theme === 'light' ? 'dark' : 'light');
     },
@@ -36,14 +36,14 @@ function HomeProvider({ children }) {
     setSelectedCategory,
     theme,
     setTheme,
-    toogleTheme,
+    toggleTheme,
   }), [
     typeRegister, setTypeRegister,
     categories, setCategories,
     categoryIcons, setCategoryIcons,
     selectedCategory, setSelectedCategory,
     theme, setTheme,
-    toogleTheme,
+    toggleTheme,
   ]);
 
   return (

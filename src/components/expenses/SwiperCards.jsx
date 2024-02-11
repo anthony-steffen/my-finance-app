@@ -9,7 +9,7 @@ import ExpenseContext from '../../contexts/ExpenseContext';
 
 import '../../styles/components/SwiperCards.css';
 import '../../styles/components/Lists.css';
-import Avatar from '../../assets/wide01.png';
+import Avatar from '../../assets/bg01.jpg';
 
 function SwiperCards() {
   const { expenses } = useContext(ExpenseContext);
@@ -75,23 +75,29 @@ function SwiperCards() {
     <div
       id="carouselExampleFade"
       className={ `
-        carousel slide carousel-fade py-2 bg-${theme} rounded-2 shadow mb-3 mt-2 me-1 ms-1
+        w-100 carousel slide carousel-fade py-2 bg-${theme} rounded-2 my-3
         ` }
       data-bs-ride="carousel"
       data-bs-interval={ 7000 }
       data-bs-pause="hover"
-    >
-      <p
-        className={ `
-        text-${theme === 'light' ? 'dark' : 'white'}
-        d-flex align-items-center justify-content-start gap-2 mb-2 ms-3
-        title-carousel fw-bold
-        ` }
 
+    >
+      <h5
+        className={ `
+        text-danger d-flex align-items-center mb-2
+        justify-content-start ms-3 gap-2 fw-bold
+        ` }
+        style={ {
+          width: '90%',
+          margin: 'auto',
+          textDecoration: 'underline',
+          textUnderlineOffset: '0.5rem',
+          textShadow: '1px 1px 0px black',
+        } }
       >
         Gastos por Categoria
-      </p>
-      <div className="carousel-indicators mb-0">
+      </h5>
+      <div className="carousel-indicators">
         <button
           type="button"
           data-bs-target="#carouselExampleFade"
@@ -126,12 +132,15 @@ function SwiperCards() {
               <div className="category-card" key={ elementIndex }>
                 <div
                   className={ `category-card-body 
-                ${theme === 'light' ? 'bg-dark' : 'bg-secundary'}
+           
                 ` }
+                  style={ {
+                    backgroundColor: 'white', boxShadow: '0px 1px 2px 2px black',
+                  } }
                 >
                   <div
                     className={ `
-                  category-card-title ${theme === 'light' ? 'text-white' : 'text-dark'}
+                  category-card-title ${theme === 'light' ? 'text-dark' : 'text-dark'}
                   ` }
                   >
                     {element.category}
@@ -146,7 +155,7 @@ function SwiperCards() {
                     {categoryIcons[element.category]}
                   </div>
                   <div className="category-card-value">
-                    <span className={ theme === 'light' ? 'text-white' : 'text-dark' }>
+                    <span className="text-dark">
                       {element.value.toLocaleString('pt-BR', { style: 'currency',
                         currency: 'BRL' })}
                     </span>

@@ -1,23 +1,12 @@
-ToggleTheme.css
-
 /* styles/themes.css */
 
-:root {
-    --light-background: rgb(255, 255, 255);
-    --light-text: #363537;
-
-    /* Gradient para tema escuro */
-    --dark-background: #363537;
-    --dark-text: #FAFAFA;
-}
-
-/* styles.css */
 .light-theme {
-  background-color: var( --light-background);
-  color: var( --light-text);
+  background: rgb(220, 220, 220);
+  /* color: red; */
 }
 
 .dark-theme {
   background: -webkit-linear-gradient(90deg, #141e30 50%, #243b55 100%);
-  color: var( --dark-text);
+  /* background: red; */
+  /* color: red; */
 }
