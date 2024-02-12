@@ -142,13 +142,13 @@ function Login() {
         </form>
 
         <div className="d-flex justify-content-center text-center pt-1 gap-3">
-          <a href="http://facebook.com" className="text-white" aria-label="Facebook">
+          <a href="https://pt-br.facebook.com/login/device-based/regular/login/" target="_blank" className="text-white" aria-label="Facebook" rel="noreferrer">
             <BsFacebook className="facebook fs-4" />
           </a>
-          <a href="http://linkeding.com" className="linkeding text-white" aria-label="Linkedin">
+          <a href="https://www.linkedin.com/in/anthony-steffen-dev/" target="_blank" className="linkeding text-white" aria-label="Linkedin" rel="noreferrer">
             <BsLinkedin className="fs-4" />
           </a>
-          <a href="http://instagram.com" className="instagram text-white" aria-label="Instagram">
+          <a href="https://www.instagram.com/_anthony.steffen_/" target="_blank" className="instagram text-white" aria-label="Instagram" rel="noreferrer">
             <BsInstagram className="fs-4" />
           </a>
         </div>
