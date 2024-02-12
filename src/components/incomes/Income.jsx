@@ -37,7 +37,7 @@ function Income() {
               `card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
             }
           >
-            Recebimentos, e agora?
+            Recebimentos?
           </h5>
           <p className={ `text-${theme === 'light' ? 'dark' : 'light'}` }>
             Aqui, lhe mostraremos o resumo das suas receitas.
