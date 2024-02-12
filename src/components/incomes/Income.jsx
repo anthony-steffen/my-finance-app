@@ -66,9 +66,9 @@ function Income() {
                   <button
                     type="button"
                     className="btn glow-on-hover text-white btn-sm me-1"
-                  // data-bs-toggle="modal"
-                  // data-bs-target="#editIncomeModal"
-                  // onClick={ () => setSelectIncome(index) }
+                    data-bs-toggle="modal"
+                    data-bs-target="#editIncomeModal"
+                    onClick={ () => setSelectIncome(index) }
                   >
                     Editar
                   </button>

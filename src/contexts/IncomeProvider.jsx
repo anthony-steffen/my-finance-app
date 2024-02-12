@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import IncomeContext from './IncomeContext';
 
@@ -6,17 +6,19 @@ const { Provider } = IncomeContext;
 function IncomeProvider({ children }) {
   const storedIncomes = JSON.parse(localStorage.getItem('receitas')) || [];
   const storedReceivedIncomes = JSON.parse(localStorage.getItem('recebidas')) || [];
-
   const [incomes, setIncomes] = useState(storedIncomes);
   const [incomesIds, setIncomesIds] = useState(0);
   const [receivedIncomes, setReceivedIncomes] = useState(storedReceivedIncomes);
   const [selectIncome, setSelectIncome] = useState('');
   const [receivedDate, setReceivedDate] = useState('');
-  const [totalIncomes] = useState(
-    storedIncomes.reduce((acc, income) => acc + Number(income.value), 0),
-  );
+  const [totalIncomes, setTotalIncomes] = useState(0);
 
-  console.log(totalIncomes);
+  useEffect(() => {
+    const amout = incomes.reduce((acc, income) => acc + Number(income.value), 0);
+    setTotalIncomes(amout);
+  }, [incomes]);
+
+  // console.log(totalIncomes);
 
   const addIncome = useCallback(
     (data) => {
@@ -78,6 +80,7 @@ function IncomeProvider({ children }) {
     incomes,
     receivedIncomes,
     totalIncomes,
+    selectIncome,
     addIncome,
     receiveIncome,
     editIncome,
@@ -88,6 +91,7 @@ function IncomeProvider({ children }) {
     incomes,
     receivedIncomes,
     totalIncomes,
+    selectIncome,
     addIncome,
     receiveIncome,
     editIncome,

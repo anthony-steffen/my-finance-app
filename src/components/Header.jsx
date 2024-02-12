@@ -41,7 +41,7 @@ function Header() {
             Saldo da conta:
           </h3>
           <span className="navbar-value">
-            {`R$ ${totalIncomes - totalExpenses}`}
+            {`R$ ${(totalIncomes - totalExpenses).toFixed(2)}`}
           </span>
         </div>
         <button

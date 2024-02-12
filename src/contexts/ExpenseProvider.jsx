@@ -1,4 +1,4 @@
-import { useCallback, useContext, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import ExpenseContext from './ExpenseContext';
 import HomeContext from './HomeContext';
@@ -12,12 +12,15 @@ function ExpenseProvider({ children }) {
   const { typeRegister, setTypeRegister } = useContext(HomeContext);
   const [expenses, setExpenses] = useState(storedExpenses);
   const [expensesIds, setExpensesIds] = useState(0);
-  const [totalExpenses] = useState(
-    storedExpenses.reduce((acc, expense) => acc + Number(expense.value), 0),
-  );
   const [paidExpenses, setpaidExpenses] = useState(storedpaidExpenses);
   const [selectExpense, setSelectExpense] = useState('');
   const [paydDate, setPaydDate] = useState('');
+  const [totalExpenses, setTotalExpenses] = useState(0);
+
+  useEffect(() => {
+    const amout = expenses.reduce((acc, income) => acc + Number(income.value), 0);
+    setTotalExpenses(amout);
+  }, [expenses]);
 
   console.log(selectExpense);
 
@@ -60,17 +63,7 @@ function ExpenseProvider({ children }) {
     (data) => {
       const updatedExpenses = expenses.map((expense, index) => {
         if (index === selectExpense) {
-          return {
-            ...expense,
-            description: data.description,
-            value: data.value,
-            paymentMethod: data.paymentMethod,
-            category: data.category,
-            subCategory: data.subCategory,
-            payer: data.payer,
-            receiver: data.receiver,
-            date: data.date,
-          };
+          return { ...expense, ...data };
         }
         return expense;
       });

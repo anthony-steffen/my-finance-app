@@ -7,9 +7,13 @@ import IncomeEditForm from './IncomeEditForm';
 import HomeContext from '../../contexts/HomeContext';
 
 function ModalToEditIncome() {
-  const { selectExpense, editIncome, incomes } = useContext(IncomeContext);
+  const { selectIncome, editIncome, incomes } = useContext(IncomeContext);
   const { categories, theme } = useContext(HomeContext);
-  const [initialStateExpenseToEdit] = useState({
+  console.log('SELECT INCOME', selectIncome);
+  console.log('INCOMES', incomes);
+  console.log('EDIT INCOME', editIncome);
+
+  const [initialStateIncomeToEdit] = useState({
     description: '',
     value: '',
     paymentMethod: '',
@@ -19,7 +23,7 @@ function ModalToEditIncome() {
     receiver: '',
     date: format(new Date(), 'dd/MM/yyyy'),
   });
-  const incomeSelected = incomes[selectExpense];
+  const incomeSelected = incomes[selectIncome];
 
   const onSubmit = (data) => {
     // Formata a data para novamente para ser salva no padrão'PT-BR'
@@ -65,7 +69,7 @@ function ModalToEditIncome() {
           <div className="modal-body d-flex flex-column align-items-center py-1">
             <IncomeEditForm
               onSubmit={ onSubmit }
-              incomeSelected={ incomeSelected || initialStateExpenseToEdit }
+              incomeSelected={ incomeSelected || initialStateIncomeToEdit }
               categories={ categories }
             />
           </div>
