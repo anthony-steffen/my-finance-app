@@ -1,10 +1,14 @@
 import { IoIosAdd, IoMdClose } from 'react-icons/io';
 
+import { useContext } from 'react';
+import HomeContext from '../../contexts/HomeContext';
+
 import TransactionRegister from './TransactionRegister';
 import '../../styles/components/OffCanvas.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function OffCanvas() {
+  const { theme } = useContext(HomeContext);
   return (
     <section className="fixed-bottom mb-9">
       <div className="btn-register-container d-flex justify-content-end me-2">
@@ -28,13 +32,10 @@ function OffCanvas() {
         style={ { width: '100vw', height: '100vh' } }
       >
         <div
-          className="
-          offcanvas-header
-          bg-primary
-          text-white
-          d-flex
-          justify-content-between
-          "
+          className={ `
+          offcanvas-header d-flex justify-content-between text-white
+          ${theme === 'light' ? 'bg-primary' : 'bg-dark'}
+          ` }
           style={ { height: '10vh' } }
         >
           <h3 className="d-flex w-100 justify-content-center"> Registro de Transações</h3>

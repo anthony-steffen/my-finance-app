@@ -21,7 +21,7 @@ function TransactionRegister() {
   // Estados do contexto
   const { handleAddExpense } = useContext(ExpenseContext);
   const { addIncome } = useContext(IncomeContext);
-  const { categories, typeRegister, setTypeRegister } = useContext(HomeContext);
+  const { categories, typeRegister, setTypeRegister, theme } = useContext(HomeContext);
 
   // Estados locais
   const [ButtonText, setButtonText] = useState('Salvar');
@@ -74,7 +74,7 @@ function TransactionRegister() {
       >
         <InputDescription register={ register } />
         <div id="payerHelpBlock" className="form-text mt-0 mb-1">
-          Ex: nome de quem paga.
+          Ex: Compras Supermercado.
           {errors.payer
           && <p className="text-danger text-danger mb-1">{errors.payer.message}</p>}
         </div>
@@ -141,7 +141,10 @@ function TransactionRegister() {
         </div>
         <button
           type="click"
-          className="btn btn-sm btn-primary"
+          className={ `
+          btn btn-sm text-white ${theme === 'light' ? 'btn-primary' : 'glow-on-hover'}
+          ` }
+          // className="btn btn-sm btn-primary"
           onClick={ handleSubmit(onSubmit) }
         >
           {ButtonText}
