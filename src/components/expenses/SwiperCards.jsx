@@ -9,7 +9,7 @@ import ExpenseContext from '../../contexts/ExpenseContext';
 
 import '../../styles/components/SwiperCards.css';
 import '../../styles/components/Lists.css';
-import Avatar from '../../assets/bg01.jpg';
+import Avatar from '../../assets/pb01.png';
 
 function SwiperCards() {
   const { expenses } = useContext(ExpenseContext);
@@ -46,25 +46,31 @@ function SwiperCards() {
   // Renderiza um card por padrão caso não exista nenhuma despesa
   if (expenses.length === 0) {
     return (
-      <div className="card mb-3">
+      <div className="card text-center bg-light mt-3 mb-3 col-xl-7 mx-auto">
         <div
           className="img-container"
         >
-
           <img
             src={ Avatar }
-            className="card-img-top"
+            className="col-12 col-md-6 col-xl-3 mx-auto d-block my-1 rounded-2"
             alt="..."
-            style={ { width: '100%', height: '30vh', objectFit: 'cover' } }
           />
         </div>
-
-        <div className="card-body">
-          <h5 className="card-title">Gastos por categoria</h5>
-          <p className="card-text text-center">
-            Você ainda não possui nenhuma despesa cadastrada.
-            <br />
-            Cadastre suas despesas e acompanhe aqui seus gastos por categoria.
+        <div className={ `card-body bg-${theme} py-3 px-2` }>
+          <h5
+            className={
+              `card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
+            }
+          >
+            Gastos por categoria.
+          </h5>
+          <p
+            className={
+              `card-text text-center text-${theme === 'light' ? 'dark' : 'light'}`
+            }
+          >
+            Cadastre suas despesas e nós mostraremos
+            seus gastos por categoria nesta seção.
           </p>
         </div>
       </div>

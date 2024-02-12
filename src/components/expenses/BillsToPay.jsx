@@ -1,15 +1,48 @@
 import { useContext } from 'react';
 import ExpenseContext from '../../contexts/ExpenseContext';
-// import HomeContext from '../../contexts/HomeContext';
+import HomeContext from '../../contexts/HomeContext';
 
 import '../../styles/components/Lists.css';
 import ExpenseCard from './ExpenseCard';
-// import Avatar from '../../assets/inc02.png';
+import Avatar from '../../assets/pb02.png';
 
 function BillsToPay() {
   const { expenses } = useContext(ExpenseContext);
-  // const { theme } = useContext(HomeContext);
+  const { theme } = useContext(HomeContext);
 
+  if (expenses.length === 0) {
+    return (
+      <div
+        className="card text-center bg-light mt-3 mb-3 col-xl-7 mx-auto"
+      >
+        <div
+          className="img-container"
+        >
+          <img
+            src={ Avatar }
+            className="
+            col-12 col-md-6 col-xl-3 mx-auto d-block my-1 rounded-2
+
+            "
+            alt="..."
+          />
+        </div>
+        <div className={ `card-body bg-${theme} py-3 px-2` }>
+          <h5
+            className={
+              `card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
+            }
+          >
+            Vencimentos, e agora?
+          </h5>
+          <p className={ `text-${theme === 'light' ? 'dark' : 'light'}` }>
+            Ajudamos você a lembrar de todas as suas contas.
+            Adicione-as e fique tranquilo.
+          </p>
+        </div>
+      </div>
+    );
+  }
   return (
     <section className="row row-expense py-3 mt-4 bg-light">
       <h5

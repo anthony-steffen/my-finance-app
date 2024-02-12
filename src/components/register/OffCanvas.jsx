@@ -11,7 +11,7 @@ function OffCanvas() {
         <span className="text-black" />
         <button
           type="button"
-          className="btn-inc bg-success fs-3"
+          className="btn-inc bg-primary fs-3"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasRight"
           aria-controls="offcanvasRight"
