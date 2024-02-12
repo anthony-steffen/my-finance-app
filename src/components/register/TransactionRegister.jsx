@@ -115,7 +115,7 @@ function TransactionRegister() {
         className="save-menu w-100 d-flex flex-row justify-content-center gap-4
           align-items-center mt-3"
       >
-        <div className="form-check">
+        <div className="form-check d-flex align-items-center">
           <input
             className="form-check-input"
             type="radio"
@@ -123,11 +123,11 @@ function TransactionRegister() {
             id="flexRadioDefault1"
             onChange={ () => setTypeRegister('income') }
           />
-          <label className="form-check-label text-dark " htmlFor="flexRadioDefault1">
+          <label className="form-check-label text-dark" htmlFor="flexRadioDefault1">
             Receita
           </label>
         </div>
-        <div className="form-check">
+        <div className="form-check d-flex align-items-center">
           <input
             className="form-check-input"
             type="radio"
