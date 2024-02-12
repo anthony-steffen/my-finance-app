@@ -2,21 +2,21 @@
 
 import { useContext } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
-import ExpenseContext from '../../contexts/ExpenseContext';
+import IncomeContext from '../../contexts/IncomeContext';
 import HomeContext from '../../contexts/HomeContext';
 
-function ModalToPayExpense() {
-  const { paydDate, setPaydDate, handlePayExpense } = useContext(ExpenseContext);
+function ModalToReceiveIncome() {
+  const { receivedDate, setReceivedDate, receiveIncome } = useContext(IncomeContext);
   const { theme } = useContext(HomeContext);
 
   return (
     <div
       className="modal fade"
-      id="billsToPayModal"
+      id="IncomeToReceiveModal"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
       tabIndex="-1"
-      aria-labelledby="billsToPayModalLabel"
+      aria-labelledby="IncomeToReceiveModalLabel"
       aria-hidden="true"
     >
       <div className="modal-dialog position-relative start-50 translate-middle-x">
@@ -27,7 +27,7 @@ function ModalToPayExpense() {
             }
           >
             <div className="">
-              <h1 className="modal-title fs-5" id="billsToPayModalLabel">
+              <h1 className="modal-title fs-5" id="IncomeToReceiveModalLabel">
                 Pagar Conta
               </h1>
             </div>
@@ -43,8 +43,8 @@ function ModalToPayExpense() {
             <input
               type="date"
               className="form-control mb-3 w-50"
-              value={ paydDate }
-              onChange={ (e) => setPaydDate(e.target.value) }
+              value={ receivedDate }
+              onChange={ (e) => setReceivedDate(e.target.value) }
             />
           </div>
           <div className="modal-footer d-flex justify-content-center">
@@ -53,7 +53,7 @@ function ModalToPayExpense() {
               className="btn btn-primary"
               data-bs-dismiss="modal"
               aria-label="Close"
-              onClick={ handlePayExpense }
+              onClick={ receiveIncome }
             >
               Salvar
             </button>
@@ -64,4 +64,4 @@ function ModalToPayExpense() {
   );
 }
 
-export default ModalToPayExpense;
+export default ModalToReceiveIncome;

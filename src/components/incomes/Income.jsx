@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import IncomeContext from '../../contexts/IncomeContext';
 import ModalToDeleteIncome from './ModalToDeleteIncome';
 import ModalToEditIncome from './ModalToEditIncome';
+import ModalToReceiveIncome from './ModalToReceiveIncome';
 
 function Income() {
   const { incomes } = useContext(IncomeContext);
@@ -57,9 +58,9 @@ function Income() {
                   <button
                     type="button"
                     className="btn glow-on-hover text-white btn-sm me-1"
-                  // data-bs-toggle="modal"
-                  // data-bs-target="#receiveIncomeModal"
-                  // onClick={ () => setSelectIncome(index) }
+                    data-bs-toggle="modal"
+                    data-bs-target="#IncomeToReceiveModal"
+                    onClick={ () => setSelectIncome(index) }
                   >
                     Receber
                   </button>
@@ -83,6 +84,7 @@ function Income() {
                   </button>
                   <ModalToDeleteIncome />
                   <ModalToEditIncome />
+                  <ModalToReceiveIncome />
                 </div>
               </div>
             </div>
