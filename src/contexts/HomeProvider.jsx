@@ -7,10 +7,6 @@ import HomeContext from './HomeContext';
 const { Provider } = HomeContext;
 
 function HomeProvider({ children }) {
-  // Ao inicializar, busca os dados da transação no localStorage
-  // Caso não exista, retorna um array vazio para o estado inicial - transaction
-
-  // const [transaction, setTransaction] = useState(initialTransaction);
   const [categories, setCategories] = useState(categoriesJson);
   const [typeRegister, setTypeRegister] = useState('');
   const [categoryIcons, setCategoryIcons] = useState(Icons);

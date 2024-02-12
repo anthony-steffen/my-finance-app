@@ -56,7 +56,7 @@ function ModalToEditIncome() {
                 className="modal-title fs-5"
                 id="editIncomeModalLabel"
               >
-                Editar Conta
+                Editar Receita
               </h1>
             </div>
             <AiOutlineClose

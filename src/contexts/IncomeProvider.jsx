@@ -14,8 +14,8 @@ function IncomeProvider({ children }) {
   const [totalIncomes, setTotalIncomes] = useState(0);
 
   useEffect(() => {
-    const amout = incomes.reduce((acc, income) => acc + Number(income.value), 0);
-    setTotalIncomes(amout);
+    const amount = incomes.reduce((acc, income) => acc + Number(income.value), 0);
+    setTotalIncomes(amount);
   }, [incomes]);
 
   // console.log(totalIncomes);

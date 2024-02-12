@@ -8,18 +8,18 @@ const { Provider } = ExpenseContext;
 function ExpenseProvider({ children }) {
 // Busca as despesas no localStorage e caso não exista, retorna um array vazio
   const storedExpenses = JSON.parse(localStorage.getItem('despesas')) || [];
-  const storedpaidExpenses = JSON.parse(localStorage.getItem('despesasPagas')) || [];
+  const storedPaidExpenses = JSON.parse(localStorage.getItem('despesasPagas')) || [];
   const { typeRegister, setTypeRegister } = useContext(HomeContext);
   const [expenses, setExpenses] = useState(storedExpenses);
   const [expensesIds, setExpensesIds] = useState(0);
-  const [paidExpenses, setpaidExpenses] = useState(storedpaidExpenses);
+  const [paidExpenses, setpaidExpenses] = useState(storedPaidExpenses);
   const [selectExpense, setSelectExpense] = useState('');
   const [paydDate, setPaydDate] = useState('');
   const [totalExpenses, setTotalExpenses] = useState(0);
 
   useEffect(() => {
-    const amout = expenses.reduce((acc, income) => acc + Number(income.value), 0);
-    setTotalExpenses(amout);
+    const amount = expenses.reduce((acc, income) => acc + Number(income.value), 0);
+    setTotalExpenses(amount);
   }, [expenses]);
 
   console.log(selectExpense);
