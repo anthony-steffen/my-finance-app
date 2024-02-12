@@ -1,20 +1,22 @@
 /* eslint-disable react/jsx-max-depth */
+
 import { useContext } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import ExpenseContext from '../../contexts/ExpenseContext';
 import HomeContext from '../../contexts/HomeContext';
 
-function ModalToDelete() {
-  const { handleDeleteExpense } = useContext(ExpenseContext);
-  const { theme, typeRegister } = useContext(HomeContext);
+function ModalToPayExpense() {
+  const { paydDate, setPaydDate, handlePayExpense } = useContext(ExpenseContext);
+  const { theme } = useContext(HomeContext);
+
   return (
     <div
       className="modal fade"
-      id="deleteExpenseModal"
+      id="billsToPayModal"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
       tabIndex="-1"
-      aria-labelledby="deleteExpenseModalLabel"
+      aria-labelledby="billsToPayModalLabel"
       aria-hidden="true"
     >
       <div className="modal-dialog position-relative start-50 translate-middle-x">
@@ -25,11 +27,8 @@ function ModalToDelete() {
             }
           >
             <div className="">
-              <h1
-                className="modal-title fs-5"
-                id="deleteExpenseModalLabel"
-              >
-                Excluir Despesa
+              <h1 className="modal-title fs-5" id="billsToPayModalLabel">
+                Pagar Conta
               </h1>
             </div>
             <AiOutlineClose
@@ -40,20 +39,23 @@ function ModalToDelete() {
             />
           </div>
           <div className="modal-body d-flex flex-column align-items-center">
-            <p className="fw-bold text-muted"> Deseja realmente excluir essa despesa? </p>
+            <p className="fw-bold"> Quando essa despesa foi paga? </p>
+            <input
+              type="date"
+              className="form-control mb-3 w-50"
+              value={ paydDate }
+              onChange={ (e) => setPaydDate(e.target.value) }
+            />
           </div>
           <div className="modal-footer d-flex justify-content-center">
             <button
               type="button"
-              className={
-                `btn text-white ${theme === 'light' ? 'btn-primary' : 'glow-on-hover'}`
-              }
-              //   "btn glow-on-hover text-white"
+              className="btn btn-primary"
               data-bs-dismiss="modal"
               aria-label="Close"
-              onClick={ handleDeleteExpense }
+              onClick={ handlePayExpense }
             >
-              Excluir
+              Salvar
             </button>
           </div>
         </div>
@@ -62,4 +64,4 @@ function ModalToDelete() {
   );
 }
 
-export default ModalToDelete;
+export default ModalToPayExpense;

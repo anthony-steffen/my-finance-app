@@ -6,7 +6,7 @@ import ExpenseContext from '../../contexts/ExpenseContext';
 import ExpenseEditForm from './ExpenseEditForm';
 import HomeContext from '../../contexts/HomeContext';
 
-function ModalToEdit() {
+function ModalToEditExpense() {
   const { selectExpense, hundleEditExpense, expenses } = useContext(ExpenseContext);
   const { categories, theme } = useContext(HomeContext);
   const [initialStateExpenseToEdit] = useState({
@@ -74,4 +74,4 @@ function ModalToEdit() {
     </div>
   );
 }
-export default ModalToEdit;
+export default ModalToEditExpense;

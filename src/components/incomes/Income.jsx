@@ -1,10 +1,12 @@
 /* eslint-disable react/jsx-max-depth */
 import { useContext } from 'react';
 import IncomeContext from '../../contexts/IncomeContext';
+import ModalToDeleteIncome from './ModalToDeleteIncome';
+import ModalToEditIncome from './ModalToEditIncome';
 
 function Income() {
   const { incomes } = useContext(IncomeContext);
-  console.log(incomes);
+  const { setSelectIncome } = useContext(IncomeContext);
   return (
     <section
       className="row row-expense pb-4 py-3 my-4"
@@ -56,8 +58,8 @@ function Income() {
                     type="button"
                     className="btn glow-on-hover text-white btn-sm me-1"
                   // data-bs-toggle="modal"
-                  // data-bs-target="#billsToPayModal"
-                  // onClick={ () => setSelectExpense(index) }
+                  // data-bs-target="#receiveIncomeModal"
+                  // onClick={ () => setSelectIncome(index) }
                   >
                     Receber
                   </button>
@@ -65,20 +67,22 @@ function Income() {
                     type="button"
                     className="btn glow-on-hover text-white btn-sm me-1"
                   // data-bs-toggle="modal"
-                  // data-bs-target="#editExpenseModal"
-                  // onClick={ () => setSelectExpense(index) }
+                  // data-bs-target="#editIncomeModal"
+                  // onClick={ () => setSelectIncome(index) }
                   >
                     Editar
                   </button>
                   <button
                     type="button"
                     className="btn glow-on-hover text-white btn-sm me-1"
-                  // data-bs-toggle="modal"
-                  // data-bs-target="#deleteExpenseModal"
-                  // onClick={ () => setSelectExpense(index) }
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteIncomeModal"
+                    onClick={ () => setSelectIncome(index) }
                   >
                     Excluir
                   </button>
+                  <ModalToDeleteIncome />
+                  <ModalToEditIncome />
                 </div>
               </div>
             </div>

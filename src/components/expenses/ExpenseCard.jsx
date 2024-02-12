@@ -2,12 +2,12 @@
 
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
-import ModalToPay from './ModalToPay';
+import ModalToPayExpense from './ModalToPayExpense';
 // import ExpenseDetails from './ExpenseDetails';
 import ExpenseBadge from './ExpenseBadge';
 import ExpenseContext from '../../contexts/ExpenseContext';
-import ModalToEdit from './ModalToEdit';
-import ModalToDelete from './ModalToDelete';
+import ModalToEditExpense from './ModalToEditExpense';
+import ModalToDeleteExpense from './ModalToDeleteExpense';
 
 function ExpenseCard({ expense, index }) {
   const { setSelectExpense } = useContext(ExpenseContext);
@@ -58,9 +58,9 @@ function ExpenseCard({ expense, index }) {
                 Excluir
               </button>
             </div>
-            <ModalToPay />
-            <ModalToEdit />
-            <ModalToDelete />
+            <ModalToPayExpense />
+            <ModalToEditExpense />
+            <ModalToDeleteExpense />
           </div>
         </div>
       </div>

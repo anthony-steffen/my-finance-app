@@ -1,0 +1,116 @@
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import propTypes from 'prop-types';
+import { format, parse } from 'date-fns';
+import InputDescription from '../register/InputDescription';
+import InputValue from '../register/InputValue';
+import InputPayment from '../register/InputPayment';
+import InputPayer from '../register/InputPayer';
+import InputReceiver from '../register/InputReceiver';
+import InputCategories from '../register/InputCategories';
+import InputDate from '../register/InputDate';
+
+function IncomeEditForm({ incomeSelected, onSubmit }) {
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+
+  useEffect(() => {
+    if (incomeSelected) {
+      setValue('description', incomeSelected.description);
+      setValue('value', incomeSelected.value);
+      setValue('paymentMethod', incomeSelected.paymentMethod);
+      setValue('category', incomeSelected.category);
+      setValue('subCategory', incomeSelected.subCategory);
+      setValue('payer', incomeSelected.payer);
+      setValue('receiver', incomeSelected.receiver);
+      const formatDate = format(
+        parse(incomeSelected.date, 'dd/MM/yyyy', new Date()),
+        'yyyy-MM-dd',
+      );// Formata a data para o formato do input date
+      setValue('date', formatDate);
+    }
+  }, [incomeSelected, setValue]);
+  return (
+    <form
+      className="form-register col-9 col-lg-5 col-xl-6"
+      onSubmit={ handleSubmit(onSubmit) }
+    >
+      <p className="text-dark mb-1">
+        Descrição
+        <InputDescription register={ register } />
+      </p>
+      <div id="descriptionHelpBlock" className="form-text mb-0 mt-0">
+        {errors.description
+                  && <p className="text-danger mb-2">{errors.description.message}</p>}
+      </div>
+
+      <p className="text-dark mb-1">
+        Valor
+        <InputValue register={ register } />
+      </p>
+      <div id="valueHelpBlock" className="form-text mb-0 mt-0">
+        {errors.value
+                  && <p className="text-danger mb-2">{errors.value.message}</p>}
+      </div>
+
+      <p className="text-dark mb-1">Método de pagamento</p>
+      <InputPayment register={ register } />
+      <div id="paymentMethodHelpBlock" className="form-text mb-0 mt-0" />
+
+      <p className="text-dark mb-1">
+        Pagador
+        <InputPayer register={ register } />
+      </p>
+      <div id="payerHelpBlock" className="form-text mb-0 mt-0">
+        {errors.payer
+                  && <p className="text-danger mb-2">{errors.payer.message}</p>}
+      </div>
+      <p className="text-dark mb-1">
+        Beneficiário
+        <InputReceiver register={ register } />
+      </p>
+      <div id="receiverHelpBlock" className="form-text mb-0 mt-0">
+        {errors.receiver
+                  && <p className="text-danger mb-2">{errors.receiver.message}</p>}
+      </div>
+
+      <p className="text-dark mb-1">
+        Categoria
+      </p>
+      <InputCategories register={ register } />
+
+      <InputDate register={ register } />
+      <div id="dateHelpBlock" className="form-text mb-0 mt-0">
+        {errors.date
+                  && <p className="text-danger mb-2">{errors.date.message}</p>}
+      </div>
+
+      <div className="modal-footer d-flex justify-content-center">
+        <button
+          type="submit"
+          className="btn btn-primary"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          Salvar
+        </button>
+      </div>
+    </form>
+  );
+}
+
+export default IncomeEditForm;
+
+IncomeEditForm.propTypes = {
+  incomeSelected: propTypes.shape({
+    id: propTypes.number,
+    description: propTypes.string,
+    value: propTypes.string,
+    paymentMethod: propTypes.string,
+    category: propTypes.string,
+    subCategory: propTypes.string,
+    payer: propTypes.string,
+    receiver: propTypes.string,
+    date: propTypes.string,
+  }).isRequired,
+  onSubmit: propTypes.func.isRequired,
+};

@@ -9,10 +9,7 @@ function ExpenseProvider({ children }) {
 // Busca as despesas no localStorage e caso não exista, retorna um array vazio
   const storedExpenses = JSON.parse(localStorage.getItem('despesas')) || [];
   const storedpaidExpenses = JSON.parse(localStorage.getItem('despesasPagas')) || [];
-
-  // Busca o tipo de registro no contexto Home
   const { typeRegister, setTypeRegister } = useContext(HomeContext);
-
   const [expenses, setExpenses] = useState(storedExpenses);
   const [expensesIds, setExpensesIds] = useState(0);
   const [totalExpenses] = useState(
@@ -21,6 +18,8 @@ function ExpenseProvider({ children }) {
   const [paidExpenses, setpaidExpenses] = useState(storedpaidExpenses);
   const [selectExpense, setSelectExpense] = useState('');
   const [paydDate, setPaydDate] = useState('');
+
+  console.log(selectExpense);
 
   const handleAddExpense = useCallback(
     (data) => {
