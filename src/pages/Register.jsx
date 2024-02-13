@@ -72,7 +72,7 @@ function Register() {
         <h4 className="title text-white">Register</h4>
 
         <form
-          className="row g-3 ps-3 pe-3"
+          className="row gap-3 ps-3 pe-3"
           onSubmit={ handleSubmit(handleUserRegistration) }
         >
           <div className="col-md-6">

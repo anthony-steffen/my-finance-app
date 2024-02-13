@@ -14,12 +14,11 @@ function Footer() {
         text-light text-center py-1 sticky-bottom`
       }
     >
-      {/* <footer className="bg-dark text-light text-center py-3"></footer> */}
       <div className="container-footer">
         <div className="d-flex flex-row justify-content-between px-4">
-          <a href="/sobre" className="text-light">Sobre Nós</a>
           <a href="/" className="text-light">Página Inicial</a>
-          <a href="/contato" className="text-light">Contato</a>
+          <a href="/my-finance-app/#/about " className="text-light">Sobre Nós</a>
+          <a href="/my-finance-app/#/contact" className="text-light">Contato</a>
         </div>
         <div
           className="
