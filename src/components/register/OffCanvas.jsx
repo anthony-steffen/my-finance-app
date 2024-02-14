@@ -1,29 +1,19 @@
-import { IoIosAdd, IoMdClose } from 'react-icons/io';
+import { IoMdClose } from 'react-icons/io';
 
 import { useContext } from 'react';
 import HomeContext from '../../contexts/HomeContext';
 
 import TransactionRegister from './TransactionRegister';
+import BtnAdd from './BtnAdd';
 
 function OffCanvas() {
   const { theme } = useContext(HomeContext);
   return (
-    <div className="mb-5 fixed-bottom">
-      <div className="d-flex justify-content-end align-items-center me-3 mb-5 pb-4">
-        <button
-          type="button"
-          className="bg-primary rounded-circle d-flex
-          justify-content-center align-items-center text-white border
-          border-white border-1 fs-3"
-          style={ { width: '40px', height: '40px' } }
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasRight"
-          aria-controls="offcanvasRight"
-        >
-          {' '}
-          <IoIosAdd />
-        </button>
-      </div>
+    <section style={ { position: 'fixed', bottom: '17vh', right: '1rem' } }>
+      {/* <div> */}
+      <BtnAdd />
+      {/* </div> */}
+
       <div
         className="offcanvas offcanvas-end"
         tabIndex="-1"
@@ -57,7 +47,7 @@ function OffCanvas() {
           <TransactionRegister />
         </div>
       </div>
-    </div>
+    </section>
 
   );
 }

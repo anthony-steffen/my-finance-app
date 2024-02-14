@@ -13,7 +13,7 @@ function Footer() {
     <footer
       className={
         `${theme === 'light' ? 'bg-primary' : 'bg-dark'} 
-        text-light text-center py-1 sticky-bottom`
+        text-light text-center py-1 sticky-bottom mt-2`
       }
     >
       <div className="container-footer">
