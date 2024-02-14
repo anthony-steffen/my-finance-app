@@ -4,7 +4,7 @@ import SwiperCards from './expenses/SwiperCards';
 import BillsToPay from './expenses/BillsToPay';
 import Income from './incomes/Income';
 import OffCanvas from './register/OffCanvas';
-import Footer from './Footer';
+import Footer from './footer/Footer';
 
 import HomeContext from '../contexts/HomeContext';
 import '../styles/components/ToggleTheme.css';

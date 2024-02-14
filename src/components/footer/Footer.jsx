@@ -1,9 +1,10 @@
-import '../styles/components/Footer.css';
+import '../../styles/components/Footer.css';
 
 import { useContext } from 'react';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3 } from 'react-icons/fa';
 import { SiBootstrap } from 'react-icons/si';
-import HomeContext from '../contexts/HomeContext';
+import { Link } from 'react-router-dom';
+import HomeContext from '../../contexts/HomeContext';
 
 function Footer() {
   const { theme } = useContext(HomeContext);
@@ -16,9 +17,15 @@ function Footer() {
     >
       <div className="container-footer">
         <div className="d-flex flex-row justify-content-between px-4">
-          <a href="/" className="text-light">Página Inicial</a>
-          <a href="/my-finance-app/#/about " className="text-light">Sobre Nós</a>
-          <a href="/my-finance-app/#/contact" className="text-light">Contato</a>
+          <Link to="/" className="text-light">
+            Página Inicial
+          </Link>
+          <Link to="/about" className="text-light">
+            Sobre Nós
+          </Link>
+          <Link to="/contact" className="text-light">
+            Contato
+          </Link>
         </div>
         <div
           className="
