@@ -38,7 +38,7 @@ function Login() {
 
   return (
     <section className="login-container vh-100 gradient-custom">
-      <div className=" login-card col-11 col-sm-10 col-md-8 col-lg-6 col-xl-4 mt-3">
+      <div className=" login-card col-6 col-sm-10 col-md-8 col-lg-6 col-xl-4">
         <h4 className="tittle text-white my-1">Vamos poupar Juntos?</h4>
         <p
           className="text-white-50 text-center"
