@@ -65,20 +65,18 @@ function Register() {
     <section className="register-container vh-100 gradient-custom">
       <ToastContainer />
       <div
-        className="
-      register-card ps-4 pe-4 col-11 col-md-9 col-lg-9 col-xl-4 mt-3 py-3
-      "
+        className="register-card col-11 col-sm-10 col-md-8 col-lg-6 col-xl-4 mt-3"
       >
-        <h4 className="title text-white">Register</h4>
+        <h4 className="title text-white text-center mt-3">Register</h4>
 
         <form
-          className="row gap-3 ps-3 pe-3"
+          className="d-flex flex-column justify-content-center align-items-center gap-3"
           onSubmit={ handleSubmit(handleUserRegistration) }
         >
-          <div className="col-md-6">
+          <div className="col-9">
             <input
               type="email"
-              className="form-control mb-0"
+              className="form-control"
               placeholder="Email"
               { ...register('email', {
                 required: 'Email is required',
@@ -94,10 +92,10 @@ function Register() {
               </div>
             )}
           </div>
-          <div className="col-md-6">
+          <div className="col-9">
             <input
               type="text"
-              className="form-control mb-0"
+              className="form-control"
               placeholder="Username"
               { ...register('username', {
                 required: 'Username is required',
@@ -109,11 +107,10 @@ function Register() {
               </div>
             )}
           </div>
-
-          <div className="col-md-6">
+          <div className="col-9">
             <input
               type="password"
-              className="form-control mb-0"
+              className="form-control"
               placeholder="Password"
               { ...register('password', {
                 required: 'Password is required',
@@ -130,10 +127,10 @@ function Register() {
             )}
           </div>
 
-          <div className="col-md-6">
+          <div className="col-9">
             <input
               type="password"
-              className="form-control mb-0"
+              className="form-control"
               placeholder="Confirm Password"
               { ...register('confirmPassword', {
                 required: 'Confirm Password is required',
@@ -148,7 +145,7 @@ function Register() {
             )}
           </div>
 
-          <div className="col-md-6">
+          <div className="col-9">
             <label htmlFor="phone" className="form-label text-white">Phone Number</label>
             <MaskedInput
               type="text"
@@ -156,8 +153,7 @@ function Register() {
               mask="+55(99)99999-9999"
               maskChar="_" // Caractere de preenchimento, opcional
               alwaysShowMask // Mostrar a máscara mesmo que o campo esteja vazio, opcional
-              className="form-control mb-0"
-              placeholder="Phone Number"
+              className="form-control"
               { ...register('phone', {
                 required: 'Phone Number is required',
                 pattern: {
@@ -172,10 +168,9 @@ function Register() {
               </div>
             )}
           </div>
-
           <div
             className="
-           col-md-6 d-flex justify-content-center align-items-center
+         d-flex justify-content-center align-items-center
           "
           >
             <button
@@ -188,7 +183,10 @@ function Register() {
 
           </div>
           <p className="signin-link mb-2 text-center text-white">
-            Already have an account? Click here to
+            Already have an account?
+            <br />
+            {' '}
+            Click here to
             {' '}
             <a href="/my-finance-app/#/">Login</a>
           </p>

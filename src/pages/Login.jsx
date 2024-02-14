@@ -36,29 +36,35 @@ function Login() {
 
   return (
     <section className="login-container vh-100 gradient-custom">
-      <div className=" login-card col-11 col-md-8 col-lg-5 col-xl-3 mt-3 py-3">
-        <h4 className="tittle text-white">Vamos poupar Juntos?</h4>
+      <div className=" login-card col-11 col-sm-10 col-md-8 col-lg-6 col-xl-4 mt-3">
+        <h4 className="tittle text-white my-1">Vamos poupar Juntos?</h4>
         <p
-          className="text-white-50 mb-0"
+          className="text-white-50 text-center"
           style={ { fontSize: 'clamp(0.5em, 0.6em + 1vw, 1em)', textAlign: 'center' } }
         >
           Uma solução intuitiva e descomplicada para iniciar o monitoramento eficiente
           de suas finanças, garantindo que você nunca mais esqueça as datas
           de vencimento de seus boletos.
         </p>
-        <img src={ logo } alt="logo" className="img-logo mb-2 mt-2" />
+        <img
+          src={ logo }
+          alt="logo"
+          className="img-logo mb-2 mt-2"
+          style={ { width: '150px' } }
+        />
 
         <form
-          className="login-form-horizontal"
+          className="
+          w-100 d-flex flex-column justify-content-center align-items-center gap-3"
           onSubmit={ handleSubmit(onSubmit) }
         >
-          <div className="form-group">
+          <div className="col-9">
             <input
               type="email"
               name="email"
               autoComplete="email"
               className={
-                `form-control mb-0 ${errors.email ? 'is-invalid' : ''}`
+                `form-control text-center ${errors.email ? 'is-invalid' : ''}`
               }
               placeholder="Username or Email"
               onChange={ (event) => setValue('email', event.target.value) }
@@ -80,12 +86,12 @@ function Login() {
 
           </div>
 
-          <div className="form-group">
+          <div className="col-9">
             <input
               type="password"
               name="password"
               className={
-                `form-control mt-0 mb-0 ${errors.password ? 'is-invalid' : ''}`
+                `form-control mt-0 text-center ${errors.password ? 'is-invalid' : ''}`
               }
               placeholder="Password"
               onChange={ (event) => setValue('password', event.target.value) }
@@ -105,41 +111,41 @@ function Login() {
               </div>
             )}
             <a
-              className="small mb-2 mt-0 text-white-50 text-center d-block"
+              className="small my-2 text-white-50 text-center d-block"
               href="#!"
             >
               Forgot password?
             </a>
           </div>
 
-          <div
-            className="btn-container d-flex gap-1"
-            style={ {
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '100%',
-            } }
-          >
-            <button
-              className="btn glow-on-hover text-white"
-              type="submit"
-              style={ { width: '100%', height: '40px' } }
-            >
-              Login
-            </button>
-
-            <button
-              className="btn glow-on-hover text-white m-1 mb-2"
-              type="submit"
-              style={ { width: '100%', height: '40px' } }
-              onClick={ () => navigate('/register') }
-            >
-              Criar Conta
-            </button>
-
-          </div>
         </form>
+        <div
+          className="btn-container d-flex gap-1"
+          style={ {
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '60%',
+          } }
+        >
+
+          <button
+            className="btn glow-on-hover text-white"
+            type="submit"
+            style={ { width: '100%', height: '40px' } }
+          >
+            Login
+          </button>
+
+          <button
+            className="btn glow-on-hover text-white m-1 mb-2"
+            type="submit"
+            style={ { width: '100%', height: '40px' } }
+            onClick={ () => navigate('/register') }
+          >
+            Criar Conta
+          </button>
+        </div>
 
         <div className="d-flex justify-content-center text-center pt-1 gap-3">
           <a href="https://pt-br.facebook.com/login/device-based/regular/login/" target="_blank" className="text-white" aria-label="Facebook" rel="noreferrer">
