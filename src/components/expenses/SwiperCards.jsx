@@ -46,7 +46,7 @@ function SwiperCards() {
   // Renderiza um card por padrão caso não exista nenhuma despesa
   if (expenses.length === 0) {
     return (
-      <div className="card text-center bg-light mt-4 col-xl-7 mx-auto">
+      <div className="card text-center bg-light mt-1 col-xl-7 mx-auto">
         <div
           className="img-container"
         >

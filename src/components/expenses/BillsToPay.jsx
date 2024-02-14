@@ -13,7 +13,7 @@ function BillsToPay() {
   if (expenses.length === 0) {
     return (
       <div
-        className="card text-center bg-light mt-4 col-xl-7 mx-auto"
+        className="card text-center bg-light mt-3 col-xl-7 mx-auto"
       >
         <div
           className="img-container"

@@ -17,7 +17,7 @@ function Income() {
   if (incomes.length === 0) {
     return (
       <div
-        className="card text-center bg-light col-xl-7 my-4 mx-auto"
+        className="card text-center bg-light col-xl-7 my-3 mx-auto"
       >
         <div
           className="img-container"
