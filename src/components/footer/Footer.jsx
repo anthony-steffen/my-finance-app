@@ -3,7 +3,7 @@ import { FaReact, FaNodeJs, FaHtml5, FaCss3 } from 'react-icons/fa';
 import { SiReactrouter, SiBootstrap, SiReacthookform } from 'react-icons/si';
 
 import HomeContext from '../../contexts/HomeContext';
-import NavigationBar from '../NavigationBar';
+import NavigationBar from './NavigationBar';
 
 import '../../styles/components/Footer.css';
 
@@ -21,7 +21,7 @@ function Footer() {
         <div
           className="
         footer-icons mt-1 d-flex flex-row gap-1
-        align-items-center justify-content-start px-4
+        align-items-center justify-content-center
         "
         >
           <p>Tecnologias Utilizadas</p>

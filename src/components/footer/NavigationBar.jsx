@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function NavigationBar() {
   return (
-    <nav className="d-flex flex-row justify-content-between px-4">
+    <nav className="d-flex flex-row justify-content-around fw-bold">
       <Link to="/" className="text-light">
         Inicio
       </Link>

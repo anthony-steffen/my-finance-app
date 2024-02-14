@@ -4,18 +4,18 @@ import { useContext } from 'react';
 import HomeContext from '../../contexts/HomeContext';
 
 import TransactionRegister from './TransactionRegister';
-import '../../styles/components/OffCanvas.css';
-import 'bootstrap/dist/css/bootstrap.css';
 
 function OffCanvas() {
   const { theme } = useContext(HomeContext);
   return (
-    <section className="fixed-bottom mb-9">
-      <div className="btn-register-container d-flex justify-content-end me-2">
-        <span className="text-black" />
+    <div className="mb-5 fixed-bottom">
+      <div className="d-flex justify-content-end align-items-center me-3 mb-5 pb-4">
         <button
           type="button"
-          className="btn-inc bg-primary fs-3"
+          className="bg-primary rounded-circle d-flex
+          justify-content-center align-items-center text-white border
+          border-white border-1 fs-3"
+          style={ { width: '40px', height: '40px' } }
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasRight"
           aria-controls="offcanvasRight"
@@ -42,7 +42,6 @@ function OffCanvas() {
           <div>
             <IoMdClose
               type="button"
-              // className="btn-close"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
               className="text-danger"
@@ -58,7 +57,7 @@ function OffCanvas() {
           <TransactionRegister />
         </div>
       </div>
-    </section>
+    </div>
 
   );
 }

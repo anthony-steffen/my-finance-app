@@ -17,21 +17,18 @@ function Income() {
   if (incomes.length === 0) {
     return (
       <div
-        className="card text-center bg-light mt-3 mb-3 col-xl-7 mx-auto"
+        className="card text-center bg-light col-xl-7 my-4 mx-auto"
       >
         <div
           className="img-container"
         >
           <img
             src={ Avatar }
-            className="
-            col-12 col-md-6 col-xl-3 mx-auto d-block my-1 rounded-2
-
-            "
+            className="col-12 col-md-6 col-xl-3 mx-auto d-block mb-1 rounded-3"
             alt="..."
           />
         </div>
-        <div className={ `card-body bg-${theme} py-3 px-2` }>
+        <div className={ `card-body bg-${theme} py-4 px-2 mb-1 rounded-3` }>
           <h5
             className={
               `card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`

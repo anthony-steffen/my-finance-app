@@ -10,6 +10,7 @@ import '../styles/components/ToggleTheme.css';
 function Home() {
   const navigate = useNavigate();
   const backPressed = useRef(false);
+  const timeStamp = 2000;
 
   const handleBackButton = useCallback(
     () => {
@@ -24,7 +25,7 @@ function Home() {
         // Defina backPressed como false após 2 segundos
         setTimeout(() => {
           backPressed.current = false;
-        }, 2000);
+        }, timeStamp);
       }
     },
     [navigate],
