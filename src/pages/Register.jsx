@@ -31,11 +31,13 @@ function Register() {
 
   // Função para verificar se o usuário já existe
   const isUserExists = (data) => {
-    return registeredUsers.some(
+    const existingUser = registeredUsers.find(
       (user) => user.email === data.email
-        && user.username === data.username
-        && user.phone === data.phone,
+      || user.username === data.username
+      || user.phone === data.phone,
     );
+
+    return existingUser || null;
   };
 
   // Função para exibir toasts
@@ -48,8 +50,20 @@ function Register() {
   const handleUserRegistration = (data) => {
     if (!isValid) return;
 
-    if (isUserExists(data)) {
-      showToast('Usuário já cadastrado', 'error');
+    const existingUser = isUserExists(data);
+
+    if (existingUser) {
+      let errorMessage = 'Usuário já cadastrado.';
+
+      if (existingUser.email === data.email) {
+        errorMessage = 'Já existe um usuário cadastrado com este email.';
+      } else if (existingUser.username === data.username) {
+        errorMessage = 'Username indisponível.';
+      } else if (existingUser.phone === data.phone) {
+        errorMessage = 'Número de telefone já cadastrado.';
+      }
+
+      showToast(errorMessage, 'error');
     } else {
       const newUser = [...registeredUsers, data];
       setRegisteredUsers(newUser);

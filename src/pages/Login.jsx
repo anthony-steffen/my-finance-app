@@ -11,6 +11,7 @@ import '../styles/pages/Login.css';
 
 function Login() {
   const { registeredUsers } = useContext(AuthContext);
+  console.log(registeredUsers);
 
   const navigate = useNavigate();
 
@@ -23,7 +24,8 @@ function Login() {
 
   const onSubmit = (data) => {
     const user = registeredUsers.find(
-      (users) => users.email === data.email && users.password === data.password,
+      (users) => (users.email === data.email || users.username === data.email)
+        && users.password === data.password,
     );
 
     if (user) {
@@ -60,7 +62,7 @@ function Login() {
         >
           <div className="col-9">
             <input
-              type="email"
+              type="text"
               name="email"
               autoComplete="email"
               className={
@@ -68,13 +70,7 @@ function Login() {
               }
               placeholder="Username or Email"
               onChange={ (event) => setValue('email', event.target.value) }
-              { ...register('email', {
-                required: 'Email is required',
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Invalid email address',
-                },
-              }) }
+              { ...register('email', { required: 'Username or Email is required' }) }
             />
             {errors.email && (
               <div
@@ -117,35 +113,34 @@ function Login() {
               Forgot password?
             </a>
           </div>
+          <div
+            className="btn-container d-flex gap-1"
+            style={ {
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '60%',
+            } }
+          >
 
+            <button
+              className="btn glow-on-hover text-white"
+              type="submit"
+              style={ { width: '100%', height: '40px' } }
+            >
+              Login
+            </button>
+
+            <button
+              className="btn glow-on-hover text-white m-1 mb-2"
+              type="submit"
+              style={ { width: '100%', height: '40px' } }
+              onClick={ () => navigate('/register') }
+            >
+              Criar Conta
+            </button>
+          </div>
         </form>
-        <div
-          className="btn-container d-flex gap-1"
-          style={ {
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '60%',
-          } }
-        >
-
-          <button
-            className="btn glow-on-hover text-white"
-            type="submit"
-            style={ { width: '100%', height: '40px' } }
-          >
-            Login
-          </button>
-
-          <button
-            className="btn glow-on-hover text-white m-1 mb-2"
-            type="submit"
-            style={ { width: '100%', height: '40px' } }
-            onClick={ () => navigate('/register') }
-          >
-            Criar Conta
-          </button>
-        </div>
 
         <div className="d-flex justify-content-center text-center pt-1 gap-3">
           <a href="https://pt-br.facebook.com/login/device-based/regular/login/" target="_blank" className="text-white" aria-label="Facebook" rel="noreferrer">
