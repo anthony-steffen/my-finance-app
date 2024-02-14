@@ -2,9 +2,11 @@ import '../../styles/components/Footer.css';
 
 import { useContext } from 'react';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3 } from 'react-icons/fa';
-import { SiBootstrap } from 'react-icons/si';
+import { SiReactrouter, SiBootstrap, SiReacthookform } from 'react-icons/si';
+
 import { Link } from 'react-router-dom';
 import HomeContext from '../../contexts/HomeContext';
+import NavigationBar from '../NavigationBar';
 
 function Footer() {
   const { theme } = useContext(HomeContext);
@@ -16,20 +18,11 @@ function Footer() {
       }
     >
       <div className="container-footer">
-        <div className="d-flex flex-row justify-content-between px-4">
-          <Link to="/" className="text-light">
-            Página Inicial
-          </Link>
-          <Link to="/about" className="text-light">
-            Sobre Nós
-          </Link>
-          <Link to="/contact" className="text-light">
-            Contato
-          </Link>
-        </div>
+        <NavigationBar />
         <div
           className="
-        footer-icons mt-1 d-flex flex-row gap-1 align-items-center justify-content-center
+        footer-icons mt-1 d-flex flex-row gap-1
+        align-items-center justify-content-start px-4
         "
         >
           <p>Tecnologias Utilizadas</p>
@@ -38,6 +31,8 @@ function Footer() {
           <FaHtml5 className="icon" />
           <FaCss3 className="icon" />
           <SiBootstrap className="icon" />
+          <SiReactrouter className="icon" />
+          <SiReacthookform className="icon" />
 
         </div>
         <p
