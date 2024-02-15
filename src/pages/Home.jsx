@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import HomeProvider from '../contexts/HomeProvider';
+import BackButtonProvider from '../contexts/BackButtonProvider';
 import ExpenseProvider from '../contexts/ExpenseProvider';
 import IncomeProvider from '../contexts/IncomeProvider';
 import Content from '../components/Content';
@@ -44,13 +45,15 @@ function Home() {
   );
   return (
     <div className="home-container">
-      <HomeProvider>
-        <IncomeProvider>
-          <ExpenseProvider>
-            <Content />
-          </ExpenseProvider>
-        </IncomeProvider>
-      </HomeProvider>
+      <BackButtonProvider>
+        <HomeProvider>
+          <IncomeProvider>
+            <ExpenseProvider>
+              <Content />
+            </ExpenseProvider>
+          </IncomeProvider>
+        </HomeProvider>
+      </BackButtonProvider>
     </div>
   );
 }

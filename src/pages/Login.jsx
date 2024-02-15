@@ -37,9 +37,22 @@ function Login() {
   };
 
   return (
-    <section className="login-container vh-100 gradient-custom">
-      <div className=" login-card col-6 col-sm-10 col-md-8 col-lg-6 col-xl-4">
-        <h4 className="tittle text-white my-1">Vamos poupar Juntos?</h4>
+    <section
+      className="
+    gradient-custom vh-100 d-flex flex-column justify-content-start align-items-center
+    "
+    >
+      <div
+        className="col-12 col-md-8 col-lg-6 col-xl-3 p-4 rounded-3 mt-3"
+        style={ {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        } }
+      >
+        <h4 className="card-tittle text-white">Vamos poupar Juntos?</h4>
         <p
           className="text-white-50 text-center"
           style={ { fontSize: 'clamp(0.5em, 0.6em + 1vw, 1em)', textAlign: 'center' } }
@@ -114,7 +127,7 @@ function Login() {
             </a>
           </div>
           <div
-            className="btn-container d-flex gap-1"
+            className="btn-container d-flex gap-2"
             style={ {
               flexDirection: 'column',
               alignItems: 'center',
@@ -122,7 +135,6 @@ function Login() {
               width: '60%',
             } }
           >
-
             <button
               className="btn glow-on-hover text-white"
               type="submit"
@@ -134,7 +146,13 @@ function Login() {
             <button
               className="btn glow-on-hover text-white m-1 mb-2"
               type="submit"
-              style={ { width: '100%', height: '40px' } }
+              style={ {
+                width: '100%',
+                height: '40px',
+                display: 'flex',
+                justifyContent: 'center',
+
+              } }
               onClick={ () => navigate('/register') }
             >
               Criar Conta
