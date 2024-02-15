@@ -11,7 +11,7 @@ function NavigationBar() {
         Home
       </Link>
       <Link to="/about" className="text-light">
-        Sobre Nós
+        About
       </Link>
       <Link to="/contact" className="text-light">
         Contato
