@@ -23,7 +23,7 @@ function Contact() {
       </Row>
       <Row
         className="
-        gradient-custom text-white d-flex align-items-center justify-content-center
+        gradient-custom text-white d-flex align-items-start justify-content-center py-5
         "
         style={ { height: '80vh' } }
       >
