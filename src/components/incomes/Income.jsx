@@ -49,22 +49,20 @@ function Income() {
     <section
       className="row row-expense py-3 mt-4 bg-light"
       style={ {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
         width: '100%',
         margin: 'auto',
       } }
     >
       <h5
         className={ `
-        text-success d-flex align-items-center mb-3
-        justify-content-start ms-3 mb-1 gap-2 fw-bold
+        text-success d-flex align-items-center mb-1
+        justify-content-start ms-3 fw-bold
         ` }
         style={ {
           width: '90%',
           margin: 'auto',
           textDecoration: 'underline',
           textUnderlineOffset: '0.5rem',
-          // textShadow: '0px 1px 0px black',
         } }
       >
         Receitas
@@ -77,57 +75,56 @@ function Income() {
           <div
             className="card shadow-sm rounded-2 border border-2 border-black"
           >
-            <div className="card-body">
-              <div className="d-flex flex-column gap-2">
-                <p className="category fw-bold text-muted">
-                  {income.description}
-                </p>
-                <p className="value fw-bold text-muted">
-                  {`Valor R$: ${income.value}`}
-                </p>
-                <p className="due fw-bold text-muted">
-                  {`Vencimento: ${income.date}`}
-                </p>
-                <div className="d-flex justify-content-end align-items-center">
-                  <div className="div-badge w-100">
-                    <span
-                      className="p-1 badge rounded-pill text-bg-warning"
-                    >
-                      Vence Hoje!
-                    </span>
-                  </div>
-                  <button
-                    type="button"
-                    className="btn glow-on-hover text-white btn-sm me-1"
-                    data-bs-toggle="modal"
-                    data-bs-target="#IncomeToReceiveModal"
-                    onClick={ () => setSelectIncome(index) }
+            <div className="card-body d-flex flex-column">
+              <p className="category fw-bold text-muted mb-1">
+                {income.description}
+              </p>
+              <p className="value fw-bold text-muted mb-1">
+                {`Valor R$: ${income.value}`}
+              </p>
+              <p className="due fw-bold text-muted mb-1">
+                {`Vencimento: ${income.date}`}
+              </p>
+              <div className="d-flex justify-content-end align-items-center">
+                <div className="div-badge w-100">
+                  <span
+                    className="p-1 badge rounded-pill text-bg-warning"
                   >
-                    Receber
-                  </button>
-                  <button
-                    type="button"
-                    className="btn glow-on-hover text-white btn-sm me-1"
-                    data-bs-toggle="modal"
-                    data-bs-target="#editIncomeModal"
-                    onClick={ () => setSelectIncome(index) }
-                  >
-                    Editar
-                  </button>
-                  <button
-                    type="button"
-                    className="btn glow-on-hover text-white btn-sm me-1"
-                    data-bs-toggle="modal"
-                    data-bs-target="#deleteIncomeModal"
-                    onClick={ () => setSelectIncome(index) }
-                  >
-                    Excluir
-                  </button>
-                  <ModalToDeleteIncome />
-                  <ModalToEditIncome />
-                  <ModalToReceiveIncome />
+                    Vence Hoje!
+                  </span>
                 </div>
+                <button
+                  type="button"
+                  className="btn glow-on-hover text-white btn-sm me-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#IncomeToReceiveModal"
+                  onClick={ () => setSelectIncome(index) }
+                >
+                  Receber
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-sm glow-on-hover text-white me-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editIncomeModal"
+                  onClick={ () => setSelectIncome(index) }
+                >
+                  Editar
+                </button>
+                <button
+                  type="button"
+                  className="btn glow-on-hover text-white btn-sm me-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deleteIncomeModal"
+                  onClick={ () => setSelectIncome(index) }
+                >
+                  Excluir
+                </button>
+                <ModalToDeleteIncome />
+                <ModalToEditIncome />
+                <ModalToReceiveIncome />
               </div>
+              {/* </div> */}
             </div>
           </div>
         </div>

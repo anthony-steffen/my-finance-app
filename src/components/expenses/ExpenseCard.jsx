@@ -18,14 +18,14 @@ function ExpenseCard({ expense, index }) {
         className="card shadow-sm rounded-2 border border-2 border-black"
       >
         <div className="card-body">
-          <div className="d-flex flex-column gap-2">
-            <p className="category fw-bold text-muted">
+          <div className="d-flex flex-column">
+            <p className="category fw-bold text-muted mb-1">
               { expense.description}
             </p>
-            <p className="value fw-bold text-muted">
+            <p className="value fw-bold text-muted mb-1">
               { `Valor R$: ${expense.value}` }
             </p>
-            <p className="due fw-bold text-muted">
+            <p className="due fw-bold text-muted mb-1">
               { `Vencimento: ${expense.date}` }
             </p>
             <div className="d-flex justify-content-end align-items-center">

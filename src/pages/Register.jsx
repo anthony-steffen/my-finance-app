@@ -203,7 +203,11 @@ function Register() {
             <button
               type="submit"
               className="glow-on-hover mt-1"
-              style={ { height: '50px', width: '200px' } }
+              style={ {
+                height: '50px',
+                width: '200px',
+                fontSize: '1.2em',
+              } }
             >
               { ButtonText }
             </button>

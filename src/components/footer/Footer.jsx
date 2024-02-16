@@ -20,11 +20,11 @@ function Footer() {
         <NavigationBar />
         <div
           className="
-        footer-icons mt-1 d-flex flex-row gap-1
+        footer-icons mt-2 d-flex flex-row gap-1
         align-items-center justify-content-center
         "
         >
-          <p>Tecnologias Utilizadas</p>
+          Tecnologias Utilizadas
           <FaReact className="icon" />
           <FaNodeJs className="icon" />
           <FaHtml5 className="icon" />
@@ -35,7 +35,7 @@ function Footer() {
 
         </div>
         <p
-          className="mt-1"
+          className="mb-0"
         >
           &copy; 2024 Anthony. Todos os direitos reservados.
         </p>

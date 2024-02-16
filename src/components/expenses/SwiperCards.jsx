@@ -103,7 +103,7 @@ function SwiperCards() {
       >
         Gastos por Categoria
       </h5>
-      <div className="carousel-indicators">
+      <div className="carousel-indicators mb-0">
         <button
           type="button"
           data-bs-target="#carouselExampleFade"

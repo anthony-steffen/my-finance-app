@@ -50,13 +50,15 @@ function BillsToPay() {
       } }
     >
       <h5
-        className="text-danger mb-2 ms-3 fw-bold"
+        className={ `
+        text-danger d-flex align-items-center mb-1
+        justify-content-start ms-3 fw-bold
+        ` }
         style={ {
           width: '90%',
           margin: 'auto',
           textDecoration: 'underline',
           textUnderlineOffset: '0.5rem',
-          textShadow: '1px 1px 0px black',
         } }
       >
 

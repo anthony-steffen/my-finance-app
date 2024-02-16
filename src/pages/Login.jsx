@@ -141,6 +141,7 @@ function Login() {
               style={ {
                 width: '100%',
                 height: '40px',
+                fontSize: '1.2em',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -157,6 +158,7 @@ function Login() {
               style={ {
                 width: '100%',
                 height: '40px',
+                fontSize: '1.2em',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
