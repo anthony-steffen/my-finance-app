@@ -43,7 +43,7 @@ function Login() {
     "
     >
       <div
-        className="col-12 col-md-8 col-lg-6 col-xl-3 p-4 rounded-3 mt-3"
+        className="col-11 col-md-8 col-lg-6 col-xl-3 p-3 rounded-3 mt-3"
         style={ {
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
           display: 'flex',
@@ -59,27 +59,27 @@ function Login() {
         >
           Uma solução intuitiva e descomplicada para iniciar o monitoramento eficiente
           de suas finanças, garantindo que você nunca mais esqueça as datas
-          de vencimento de seus boletos.
+          de vencimento dos seus boletos.
         </p>
         <img
           src={ logo }
           alt="logo"
-          className="img-logo mb-2 mt-2"
-          style={ { width: '150px' } }
+          className="img-logo mb-2"
+          style={ { width: '100px' } }
         />
 
         <form
           className="
-          w-100 d-flex flex-column justify-content-center align-items-center gap-3"
+          w-100 d-flex flex-column justify-content-center align-items-center gap-2"
           onSubmit={ handleSubmit(onSubmit) }
         >
-          <div className="col-9">
+          <div className="col-10 col-xl-6">
             <input
               type="text"
               name="email"
               autoComplete="email"
               className={
-                `form-control text-center ${errors.email ? 'is-invalid' : ''}`
+                `form-control mb-0 text-center ${errors.email ? 'is-invalid' : ''}`
               }
               placeholder="Username or Email"
               onChange={ (event) => setValue('email', event.target.value) }
@@ -92,10 +92,9 @@ function Login() {
                 {errors.email.message}
               </div>
             )}
-
           </div>
 
-          <div className="col-9">
+          <div className="col-10 col-xl-6">
             <input
               type="password"
               name="password"
@@ -126,34 +125,43 @@ function Login() {
               Forgot password?
             </a>
           </div>
+
           <div
-            className="btn-container d-flex gap-2"
+            className="btn-container gap-1 col-8 col-xl-5 gap-2 mb-2"
             style={ {
+              display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              width: '60%',
             } }
           >
             <button
               className="btn glow-on-hover text-white"
               type="submit"
-              style={ { width: '100%', height: '40px' } }
+              style={ {
+                width: '100%',
+                height: '40px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+              } }
             >
               Login
             </button>
 
             <button
-              className="btn glow-on-hover text-white m-1 mb-2"
+              className="btn glow-on-hover text-white"
               type="submit"
+              onClick={ () => navigate('/register') }
               style={ {
                 width: '100%',
                 height: '40px',
                 display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
                 justifyContent: 'center',
-
               } }
-              onClick={ () => navigate('/register') }
             >
               Criar Conta
             </button>

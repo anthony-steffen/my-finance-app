@@ -76,21 +76,33 @@ function Register() {
   };
 
   return (
-    <section className="register-container vh-100 gradient-custom">
+    <section
+      className="
+    gradient-custom vh-100 d-flex flex-column justify-content-start align-items-center
+    "
+    >
       <ToastContainer />
       <div
-        className="register-card col-11 col-sm-10 col-md-8 col-lg-6 col-xl-4 mt-3"
+        className="col-11 col-md-8 col-lg-6 col-xl-3 p-4 rounded-3 mt-3"
+        style={ {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        } }
       >
-        <h4 className="title text-white text-center mt-3">Register</h4>
+        <h4 className="card-tittle text-white">Register</h4>
 
         <form
-          className="d-flex flex-column justify-content-center align-items-center gap-3"
+          className="
+          w-100 d-flex flex-column justify-content-center align-items-center mt-2 gap-3"
           onSubmit={ handleSubmit(handleUserRegistration) }
         >
-          <div className="col-9">
+          <div className="col-11 col-xl-7">
             <input
               type="email"
-              className="form-control"
+              className="form-control text-center"
               placeholder="Email"
               { ...register('email', {
                 required: 'Email is required',
@@ -106,10 +118,11 @@ function Register() {
               </div>
             )}
           </div>
-          <div className="col-9">
+
+          <div className="col-11 col-xl-7">
             <input
               type="text"
-              className="form-control"
+              className="form-control text-center"
               placeholder="Username"
               { ...register('username', {
                 required: 'Username is required',
@@ -121,10 +134,11 @@ function Register() {
               </div>
             )}
           </div>
-          <div className="col-9">
+
+          <div className="col-11 col-xl-7">
             <input
               type="password"
-              className="form-control"
+              className="form-control text-center"
               placeholder="Password"
               { ...register('password', {
                 required: 'Password is required',
@@ -140,11 +154,10 @@ function Register() {
               </div>
             )}
           </div>
-
-          <div className="col-9">
+          <div className="col-11 col-xl-7">
             <input
               type="password"
-              className="form-control"
+              className="form-control text-center"
               placeholder="Confirm Password"
               { ...register('confirmPassword', {
                 required: 'Confirm Password is required',
@@ -159,7 +172,7 @@ function Register() {
             )}
           </div>
 
-          <div className="col-9">
+          <div className="col-11 col-xl-7">
             <label htmlFor="phone" className="form-label text-white">Phone Number</label>
             <MaskedInput
               type="text"
