@@ -41,7 +41,14 @@ function BillsToPay() {
     );
   }
   return (
-    <section className="row row-expense py-3 mt-4 bg-light">
+    <section
+      className="row row-expense py-3 mt-4 bg-light"
+      style={ {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        width: '100%',
+        margin: 'auto',
+      } }
+    >
       <h5
         className="text-danger mb-2 ms-3 fw-bold"
         style={ {

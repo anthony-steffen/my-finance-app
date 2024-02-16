@@ -9,7 +9,7 @@ import BtnAdd from './BtnAdd';
 function OffCanvas() {
   const { theme } = useContext(HomeContext);
   return (
-    <section style={ { position: 'fixed', bottom: '17vh', right: '1rem' } }>
+    <section>
       {/* <div> */}
       <BtnAdd />
       {/* </div> */}

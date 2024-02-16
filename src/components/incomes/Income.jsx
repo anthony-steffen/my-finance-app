@@ -47,8 +47,12 @@ function Income() {
   }
   return (
     <section
-      className="row row-expense pb-4 py-3 my-4"
-      style={ { backgroundColor: 'white' } }
+      className="row row-expense py-3 mt-4 bg-light"
+      style={ {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        width: '100%',
+        margin: 'auto',
+      } }
     >
       <h5
         className={ `

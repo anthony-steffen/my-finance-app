@@ -81,7 +81,7 @@ function SwiperCards() {
     <div
       id="carouselExampleFade"
       className={ `
-        w-100 carousel slide carousel-fade py-2 bg-${theme} rounded-2 my-3
+      carousel slide carousel-fade py-2 bg-${theme} rounded-2 my-3
         ` }
       data-bs-ride="carousel"
       data-bs-interval={ 7000 }
