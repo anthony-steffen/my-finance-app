@@ -17,16 +17,17 @@ function Contact() {
           textUnderlineOffset: '0.5rem',
         } }
       >
-        <header className=" d-flex align-items-center justify-content-center w-100">
+        <header className=" d-flex align-items-center justify-content-center">
           <h1> Entre em contato </h1>
         </header>
       </Row>
       <Row
         className="
-        gradient-custom text-white d-flex align-items-start justify-content-center py-5
+        gradient-custom text-white d-flex align-items-start justify-content-center py-2
         "
-        style={ { height: '80vh' } }
+        style={ { height: '85vh' } }
       >
+
         <Col xs={ 12 } md={ 4 } className="mt-2 d-flex flex-column align-items-center">
           <Link to="mailto:anthony.steffen@outlook.com.br">
             <AiOutlineMail size={ 50 } className="text-danger" />
@@ -56,7 +57,7 @@ function Contact() {
         className="fixed-bottom bg-dark"
         style={ { height: '10vh' } }
       >
-        <Col className="d-flex flex-column justify-content-center">
+        <Col className="d-flex flex-column justify-content-start mt-2">
           <NavigationBar />
         </Col>
       </Row>

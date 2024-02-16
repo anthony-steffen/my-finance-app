@@ -14,7 +14,7 @@ function About() {
           textUnderlineOffset: '0.5rem',
         } }
       >
-        <header className="d-flex align-items-center justify-content-center w-100">
+        <header className="d-flex align-items-center justify-content-center">
           <h1> Sobre Mim </h1>
         </header>
       </Row>
@@ -25,7 +25,7 @@ function About() {
         <Col xs={ 12 } md={ 6 }>
           <div
             className="card gradient-custom"
-            style={ { overflowY: 'auto', maxHeight: '75vh' } }
+            style={ { overflowY: 'auto', maxHeight: '80vh' } }
           >
             <div className="card-body">
               <h6
@@ -72,7 +72,7 @@ function About() {
         className="fixed-bottom bg-dark"
         style={ { height: '10vh' } }
       >
-        <Col className="d-flex flex-column justify-content-center">
+        <Col className="d-flex flex-column justify-content-start mt-2">
           <NavigationBar />
         </Col>
       </Row>
