@@ -80,25 +80,19 @@ function SwiperCards() {
   return (
     <div
       id="carouselExampleFade"
-      className={ `
-      carousel slide carousel-fade py-2 bg-${theme} rounded-2 my-3
-        ` }
+      className="carousel slide carousel-fade py-2 bg-light rounded-2 my-3"
       data-bs-ride="carousel"
       data-bs-interval={ 7000 }
       data-bs-pause="hover"
 
     >
       <h5
-        className={ `
-        text-danger d-flex align-items-center mb-2
-        justify-content-start ms-3 gap-2 fw-bold
-        ` }
+        className="text-danger text-center mb-2 gap-2 fw-bold"
         style={ {
           width: '90%',
           margin: 'auto',
           textDecoration: 'underline',
           textUnderlineOffset: '0.5rem',
-          textShadow: '1px 1px 0px black',
         } }
       >
         Gastos por Categoria
