@@ -17,7 +17,7 @@ function Header() {
   const { totalExpenses } = useContext(ExpenseContext);
   return (
     <header
-      className={ `
+      className={ `m-auto
     navbar sticky-top bg-${theme === 'light' ? 'primary' : 'dark'}
     ` }
     >

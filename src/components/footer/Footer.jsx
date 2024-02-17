@@ -12,11 +12,11 @@ function Footer() {
   return (
     <footer
       className={
-        `${theme === 'light' ? 'bg-primary' : 'bg-dark'} 
-        text-light text-center py-1 sticky-bottom mt-2`
+        `navbar ${theme === 'light' ? 'bg-primary' : 'bg-dark'} 
+        text-light sticky-bottom d-flex flex-column`
       }
     >
-      <div className="container-footer">
+      <div className="container-footer w-100 d-flex flex-column">
         <NavigationBar />
         <div
           className="
@@ -35,7 +35,7 @@ function Footer() {
 
         </div>
         <p
-          className="mb-0"
+          className="mb-0 text-center"
         >
           &copy; 2024 Anthony. Todos os direitos reservados.
         </p>

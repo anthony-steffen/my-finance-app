@@ -1,12 +1,13 @@
 /* styles/themes.css */
 
 .light-theme {
-  background: rgb(220, 220, 220);
+  background: rgb(240, 240, 240);
   /* color: red; */
 }
 
 .dark-theme {
   background: -webkit-linear-gradient(90deg, #141e30 50%, #243b55 100%);
+  background-color: rgba(0, 0, 0, 0.5);
   /* background: red; */
   /* color: red; */
 }

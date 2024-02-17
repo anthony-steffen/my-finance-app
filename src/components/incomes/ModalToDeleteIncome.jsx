@@ -17,7 +17,7 @@ function ModalToDeleteIncome() {
       aria-labelledby="deleteIncomeModalLabel"
       aria-hidden="true"
     >
-      <div className="modal-dialog position-relative start-50 translate-middle-x">
+      <div className="modal-dialog m-auto">
         <div className="modal-content">
           <div
             className={
