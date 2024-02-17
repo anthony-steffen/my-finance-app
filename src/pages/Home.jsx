@@ -1,3 +1,5 @@
+// Home.jsx
+// import { useEffect } from 'react';
 import HomeProvider from '../contexts/HomeProvider';
 import ExpenseProvider from '../contexts/ExpenseProvider';
 import IncomeProvider from '../contexts/IncomeProvider';

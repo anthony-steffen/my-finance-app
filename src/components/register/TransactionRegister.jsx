@@ -115,7 +115,7 @@ function TransactionRegister() {
         className="save-menu w-100 d-flex flex-row justify-content-center gap-4
           align-items-center mt-3"
       >
-        <div className="form-check d-flex align-items-center">
+        <div className="form-check">
           <input
             className="form-check-input"
             type="radio"
@@ -127,7 +127,7 @@ function TransactionRegister() {
             Receita
           </label>
         </div>
-        <div className="form-check d-flex align-items-center">
+        <div className="form-check">
           <input
             className="form-check-input"
             type="radio"

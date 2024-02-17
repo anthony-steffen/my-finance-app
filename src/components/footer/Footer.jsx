@@ -12,15 +12,16 @@ function Footer() {
   return (
     <footer
       className={
-        `navbar ${theme === 'light' ? 'bg-primary' : 'bg-dark'} 
-        text-light sticky-bottom d-flex flex-column`
+        `navbar sticky-bottom ${theme === 'light' ? 'bg-primary' : 'bg-dark'} 
+        text-light`
       }
+      style={ { height: '12vh' } }
     >
-      <div className="container-footer w-100 d-flex flex-column">
+      <div className="container-footer w-100 d-flex flex-column justify-content-center">
         <NavigationBar />
         <div
           className="
-        footer-icons mt-2 d-flex flex-row gap-1
+        footer-icons  d-flex flex-row gap-2
         align-items-center justify-content-center
         "
         >
@@ -34,11 +35,9 @@ function Footer() {
           <SiReacthookform className="icon" />
 
         </div>
-        <p
-          className="mb-0 text-center"
-        >
+        <div className="text-center">
           &copy; 2024 Anthony. Todos os direitos reservados.
-        </p>
+        </div>
       </div>
     </footer>
   );

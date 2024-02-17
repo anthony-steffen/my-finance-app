@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-max-depth */
 import { IoMdMenu } from 'react-icons/io';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import { PiEye, PiEyeClosed } from 'react-icons/pi';
 import ToggleButtonTheme from './ToggleButtonTheme';
 import logo from '../assets/logo.png';
 
@@ -15,12 +16,15 @@ function Header() {
   const { theme } = useContext(HomeContext);
   const { totalIncomes } = useContext(IncomeContext);
   const { totalExpenses } = useContext(ExpenseContext);
+  const [showBalance, setShowBalance] = useState(false);
   return (
     <header
-      className={ `m-auto
+      className={ `
     navbar sticky-top bg-${theme === 'light' ? 'primary' : 'dark'}
     ` }
+      style={ { height: '12vh' } }
     >
+
       <div
         className="container-fluid"
         style={ {
@@ -30,19 +34,35 @@ function Header() {
         } }
       >
         <ToggleButtonTheme />
-        <img
-          className="img-logo-header"
-          src={ logo }
-          alt="logo"
-          style={ { width: '80px' } }
-        />
         <div className="navbar-title-container text-white">
           <h3 className="navbar-title mb-0">
             Saldo da conta:
+            {' '}
           </h3>
-          <span className="navbar-value">
-            {`R$ ${(totalIncomes - totalExpenses).toFixed(2)}`}
+          <span className="navbar-value d-flex gap-2">
+            {showBalance ? '******' : totalIncomes - totalExpenses}
+            <button
+              type="button"
+              onClick={ () => setShowBalance(!showBalance) }
+              style={ {
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+              } }
+            >
+              {showBalance ? <PiEyeClosed size="20px" color="white" />
+                : <PiEye size="20px" color="white" />}
+            </button>
           </span>
+
+        </div>
+        <div className="img-logo-container col-3">
+          <img
+            className="img-logo-header"
+            src={ logo }
+            alt="logo"
+            style={ { maxWidth: '70px' } }
+          />
         </div>
         <button
           className="toggle-button"

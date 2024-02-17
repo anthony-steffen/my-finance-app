@@ -1,40 +1,45 @@
 /* eslint-disable react/jsx-max-depth */
-import { Row, Col } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import NavigationBar from '../components/footer/NavigationBar';
 
 function About() {
   return (
-    <div className="d-flex flex-column justify-content-between">
-      <Row
-        className="gradient-custom text-white"
+    <div className="gradient-custom d-flex flex-column vh-100">
+      <div
+        className="text-white d-flex align-items-center justify-content-center"
         style={ {
-          height: '10vh',
+          height: '12vh',
           textShadow: '2px 2px 4px #000000',
           textDecoration: 'underline',
           textUnderlineOffset: '0.5rem',
         } }
       >
-        <header className="d-flex align-items-center justify-content-center">
-          <h1> Sobre Mim </h1>
+        <header className="text-center">
+          <h1> Sobre mim </h1>
         </header>
-      </Row>
-      <Row
-        className="
-        vh-100 gradient-custom d-flex justify-content-center align-items-start py-3"
-      >
-        <Col xs={ 12 } md={ 6 }>
-          <div
+      </div>
+      <div>
+        <body
+          className="gradient-custom d-flex flex-wrap justify-content-center
+          align-items-start"
+          style={ { height: '76vh' } }
+        >
+
+          <Col
+            xs={ 12 }
+            md={ 8 }
+            lg={ 6 }
             className="card gradient-custom"
-            style={ { overflowY: 'auto', maxHeight: '80vh' } }
+            style={ { overflowY: 'auto', maxHeight: '74vh' } }
           >
-            <div className="card-body">
+            <div className="card-body p-3">
               <h6
                 className="card-subtitle text-white text-center"
               >
                 Olá, Me chamo Anthony Steffen. 👋
               </h6>
               <p
-                className="text-center text-white mb-4"
+                className="text-center text-white mb-0"
               >
                 <br />
                 Programador e entusiasta do desenvolvimento front-end
@@ -65,17 +70,17 @@ function About() {
                 Vamos construir algo incrível juntos!
               </p>
             </div>
-          </div>
-        </Col>
-      </Row>
-      <Row
-        className="fixed-bottom bg-dark"
-        style={ { height: '10vh' } }
+          </Col>
+        </body>
+      </div>
+      <div
+        className="
+        fw-bold fixed-bottom bg-dark rounded-1
+        d-flex flex-column justify-content-center"
+        style={ { height: '12vh' } }
       >
-        <Col className="d-flex flex-column justify-content-start mt-2">
-          <NavigationBar />
-        </Col>
-      </Row>
+        <NavigationBar />
+      </div>
     </div>
   );
 }
