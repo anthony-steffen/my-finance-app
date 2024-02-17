@@ -22,8 +22,6 @@ function ExpenseProvider({ children }) {
     setTotalExpenses(amount);
   }, [expenses]);
 
-  console.log(selectExpense);
-
   const handleAddExpense = useCallback(
     (data) => {
       if (typeRegister === 'expense') {

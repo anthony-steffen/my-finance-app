@@ -11,7 +11,6 @@ import '../styles/components/ToggleTheme.css';
 
 function Content() {
   const { theme } = useContext(HomeContext);
-  console.log(theme);
   return (
     <div className={ `${theme}-theme` }>
       <Header />

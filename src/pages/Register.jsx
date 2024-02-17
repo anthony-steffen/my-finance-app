@@ -85,6 +85,7 @@ function Register() {
       <div
         className="col-11 col-md-8 col-lg-6 col-xl-3 p-4 rounded-3 mt-3"
         style={ {
+          maxWidth: '400px',
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
           display: 'flex',
           flexDirection: 'column',
@@ -99,7 +100,7 @@ function Register() {
           w-100 d-flex flex-column justify-content-center align-items-center mt-2 gap-3"
           onSubmit={ handleSubmit(handleUserRegistration) }
         >
-          <div className="col-11 col-xl-7">
+          <div className="col-11 col-xl-10">
             <input
               type="email"
               className="form-control text-center"
@@ -119,7 +120,7 @@ function Register() {
             )}
           </div>
 
-          <div className="col-11 col-xl-7">
+          <div className="col-11 col-xl-10">
             <input
               type="text"
               className="form-control text-center"
@@ -135,7 +136,7 @@ function Register() {
             )}
           </div>
 
-          <div className="col-11 col-xl-7">
+          <div className="col-11 col-xl-10">
             <input
               type="password"
               className="form-control text-center"
@@ -154,7 +155,7 @@ function Register() {
               </div>
             )}
           </div>
-          <div className="col-11 col-xl-7">
+          <div className="col-11 col-xl-10">
             <input
               type="password"
               className="form-control text-center"
@@ -172,7 +173,7 @@ function Register() {
             )}
           </div>
 
-          <div className="col-11 col-xl-7">
+          <div className="col-11 col-xl-10">
             <label htmlFor="phone" className="form-label text-white">Phone Number</label>
             <MaskedInput
               type="text"

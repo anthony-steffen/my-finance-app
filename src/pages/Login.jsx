@@ -43,8 +43,9 @@ function Login() {
     "
     >
       <div
-        className="col-11 col-md-8 col-lg-6 col-xl-3 p-3 rounded-3 mt-3"
+        className="col-11 col-md-8 col-lg-6 col-xl-4 p-3 rounded-3 mt-3"
         style={ {
+          maxWidth: '400px',
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
           display: 'flex',
           flexDirection: 'column',
@@ -73,7 +74,7 @@ function Login() {
           w-100 d-flex flex-column justify-content-center align-items-center gap-2"
           onSubmit={ handleSubmit(onSubmit) }
         >
-          <div className="col-10 col-xl-6">
+          <div className="col-10 col-xl-8">
             <input
               type="text"
               name="email"
@@ -94,7 +95,7 @@ function Login() {
             )}
           </div>
 
-          <div className="col-10 col-xl-6">
+          <div className="col-10 col-xl-8">
             <input
               type="password"
               name="password"
@@ -127,7 +128,7 @@ function Login() {
           </div>
 
           <div
-            className="btn-container gap-1 col-8 col-xl-5 gap-2 mb-2"
+            className="btn-container gap-1 col-8 col-xl-7 gap-2 mb-2"
             style={ {
               display: 'flex',
               flexDirection: 'column',

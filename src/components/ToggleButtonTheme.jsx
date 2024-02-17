@@ -5,10 +5,8 @@ import Moon from '../assets/moon.png';
 
 function ToggleButtonTheme() {
   const { theme, toggleTheme } = useContext(HomeContext);
-  console.log(theme);
 
   return (
-
     <div className={ `home-container ${theme}` }>
 
       <button

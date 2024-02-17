@@ -13,7 +13,6 @@ function HomeProvider({ children }) {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [theme, setTheme] = useState('light');
 
-  console.log(theme);
   const toggleTheme = useCallback(
     () => {
       setTheme(theme === 'light' ? 'dark' : 'light');
