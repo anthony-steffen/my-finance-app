@@ -9,9 +9,6 @@ import HomeContext from '../../contexts/HomeContext';
 function ModalToEditIncome() {
   const { selectIncome, editIncome, incomes } = useContext(IncomeContext);
   const { categories, theme } = useContext(HomeContext);
-  console.log('SELECT INCOME', selectIncome);
-  console.log('INCOMES', incomes);
-  console.log('EDIT INCOME', editIncome);
 
   const [initialStateIncomeToEdit] = useState({
     description: '',

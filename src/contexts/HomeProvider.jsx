@@ -11,11 +11,13 @@ function HomeProvider({ children }) {
   const [typeRegister, setTypeRegister] = useState('');
   const [categoryIcons, setCategoryIcons] = useState(Icons);
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [theme, setTheme] = useState('light');
+  const [showBalance, setShowBalance] = useState('******');
+  const [theme, setTheme] = useState('dark');
 
   const toggleTheme = useCallback(
     () => {
-      setTheme(theme === 'light' ? 'dark' : 'light');
+      setTheme(theme === 'dark' ? 'light' : 'dark');
+      localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark');
     },
     [theme],
   );
@@ -32,12 +34,15 @@ function HomeProvider({ children }) {
     theme,
     setTheme,
     toggleTheme,
+    showBalance,
+    setShowBalance,
   }), [
     typeRegister, setTypeRegister,
     categories, setCategories,
     categoryIcons, setCategoryIcons,
     selectedCategory, setSelectedCategory,
     theme, setTheme,
+    showBalance, setShowBalance,
     toggleTheme,
   ]);
 

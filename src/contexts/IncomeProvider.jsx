@@ -7,8 +7,8 @@ function IncomeProvider({ children }) {
   const storedIncomes = JSON.parse(localStorage.getItem('receitas')) || [];
   const storedReceivedIncomes = JSON.parse(localStorage.getItem('recebidas')) || [];
   const [incomes, setIncomes] = useState(storedIncomes);
-  const [incomesIds, setIncomesIds] = useState(0);
   const [receivedIncomes, setReceivedIncomes] = useState(storedReceivedIncomes);
+  const [incomesIds, setIncomesIds] = useState(0);
   const [selectIncome, setSelectIncome] = useState('');
   const [receivedDate, setReceivedDate] = useState('');
   const [totalIncomes, setTotalIncomes] = useState(0);

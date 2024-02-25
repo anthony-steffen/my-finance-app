@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-max-depth */
 import { IoMdMenu } from 'react-icons/io';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { PiEye, PiEyeClosed } from 'react-icons/pi';
 import ToggleButtonTheme from './ToggleButtonTheme';
 import logo from '../assets/logo.png';
@@ -13,10 +13,10 @@ import '../styles/components/Header.css';
 import '../styles/components/ToggleTheme.css';
 
 function Header() {
-  const { theme } = useContext(HomeContext);
+  const { theme, showBalance, setShowBalance } = useContext(HomeContext);
   const { totalIncomes } = useContext(IncomeContext);
   const { totalExpenses } = useContext(ExpenseContext);
-  const [showBalance, setShowBalance] = useState(false);
+
   return (
     <header
       className={ `
