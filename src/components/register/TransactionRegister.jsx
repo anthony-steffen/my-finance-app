@@ -5,9 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { format, addDays } from 'date-fns';
 
 import { IoMdClose } from 'react-icons/io';
-import HomeContext from '../../contexts/HomeContext';
-import ExpenseContext from '../../contexts/ExpenseContext';
-import IncomeContext from '../../contexts/IncomeContext';
+import AppContext from '../../contexts/AppContext';
 import InputDescription from './InputDescription';
 import InputValue from './InputValue';
 import InputPayment from './InputPayment';
@@ -19,9 +17,13 @@ import InputDate from './InputDate';
 
 function TransactionRegister() {
   // Estados do contexto
-  const { handleAddExpense } = useContext(ExpenseContext);
-  const { addIncome } = useContext(IncomeContext);
-  const { categories, typeRegister, setTypeRegister, theme } = useContext(HomeContext);
+  const {
+    handleAddExpense,
+    addIncome,
+    categories,
+    typeRegister,
+    setTypeRegister,
+    theme } = useContext(AppContext);
 
   // Estados locais
   const [ButtonText, setButtonText] = useState('Salvar');

@@ -1,13 +1,10 @@
 /* eslint-disable react/jsx-max-depth */
-
 import { useContext } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
-import IncomeContext from '../../contexts/IncomeContext';
-import HomeContext from '../../contexts/HomeContext';
+import AppContext from '../../contexts/AppContext';
 
 function ModalToReceiveIncome() {
-  const { receivedDate, setReceivedDate, receiveIncome } = useContext(IncomeContext);
-  const { theme } = useContext(HomeContext);
+  const { theme, receivedDate, setReceivedDate, receiveIncome } = useContext(AppContext);
 
   return (
     <div

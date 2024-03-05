@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import HomeContext from '../contexts/HomeContext';
+import AppContext from '../contexts/AppContext';
 import Sun from '../assets/sun.svg';
 import Moon from '../assets/moon.png';
 
 function ToggleButtonTheme() {
-  const { theme, toggleTheme } = useContext(HomeContext);
+  const { theme, toggleTheme } = useContext(AppContext);
 
   return (
     <div className={ `home-container ${theme}` }>

@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import IncomeContext from '../../contexts/IncomeContext';
 
 function FilterTransactions() {
-  console.log('filtro');
+
   return (
     <div>
       filtro

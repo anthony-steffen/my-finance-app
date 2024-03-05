@@ -1,12 +1,10 @@
 /* eslint-disable react/jsx-max-depth */
 import { useContext } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
-import IncomeContext from '../../contexts/IncomeContext';
-import HomeContext from '../../contexts/HomeContext';
+import AppContext from '../../contexts/AppContext';
 
 function ModalToDeleteIncome() {
-  const { removeIncome } = useContext(IncomeContext);
-  const { theme } = useContext(HomeContext);
+  const { theme, removeIncome } = useContext(AppContext);
   return (
     <div
       className="modal fade"

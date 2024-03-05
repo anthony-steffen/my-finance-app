@@ -1,14 +1,16 @@
 import { useMemo, useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import categoriesJson from '../helper/categories.json';
+import Icons from '../helper/Icons';
 
 import AppContext from './AppContext';
 
 const { Provider } = AppContext;
 
-export function AppProvider({ children }) {
+function AppProvider({ children }) {
   // Estado do HomeProvider
-  const [categories, setCategories] = useState(categoriesJson);
   const [typeRegister, setTypeRegister] = useState('');
+  const [categories, setCategories] = useState(categoriesJson);
   const [categoryIcons, setCategoryIcons] = useState(Icons);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [showBalance, setShowBalance] = useState('******');
@@ -16,7 +18,7 @@ export function AppProvider({ children }) {
 
   const toggleTheme = useCallback(
     () => {
-      setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
+      setTheme(theme === 'dark' ? 'light' : 'dark');
       localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark');
     },
     [theme],
@@ -50,20 +52,20 @@ export function AppProvider({ children }) {
 
   const receiveIncome = useCallback(
     () => {
-      const updatedIncomes = incomes.filter((income) => incomes
-        .indexOf(income) !== selectIncome);
+      const updatedIncomes = incomes
+        .filter((income) => incomes.indexOf(income) !== selectIncome);
 
-      const receivedIncome = incomes.filter((income) => incomes
-        .indexOf(income) === selectIncome);
+      const receivedIncome = incomes
+        .filter((income) => incomes.indexOf(income) === selectIncome);
       receivedIncome.receivedDate = receivedDate;
 
       setIncomes(updatedIncomes);
       setReceivedIncomes((prev) => [...prev, receivedIncome]);
 
-      localStorage.setItem('receitas', JSON
-        .stringify(updatedIncomes));
-      localStorage.setItem('recebidas', JSON
-        .stringify([...receivedIncomes, ...receivedIncome]));
+      localStorage.setItem('receitas', JSON.stringify(updatedIncomes));
+      localStorage.setItem('recebidas', JSON.stringify(
+        [...receivedIncomes, ...receivedIncome],
+      ));
     },
     [incomes, receivedIncomes, selectIncome, receivedDate],
   );
@@ -84,8 +86,8 @@ export function AppProvider({ children }) {
 
   const removeIncome = useCallback(
     () => {
-      const updatedIncomes = incomes.filter((income) => incomes
-        .indexOf(income) !== selectIncome);
+      const updatedIncomes = incomes
+        .filter((income) => incomes.indexOf(income) !== selectIncome);
       setIncomes(updatedIncomes);
       localStorage.setItem('receitas', JSON.stringify(updatedIncomes));
     },
@@ -167,74 +169,78 @@ export function AppProvider({ children }) {
   );
 
   const store = useMemo(() => ({
-    expenses,
-    setExpenses,
-    selectExpense,
-    setSelectExpense,
+    // Atualizações dos estados do HomeProvider
     typeRegister,
     setTypeRegister,
     categories,
     setCategories,
-    categoryIcons,
-    setCategoryIcons,
     selectedCategory,
     setSelectedCategory,
     showBalance,
     setShowBalance,
     theme,
     setTheme,
-    selectIncome,
-    setSelectIncome,
-    paydDate,
-    setPaydDate,
-    toggleTheme,
+    categoryIcons,
+    setCategoryIcons,
     incomes,
-    setIncomes,
     receivedIncomes,
     totalIncomes,
+    selectIncome,
     addIncome,
     receiveIncome,
     editIncome,
     removeIncome,
+    setSelectIncome,
     setReceivedDate,
+    expenses,
+    setExpenses,
+    paidExpenses,
+    setPaidExpenses,
+    selectExpense,
+    setSelectExpense,
+    paydDate,
+    setPaydDate,
+    totalExpenses,
+    setTotalExpenses,
+    handleAddExpense,
+    handlePayExpense,
+    hundleEditExpense,
+    handleDeleteExpense,
+    toggleTheme,
+  }), [
+    typeRegister, setTypeRegister,
+    categories, setCategories,
+    selectedCategory, setSelectedCategory,
+    showBalance, setShowBalance,
+    theme, setTheme,
+    categoryIcons, setCategoryIcons,
+    receivedIncomes, receiveIncome,
+    selectIncome, setSelectIncome,
+    incomes,
+    totalIncomes,
+    addIncome,
+    editIncome,
+    removeIncome,
+    setReceivedDate,
+    expenses, setExpenses,
+    paidExpenses, setPaidExpenses,
+    selectExpense, setSelectExpense,
+    paydDate, setPaydDate,
     totalExpenses,
     handleAddExpense,
     handlePayExpense,
     hundleEditExpense,
     handleDeleteExpense,
-  }), [
-    typeRegister, setTypeRegister,
-    categories, setCategories,
-    categoryIcons, setCategoryIcons,
-    selectedCategory, setSelectedCategory,
-    showBalance, setShowBalance,
-    theme, setTheme,
-    selectIncome, setSelectIncome,
-    totalExpenses, setExpenses,
-    selectExpense, setSelectExpense,
-    paydDate, setPaydDate,
     toggleTheme,
-    incomes,
-    receivedIncomes,
-    totalIncomes,
-    addIncome,
-    receiveIncome,
-    editIncome,
-    removeIncome,
-    setReceivedDate,
-    expenses,
-    handleAddExpense,
-    handlePayExpense,
-    hundleEditExpense,
-    handleDeleteExpense,
   ]);
-
   return (
     <Provider value={ store }>
       {children}
     </Provider>
   );
 }
+
+export default AppProvider;
 AppProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };

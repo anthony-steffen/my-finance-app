@@ -1,15 +1,14 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import ExpenseContext from './ExpenseContext';
-import HomeContext from './HomeContext';
+import AppContext from './AppContext';
 
-const { Provider } = ExpenseContext;
+const { Provider } = AppContext;
 
 function ExpenseProvider({ children }) {
 // Busca as despesas no localStorage e caso não exista, retorna um array vazio
   const storedExpenses = JSON.parse(localStorage.getItem('despesas')) || [];
   const storedPaidExpenses = JSON.parse(localStorage.getItem('despesasPagas')) || [];
-  const { typeRegister, setTypeRegister } = useContext(HomeContext);
+  const { typeRegister, setTypeRegister } = useContext(AppContext);
   const [expenses, setExpenses] = useState(storedExpenses);
   const [expensesIds, setExpensesIds] = useState(0);
   const [paidExpenses, setpaidExpenses] = useState(storedPaidExpenses);

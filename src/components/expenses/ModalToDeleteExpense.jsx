@@ -1,12 +1,11 @@
 /* eslint-disable react/jsx-max-depth */
 import { useContext } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
-import ExpenseContext from '../../contexts/ExpenseContext';
-import HomeContext from '../../contexts/HomeContext';
+import AppContext from '../../contexts/AppContext';
 
 function ModalToDeleteExpense() {
-  const { handleDeleteExpense } = useContext(ExpenseContext);
-  const { theme } = useContext(HomeContext);
+  const { handleDeleteExpense, theme } = useContext(AppContext);
+
   return (
     <div
       className="modal fade"

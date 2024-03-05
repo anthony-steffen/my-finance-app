@@ -2,13 +2,17 @@
 import { useContext, useState } from 'react';
 import { format, parse } from 'date-fns';
 import { AiOutlineClose } from 'react-icons/ai';
-import ExpenseContext from '../../contexts/ExpenseContext';
+import AppContext from '../../contexts/AppContext';
 import ExpenseEditForm from './ExpenseEditForm';
-import HomeContext from '../../contexts/HomeContext';
 
 function ModalToEditExpense() {
-  const { selectExpense, hundleEditExpense, expenses } = useContext(ExpenseContext);
-  const { categories, theme } = useContext(HomeContext);
+  const {
+    selectExpense,
+    hundleEditExpense,
+    expenses,
+    categories,
+    theme } = useContext(AppContext);
+
   const [initialStateExpenseToEdit] = useState({
     description: '',
     value: '',

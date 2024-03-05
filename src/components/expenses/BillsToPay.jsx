@@ -1,14 +1,12 @@
 import { useContext } from 'react';
-import ExpenseContext from '../../contexts/ExpenseContext';
-import HomeContext from '../../contexts/HomeContext';
+import AppContext from '../../contexts/AppContext';
 
 import '../../styles/components/Lists.css';
 import ExpenseCard from './ExpenseCard';
 import Avatar from '../../assets/pb02.png';
 
 function BillsToPay() {
-  const { expenses } = useContext(ExpenseContext);
-  const { theme } = useContext(HomeContext);
+  const { expenses, theme } = useContext(AppContext);
 
   if (expenses.length === 0) {
     return (

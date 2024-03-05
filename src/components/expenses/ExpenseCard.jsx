@@ -5,12 +5,12 @@ import { useContext } from 'react';
 import ModalToPayExpense from './ModalToPayExpense';
 // import ExpenseDetails from './ExpenseDetails';
 import ExpenseBadge from './ExpenseBadge';
-import ExpenseContext from '../../contexts/ExpenseContext';
+import AppContext from '../../contexts/AppContext';
 import ModalToEditExpense from './ModalToEditExpense';
 import ModalToDeleteExpense from './ModalToDeleteExpense';
 
 function ExpenseCard({ expense, index }) {
-  const { setSelectExpense } = useContext(ExpenseContext);
+  const { setSelectExpense } = useContext(AppContext);
 
   return (
     <div className="col-xl-4 col-lg-6 mb-1 p-2">

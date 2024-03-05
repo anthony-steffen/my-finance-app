@@ -2,9 +2,9 @@ import { useCallback, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import categoriesJson from '../helper/categories.json';
 import Icons from '../helper/Icons';
-import HomeContext from './HomeContext';
+import AppContext from './AppContext';
 
-const { Provider } = HomeContext;
+const { Provider } = AppContext;
 
 function HomeProvider({ children }) {
   const [categories, setCategories] = useState(categoriesJson);

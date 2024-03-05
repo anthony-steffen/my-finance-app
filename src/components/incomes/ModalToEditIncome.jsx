@@ -2,13 +2,11 @@
 import { useContext, useState } from 'react';
 import { format, parse } from 'date-fns';
 import { AiOutlineClose } from 'react-icons/ai';
-import IncomeContext from '../../contexts/IncomeContext';
 import IncomeEditForm from './IncomeEditForm';
-import HomeContext from '../../contexts/HomeContext';
+import AppContext from '../../contexts/AppContext';
 
 function ModalToEditIncome() {
-  const { selectIncome, editIncome, incomes } = useContext(IncomeContext);
-  const { categories, theme } = useContext(HomeContext);
+  const { categories, theme, selectIncome, editIncome, incomes } = useContext(AppContext);
 
   const [initialStateIncomeToEdit] = useState({
     description: '',

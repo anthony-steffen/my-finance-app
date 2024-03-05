@@ -1,13 +1,13 @@
 import { IoMdClose } from 'react-icons/io';
 
 import { useContext } from 'react';
-import HomeContext from '../../contexts/HomeContext';
+import AppContext from '../../contexts/AppContext';
 
 import TransactionRegister from './TransactionRegister';
 import BtnAdd from './BtnAdd';
 
 function OffCanvas() {
-  const { theme } = useContext(HomeContext);
+  const { theme } = useContext(AppContext);
   return (
     <section>
       {/* <div> */}

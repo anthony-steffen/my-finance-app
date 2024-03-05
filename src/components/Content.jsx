@@ -6,11 +6,11 @@ import Income from './incomes/Income';
 import OffCanvas from './register/OffCanvas';
 import Footer from './footer/Footer';
 
-import HomeContext from '../contexts/HomeContext';
+import AppContext from '../contexts/AppContext';
 import '../styles/components/ToggleTheme.css';
 
 function Content() {
-  const { theme } = useContext(HomeContext);
+  const { theme } = useContext(AppContext);
   return (
     <div className={ `${theme}-theme` }>
       <Header />

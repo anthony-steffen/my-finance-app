@@ -4,16 +4,14 @@ import {
 } from 'react-icons/io';
 
 import { useContext, useEffect, useState } from 'react';
-import HomeContext from '../../contexts/HomeContext';
-import ExpenseContext from '../../contexts/ExpenseContext';
+import AppContext from '../../contexts/AppContext';
 
 import '../../styles/components/SwiperCards.css';
 import '../../styles/components/Lists.css';
 import Avatar from '../../assets/pb01.png';
 
 function SwiperCards() {
-  const { expenses } = useContext(ExpenseContext);
-  const { categoryIcons, categories, theme } = useContext(HomeContext);
+  const { expenses, categoryIcons, categories, theme } = useContext(AppContext);
 
   const [categoriesData, setCategoriesData] = useState([]);
 

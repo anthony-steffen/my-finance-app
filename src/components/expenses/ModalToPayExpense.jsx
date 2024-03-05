@@ -2,12 +2,10 @@
 
 import { useContext } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
-import ExpenseContext from '../../contexts/ExpenseContext';
-import HomeContext from '../../contexts/HomeContext';
+import AppContext from '../../contexts/AppContext';
 
 function ModalToPayExpense() {
-  const { paydDate, setPaydDate, handlePayExpense } = useContext(ExpenseContext);
-  const { theme } = useContext(HomeContext);
+  const { paydDate, setPaydDate, handlePayExpense, theme } = useContext(AppContext);
 
   return (
     <div

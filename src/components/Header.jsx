@@ -3,20 +3,21 @@ import { PiEye, PiEyeClosed } from 'react-icons/pi';
 import ToggleButtonTheme from './ToggleButtonTheme';
 import logo from '../assets/logo.png';
 
-import HomeContext from '../contexts/HomeContext';
-import IncomeContext from '../contexts/IncomeContext';
-import ExpenseContext from '../contexts/ExpenseContext';
+import AppContext from '../contexts/AppContext';
 
 import '../styles/components/Header.css';
 import '../styles/components/ToggleTheme.css';
 import MenuHamburger from './MenuHamburger';
 
 function Header() {
-  const { theme, showBalance, setShowBalance } = useContext(HomeContext);
-  const { totalIncomes } = useContext(IncomeContext);
-  const { totalExpenses } = useContext(ExpenseContext);
-
-  console.log(totalIncomes, totalExpenses);
+  const {
+    totalExpenses,
+    totalIncomes,
+    theme,
+    showBalance,
+    setShowBalance,
+    incomes,
+  } = useContext(AppContext);
 
   return (
     <header

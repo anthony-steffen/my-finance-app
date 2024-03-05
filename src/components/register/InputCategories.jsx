@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import propTypes from 'prop-types';
-import HomeContext from '../../contexts/HomeContext';
+import AppContext from '../../contexts/AppContext';
 
 function InputCategories({ register }) {
-  const { categories, setSelectedCategory } = useContext(HomeContext);
+  const { categories, setSelectedCategory } = useContext(AppContext);
   return (
     <select
       className="form-select mb-2"

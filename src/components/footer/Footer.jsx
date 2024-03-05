@@ -2,13 +2,13 @@ import { useContext } from 'react';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3 } from 'react-icons/fa';
 import { SiReactrouter, SiBootstrap, SiReacthookform } from 'react-icons/si';
 
-import HomeContext from '../../contexts/HomeContext';
+import AppContext from '../../contexts/AppContext';
 import NavigationBar from './NavigationBar';
 
 import '../../styles/components/Footer.css';
 
 function Footer() {
-  const { theme } = useContext(HomeContext);
+  const { theme } = useContext(AppContext);
   return (
     <footer
       className={

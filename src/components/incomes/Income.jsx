@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-max-depth */
 import { useContext } from 'react';
-import HomeContext from '../../contexts/HomeContext';
-import IncomeContext from '../../contexts/IncomeContext';
+import AppContext from '../../contexts/AppContext';
 
 import ModalToDeleteIncome from './ModalToDeleteIncome';
 import ModalToEditIncome from './ModalToEditIncome';
@@ -10,9 +9,7 @@ import ModalToReceiveIncome from './ModalToReceiveIncome';
 import Avatar from '../../assets/pb03.png';
 
 function Income() {
-  const { incomes } = useContext(IncomeContext);
-  const { theme } = useContext(HomeContext);
-  const { setSelectIncome } = useContext(IncomeContext);
+  const { incomes, theme, setSelectIncome } = useContext(AppContext);
 
   if (incomes.length === 0) {
     return (
