@@ -11,7 +11,6 @@ import '../styles/pages/Login.css';
 
 function Login() {
   const { registeredUsers } = useContext(AuthContext);
-  console.log(registeredUsers);
 
   const navigate = useNavigate();
 
