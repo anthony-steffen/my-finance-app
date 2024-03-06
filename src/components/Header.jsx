@@ -9,6 +9,8 @@ import '../styles/components/Header.css';
 import '../styles/components/ToggleTheme.css';
 import MenuHamburger from './MenuHamburger';
 
+console.log('Header');
+
 function Header() {
   const {
     totalExpenses,
@@ -16,7 +18,6 @@ function Header() {
     theme,
     showBalance,
     setShowBalance,
-    incomes,
   } = useContext(AppContext);
 
   return (
