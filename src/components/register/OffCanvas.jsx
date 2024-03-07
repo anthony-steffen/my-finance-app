@@ -1,5 +1,4 @@
 import { IoMdClose } from 'react-icons/io';
-
 import { useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
 

@@ -3,7 +3,7 @@ import { addDays, parse } from 'date-fns';
 import AppContext from '../../contexts/AppContext';
 
 function FilterTransactions() {
-  const { incomes, expenses, typeRegister } = useContext(AppContext);
+  const { incomes, expenses, typeRegister, setTypeRegister } = useContext(AppContext);
   const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [transactions] = useState([...incomes, ...expenses]);
   const [selectedFilter, setSelectedFilter] = useState(null);
@@ -19,21 +19,26 @@ function FilterTransactions() {
   };
 
   const applyFilter = () => {
-    if (!selectedFilter) {
+    if (!selectedFilter || !typeRegister) {
       setFilteredTransactions([]);
-      return;
     }
-
     const currentDate = new Date();
     const filteredDate = addDays(currentDate, mn[selectedFilter]);
 
     const filteredData = transactions.filter((transaction) => {
       const transactionDate = parse(transaction.date, 'dd/MM/yyyy', new Date());
 
-      return transactionDate >= filteredDate && transactionDate <= currentDate;
+      const isTypeMatch = typeRegister ? transaction.type === typeRegister : true;
+
+      return (
+        transactionDate >= filteredDate
+        && transactionDate <= currentDate
+        && isTypeMatch
+      );
     });
 
     setFilteredTransactions(filteredData);
+    setTypeRegister('');
   };
 
   return (
@@ -59,12 +64,11 @@ function FilterTransactions() {
             className="border border p-2 m-2"
           >
             <p>
-              {
-                `${transaction.description} - 
+              { `
+              ${transaction.description} - 
               Valor: ${transaction.value} - 
               Data: ${transaction.date}
-              `
-              }
+              `}
             </p>
             <p>{`Categoria: ${transaction.category} - ${transaction.subCategory}`}</p>
             {/* Adicione outros campos conforme necessário */}

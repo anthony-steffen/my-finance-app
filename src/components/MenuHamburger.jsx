@@ -7,7 +7,6 @@ import AppContext from '../contexts/AppContext';
 function MenuHamburger() {
   const { typeRegister, setTypeRegister } = useContext(AppContext);
   console.log(typeRegister);
-  console.log('MenuHamburger');
   return (
     <div>
       <button
@@ -64,7 +63,7 @@ function MenuHamburger() {
                   <button
                     className="dropdown-item"
                     type="button"
-                    value="Despesa"
+                    value="expense"
                     onClick={ (e) => setTypeRegister(e.target.value) }
                   >
                     Despesa
@@ -72,7 +71,7 @@ function MenuHamburger() {
                   <button
                     className="dropdown-item"
                     type="button"
-                    value="Receita"
+                    value="income"
                     onClick={ (e) => setTypeRegister(e.target.value) }
                   >
                     Receita
@@ -80,7 +79,7 @@ function MenuHamburger() {
                   <button
                     className="dropdown-item"
                     type="button"
-                    value="Tudo"
+                    value=""
                     onClick={ (e) => setTypeRegister(e.target.value) }
                   >
                     Tudo
