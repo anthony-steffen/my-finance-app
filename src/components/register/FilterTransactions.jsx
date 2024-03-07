@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { addDays, addMonths, addYears } from 'date-fns';
+import { addDays, parse } from 'date-fns';
 import AppContext from '../../contexts/AppContext';
 
 function FilterTransactions() {
-  const { incomes, expenses } = useContext(AppContext);
+  const { incomes, expenses, typeRegister } = useContext(AppContext);
   const [filteredTransactions, setFilteredTransactions] = useState([]);
+  const [transactions] = useState([...incomes, ...expenses]);
+  const [selectedFilter, setSelectedFilter] = useState(null);
 
   const mn = {
     sevenDays: -7,
@@ -15,92 +17,62 @@ function FilterTransactions() {
     sixMonths: -180,
     oneYear: -365,
   };
-  function handleApplyFilter(filter) {
-    setFilteredTransactions(filter);
-    const today = new Date();
-    let dateFilter = today;
-    switch (filter) {
-    case '7d':
-      dateFilter = addDays(today, mn.sevenDays);
-      break;
-    case '15':
-      dateFilter = addDays(today, mn.fifteenDays);
-      break;
-    case '30d':
-      dateFilter = addDays(today, mn.thirtyDays);
-      break;
-    case '60d':
-      dateFilter = addDays(today, mn.sixtyDays);
-      break;
-    case '3m':
-      dateFilter = addDays(today, mn.threeMonths);
-      break;
-    case '6m':
-      dateFilter = addDays(today, mn.sixMonths);
-      break;
-    case '1y':
-      dateFilter = addDays(today, mn.oneYear);
-      break;
-    default:
-      dateFilter = addDays(today, mn.oneDay);
+
+  const applyFilter = () => {
+    if (!selectedFilter) {
+      setFilteredTransactions([]);
+      return;
     }
 
-    const filteredIncomes = incomes
-      .filter((income) => new Date(income.date) >= dateFilter);
-    const filteredExpenses = expenses
-      .filter((expense) => new Date(expense.date) >= dateFilter);
-    setFilteredTransactions([...filteredIncomes, ...filteredExpenses]);
-  }
+    const currentDate = new Date();
+    const filteredDate = addDays(currentDate, mn[selectedFilter]);
 
-  console.log(filteredTransactions);
+    const filteredData = transactions.filter((transaction) => {
+      const transactionDate = parse(transaction.date, 'dd/MM/yyyy', new Date());
+
+      return transactionDate >= filteredDate && transactionDate <= currentDate;
+    });
+
+    setFilteredTransactions(filteredData);
+  };
 
   return (
-    <div className="filter-buttons d-flex flex-row justify-content-between gap-1 my-3">
-      <button type="button" onClick={ () => handleApplyFilter('7d') }>
-        7 dias
-      </button>
-      <button type="button" onClick={ () => handleApplyFilter('15d') }>
-        15 dias
-      </button>
-      <button type="button" onClick={ () => handleApplyFilter('30d') }>
-        30 dias
-      </button>
-      <button type="button" onClick={ () => handleApplyFilter('60d') }>
-        60 dias
-      </button>
-      <button type="button" onClick={ () => handleApplyFilter('3m') }>
-        3 meses
-      </button>
-      <button type="button" onClick={ () => handleApplyFilter('6m') }>
-        6 meses
-      </button>
-      <button type="button" onClick={ () => handleApplyFilter('1y') }>
-        1 ano
-      </button>
-      <button type="button">Personalizado</button>
-      <div className="transactions">
+    <div>
+      <div>
+        <button onClick={ () => setSelectedFilter('sevenDays') }>7 dias</button>
+        <button onClick={ () => setSelectedFilter('fifteenDays') }>15 dias</button>
+        <button onClick={ () => setSelectedFilter('thirtyDays') }>30 dias</button>
+        <button onClick={ () => setSelectedFilter('sixtyDays') }>60 dias</button>
+        <button onClick={ () => setSelectedFilter('threeMonths') }>3 meses</button>
+        <button onClick={ () => setSelectedFilter('sixMonths') }>6 meses</button>
+        <button onClick={ () => setSelectedFilter('oneYear') }>1 ano</button>
+      </div>
+
+      <div>
+        <button onClick={ applyFilter }>Aplicar Filtro</button>
+      </div>
+
+      <div>
         {filteredTransactions.map((transaction) => (
-          <div key={ Math.random() }>
+          <div
+            key={ Math.random() }
+            className="border border p-2 m-2"
+          >
             <p>
-              {transaction.type === 'expense' ? 'Despesa' : 'Receita'}
-              {' '}
-              -
-              {' '}
-              {transaction.date}
-              {' '}
-              -
-              {' '}
-              {transaction.value}
-              {' '}
-              -
-              {' '}
-              {transaction.category}
+              {
+                `${transaction.description} - 
+              Valor: ${transaction.value} - 
+              Data: ${transaction.date}
+              `
+              }
             </p>
+            <p>{`Categoria: ${transaction.category} - ${transaction.subCategory}`}</p>
+            {/* Adicione outros campos conforme necessário */}
           </div>
         ))}
       </div>
     </div>
-
   );
 }
+
 export default FilterTransactions;
