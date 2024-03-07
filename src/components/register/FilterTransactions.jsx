@@ -3,10 +3,12 @@ import { addDays, parse } from 'date-fns';
 import AppContext from '../../contexts/AppContext';
 
 function FilterTransactions() {
-  const { incomes, expenses, typeRegister, setTypeRegister } = useContext(AppContext);
+  const { incomes, expenses, typeRegister } = useContext(AppContext);
   const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [transactions] = useState([...incomes, ...expenses]);
   const [selectedFilter, setSelectedFilter] = useState(null);
+  const [showMessage, setShowMessage] = useState('');
+  console.log(typeRegister);
 
   const mn = {
     sevenDays: -7,
@@ -19,7 +21,7 @@ function FilterTransactions() {
   };
 
   const applyFilter = () => {
-    if (!selectedFilter || !typeRegister) {
+    if (!selectedFilter) {
       setFilteredTransactions([]);
     }
     const currentDate = new Date();
@@ -36,21 +38,53 @@ function FilterTransactions() {
         && isTypeMatch
       );
     });
-
     setFilteredTransactions(filteredData);
-    setTypeRegister('');
+    setShowMessage(
+      filteredData.length === 0 && selectedFilter ? 'Nenhuma transação encontrada' : '',
+    );
   };
 
   return (
-    <div>
-      <div>
-        <button onClick={ () => setSelectedFilter('sevenDays') }>7 dias</button>
-        <button onClick={ () => setSelectedFilter('fifteenDays') }>15 dias</button>
-        <button onClick={ () => setSelectedFilter('thirtyDays') }>30 dias</button>
-        <button onClick={ () => setSelectedFilter('sixtyDays') }>60 dias</button>
-        <button onClick={ () => setSelectedFilter('threeMonths') }>3 meses</button>
-        <button onClick={ () => setSelectedFilter('sixMonths') }>6 meses</button>
-        <button onClick={ () => setSelectedFilter('oneYear') }>1 ano</button>
+    <div className="d-flex flex-row align-items-center">
+      <div className="row d-flex gap-2">
+        <button
+          onClick={ () => setSelectedFilter('sevenDays') }
+          className="btn btn-sm btn-primary rouded-pill"
+        >
+          7 dias
+        </button>
+        <button
+          onClick={ () => setSelectedFilter('fifteenDays') }
+        >
+          15 dias
+        </button>
+        <button
+          onClick={ () => setSelectedFilter('thirtyDays') }
+        >
+          30 dias
+        </button>
+        <button
+          onClick={ () => setSelectedFilter('sixtyDays') }
+        >
+          60 dias
+        </button>
+      </div>
+      <div className="row d-flex gap-2">
+        <button
+          onClick={ () => setSelectedFilter('threeMonths') }
+        >
+          3 meses
+        </button>
+        <button
+          onClick={ () => setSelectedFilter('sixMonths') }
+        >
+          6 meses
+        </button>
+        <button
+          onClick={ () => setSelectedFilter('oneYear') }
+        >
+          1 ano
+        </button>
       </div>
 
       <div>
@@ -58,6 +92,7 @@ function FilterTransactions() {
       </div>
 
       <div>
+        {showMessage && <p>Nenhuma transação encontrada.</p>}
         {filteredTransactions.map((transaction) => (
           <div
             key={ Math.random() }
@@ -65,13 +100,11 @@ function FilterTransactions() {
           >
             <p>
               { `
-              ${transaction.description} - 
+              ${transaction.type === 'expense' ? 'Despesa' : 'Receita'} -
               Valor: ${transaction.value} - 
               Data: ${transaction.date}
               `}
             </p>
-            <p>{`Categoria: ${transaction.category} - ${transaction.subCategory}`}</p>
-            {/* Adicione outros campos conforme necessário */}
           </div>
         ))}
       </div>
