@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-max-depth */
-import { IoMdMenu } from 'react-icons/io';
+import { IoMdMenu, IoMdClose } from 'react-icons/io';
 import { useContext } from 'react';
 import FilterTransactions from './register/FilterTransactions';
 import AppContext from '../contexts/AppContext';
@@ -8,7 +8,10 @@ function MenuHamburger() {
   const { typeRegister, setTypeRegister } = useContext(AppContext);
   console.log(typeRegister);
   return (
-    <div className="container-fluid absolute">
+    <div className="d-flex flex-column justify-content-between">
+      <div className="text-white text-center">
+        Relatórios
+      </div>
       <button
         className="toggle-button"
         type="button"
@@ -26,10 +29,11 @@ function MenuHamburger() {
         data-bs-backdrop="static"
         id="offcanvasNavbar"
         aria-labelledby="offcanvasNavbarLabel"
+        style={ { width: '420px' } }
       >
         <div
           className="offcanvas-header fixed"
-          style={ { paddingLeft: '25%' } }
+          style={ { paddingLeft: '30%' } }
         >
           <h5
             className="offcanvas-title"
@@ -37,11 +41,11 @@ function MenuHamburger() {
           >
             Extrato da conta
           </h5>
-          <button
-            type="button"
-            className="btn-close"
+          <IoMdClose
             data-bs-dismiss="offcanvas"
             aria-label="Close"
+            className="text-danger"
+            style={ { width: '30px', height: '35px' } }
           />
         </div>
 
@@ -62,7 +66,7 @@ function MenuHamburger() {
             <div className="btn-group">
               <button
                 type="button"
-                className="btn btn-danger dropdown-toggle"
+                className="btn btn-primary dropdown-toggle"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
@@ -98,9 +102,11 @@ function MenuHamburger() {
             </div>
           </div>
         </div>
-        <div className="col-12 border">
-          <div className="row justify-content-center border-bottom">
-            <p className="text-center fw-bold my-3">Escolha a data da transação:</p>
+        <div className="col-12 border collapse" id="collapseExample">
+          <div className="justify-content-center border w-100">
+            <p className="text-center fw-bold my-3">
+              Escolha o intervalo de dias, mêses ou anos.
+            </p>
           </div>
           <FilterTransactions />
         </div>

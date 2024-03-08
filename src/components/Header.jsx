@@ -59,14 +59,14 @@ function Header() {
           </span>
 
         </div>
-        <div className="img-logo-container col-3">
-          <img
-            className="img-logo-header"
-            src={ logo }
-            alt="logo"
-            style={ { maxWidth: '70px' } }
-          />
-        </div>
+        {/* <div className="img-logo-container col-3"> */}
+        <img
+          className="img-logo-header"
+          src={ logo }
+          alt="logo"
+          style={ { maxWidth: '70px' } }
+        />
+        {/* </div> */}
         <MenuHamburger />
       </div>
     </header>

@@ -146,18 +146,15 @@ function TransactionRegister() {
           className={ `
           btn btn-sm text-white ${theme === 'light' ? 'btn-primary' : 'glow-on-hover'}
           ` }
-          // className="btn btn-sm btn-primary"
           onClick={ handleSubmit(onSubmit) }
         >
           {ButtonText}
         </button>
         <IoMdClose
-          type="button"
-          // className="btn-close"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
           className="text-danger"
-          style={ { borderRadius: '50%', width: '35px', height: '35px' } }
+          style={ { width: '30px', height: '35px' } }
         />
       </div>
     </>
