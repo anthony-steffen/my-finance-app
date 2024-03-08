@@ -8,6 +8,7 @@ function FilterTransactions() {
   const [transactions] = useState([...incomes, ...expenses]);
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [showMessage, setShowMessage] = useState('');
+  const [order, setOrder] = useState('');
   console.log(typeRegister);
 
   const mn = {
@@ -26,9 +27,9 @@ function FilterTransactions() {
     }
     const currentDate = new Date();
     const filteredDate = addDays(currentDate, mn[selectedFilter]);
-
+    const PT_BR = 'dd/MM/yyyy';
     const filteredData = transactions.filter((transaction) => {
-      const transactionDate = parse(transaction.date, 'dd/MM/yyyy', new Date());
+      const transactionDate = parse(transaction.date, PT_BR, new Date());
 
       const isTypeMatch = typeRegister ? transaction.type === typeRegister : true;
 
@@ -37,11 +38,34 @@ function FilterTransactions() {
         && transactionDate <= currentDate
         && isTypeMatch
       );
-    });
+    })
+      .sort((a, b) => {
+        // Ordena por data da mais recente para a mais antiga
+        const dateA = parse(a.date, PT_BR, new Date());
+        const dateB = parse(b.date, PT_BR, new Date());
+
+        if (order === 'asc') {
+          return dateA - dateB;
+        }
+        if (order === 'desc') {
+          return dateB - dateA;
+        }
+        return 0;
+      });
     setFilteredTransactions(filteredData);
     setShowMessage(
       filteredData.length === 0 && selectedFilter ? 'Nenhuma transação encontrada' : '',
     );
+  };
+
+  const setAscOrder = () => {
+    setOrder('asc');
+    applyFilter(); // Aplica a ordenação imediatamente
+  };
+
+  const setDescOrder = () => {
+    setOrder('desc');
+    applyFilter(); // Aplica a ordenação imediatamente
   };
 
   return (
@@ -117,9 +141,25 @@ function FilterTransactions() {
       >
         {showMessage && <p>Nenhuma transação encontrada.</p>}
         {filteredTransactions.length > 0 && (
-          <p className="text-center my-2 fw-bold text-muted">
+          <div className="d-flex flex-column text-center text-muted my-2 fw-bold gap-2">
             {`Transações encontradas: ${filteredTransactions.length}`}
-          </p>
+            <div className="d-flex flex-row justify-content-center gap-2">
+              Ordenar por:
+              <button
+                className="btn btn-sm btn-primary"
+                onClick={ setAscOrder }
+              >
+                Crescente
+              </button>
+              <button
+                className="btn btn-sm btn-primary"
+                onClick={ setDescOrder }
+              >
+                Decrescente
+              </button>
+            </div>
+          </div>
+
         )}
         {filteredTransactions.map((transaction) => (
           <div
