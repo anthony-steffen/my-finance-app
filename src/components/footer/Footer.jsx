@@ -13,7 +13,7 @@ function Footer() {
     <footer
       className={
         `navbar sticky-bottom ${theme === 'light' ? 'bg-primary' : 'bg-dark'} 
-        text-light`
+        text-light z-2`
       }
       style={ { height: '12vh' } }
     >

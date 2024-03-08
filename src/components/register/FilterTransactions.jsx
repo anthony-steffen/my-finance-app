@@ -45,8 +45,16 @@ function FilterTransactions() {
   };
 
   return (
-    <div className="d-flex flex-row align-items-center">
-      <div className="row d-flex gap-2">
+
+    <div
+      className="
+    my-3 container text-center
+    d-flex flex-column align-items-center
+    gap-2
+    "
+    >
+
+      <div className="col d-flex flex-row  gap-2">
         <button
           onClick={ () => setSelectedFilter('sevenDays') }
           className="btn btn-sm btn-primary rouded-pill"
@@ -55,50 +63,70 @@ function FilterTransactions() {
         </button>
         <button
           onClick={ () => setSelectedFilter('fifteenDays') }
+          className="btn btn-sm btn-primary rouded-pill"
         >
           15 dias
         </button>
         <button
           onClick={ () => setSelectedFilter('thirtyDays') }
+          className="btn btn-sm btn-primary rouded-pill"
         >
           30 dias
         </button>
         <button
           onClick={ () => setSelectedFilter('sixtyDays') }
+          className="btn btn-sm btn-primary rouded-pill"
         >
           60 dias
         </button>
       </div>
-      <div className="row d-flex gap-2">
+
+      <div className="col d-flex flex-row  gap-2">
         <button
           onClick={ () => setSelectedFilter('threeMonths') }
+          className="btn btn-sm btn-primary rouded-pill"
         >
           3 meses
         </button>
         <button
           onClick={ () => setSelectedFilter('sixMonths') }
+          className="btn btn-sm btn-primary rouded-pill"
         >
           6 meses
         </button>
         <button
           onClick={ () => setSelectedFilter('oneYear') }
+          className="btn btn-sm btn-primary rouded-pill"
         >
           1 ano
         </button>
       </div>
 
-      <div>
-        <button onClick={ applyFilter }>Aplicar Filtro</button>
+      <div className="col d-flex flex-row  gap-2">
+        <button
+          onClick={ applyFilter }
+          className="btn btn-sm btn-primary rouded-pill"
+        >
+          Aplicar Filtro
+        </button>
       </div>
 
-      <div>
+      <div
+        className="container d-flex flex-column border my-2 overflow-auto gap-1"
+        style={ { height: '50vh' } }
+      >
         {showMessage && <p>Nenhuma transação encontrada.</p>}
+        {filteredTransactions.length > 0 && (
+          <p className="text-center my-2">
+            {`Transações encontradas: ${filteredTransactions.length}`}
+          </p>
+        )}
         {filteredTransactions.map((transaction) => (
           <div
             key={ Math.random() }
-            className="border border p-2 m-2"
+            className="border border p-3 rounded-3"
           >
-            <p>
+            <p className="m-0">
               { `
               ${transaction.type === 'expense' ? 'Despesa' : 'Receita'} -
               Valor: ${transaction.value} - 
