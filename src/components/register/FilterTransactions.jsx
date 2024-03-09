@@ -53,6 +53,7 @@ function FilterTransactions() {
       }
       return 0;
     });
+
     setFilteredTransactions(sortedData);
     setShowMessage(
       filteredData.length === 0 && selectedFilter ? 'Nenhuma transação encontrada' : '',
@@ -63,6 +64,11 @@ function FilterTransactions() {
     if (order) applyFilter();
   }, [applyFilter, order]);
 
+  const removeFilters = useCallback(() => {
+    setOrder('');
+    setFilteredTransactions([]);
+    setSelectedFilter(null);
+  }, []);
   const setOrderTransaction = useCallback(
     (value) => {
       setOrder(value);
@@ -122,16 +128,21 @@ function FilterTransactions() {
           1 ano
         </button>
       </div>
-      {!order && (
-        <div className="col d-flex flex-row  gap-2 mt-1">
-          <button
-            onClick={ applyFilter }
-            className="btn btn-sm btn-primary"
-          >
-            Aplicar Filtro
-          </button>
-        </div>
-      )}
+      <div className="col d-flex flex-row  mt-1 gap-2">
+        <button
+          onClick={ applyFilter }
+          className="btn btn-sm btn-primary"
+        >
+          Aplicar Filtro
+        </button>
+        <button
+          onClick={ () => removeFilters() }
+          className="btn btn-sm btn-danger"
+        >
+          Remover filtro
+        </button>
+      </div>
+
       <div
         className="container d-flex flex-column border my-2 overflow-auto gap-1"
         style={ { height: '45vh' } }
