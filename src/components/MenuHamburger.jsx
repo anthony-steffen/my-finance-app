@@ -1,8 +1,11 @@
 /* eslint-disable react/jsx-max-depth */
 import { IoMdMenu, IoMdClose } from 'react-icons/io';
+import { useContext } from 'react';
 import FilterTransactions from './register/FilterTransactions';
+import AppContext from '../contexts/AppContext';
 
 function MenuHamburger() {
+  const { setTypeRegister } = useContext(AppContext);
   return (
     <div className="d-flex flex-column justify-content-between">
       <div className="text-white text-center">
@@ -45,18 +48,53 @@ function MenuHamburger() {
           />
         </div>
 
-        <div className="d-flex justify-content-around my-3">
-          <div className="d-inline-flex gap-1">
+        <div className="d-flex justify-content-center gap-3 my-3">
+          <button
+            className="btn btn-primary"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseExample"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            Data da transação
+          </button>
+
+          <div className="btn-group">
             <button
-              className="btn btn-primary"
               type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseExample"
+              className="btn btn-primary dropdown-toggle"
+              data-bs-toggle="dropdown"
               aria-expanded="false"
-              aria-controls="collapseExample"
             >
-              Data da transação
+              Tipo da transação
             </button>
+            <div className="dropdown-menu">
+              <button
+                className="text-center text-muted dropdown-item fw-bold"
+                type="button"
+                value="expense"
+                onClick={ (e) => setTypeRegister(e.target.value) }
+              >
+                Despesa
+              </button>
+              <button
+                className="text-center text-muted dropdown-item fw-bold"
+                type="button"
+                value="income"
+                onClick={ (e) => setTypeRegister(e.target.value) }
+              >
+                Receita
+              </button>
+              <button
+                className="text-center text-muted dropdown-item fw-bold"
+                type="button"
+                value=""
+                onClick={ (e) => setTypeRegister(e.target.value) }
+              >
+                Tudo
+              </button>
+            </div>
           </div>
         </div>
         <div className="col-12 border collapse" id="collapseExample">
@@ -71,5 +109,4 @@ function MenuHamburger() {
     </div>
   );
 }
-
 export default MenuHamburger;

@@ -1,36 +1,37 @@
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { addDays, parse } from 'date-fns';
 import AppContext from '../../contexts/AppContext';
 
 function FilterTransactions() {
-  const { incomes, expenses, typeRegister, setTypeRegister } = useContext(AppContext);
+  const { incomes, expenses, typeRegister } = useContext(AppContext);
   const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [transactions] = useState([...incomes, ...expenses]);
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [showMessage, setShowMessage] = useState('');
   const [order, setOrder] = useState('');
 
-  console.log(typeRegister);
-  const mn = {
-    sevenDays: -7,
-    fifteenDays: -15,
-    thirtyDays: -30,
-    sixtyDays: -60,
-    threeMonths: -90,
-    sixMonths: -180,
-    oneYear: -365,
-  };
+  const applyFilter = useCallback(() => {
+    const mn = {
+      sevenDays: -7,
+      fifteenDays: -15,
+      thirtyDays: -30,
+      sixtyDays: -60,
+      threeMonths: -90,
+      sixMonths: -180,
+      oneYear: -365,
+    };
 
-  const applyFilter = () => {
     if (!selectedFilter) {
       setFilteredTransactions([]);
+      return;
     }
+
     const currentDate = new Date();
     const filteredDate = addDays(currentDate, mn[selectedFilter]);
     const PT_BR = 'dd/MM/yyyy';
+
     const filteredData = transactions.filter((transaction) => {
       const transactionDate = parse(transaction.date, PT_BR, new Date());
-
       const isTypeMatch = typeRegister ? transaction.type === typeRegister : true;
 
       return (
@@ -38,49 +39,41 @@ function FilterTransactions() {
         && transactionDate <= currentDate
         && isTypeMatch
       );
-    })
-      .sort((a, b) => {
-        // Ordena por data da mais recente para a mais antiga
-        const dateA = parse(a.date, PT_BR, new Date());
-        const dateB = parse(b.date, PT_BR, new Date());
+    });
 
-        if (order === 'asc') {
-          return dateA - dateB;
-        }
-        if (order === 'desc') {
-          return dateB - dateA;
-        }
-        return 0;
-      });
-    setFilteredTransactions(filteredData);
+    // Ordena as transações por data de forma ascendente ou descendente
+    const sortedData = filteredData.sort((a, b) => {
+      const dateA = parse(a.date, PT_BR, new Date());
+      const dateB = parse(b.date, PT_BR, new Date());
+
+      if (order === 'asc') {
+        return dateA - dateB;
+      } if (order === 'desc') {
+        return dateB - dateA;
+      }
+      return 0;
+    });
+    setFilteredTransactions(sortedData);
     setShowMessage(
       filteredData.length === 0 && selectedFilter ? 'Nenhuma transação encontrada' : '',
     );
-  };
+  }, [selectedFilter, transactions, typeRegister, order]);
 
-  const setAscOrder = () => {
-    setOrder('asc');
-    applyFilter(); // Aplica a ordenação imediatamente
-  };
+  useEffect(() => {
+    if (order) applyFilter();
+  }, [applyFilter, order]);
 
-  const setDescOrder = () => {
-    setOrder('desc');
-    applyFilter(); // Aplica a ordenação imediatamente
-  };
-
-  const filterByType = (value) => {
-    setTypeRegister(value);
-    applyFilter();
-  };
+  const setOrderTransaction = useCallback(
+    (value) => {
+      setOrder(value);
+    },
+    [],
+  );
 
   return (
 
     <div
-      className="
-    my-2 container text-center
-    d-flex flex-column align-items-center
-    gap-2
-    "
+      className="my-2 container text-center d-flex flex-column align-items-center gap-2"
     >
       <div className="col d-flex flex-row  gap-2 my-2">
         <button
@@ -129,16 +122,16 @@ function FilterTransactions() {
           1 ano
         </button>
       </div>
-
-      <div className="col d-flex flex-row  gap-2 mt-1">
-        <button
-          onClick={ applyFilter }
-          className="btn btn-sm btn-primary"
-        >
-          Aplicar Filtro
-        </button>
-      </div>
-
+      {!order && (
+        <div className="col d-flex flex-row  gap-2 mt-1">
+          <button
+            onClick={ applyFilter }
+            className="btn btn-sm btn-primary"
+          >
+            Aplicar Filtro
+          </button>
+        </div>
+      )}
       <div
         className="container d-flex flex-column border my-2 overflow-auto gap-1"
         style={ { height: '45vh' } }
@@ -147,39 +140,27 @@ function FilterTransactions() {
         {filteredTransactions.length > 0 && (
           <div className="d-flex flex-column text-center text-muted my-2 fw-bold gap-2">
             {`Transações encontradas: ${filteredTransactions.length}`}
-            <div className="d-inline-flex gap-1 justify-content-center">
-              <div className="btn-group">
-                <select
-                  className="form-select"
-                  aria-label="Default select example"
-                  value={ typeRegister }
-                  onChange={ (e) => filterByType(e.target.value) }
-                >
-                  <option value="" disabled>Filtrar por tipo</option>
-                  <option value="expense">Despesa</option>
-                  <option value="income">Receita</option>
-                  <option value="">Tudo</option>
-                </select>
-              </div>
-            </div>
+
             <div className="d-flex flex-row justify-content-center gap-2">
               Ordenar por datas:
               <button
                 className="btn btn-sm btn-primary"
-                onClick={ setAscOrder }
+                value="asc"
+                onClick={ () => setOrderTransaction('asc') }
               >
                 Recentes
               </button>
               ou
               <button
                 className="btn btn-sm btn-primary"
-                onClick={ setDescOrder }
+                value="desc"
+                onClick={ () => setOrderTransaction('desc') }
               >
                 Antigas
               </button>
             </div>
             <div className="d-flex flex-row gap-2 justify-content-center">
-              Total receitas: R$
+              Valor total das receitas: R$
               <div className="text-success">
                 {filteredTransactions
                   .filter((transaction) => transaction.type === 'income')
@@ -187,7 +168,7 @@ function FilterTransactions() {
               </div>
             </div>
             <div className="d-flex flex-row gap-2 justify-content-center">
-              Total despesas: R$
+              Valor total das despesas: R$
               <div className="text-danger">
                 {filteredTransactions
                   .filter((transaction) => transaction.type === 'expense')
@@ -215,5 +196,4 @@ function FilterTransactions() {
     </div>
   );
 }
-
 export default FilterTransactions;
