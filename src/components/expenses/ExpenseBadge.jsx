@@ -1,14 +1,15 @@
+import { parse, isToday, isPast } from 'date-fns';
 import PropTypes from 'prop-types';
 
 function ExpenseBadge({ expense }) {
-  const currentDate = new Date().toLocaleDateString('pt-BR');
+  const expenseDate = parse(expense.date, 'dd/MM/yyyy', new Date());
 
   const typeBadge = 'badge rounded-pill';
   const successBadge = `${typeBadge} text-bg-success`;
   const warningBadge = `${typeBadge} text-bg-warning`;
   const dangerBadge = `${typeBadge} text-bg-danger`;
 
-  if (expense.date === currentDate) {
+  if (isToday(expenseDate)) {
     return (
       <div className="div-badge w-100">
         <span className={ warningBadge }>
@@ -16,7 +17,7 @@ function ExpenseBadge({ expense }) {
         </span>
       </div>
     );
-  } if (expense.date < currentDate) {
+  } if (isPast(expenseDate)) {
     return (
       <div className="div-badge w-100">
         <span className={ dangerBadge }>
