@@ -3,14 +3,14 @@ import { addDays, parse } from 'date-fns';
 import AppContext from '../../contexts/AppContext';
 
 function FilterTransactions() {
-  const { incomes, expenses, typeRegister, setTypeRegister } = useContext(AppContext);
+  const { incomes, expenses, typeRegister } = useContext(AppContext);
   const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [transactions] = useState([...incomes, ...expenses]);
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [showMessage, setShowMessage] = useState('');
   const [order, setOrder] = useState('');
-
   console.log(typeRegister);
+
   const mn = {
     sevenDays: -7,
     fifteenDays: -15,
@@ -68,11 +68,6 @@ function FilterTransactions() {
     applyFilter(); // Aplica a ordenação imediatamente
   };
 
-  const filterByType = (value) => {
-    setTypeRegister(value);
-    applyFilter();
-  };
-
   return (
 
     <div
@@ -82,6 +77,7 @@ function FilterTransactions() {
     gap-2
     "
     >
+
       <div className="col d-flex flex-row  gap-2 my-2">
         <button
           onClick={ () => setSelectedFilter('sevenDays') }
@@ -147,52 +143,20 @@ function FilterTransactions() {
         {filteredTransactions.length > 0 && (
           <div className="d-flex flex-column text-center text-muted my-2 fw-bold gap-2">
             {`Transações encontradas: ${filteredTransactions.length}`}
-            <div className="d-inline-flex gap-1 justify-content-center">
-              <div className="btn-group">
-                <select
-                  className="form-select"
-                  aria-label="Default select example"
-                  value={ typeRegister }
-                  onChange={ (e) => filterByType(e.target.value) }
-                >
-                  <option value="" disabled>Filtrar por tipo</option>
-                  <option value="expense">Despesa</option>
-                  <option value="income">Receita</option>
-                  <option value="">Tudo</option>
-                </select>
-              </div>
-            </div>
             <div className="d-flex flex-row justify-content-center gap-2">
-              Ordenar por datas:
+              Ordenar por:
               <button
                 className="btn btn-sm btn-primary"
                 onClick={ setAscOrder }
               >
-                Recentes
+                Crescente
               </button>
-              ou
               <button
                 className="btn btn-sm btn-primary"
                 onClick={ setDescOrder }
               >
-                Antigas
+                Decrescente
               </button>
-            </div>
-            <div className="d-flex flex-row gap-2 justify-content-center">
-              Total receitas: R$
-              <div className="text-success">
-                {filteredTransactions
-                  .filter((transaction) => transaction.type === 'income')
-                  .reduce((acc, cur) => acc + Number(cur.value), 0)}
-              </div>
-            </div>
-            <div className="d-flex flex-row gap-2 justify-content-center">
-              Total despesas: R$
-              <div className="text-danger">
-                {filteredTransactions
-                  .filter((transaction) => transaction.type === 'expense')
-                  .reduce((acc, cur) => acc + Number(cur.value), 0)}
-              </div>
             </div>
           </div>
 
@@ -200,7 +164,7 @@ function FilterTransactions() {
         {filteredTransactions.map((transaction) => (
           <div
             key={ Math.random() }
-            className="border border-dark p-2 mb-1 rounded-1 fw-bold text-muted"
+            className="border border p-2 mb-1 rounded-3 fw-bold text-muted"
           >
             <p className="m-0">
               { `
