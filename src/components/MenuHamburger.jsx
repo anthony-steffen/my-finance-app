@@ -1,12 +1,8 @@
 /* eslint-disable react/jsx-max-depth */
 import { IoMdMenu, IoMdClose } from 'react-icons/io';
-import { useContext } from 'react';
 import FilterTransactions from './register/FilterTransactions';
-import AppContext from '../contexts/AppContext';
 
 function MenuHamburger() {
-  const { typeRegister, setTypeRegister } = useContext(AppContext);
-  console.log(typeRegister);
   return (
     <div className="d-flex flex-column justify-content-between">
       <div className="text-white text-center">
@@ -62,49 +58,10 @@ function MenuHamburger() {
               Data da transação
             </button>
           </div>
-          <div className="d-inline-flex gap-1">
-            <div className="btn-group">
-              <button
-                type="button"
-                className="btn btn-primary dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Tipo da transação
-              </button>
-              <div className="dropdown-menu">
-                <button
-                  className="dropdown-item"
-                  type="button"
-                  value="expense"
-                  onClick={ (e) => setTypeRegister(e.target.value) }
-                >
-                  Despesa
-                </button>
-                <button
-                  className="dropdown-item"
-                  type="button"
-                  value="income"
-                  onClick={ (e) => setTypeRegister(e.target.value) }
-                >
-                  Receita
-                </button>
-                <button
-                  className="dropdown-item"
-                  type="button"
-                  value=""
-                  onClick={ (e) => setTypeRegister(e.target.value) }
-                >
-                  Tudo
-                </button>
-
-              </div>
-            </div>
-          </div>
         </div>
         <div className="col-12 border collapse" id="collapseExample">
           <div className="justify-content-center border w-100">
-            <p className="text-center fw-bold my-3">
+            <p className="text-center text-muted fw-bold my-3">
               Escolha o intervalo de dias, mêses ou anos.
             </p>
           </div>
