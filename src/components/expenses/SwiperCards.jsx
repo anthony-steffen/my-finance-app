@@ -78,24 +78,30 @@ function SwiperCards() {
   return (
     <div
       id="carouselExampleFade"
-      className="carousel slide carousel-fade py-2 bg-light rounded-2 my-3"
+      className={ `
+      bg-${theme === 'light' ? 'light' : 'dark'}
+      carousel slide carousel-fade py-2 my-2
+      ` }
       data-bs-ride="carousel"
       data-bs-interval={ 7000 }
       data-bs-pause="hover"
-
+      style={ { border: 'none' } }
     >
       <h5
-        className="text-danger text-center mb-2 gap-2 fw-bold"
+        className={ `
+        text-danger text-center mb-2 gap-2 fw-bold
+        ` }
         style={ {
           width: '90%',
           margin: 'auto',
           textDecoration: 'underline',
           textUnderlineOffset: '0.5rem',
+          textShadow: '1px 0px 0px black',
         } }
       >
         Gastos por Categoria
       </h5>
-      <div className="carousel-indicators mb-0">
+      <div className="carousel-indicators mb-1">
         <button
           type="button"
           data-bs-target="#carouselExampleFade"
@@ -124,22 +130,22 @@ function SwiperCards() {
         {expensesGroup.map((group, index) => (
           <div
             key={ index }
-            className={ `carousel-item ${index === 0 ? 'active' : ''} gap-1 mb-2` }
+            className={ `carousel-item ${index === 0 ? 'active' : ''}` }
           >
             {group.map((element, elementIndex) => (
               <div className="category-card" key={ elementIndex }>
                 <div
-                  className={ `category-card-body 
-           
-                ` }
+                  className="category-card-body bg-white"
                   style={ {
-                    backgroundColor: 'white', boxShadow: '0px 1px 2px 2px black',
+                    boxShadow: '0px 1px 2px 2px black',
+                    borderRadius: '10px',
+                    width: '13vh',
+                    height: '13vh',
                   } }
                 >
                   <div
-                    className={ `
-                  category-card-title ${theme === 'light' ? 'text-dark' : 'text-dark'}
-                  ` }
+                    className="category-card-title"
+
                   >
                     {element.category}
                   </div>

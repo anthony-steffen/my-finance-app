@@ -12,8 +12,8 @@ function Footer() {
   return (
     <footer
       className={
-        `navbar sticky-bottom ${theme === 'light' ? 'bg-primary' : 'bg-dark'} 
-        text-light z-2`
+        `navbar sticky-bottom bg-${theme === 'light' ? 'primary' : 'black'} 
+        bg-gradient text-light z-2`
       }
       style={ { height: '12vh' } }
     >

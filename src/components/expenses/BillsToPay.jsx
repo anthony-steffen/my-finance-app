@@ -2,8 +2,11 @@ import { useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
 
 import '../../styles/components/Lists.css';
-import ExpenseCard from './ExpenseCard';
 import Avatar from '../../assets/pb02.png';
+import ModalToDeleteExpense from './ModalToDeleteExpense';
+import ModalToEditExpense from './ModalToEditExpense';
+import ModalToPayExpense from './ModalToPayExpense';
+import ExpenseBadge from './ExpenseBadge';
 
 function BillsToPay() {
   const { expenses, theme } = useContext(AppContext);
@@ -40,11 +43,13 @@ function BillsToPay() {
   }
   return (
     <section
-      className="row row-expense py-3 mt-4 bg-light"
+      className={ `
+      row row-expense py-3 my-2 ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
+      ` }
       style={ {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
         width: '100%',
         margin: 'auto',
+        border: 'none',
       } }
     >
       <h5
@@ -57,17 +62,65 @@ function BillsToPay() {
           margin: 'auto',
           textDecoration: 'underline',
           textUnderlineOffset: '0.5rem',
+          textShadow: '1px 0px 0px black',
         } }
       >
-
-        Contas a Pagar
+        Contas a pagar
       </h5>
       {expenses.map((expense, index) => (
-        <ExpenseCard
+        <div
           key={ index }
-          expense={ { ...expense, value: expense.value.toString() } }
-          index={ index }
-        />
+          className="col-xl-4 col-lg-6 mb-1 p-2"
+        >
+          <div
+            className="card shadow-sm"
+          >
+            <div className="card-body d-flex flex-column">
+              <p className="category fw-bold text-muted mb-1">
+                {expense.description}
+              </p>
+              <p className="value fw-bold text-muted mb-1">
+                {`Valor R$: ${expense.value}`}
+              </p>
+              <p className="due fw-bold text-muted mb-1">
+                {`Vencimento: ${expense.date}`}
+              </p>
+              <div className="d-flex justify-content-end align-items-center">
+                <ExpenseBadge expense={ expense } />
+                <button
+                  type="button"
+                  className="btn glow-on-hover text-white btn-sm me-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#billsToPayModal"
+                  onClick={ () => setSelectExpense(index) }
+                >
+                  Pagar
+                </button>
+                <button
+                  type="button"
+                  className="btn glow-on-hover text-white btn-sm me-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editExpenseModal"
+                  onClick={ () => setSelectExpense(index) }
+                >
+                  Editar
+                </button>
+                <button
+                  type="button"
+                  className="btn glow-on-hover text-white btn-sm me-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deleteExpenseModal"
+                  onClick={ () => setSelectExpense(index) }
+                >
+                  Excluir
+                </button>
+                <ModalToPayExpense />
+                <ModalToEditExpense />
+                <ModalToDeleteExpense />
+              </div>
+            </div>
+          </div>
+        </div>
       ))}
     </section>
   );

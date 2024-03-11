@@ -8,9 +8,12 @@ function MenuHamburger() {
   const { setTypeRegister } = useContext(AppContext);
   return (
     <div className="d-flex flex-column justify-content-between">
-      <div className="text-white text-center">
+      <h6
+        className="text-white text-center mb-0"
+        style={ { textShadow: '1px 1px 1px black' } }
+      >
         Relatórios
-      </div>
+      </h6>
       <button
         className="toggle-button"
         type="button"

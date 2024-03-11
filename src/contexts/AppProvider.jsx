@@ -14,7 +14,7 @@ function AppProvider({ children }) {
   const [categoryIcons, setCategoryIcons] = useState(Icons);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [showBalance, setShowBalance] = useState('******');
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
 
   const toggleTheme = useCallback(
     () => {

@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-max-depth */
 import { useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
-
 import ModalToDeleteIncome from './ModalToDeleteIncome';
 import ModalToEditIncome from './ModalToEditIncome';
 import ModalToReceiveIncome from './ModalToReceiveIncome';
+import IncomeBadge from './IncomeBadge';
 
 import Avatar from '../../assets/pb03.png';
 
@@ -44,7 +44,9 @@ function Income() {
   }
   return (
     <section
-      className="row row-expense py-3 mt-4 bg-light"
+      className={ `
+      row row-income py-3 my-2 ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
+      ` }
       style={ {
         width: '100%',
         margin: 'auto',
@@ -70,7 +72,7 @@ function Income() {
           className="col-xl-4 col-lg-6 mb-1 p-2"
         >
           <div
-            className="card shadow-sm rounded-2 border border-2 border-black"
+            className="card shadow-sm"
           >
             <div className="card-body d-flex flex-column">
               <p className="category fw-bold text-muted mb-1">
@@ -83,13 +85,7 @@ function Income() {
                 {`Vencimento: ${income.date}`}
               </p>
               <div className="d-flex justify-content-end align-items-center">
-                <div className="div-badge w-100">
-                  <span
-                    className="p-1 badge rounded-pill text-bg-warning"
-                  >
-                    Vence Hoje!
-                  </span>
-                </div>
+                <IncomeBadge income={ income } />
                 <button
                   type="button"
                   className="btn glow-on-hover text-white btn-sm me-1"
@@ -121,7 +117,6 @@ function Income() {
                 <ModalToEditIncome />
                 <ModalToReceiveIncome />
               </div>
-              {/* </div> */}
             </div>
           </div>
         </div>

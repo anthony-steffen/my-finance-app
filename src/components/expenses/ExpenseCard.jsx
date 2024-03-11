@@ -1,9 +1,7 @@
 /* eslint-disable react/jsx-max-depth */
-
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import ModalToPayExpense from './ModalToPayExpense';
-// import ExpenseDetails from './ExpenseDetails';
 import ExpenseBadge from './ExpenseBadge';
 import AppContext from '../../contexts/AppContext';
 import ModalToEditExpense from './ModalToEditExpense';
