@@ -12,8 +12,8 @@ function InputValue({ register }) {
       { ...register('value', {
         required: 'Valor é obrigatório',
         pattern: {
-          value: /^[1-9]\d*(\.\d{1,2})?$/,
-          message: 'Insira um valor válido (Ex: 1 ou 1.00)',
+          value: /^(?!0\d)([1-9]\d*|0)(\.\d{1,3})?$/,
+          message: 'Apenas números válidos (Ex: 1 - 1.255 )',
         },
       })
       }

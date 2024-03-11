@@ -20,8 +20,8 @@ function inputDescription({ register }) {
           message: 'Máximo de 30 caracteres',
         },
         pattern: {
-          value: /^[a-zA-Z\s]+$/,
-          message: 'Apenas letras',
+          value: /^[a-zA-Z0-9\s]+$/,
+          message: 'Apenas letras e números são permitidos',
         },
       }) }
     />

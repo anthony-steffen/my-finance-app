@@ -11,8 +11,8 @@ function InputPayer({ register }) {
       { ...register('payer', {
         required: 'Pagador é obrigatório',
         pattern: {
-          value: /^[a-zA-Z\s]+$/,
-          message: 'Insira apenas letras',
+          value: /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s.,:;()-]+[a-zA-ZÀ-ÖØ-öø-ÿ]+[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s.,:;()-]*$/,
+          message: 'Apenas letras e números(Ex: João Silva 123)',
         },
       })
       }

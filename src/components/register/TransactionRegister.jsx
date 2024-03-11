@@ -77,8 +77,8 @@ function TransactionRegister() {
         <InputDescription register={ register } />
         <div id="payerHelpBlock" className="form-text mt-0 mb-1">
           Ex: Compras Supermercado.
-          {errors.payer
-          && <p className="text-danger text-danger mb-1">{errors.payer.message}</p>}
+          {errors.description
+          && <p className="text-danger text-danger mb-1">{errors.description.message}</p>}
         </div>
 
         <InputValue register={ register } />
