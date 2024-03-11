@@ -9,7 +9,7 @@ import ModalToPayExpense from './ModalToPayExpense';
 import ExpenseBadge from './ExpenseBadge';
 
 function BillsToPay() {
-  const { expenses, theme } = useContext(AppContext);
+  const { expenses, theme, setSelectExpense } = useContext(AppContext);
 
   if (expenses.length === 0) {
     return (

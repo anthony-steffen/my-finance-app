@@ -12,7 +12,7 @@ function MenuHamburger() {
         className="text-white text-center mb-0"
         style={ { textShadow: '1px 1px 1px black' } }
       >
-        Relatórios
+        Relatório
       </h6>
       <button
         className="toggle-button"

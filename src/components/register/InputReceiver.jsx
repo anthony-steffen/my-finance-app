@@ -11,7 +11,7 @@ function InputReceiver({ register }) {
       { ...register('receiver', {
         required: 'Beneficiário é obrigatório',
         pattern: {
-          value: /^[a-zA-Z\s]+$/,
+          value: /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s.,:;()-]+[a-zA-ZÀ-ÖØ-öø-ÿ]+[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s.,:;()-]*$/,
           message: 'Insira apenas letras',
         },
       })
