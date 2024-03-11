@@ -45,7 +45,7 @@ function Income() {
   return (
     <section
       className={ `
-      row row-income py-3 my-2 ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
+      row row-income py-3 my-1 ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
       ` }
       style={ {
         width: '100%',

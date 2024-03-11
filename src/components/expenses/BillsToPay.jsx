@@ -14,7 +14,7 @@ function BillsToPay() {
   if (expenses.length === 0) {
     return (
       <div
-        className="card text-center bg-light mt-3 col-xl-7 mx-auto"
+        className=""
       >
         <div
           className="img-container"
@@ -44,7 +44,7 @@ function BillsToPay() {
   return (
     <section
       className={ `
-      row row-expense py-3 my-2 ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
+      row row-expense py-3 my-1 ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
       ` }
       style={ {
         width: '100%',

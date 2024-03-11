@@ -106,15 +106,15 @@ function Register() {
               className="form-control text-center"
               placeholder="Email"
               { ...register('email', {
-                required: 'Email is required',
+                required: 'Digite um e-mail válido',
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Invalid email address',
+                  message: 'Enderço de e-mail inválido',
                 },
               }) }
             />
             {errors.email && (
-              <div className="register-invalid-feedback text-danger ps-1">
+              <div className="register-invalid-feedback text-center text-danger ps-1">
                 {errors.email.message}
               </div>
             )}
@@ -126,11 +126,11 @@ function Register() {
               className="form-control text-center"
               placeholder="Username"
               { ...register('username', {
-                required: 'Username is required',
+                required: 'Nome de usuário é obrigatório',
               }) }
             />
             {errors.username && (
-              <div className="register-invalid-feedback text-danger ps-1">
+              <div className="register-invalid-feedback text-center text-danger ps-1">
                 {errors.username.message}
               </div>
             )}
@@ -142,15 +142,19 @@ function Register() {
               className="form-control text-center"
               placeholder="Password"
               { ...register('password', {
-                required: 'Password is required',
+                required: 'Password é obrigatório',
+                pattern: {
+                  value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
+                  message: 'Deve conter números, letras maiúsculas e minúsculas',
+                },
                 minLength: {
                   value: 8,
-                  message: 'Password must have at least 8 characters',
+                  message: 'Deve ter mais de 8 characters',
                 },
               }) }
             />
             {errors.password && (
-              <div className="register-invalid-feedback text-danger ps-1">
+              <div className="register-invalid-feedback text-center text-danger ps-1">
                 {errors.password.message}
               </div>
             )}
@@ -163,11 +167,11 @@ function Register() {
               { ...register('confirmPassword', {
                 required: 'Confirm Password is required',
                 validate: (value) => value === getValues('password')
-                      || 'Passwords do not match',
+                      || 'Os passwords não são iguais',
               }) }
             />
             {errors.confirmPassword && (
-              <div className="register-invalid-feedback text-danger ps-1">
+              <div className="register-invalid-feedback text-center text-danger ps-1">
                 {errors.confirmPassword.message}
               </div>
             )}
@@ -178,20 +182,20 @@ function Register() {
             <MaskedInput
               type="text"
               id="phone"
-              mask="+55(99)99999-9999"
+              mask="(99)99999-9999"
               maskChar="_" // Caractere de preenchimento, opcional
               alwaysShowMask // Mostrar a máscara mesmo que o campo esteja vazio, opcional
               className="form-control"
               { ...register('phone', {
-                required: 'Phone Number is required',
-                pattern: {
-                  value: /^\+55\(\d{2}\)\d{5}-\d{4}$/,
-                  message: 'Invalid phone number',
-                },
+                required: 'Número de telefone é obrigatório',
+                // pattern: {
+                //   value: /^\+55\(\d{2}\)\d{5}-\d{4}$/,
+                //   message: 'Número de telefone inválido',
+                // },
               }) }
             />
             {errors.phone && (
-              <div className="register-invalid-feedback text-danger ps-1">
+              <div className="register-invalid-feedback text-center text-danger ps-1">
                 {errors.phone.message}
               </div>
             )}
