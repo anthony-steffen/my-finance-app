@@ -27,7 +27,7 @@ Explore a versão online do projeto [aqui](https://anthony-steffen.github.io/my-
 
 ## Layout Web
 <div>
-  <img src="src/assets/Layout-web.png" alt="Layout 2" width="700" />
+  <img src="https://github.com/anthony-steffen/my-finance-app/blob/main/src/assets/layout-web.png" alt="Layout 2" width="700" />
 
 </div>
 
