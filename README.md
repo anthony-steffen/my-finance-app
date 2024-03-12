@@ -19,9 +19,9 @@ Explore a versão online do projeto [aqui](https://anthony-steffen.github.io/my-
 
 ## Layout Mobile
 <div>
-  <img src="src/assets/Login.png" alt="Layout 2" width="300" />
-  <img src="src/assets/Register.png" alt="Layout 1" width="300" />
-  <img src="src/assets/home.png" alt="Layout 3" width="300" />
+  <img src="src/assets/Login.png" alt="Layout 2" width="250" />
+  <img src="src/assets/Register.png" alt="Layout 1" width="250" />
+  <img src="src/assets/home.png" alt="Layout 3" width="250" />
 </div>
 
 
