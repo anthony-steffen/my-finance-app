@@ -1,11 +1,20 @@
 # My-Finance-App
-![NPM License](https://img.shields.io/npm/l/license)
+[![NPM License](https://img.shields.io/npm/l/license)](https://github.com/anthony-steffen/my-finance-app/blob/main/LICENSE)
 
 
-# Sobre o Projeto
-https://anthony-steffen.github.io/my-finance-app/
+## Sobre o Projeto
 
-Bem-vindo ao projeto de Controle de Finanças Pessoais! Este projeto foi desenvolvido utilizando React.js e Vite, e incorpora diversas tecnologias para proporcionar uma experiência eficiente e amigável para o gerenciamento das suas finanças pessoais.
+Bem-vindo ao My-Finance-App, a solução elegante e intuitiva para o controle eficaz das suas finanças pessoais! Desenvolvido com a poderosa combinação de React.js e Vite, esta aplicação incorpora tecnologias modernas para garantir uma experiência fluida e agradável ao usuário.
+
+Explore a versão online do projeto [aqui](https://anthony-steffen.github.io/my-finance-app/) para vivenciar pessoalmente a elegância e a praticidade que oferecemos.
+
+### Destaques
+
+- **Visual Elegante:** O design sofisticado do My-Finance-App proporciona uma experiência visual agradável e moderna durante todo o uso da aplicação.
+
+- **Uso Intuitivo:** Desenvolvemos a interface pensando na simplicidade e na facilidade de uso, tornando a navegação e a interação com a aplicação intuitivas, mesmo para usuários iniciantes.
+
+- **Controle Eficiente:** Registre despesas e receitas com facilidade, receba lembretes de contas a pagar e analise seus gastos por categoria de forma rápida e eficiente.
 
 
 ## Layout Mobile
@@ -15,48 +24,75 @@ Bem-vindo ao projeto de Controle de Finanças Pessoais! Este projeto foi desenvo
   <img src="src/assets/home.png" alt="Layout 3" width="200" />
 </div>
 
+
+## Layout Web
+<div>
+  <img src="src/assets/Layout-web.png" alt="Layout 2" width="700" />
+
+</div>
+
+
 ## Principais Tecnologias Utilizadas
 <div align="center">
   <img src="https://skillicons.dev/icons?i=react,vite,js,bootstrap" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="50" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="50" />
   <img src="https://react-hook-form.com/images/logo/react-hook-form-logo-only.png" width='50'/>
   <img src="src/assets/react-router.svg" alt="Layout 3" width="80" />
+  <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/collections/github-pages-examples/github-pages-examples.png" width="50" style="border-radius: 10px;"/>   
 </div>
 <br>
 
+O My-Finance-App é construído com tecnologias de ponta para garantir desempenho, confiabilidade e uma experiência de usuário excepcional:
 
-- **React.js e Vite:**
-  Esta aplicação é construída com React.js para criar interfaces de usuário reativas e eficientes, enquanto o Vite é utilizado como ferramenta de construção rápida para um desenvolvimento mais ágil.
+- **React.js e Vite:** Interfaces reativas e desenvolvimento ágil para uma aplicação responsiva e eficiente.
 
-          
-          
+- **Context API e Hooks:** Gerenciamento avançado de estado para uma comunicação eficaz entre os componentes.
 
-- **Context API e Hooks:**
-  Utilizamos a Context API e hooks para gerenciamento eficaz do estado da aplicação, permitindo uma comunicação eficiente entre os componentes.
+- **React Hook Form:** Simplificação e aprimoramento da validação de formulários.
 
+- **React Toastify:** Notificações visuais personalizadas para uma interação mais informativa.
 
-- **React Hook Form:**
-  Implementamos o React Hook Form para simplificar e melhorar a validação de formulários, tornando a experiência de entrada de dados mais fácil e confiável.
-  
+- **Bootstrap:** Estilização moderna e responsiva para uma experiência visualmente atraente.
 
-- **React Toastify:**
-  Para notificações visuais, como sucesso, erro ou informações importantes, incorporamos o React Toastify, oferecendo toasts personalizados e informativos.
-  
+- **React Router:** Navegação eficiente e intuitiva entre as diferentes seções da aplicação.
 
-- **Bootstrap:**
-  Utilizamos o Bootstrap para estilização de componentes, garantindo uma aparência moderna e responsiva à aplicação.
-  
-          
+- **GitHub Pages:** Implantação em produção facilitada, garantindo uma integração direta com o GitHub e rápido acesso.
 
-- **React Router:**
-  A navegação entre as diferentes partes da aplicação é gerenciada de forma eficiente através do React Router, garantindo uma experiência de usuário fluida e intuitiva.
+Explore o My-Finance-App e descubra como podemos tornar a gestão das suas finanças uma experiência elegante e intuitiva!
+
+[Experimente agora!](https://anthony-steffen.github.io/my-finance-app/)
 
 
 ## Como Iniciar
-
 Certifique-se de ter o Node.js instalado em seu sistema antes de prosseguir.
 
-1. Clone o repositório:
+1. **Clone o repositório:**
+    ```bash
+    git clone https://github.com/seu-usuario/my-finance-app.git
+    cd my-finance-app
+    ```
 
-```bash
-git clone https://github.com/seu-usuario/my-finance-app.git
-cd my-finance-app
+2. **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+
+3. **Inicie o servidor de desenvolvimento:**
+    ```bash
+    npm run dev
+    ```
+
+Acesse a aplicação em `http://localhost:3000` no seu navegador.
+
+## Contribuições
+
+Contribuições são bem-vindas! Se encontrar problemas, bugs ou tiver sugestões de melhorias, abra uma issue ou envie um pull request.
+
+Agradecemos por usar o My-Finance-App!
+
+## Autor
+
+José Anthony Steffen de Oliveira
+
+[LinkedIn](https://www.linkedin.com/in/anthony-steffen-dev/)
