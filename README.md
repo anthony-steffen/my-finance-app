@@ -19,15 +19,15 @@ Explore a versão online do projeto [aqui](https://anthony-steffen.github.io/my-
 
 ## Layout Mobile
 <div>
-  <img src="src/assets/Login.png" alt="Layout 2" width="200" />
-  <img src="src/assets/Register.png" alt="Layout 1" width="200" />
-  <img src="src/assets/home.png" alt="Layout 3" width="200" />
+  <img src="src/assets/Login.png" alt="Layout 2" width="300" />
+  <img src="src/assets/Register.png" alt="Layout 1" width="300" />
+  <img src="src/assets/home.png" alt="Layout 3" width="300" />
 </div>
 
 
 ## Layout Web
 <div>
-  <img src="https://github.com/anthony-steffen/my-finance-app/blob/main/src/assets/layout-web.png" alt="Layout 2" width="700" />
+  <img src="https://github.com/anthony-steffen/my-finance-app/blob/main/src/assets/layout-web.png" alt="Layout 2" width="900" />
 
 </div>
 
