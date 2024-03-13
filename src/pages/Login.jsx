@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { BsFacebook, BsLinkedin, BsInstagram } from 'react-icons/bs';
+import bcrypt from 'bcryptjs';
 import AuthContext from '../contexts/AuthContext';
 
 import logo from '../assets/logo.png';
@@ -10,7 +11,7 @@ import logo from '../assets/logo.png';
 import '../styles/pages/Login.css';
 
 function Login() {
-  const { registeredUsers } = useContext(AuthContext);
+  const { registeredUsers, login } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -24,14 +25,16 @@ function Login() {
   const onSubmit = (data) => {
     const user = registeredUsers.find(
       (users) => (users.email === data.email || users.username === data.email)
-        && users.password === data.password,
+        && bcrypt.compareSync(data.password, users.password),
     );
 
     if (user) {
+      // Função para autenticar o usuário
+      login(user);
       // Usuário encontrado, redireciona para a rota desejada
       navigate('/home');
     } else {
-      toast.error('Usuário não encontrado');
+      toast.error('Usuário não encontrado ou senha incorreta');
     }
   };
 

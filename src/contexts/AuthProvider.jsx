@@ -1,44 +1,52 @@
-import { useMemo, useState, useEffect } from 'react';
-
+import { useMemo, useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-// import { toast } from 'react-toastify';
 import AuthContext from './AuthContext';
 
 const { Provider } = AuthContext;
 
 function AuthProvider({ children }) {
-  // Ao inicializar, busca os dados do usuário no localStorage
-  const initialRegisteredUsers = JSON.parse(localStorage
-    .getItem('registeredUsers')) || [];
-
-  // Estados do contexto.
+  const initialRegisteredUsers = JSON.parse(localStorage.getItem('users')) || [];
   const [registeredUsers, setRegisteredUsers] = useState(initialRegisteredUsers);
+  const [authenticatedUser, setAuthenticatedUser] = useState(null);
 
-  // Atualiza o localStorage sempre que registeredUsers mudar
+  const login = useCallback((user) => {
+    setAuthenticatedUser(user);
+  }, []);
+
+  const logout = useCallback(() => {
+    setAuthenticatedUser(null);
+  }, []);
+
   useEffect(() => {
-    localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
-  }, [registeredUsers]);
+    // Verifica se há um usuário autenticado no localStorage ao inicializar
+    const storedUser = JSON.parse(localStorage.getItem('authenticatedUser'));
+    if (storedUser) {
+      setAuthenticatedUser(storedUser);
+    }
+  }, []);
 
-  const store = useMemo(
-    () => {
-      return {
-        registeredUsers,
-        setRegisteredUsers,
-      };
-    },
-    [
+  useEffect(() => {
+    // Atualiza o localStorage sempre que authenticatedUser mudar
+    localStorage.setItem('authenticatedUser', JSON.stringify(authenticatedUser));
+  }, [authenticatedUser]);
+
+  const store = useMemo(() => {
+    return {
       registeredUsers,
       setRegisteredUsers,
-    ],
-  );
+      authenticatedUser,
+      login,
+      logout,
+    };
+  }, [registeredUsers, setRegisteredUsers, authenticatedUser, login, logout]);
 
   return (
     <Provider value={ store }>{children}</Provider>
   );
 }
 
-export default AuthProvider;
-
 AuthProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export default AuthProvider;

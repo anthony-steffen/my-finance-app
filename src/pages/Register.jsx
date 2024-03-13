@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import MaskedInput from 'react-input-mask';
+import bcrypt from 'bcryptjs';
 
 import { ToastContainer, toast } from 'react-toastify';
 import AuthContext from '../contexts/AuthContext';
@@ -47,10 +48,11 @@ function Register() {
   };
 
   // Função para lidar com o registro do usuário
-  const handleUserRegistration = (data) => {
+  const handleUserRegistration = async (data) => {
     if (!isValid) return;
 
     const existingUser = isUserExists(data);
+    const mn = 10;
 
     if (existingUser) {
       let errorMessage = 'Usuário já cadastrado.';
@@ -62,12 +64,14 @@ function Register() {
       } else if (existingUser.phone === data.phone) {
         errorMessage = 'Número de telefone já cadastrado.';
       }
-
       showToast(errorMessage, 'error');
     } else {
-      const newUser = [...registeredUsers, data];
+      // Use o bcrypt para hashear a senha antes de armazenar
+      const hashedPassword = await bcrypt.hash(data.password, mn);
+
+      const newUser = [...registeredUsers, { ...data, password: hashedPassword }];
       setRegisteredUsers(newUser);
-      localStorage.setItem('registeredUsers', JSON.stringify(newUser));
+      localStorage.setItem('users', JSON.stringify(newUser));
       reset();
       const timeOut = 4000;
       showToast('Sucesso! Redirecionando você para a página Login');
