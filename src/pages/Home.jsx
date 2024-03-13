@@ -11,7 +11,7 @@ import '../styles/components/ToggleTheme.css';
 
 function Home() {
   return (
-    <div className="home-container" style={ { backgroundColor: '#3c3c3c' } }>
+    <div className="home-container">
       <AppProvider>
         <Header />
         <SwiperCards />

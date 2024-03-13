@@ -42,7 +42,7 @@ function Header() {
             {' '}
           </h3>
           <span className="navbar-value d-flex gap-2">
-            {showBalance ? '******' : totalIncomes - totalExpenses}
+            {showBalance ? '******' : (totalIncomes - totalExpenses).toFixed(2)}
             <button
               type="button"
               onClick={ () => setShowBalance(!showBalance) }
@@ -58,7 +58,6 @@ function Header() {
           </span>
 
         </div>
-        {/* <div className="img-logo-container col-3"> */}
         <img
           className="img-logo-header"
           src={ logo }
