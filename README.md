@@ -4,7 +4,8 @@
 
 ## Sobre o Projeto
 
-Bem-vindo ao My-Finance-App, a solução elegante e intuitiva para o controle eficaz das suas finanças pessoais! Desenvolvido com a poderosa combinação de React.js e Vite, esta aplicação incorpora tecnologias modernas para garantir uma experiência fluida e agradável ao usuário.
+Bem-vindo ao My-Finance-App, a solução elegante e intuitiva para o controle eficaz das suas finanças pessoais!<br>
+Desenvolvido como um projeto front-end, esta aplicação utiliza a poderosa combinação de React.js e Vite, incorporando tecnologias modernas para garantir uma experiência fluida e agradável ao usuário. Explore a facilidade de navegação, design intuitivo e recursos personalizáveis, tudo criado para tornar o gerenciamento das suas finanças uma experiência simples e eficiente.
 
 Explore a versão online do projeto [aqui](https://anthony-steffen.github.io/my-finance-app/) para vivenciar pessoalmente a elegância e a praticidade que oferecemos.
 
