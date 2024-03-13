@@ -24,7 +24,9 @@ function Login() {
 
   const onSubmit = (data) => {
     const user = registeredUsers.find(
-      (users) => (users.email === data.email || users.username === data.email)
+      (users) => (
+        bcrypt.compareSync(data.email, users.email)
+        || bcrypt.compareSync(data.email, users.username))
         && bcrypt.compareSync(data.password, users.password),
     );
 

@@ -52,7 +52,7 @@ function Register() {
     if (!isValid) return;
 
     const existingUser = isUserExists(data);
-    const mn = 10;
+    const saltRounds = 10;
 
     if (existingUser) {
       let errorMessage = 'Usuário já cadastrado.';
@@ -66,10 +66,22 @@ function Register() {
       }
       showToast(errorMessage, 'error');
     } else {
-      // Use o bcrypt para hashear a senha antes de armazenar
-      const hashedPassword = await bcrypt.hash(data.password, mn);
+      // Remova confirmPassword antes de criptografar e armazenar
+      const { confirmPassword, ...userData } = data;
 
-      const newUser = [...registeredUsers, { ...data, password: hashedPassword }];
+      // Use o bcrypt para hashear a senha antes de armazenar
+      const hashedPassword = await bcrypt.hash(userData.password, saltRounds);
+      const hashedEmail = await bcrypt.hash(userData.email, saltRounds);
+      const hashedUsername = await bcrypt.hash(userData.username, saltRounds);
+      const hashedPhone = await bcrypt.hash(userData.phone, saltRounds);
+
+      const newUser = [...registeredUsers, {
+        ...userData,
+        password: hashedPassword,
+        email: hashedEmail,
+        username: hashedUsername,
+        phone: hashedPhone,
+      }];
       setRegisteredUsers(newUser);
       localStorage.setItem('users', JSON.stringify(newUser));
       reset();
