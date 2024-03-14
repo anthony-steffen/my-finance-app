@@ -13,44 +13,42 @@ function Income() {
 
   if (incomes.length === 0) {
     return (
-      <div
-        className="card text-center bg-light col-xl-7 my-3 mx-auto"
-      >
-        <div
-          className="img-container"
+      <div className={ `card-body bg-${theme} py-1 px-2 my-1 rounded-3` }>
+        <img
+          src={ Avatar }
+          className="col-5 col-xl-5 mx-auto d-block mb-1 rounded-2"
+          alt="..."
+        />
+        <h5
+          className={
+            `card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
+          }
+          style={ { fontSize: 'clamp(1em, 1em + 1vw, 1.1em)' } }
         >
-          <img
-            src={ Avatar }
-            className="col-12 col-md-6 col-xl-3 mx-auto d-block mb-1 rounded-3"
-            alt="..."
-          />
-        </div>
-        <div className={ `card-body bg-${theme} py-4 px-2 mb-1 rounded-3` }>
-          <h5
-            className={
-              `card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
-            }
-          >
-            Recebimentos?
-          </h5>
-          <p className={ `text-${theme === 'light' ? 'dark' : 'light'}` }>
-            Aqui, lhe mostraremos o resumo das suas receitas.
-            <br />
-            Click no botão + para adicionar.
-          </p>
-        </div>
+          Recebimentos.
+        </h5>
+        <p
+          className={
+            `card-text text-center text-${theme === 'light' ? 'dark' : 'light'}`
+          }
+        >
+          Visualize o resumo das suas receitas.
+          <br />
+          Click no botão + para adicionar.
+        </p>
       </div>
     );
   }
   return (
     <section
       className={ `
-      row row-income py-3 my-2 rounded-1
+      row row-expense py-1 rounded-1
       ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
       ` }
       style={ {
         width: '100%',
         margin: 'auto',
+        border: 'none',
       } }
     >
       <h5

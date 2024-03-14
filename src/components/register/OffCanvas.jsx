@@ -9,10 +9,7 @@ function OffCanvas() {
   const { theme } = useContext(AppContext);
   return (
     <section>
-      {/* <div> */}
       <BtnAdd />
-      {/* </div> */}
-
       <div
         className="offcanvas offcanvas-end"
         tabIndex="-1"

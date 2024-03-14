@@ -44,34 +44,31 @@ function SwiperCards() {
   // Renderiza um card por padrão caso não exista nenhuma despesa
   if (expenses.length === 0) {
     return (
-      <div className="card text-center bg-light mt-1 col-xl-7 mx-auto">
-        <div
-          className="img-container"
+
+      <div className={ `card-body bg-${theme} py-1 px-2 my-1 rounded-3` }>
+        <img
+          src={ Avatar }
+          className="col-5 col-xl-5 mx-auto d-block mb-1 rounded-2"
+          alt="..."
+        />
+        <h5
+          className={
+            `my-1 card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
+          }
+          style={ { fontSize: 'clamp(1em, 1em + 1vw, 1.1em)' } }
         >
-          <img
-            src={ Avatar }
-            className="col-12 col-md-6 col-xl-3 mx-auto d-block mb-1 rounded-2"
-            alt="..."
-          />
-        </div>
-        <div className={ `card-body bg-${theme} py-2 px-2 mb-1 rounded-3` }>
-          <h5
-            className={
-              `card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
-            }
-          >
-            Gastos por categoria.
-          </h5>
-          <p
-            className={
-              `card-text text-center text-${theme === 'light' ? 'dark' : 'light'}`
-            }
-          >
-            Cadastre suas despesas e nós mostraremos
-            seus gastos por categoria nesta seção.
-          </p>
-        </div>
+          Gastos por categoria.
+        </h5>
+        <p
+          className={
+            `card-text text-center text-${theme === 'light' ? 'dark' : 'light'}`
+          }
+        >
+          Cadastre suas despesas e nós mostraremos
+          seus gastos por categoria nesta seção.
+        </p>
       </div>
+
     );
   }
 
@@ -80,7 +77,7 @@ function SwiperCards() {
       id="carouselExampleFade"
       className={ `
       bg-${theme === 'light' ? 'light' : 'dark'}
-      carousel slide carousel-fade py-2 my-2 col-xl-7 rounded-1
+      carousel slide carousel-fade py-2 mb-1 col-xl-7 rounded-1
       ` }
       data-bs-ride="carousel"
       data-bs-interval={ 7000 }
@@ -139,8 +136,8 @@ function SwiperCards() {
                   style={ {
                     boxShadow: '0px 1px 2px 2px black',
                     borderRadius: '10px',
-                    width: '13vh',
-                    height: '13vh',
+                    width: '15vh',
+                    height: '14vh',
                   } }
                 >
                   <div
@@ -176,7 +173,7 @@ function SwiperCards() {
         data-bs-target="#carouselExampleFade"
         data-bs-slide="prev"
       >
-        <span className="control-prev-icon text-primary fs-1">
+        <span className="control-prev-icon text-primary fs-1 mt-3">
           <IoIosArrowBack
             style={ { color: 'red' } }
           />
@@ -189,7 +186,7 @@ function SwiperCards() {
         data-bs-target="#carouselExampleFade"
         data-bs-slide="next"
       >
-        <span className="control-next-icon text-primary fs-1 ">
+        <span className="control-next-icon text-primary fs-1 mt-3">
           <IoIosArrowForward
             style={ { color: 'red' } }
           />

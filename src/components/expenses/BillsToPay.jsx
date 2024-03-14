@@ -13,38 +13,36 @@ function BillsToPay() {
 
   if (expenses.length === 0) {
     return (
-      <div
-        className=""
-      >
-        <div
-          className="img-container"
+      <div className={ `card-body bg-${theme} py-1 px-2  rounded-3` }>
+        <img
+          src={ Avatar }
+          className="col-5 col-xl-5 mx-auto d-block mb-1 rounded-2"
+          alt="..."
+        />
+        <h5
+          className={
+            `my-1 card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
+          }
+          style={ { fontSize: 'clamp(1em, 1em + 1vw, 1.1em)' } }
         >
-          <img
-            src={ Avatar }
-            className="col-12 col-md-6 col-xl-3 mx-auto d-block mb-1 rounded-3"
-            alt="..."
-          />
-        </div>
-        <div className={ `card-body bg-${theme} py-3 px-2 mb-1 rounded-3` }>
-          <h5
-            className={
-              `card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
-            }
-          >
-            Vencimentos, e agora?
-          </h5>
-          <p className={ `text-${theme === 'light' ? 'dark' : 'light'}` }>
-            Ajudamos você a lembrar de todas as suas contas.
-            Adicione-as e fique tranquilo.
-          </p>
-        </div>
+          Contas a pagar.
+        </h5>
+        <p
+          className={
+            `card-text text-center text-${theme === 'light' ? 'dark' : 'light'}`
+          }
+        >
+          Ajudamos você a lembrar de todas as suas contas.
+          Adicione-as e fique tranquilo.
+        </p>
       </div>
+
     );
   }
   return (
     <section
       className={ `
-      row row-expense py-2 mb-2 rounded-1
+      row row-expense py-1 mb-1 rounded-1
       ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
       ` }
       style={ {
@@ -72,7 +70,7 @@ function BillsToPay() {
       {expenses.map((expense, index) => (
         <div
           key={ index }
-          className="col-xl-4 col-lg-6 mb-1 p-2"
+          className="col-xl-4 col-lg-6 py-1"
         >
           <div
             className="card shadow-sm"
