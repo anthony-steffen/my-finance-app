@@ -54,7 +54,7 @@ function BillsToPay() {
     >
       <h5
         className={ `
-        text-danger d-flex align-items-center my-1
+        text-danger d-flex align-items-center mb-1 pt-1
         justify-content-start ms-3 fw-bold
         ` }
         style={ {

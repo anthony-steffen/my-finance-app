@@ -54,14 +54,13 @@ function Income() {
     >
       <h5
         className={ `
-        text-success d-flex align-items-center my-1
+        text-success d-flex align-items-center pt-1
         justify-content-start ms-3 fw-bold
         ` }
         style={ {
           width: '90%',
           margin: 'auto',
           textDecoration: 'underline',
-          // textShadow: '1px 0px 0px black',
         } }
       >
         Receitas
@@ -69,7 +68,7 @@ function Income() {
       {incomes.map((income, index) => (
         <div
           key={ index }
-          className="col-xl-4 col-lg-6 mb-1 p-2"
+          className="col-xl-4 col-lg-6 p-2"
         >
           <div
             className="card shadow-sm"
