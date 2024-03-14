@@ -77,7 +77,8 @@ function SwiperCards() {
       id="carouselExampleFade"
       className={ `
       bg-${theme === 'light' ? 'light' : 'dark'}
-      carousel slide carousel-fade py-2 mb-1 col-xl-7 rounded-1
+      carousel slide carousel-fade col-xl-7 rounded-1
+      my-2
       ` }
       data-bs-ride="carousel"
       data-bs-interval={ 7000 }
@@ -86,42 +87,17 @@ function SwiperCards() {
     >
       <h5
         className={ `
-        text-danger text-center mb-2 gap-2 fw-bold
+        text-danger text-center my-1 gap-2 fw-bold
         ` }
         style={ {
           width: '90%',
           margin: 'auto',
           textDecoration: 'underline',
-          textUnderlineOffset: '0.5rem',
           textShadow: '1px 0px 0px black',
         } }
       >
         Gastos por Categoria
       </h5>
-      <div className="carousel-indicators mb-1">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleFade"
-          data-bs-slide-to="0"
-          className={ `active ${theme === 'light' ? 'bg-dark' : 'bg-white'}` }
-          aria-current="true"
-          aria-label="Slide 1"
-        />
-        <button
-          type="button"
-          data-bs-target="#carouselExampleFade"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-          className={ theme === 'light' ? 'bg-dark' : 'bg-white' }
-        />
-        <button
-          type="button"
-          data-bs-target="#carouselExampleFade"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-          className={ theme === 'light' ? 'bg-dark' : 'bg-white' }
-        />
-      </div>
 
       <div className="carousel-inner">
         {expensesGroup.map((group, index) => (
@@ -194,7 +170,6 @@ function SwiperCards() {
         <span className="visually-hidden text-dark">Next</span>
       </button>
     </div>
-
   );
 }
 

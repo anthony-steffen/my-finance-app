@@ -42,25 +42,26 @@ function Income() {
   return (
     <section
       className={ `
-      row row-expense py-1 rounded-1
-      ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
+      row row-expense
+      ${theme === 'light' ? 'bg-light' : 'bg-dark '}
       ` }
       style={ {
         width: '100%',
         margin: 'auto',
         border: 'none',
+
       } }
     >
       <h5
         className={ `
-        text-success d-flex align-items-center mb-2
+        text-success d-flex align-items-center my-1
         justify-content-start ms-3 fw-bold
         ` }
         style={ {
           width: '90%',
           margin: 'auto',
           textDecoration: 'underline',
-          textUnderlineOffset: '0.5rem',
+          // textShadow: '1px 0px 0px black',
         } }
       >
         Receitas
@@ -73,14 +74,14 @@ function Income() {
           <div
             className="card shadow-sm"
           >
-            <div className="card-body d-flex flex-column">
-              <p className="category fw-bold text-muted mb-1">
+            <div className="card-body d-flex flex-column py-2">
+              <p className="category fw-bold text-muted mb-0">
                 {income.description}
               </p>
-              <p className="value fw-bold text-muted mb-1">
+              <p className="value fw-bold text-muted mb-0">
                 {`Valor R$: ${income.value}`}
               </p>
-              <p className="due fw-bold text-muted mb-1">
+              <p className="due fw-bold text-muted mb-0">
                 {`Vencimento: ${income.date}`}
               </p>
               <div className="d-flex justify-content-end align-items-center">
