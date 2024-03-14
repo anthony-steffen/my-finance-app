@@ -177,7 +177,9 @@ function SwiperCards() {
         data-bs-slide="prev"
       >
         <span className="control-prev-icon text-primary fs-1">
-          <IoIosArrowBack />
+          <IoIosArrowBack
+            style={ { color: 'red' } }
+          />
         </span>
         <span className="visually-hidden text-dark">Previous</span>
       </button>
@@ -188,7 +190,9 @@ function SwiperCards() {
         data-bs-slide="next"
       >
         <span className="control-next-icon text-primary fs-1 ">
-          <IoIosArrowForward />
+          <IoIosArrowForward
+            style={ { color: 'red' } }
+          />
         </span>
         <span className="visually-hidden text-dark">Next</span>
       </button>

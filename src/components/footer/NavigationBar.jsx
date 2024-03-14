@@ -1,33 +1,21 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function NavigationBar() {
-  // Obtém a localização atual
-  const location = useLocation();
-  // Verifica se a localização é a home
-  const isHome = location.pathname === '/home';
-  const isContact = location.pathname === '/contact';
-  const isAbout = location.pathname === '/about';
   return (
     <nav className="d-flex flex-row justify-content-around align-items-center">
-      <Link to="/" className="text-light">
-        Inicio
+      <Link Link to="/home" className="text-light text-decoration-none">
+        Home
       </Link>
-      {!isHome && (
-        <Link Link to="/home" className="text-light">
-          Home
-        </Link>
-      )}
-      {!isAbout && (
-        <Link to="/about" className="text-light">
-          About
-        </Link>
-      )}
-      {!isContact && (
-        <Link to="/contact" className="text-light">
-          Contato
-        </Link>
-      )}
+
+      <Link to="/about" className="text-light text-decoration-none">
+        About
+      </Link>
+
+      <Link to="/contact" className="text-light text-decoration-none">
+        Contato
+      </Link>
+
     </nav>
   );
 }
