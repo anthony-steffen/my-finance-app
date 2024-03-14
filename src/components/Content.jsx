@@ -8,7 +8,7 @@ function Content() {
   return (
     <div
       className="merda"
-      style={ { overflowY: 'scroll', height: '77vh' } }
+      style={ { overflowY: 'scroll', height: '76vh' } }
     >
       <SwiperCards />
       <BillsToPay />

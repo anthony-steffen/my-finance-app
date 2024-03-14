@@ -51,7 +51,7 @@ function BillsToPay() {
         width: '100%',
         margin: 'auto',
         border: 'none',
-        height: '25vh',
+        // height: '25vh',
       } }
     >
       <h5
