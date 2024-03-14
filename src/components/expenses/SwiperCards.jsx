@@ -77,8 +77,7 @@ function SwiperCards() {
       id="carouselExampleFade"
       className={ `
       bg-${theme === 'light' ? 'light' : 'dark'}
-      carousel slide carousel-fade col-xl-7 rounded-1
-      my-2
+      carousel slide carousel-fade col-xl-7 rounded-1 mb-2
       ` }
       data-bs-ride="carousel"
       data-bs-interval={ 7000 }

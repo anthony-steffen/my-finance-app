@@ -42,7 +42,7 @@ function BillsToPay() {
   return (
     <section
       className={ `
-      row row-expense mb-2
+      row row-expense
       ${theme === 'light' ? 'bg-light ' : 'bg-dark '}
       ` }
       style={ {
