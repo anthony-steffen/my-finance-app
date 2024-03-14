@@ -13,7 +13,7 @@ function Footer() {
     <footer
       className={
         `navbar fixed-bottom bg-${theme === 'light' ? 'primary' : 'black'} 
-        bg-gradient text-light z-2`
+        text-light z-2`
       }
       style={ { height: '12vh' } }
     >

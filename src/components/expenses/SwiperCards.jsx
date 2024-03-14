@@ -80,7 +80,7 @@ function SwiperCards() {
       id="carouselExampleFade"
       className={ `
       bg-${theme === 'light' ? 'light' : 'dark'}
-      carousel slide carousel-fade py-2 mt-1 col-xl-7 mx-auto
+      carousel slide carousel-fade py-2 my-2 col-xl-7 rounded-1
       ` }
       data-bs-ride="carousel"
       data-bs-interval={ 7000 }

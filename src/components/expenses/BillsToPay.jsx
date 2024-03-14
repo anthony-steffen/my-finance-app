@@ -44,17 +44,19 @@ function BillsToPay() {
   return (
     <section
       className={ `
-      row row-expense py-3 my-1 ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
+      row row-expense py-2 mb-2 rounded-1
+      ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
       ` }
       style={ {
         width: '100%',
         margin: 'auto',
         border: 'none',
+        height: '25vh',
       } }
     >
       <h5
         className={ `
-        text-danger d-flex align-items-center mb-1
+        text-danger d-flex align-items-center mb-2
         justify-content-start ms-3 fw-bold
         ` }
         style={ {

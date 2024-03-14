@@ -22,7 +22,7 @@ function Header() {
     <header
       className={ `
     navbar sticky-top bg-${theme === 'light' ? 'primary' : 'black'}
-    bg-gradient border-bottom border-dark
+    bg-gradient border-bottom border-dark rounded-2
     ` }
       style={ { height: '12vh' } }
     >

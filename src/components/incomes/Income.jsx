@@ -45,7 +45,8 @@ function Income() {
   return (
     <section
       className={ `
-      row row-income py-3 my-1 ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
+      row row-income py-3 my-2 rounded-1
+      ${theme === 'light' ? 'bg-light border' : 'bg-dark'} 
       ` }
       style={ {
         width: '100%',
@@ -54,7 +55,7 @@ function Income() {
     >
       <h5
         className={ `
-        text-success d-flex align-items-center mb-1
+        text-success d-flex align-items-center mb-2
         justify-content-start ms-3 fw-bold
         ` }
         style={ {
