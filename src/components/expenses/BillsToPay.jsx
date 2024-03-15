@@ -42,19 +42,20 @@ function BillsToPay() {
   return (
     <section
       className={ `
-      row row-expense
-      ${theme === 'light' ? 'bg-light ' : 'bg-dark '}
+      row row-expense pb-2
+      ${theme === 'light' ? 'bg-light border-dark' : 'bg-dark border-black'}
+      border-bottom border-5
       ` }
       style={ {
         width: '100%',
         margin: 'auto',
-        border: 'none',
+        border: 'black',
 
       } }
     >
       <h5
         className={ `
-        text-danger d-flex align-items-center mb-1 pt-1
+        text-danger d-flex align-items-center mb-1
         justify-content-start ms-3 fw-bold
         ` }
         style={ {
@@ -69,7 +70,7 @@ function BillsToPay() {
       {expenses.map((expense, index) => (
         <div
           key={ index }
-          className="col-xl-4 col-lg-6 py-2"
+          className="col-xl-4 col-lg-6"
         >
           <div
             className="card shadow-sm"
@@ -85,7 +86,7 @@ function BillsToPay() {
               <p className="due fw-bold text-muted mb-0">
                 {`Vencimento: ${expense.date}`}
               </p>
-              <div className="d-flex justify-content-end align-items-center">
+              <div className="d-flex justify-content-end align-items-center me-4">
                 <ExpenseBadge expense={ expense } />
                 <button
                   type="button"

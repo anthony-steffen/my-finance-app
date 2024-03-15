@@ -76,8 +76,8 @@ function SwiperCards() {
     <div
       id="carouselExampleFade"
       className={ `
-      bg-${theme === 'light' ? 'light' : 'dark'}
-      carousel slide carousel-fade col-xl-7 rounded-1 mb-2
+      bg-${theme === 'light' ? 'light border-dark' : 'dark border-black'}
+      carousel slide carousel-fade rounded-1 border-top border-bottom border-5
       ` }
       data-bs-ride="carousel"
       data-bs-interval={ 7000 }

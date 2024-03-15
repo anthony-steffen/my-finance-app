@@ -3,7 +3,7 @@ import { IoIosAdd } from 'react-icons/io';
 
 function BtnAdd() {
   return (
-    <div style={ { position: 'fixed', bottom: '22vh', right: '1rem' } }>
+    <div style={ { position: 'fixed', bottom: '20vh', right: '0.8rem' } }>
       <button
         type="button"
         className="bg-primary rounded-circle d-flex

@@ -12,7 +12,10 @@ import '../styles/components/ToggleTheme.css';
 
 function Home() {
   return (
-    <div className="home-container bg-dark bg-gradient">
+    <div
+      className="home-container bg-dark bg-gradient"
+
+    >
       <AppProvider>
         <Header />
         <Content />

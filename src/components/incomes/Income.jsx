@@ -42,14 +42,14 @@ function Income() {
   return (
     <section
       className={ `
-      row row-expense
+      row row-expense 
       ${theme === 'light' ? 'bg-light' : 'bg-dark '}
       ` }
       style={ {
         width: '100%',
         margin: 'auto',
         border: 'none',
-
+        paddingBottom: '9rem',
       } }
     >
       <h5
@@ -68,7 +68,7 @@ function Income() {
       {incomes.map((income, index) => (
         <div
           key={ index }
-          className="col-xl-4 col-lg-6 p-2"
+          className="col-12 col-md-2 col-xl-2 p-1"
         >
           <div
             className="card shadow-sm"
@@ -83,7 +83,7 @@ function Income() {
               <p className="due fw-bold text-muted mb-0">
                 {`Vencimento: ${income.date}`}
               </p>
-              <div className="d-flex justify-content-end align-items-center">
+              <div className="d-flex justify-content-end align-items-center me-4">
                 <IncomeBadge income={ income } />
                 <button
                   type="button"

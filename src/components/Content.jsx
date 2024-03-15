@@ -7,8 +7,7 @@ import OffCanvas from './register/OffCanvas';
 function Content() {
   return (
     <div
-      className="d-flex flex-column justify-content-start align-items-center"
-      style={ { overflowY: 'scroll', height: '76vh' } }
+      className="container-fluid p-0 "
     >
       <SwiperCards />
       <BillsToPay />

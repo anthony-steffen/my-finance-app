@@ -15,7 +15,7 @@ function Footer() {
         `navbar fixed-bottom bg-${theme === 'light' ? 'primary' : 'black'} 
         text-light z-2`
       }
-      style={ { height: '12vh' } }
+      style={ { height: '15vh' } }
     >
       <div className="container-footer w-100 d-flex flex-column justify-content-center">
         <NavigationBar />
