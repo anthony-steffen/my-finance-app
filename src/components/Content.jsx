@@ -7,7 +7,7 @@ import OffCanvas from './register/OffCanvas';
 function Content() {
   return (
     <div
-      className="container-fluid p-0 "
+      className="container-fluid p-0"
     >
       <SwiperCards />
       <BillsToPay />

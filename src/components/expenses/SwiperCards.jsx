@@ -45,7 +45,7 @@ function SwiperCards() {
   if (expenses.length === 0) {
     return (
 
-      <div className={ `card-body bg-${theme} py-1 px-2 my-1 rounded-3` }>
+      <div className={ `card-body bg-${theme} py-1 px-2 mb-1 rounded-3` }>
         <img
           src={ Avatar }
           className="col-5 col-xl-5 mx-auto d-block mb-1 rounded-2"
@@ -55,7 +55,7 @@ function SwiperCards() {
           className={
             `my-1 card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
           }
-          style={ { fontSize: 'clamp(1em, 1em + 1vw, 1.1em)' } }
+          style={ { fontSize: 'clamp(1em, 1em + 1vw, 1em)' } }
         >
           Gastos por categoria.
         </h5>

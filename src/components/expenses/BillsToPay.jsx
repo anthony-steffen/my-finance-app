@@ -23,7 +23,7 @@ function BillsToPay() {
           className={
             `my-1 card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
           }
-          style={ { fontSize: 'clamp(1em, 1em + 1vw, 1.1em)' } }
+          style={ { fontSize: 'clamp(1em, 1em + 1vw, 1em)' } }
         >
           Contas a pagar.
         </h5>

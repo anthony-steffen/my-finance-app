@@ -23,7 +23,7 @@ function Income() {
           className={
             `card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
           }
-          style={ { fontSize: 'clamp(1em, 1em + 1vw, 1.1em)' } }
+          style={ { fontSize: 'clamp(1em, 1em + 1vw, 1em)' } }
         >
           Recebimentos.
         </h5>
@@ -49,7 +49,7 @@ function Income() {
         width: '100%',
         margin: 'auto',
         border: 'none',
-        paddingBottom: '9rem',
+        paddingBottom: '8rem',
       } }
     >
       <h5
