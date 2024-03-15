@@ -13,29 +13,44 @@ function Income() {
 
   if (incomes.length === 0) {
     return (
-      <div className={ `card-body bg-${theme} py-1 px-2 my-1 rounded-3` }>
-        <img
-          src={ Avatar }
-          className="col-5 col-xl-5 mx-auto d-block mb-1 rounded-2"
-          alt="..."
-        />
-        <h5
-          className={
-            `card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
-          }
-          style={ { fontSize: 'clamp(1em, 1em + 1vw, 1em)' } }
+      <div
+        className="mx-auto w-100 mt-1 mb-2"
+        style={ {
+          width: '18rem',
+          paddingBottom: '8rem',
+        } }
+      >
+        <div
+          className={ `
+        col-xl-5 mx-auto card-body p-2 rounded-3
+        ${theme === 'light' ? 'bg-white' : 'bg-dark'}
+        ` }
         >
-          Recebimentos.
-        </h5>
-        <p
-          className={
-            `card-text text-center text-${theme === 'light' ? 'dark' : 'light'}`
-          }
-        >
-          Visualize o resumo das suas receitas.
-          <br />
-          Click no botão + para adicionar.
-        </p>
+          <img
+            src={ Avatar }
+            className="card-img-top rounded-2"
+            alt="..."
+            style={ {
+              width: '100%',
+              height: '15vh',
+              // objectFit: 'cover',
+            } }
+          />
+          <h5
+            className={ `
+          card-text text-center my-1 ${theme === 'light' ? 'text-dark' : 'text-white'}
+          ` }
+          >
+            Contas a pagar.
+          </h5>
+          <p
+            className={ `
+          text-center m-0 ${theme === 'light' ? 'text-dark' : 'text-white'}
+          ` }
+          >
+            Ajudo você a lembrar de todas as suas contas. Adicione-as e fique tranquilo.
+          </p>
+        </div>
       </div>
     );
   }

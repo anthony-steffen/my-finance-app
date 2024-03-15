@@ -8,7 +8,8 @@ import AppContext from '../../contexts/AppContext';
 
 import '../../styles/components/SwiperCards.css';
 import '../../styles/components/Lists.css';
-import Avatar from '../../assets/pb01.png';
+
+import Avatar from '../../assets/pb02.png';
 
 function SwiperCards() {
   const { expenses, categoryIcons, categories, theme } = useContext(AppContext);
@@ -44,31 +45,40 @@ function SwiperCards() {
   // Renderiza um card por padrão caso não exista nenhuma despesa
   if (expenses.length === 0) {
     return (
-
-      <div className={ `card-body bg-${theme} py-1 px-2 mb-1 rounded-3` }>
-        <img
-          src={ Avatar }
-          className="col-5 col-xl-5 mx-auto d-block mb-1 rounded-2"
-          alt="..."
-        />
-        <h5
-          className={
-            `my-1 card-title text-center text-${theme === 'light' ? 'dark' : 'light'}`
-          }
-          style={ { fontSize: 'clamp(1em, 1em + 1vw, 1em)' } }
+      <div className="mx-auto w-100 mt-2 mb-2" style={ { width: '18rem' } }>
+        <div
+          className={ `
+        col-xl-5 mx-auto card-body p-2 rounded-3
+        ${theme === 'light' ? 'bg-white' : 'bg-dark'}
+        ` }
         >
-          Gastos por categoria.
-        </h5>
-        <p
-          className={
-            `card-text text-center text-${theme === 'light' ? 'dark' : 'light'}`
-          }
-        >
-          Cadastre suas despesas e nós mostraremos
-          seus gastos por categoria nesta seção.
-        </p>
+          <img
+            src={ Avatar }
+            className="card-img-top rounded-2"
+            alt="..."
+            style={ {
+              width: '100%',
+              height: '15vh',
+              // objectFit: 'cover',
+            } }
+          />
+          <h5
+            className={ `
+          card-text text-center my-1 ${theme === 'light' ? 'text-dark' : 'text-white'}
+          ` }
+          >
+            Contas a pagar.
+          </h5>
+          <p
+            className={ `
+          text-center m-0 ${theme === 'light' ? 'text-dark' : 'text-white'}
+          ` }
+          >
+            Cadastre suas despesas e eu te
+            mostrarei seus gastos por categoria nesta seção
+          </p>
+        </div>
       </div>
-
     );
   }
 
