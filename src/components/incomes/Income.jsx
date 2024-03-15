@@ -41,14 +41,15 @@ function Income() {
           card-text text-center my-1 ${theme === 'light' ? 'text-dark' : 'text-white'}
           ` }
           >
-            Contas a pagar.
+            Recebimentos.
           </h5>
           <p
             className={ `
           text-center m-0 ${theme === 'light' ? 'text-dark' : 'text-white'}
           ` }
           >
-            Ajudo você a lembrar de todas as suas contas. Adicione-as e fique tranquilo.
+            Aqui eu mostrarei o resumo das suas receitas.
+            Clique no botão + para começar.
           </p>
         </div>
       </div>
@@ -57,19 +58,20 @@ function Income() {
   return (
     <section
       className={ `
-      row row-expense 
+      row row-expense pb-2 border-bottom border-5 border-black
       ${theme === 'light' ? 'bg-light' : 'bg-dark '}
       ` }
       style={ {
         width: '100%',
         margin: 'auto',
         border: 'none',
-        paddingBottom: '8rem',
+        marginBottom: '5rem',
+        // paddingBottom: '8rem',
       } }
     >
       <h5
         className={ `
-        text-success d-flex align-items-center pt-1
+        text-success d-flex align-items-center my-2
         justify-content-start ms-3 fw-bold
         ` }
         style={ {
@@ -83,10 +85,10 @@ function Income() {
       {incomes.map((income, index) => (
         <div
           key={ index }
-          className="col-12 col-md-2 col-xl-2 p-1"
+          className="col-xl-3 col-lg-6"
         >
           <div
-            className="card shadow-sm"
+            className="card shadow-sm mb-1"
           >
             <div className="card-body d-flex flex-column py-2">
               <p className="category fw-bold text-muted mb-0">

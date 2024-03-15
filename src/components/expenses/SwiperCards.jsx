@@ -67,7 +67,7 @@ function SwiperCards() {
           card-text text-center my-1 ${theme === 'light' ? 'text-dark' : 'text-white'}
           ` }
           >
-            Contas a pagar.
+            Gastos por Categoria
           </h5>
           <p
             className={ `
@@ -113,6 +113,7 @@ function SwiperCards() {
           <div
             key={ index }
             className={ `carousel-item ${index === 0 ? 'active' : ''}` }
+            style={ { height: '17vh' } }
           >
             {group.map((element, elementIndex) => (
               <div className="category-card" key={ elementIndex }>

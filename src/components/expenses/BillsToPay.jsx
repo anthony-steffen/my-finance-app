@@ -64,7 +64,7 @@ function BillsToPay() {
     >
       <h5
         className={ `
-        text-danger d-flex align-items-center mb-1
+        text-danger d-flex align-items-center my-2
         justify-content-start ms-3 fw-bold
         ` }
         style={ {
@@ -79,10 +79,10 @@ function BillsToPay() {
       {expenses.map((expense, index) => (
         <div
           key={ index }
-          className="col-xl-4 col-lg-6"
+          className="col-xl-3 col-lg-6"
         >
           <div
-            className="card shadow-sm"
+            className="card shadow-sm mb-1"
           >
             <div className="card-body d-flex flex-column py-2">
               <p className="category fw-bold text-muted mb-0">
